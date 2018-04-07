@@ -1,0 +1,55 @@
+We are discussing RSA encryption
+
+Euclids Algorithm:
+    given a0, a1, find positive itegers x and y such that 
+        a0*x + a1*y = GCD(a0, a1)
+
+    We can decrease the number of bits needed and thus the overall complexity by
+    using modulo
+        mod a0 (a0 * x + a1*y = 1)
+
+    Ex:
+       
+        initilization
+        i       a       x       y
+        0       8096    1       0
+        1       7043    0       1
+
+
+    Let a = b*q + r
+    Find a number u which divides both a and b (a = su, b = tu)
+        u will also divide r because r = a - bq = su - qtu = (s-qt)u
+
+    def euclidean_algo(a, b):
+        q = floor(a / b)
+        r = a - bq
+        if r == 0:
+            return b 
+
+        return euclidean_algo(b, r)
+
+    It turns out this is very efficient:
+        each line requires O(1) work
+
+        meaning O(log(a0)) work total
+
+        basically what he said is each iteration of the algorithm decreases the
+        bit lengt of the numbers by 1, meaning at most it will take a number of
+        operations equal to the number of bits in the largest number
+
+RSA:
+    Thus verifyin that two numbers are relatively prime (for the key) is easy
+    using euclid's algo
+
+    Both encrypyion and decryption are very efficient
+
+    How hard is it to break RSA?
+        public key is n and e
+        private key is d
+
+        if you can find d, you can break RSA.  We know e and we know that d is
+        the multiplicitave inverse of e.  If we can find p and q we can find n.
+        TO do this we must factor n; as we state earlier factoring a number is
+        much harder than finding primes
+
+        

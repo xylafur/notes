@@ -1,0 +1,37 @@
+Initilization:
+    There are 3 ways to deal with it
+        1: Assign an arbitrary number
+        2: Just keep the garbage that was there
+        3: use undefined (something that Algol languages did)
+            The idea is that if you did not explicitly assign a value, it is 
+            undefined, if you ue it your program crashes
+
+    What do we want from a runtime support system / our compiler?
+        We want to have as many errors as possible classified as syntax errors
+
+
+    M[i, j]
+    1 <= i, j <= m
+
+    M[i, j] = M[i, j] + x
+
+    (i, j, x)
+        moving triples, n >> m^2
+
+    If this fits in main memory, not interesting - O(n)
+
+    However if M does not fit into main memory, thing become interesting because
+    of swapping
+
+    Lets assume that only 10% of M fits into main memory
+
+    VMM:
+        How many block must be retrieved
+
+    move_input
+    {
+        read (i, j, x)
+        M[i, j] = M[i, j] + x
+    }
+
+

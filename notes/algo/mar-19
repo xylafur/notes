@@ -1,0 +1,91 @@
+Lets do an online algorithm for our find k structure
+    We ahve things like insert, delete and find(k):
+        
+    In order to do the operations we want to do, we can augment an AVL tree
+        Thie first thing we have to do (and it is independent of what we are 
+        talking about), is that in AVL trees we do not permit duplicates; how do
+        we deal with that?
+            We will add multiplicity into each node, they keep track of how many
+            of the same element have been added
+
+        So other than what we just said, insertion is the same
+        Same thing with deletion, if multiplicity is > 1 then we just decrement,
+        otherwise we have to actually delete the element
+
+        In our node, we add another field that records how many elements (and 
+        multiple copies if neccessary) are in the tree that is rooted at the node
+
+
+        Example where the second number is the multiplicity
+                    2/1
+                  /   \
+                1/2    3/2  <- the number of elements represented by this tree
+                        \      is 5
+                         4/3
+
+    Now how do we adapt the algorithm we had before to use this?
+        We can use cardinality of the two nodes to help us find the kth largest
+
+
+
+                    2/1
+                  /   \
+                1/2    3/2  
+                        \  
+                         4/3
+                          \
+                           5/1
+
+
+    Essentially we are going to start from the top, go to the side that 
+    contains the number we are look for, meaning that we keep track of the total
+    multiplicity of nodes we have visited.  ONce we get to the number we are
+    searching for, we know we have found the correct number.
+        we go to the side with greater eements unless the other side is equal
+        to what we are looking for
+
+    Example: Find the second largest
+        Start at the top node:
+            we check how many are on each side.  We see that there are more 
+            elements in the Greater side, so we go there
+
+        Again we check the next node's left and right
+            we only have 
+
+    Example:
+        7th largest:
+
+The difference between this and the assignment, is this case is completley 
+unconstrained
+
+
+RSA public key encreyption algorithm:
+    Used for all https or any certificates on the internet
+
+    Allows you to worry about the content that you are transmitting by encrypting 
+    the content in such a way that only the person that knows how to decrypt 
+    can understand
+
+    SO in order to implement RSA
+
+    1: Choose large primes p, q; n = p*q
+    2: Choose an e relativlity prime to ((p-1)*(q-1) = p*q - p - q + 1)
+        That means there exists a multiplicative inverse d of e with respect to
+        (p-1)*(q-1)
+
+    3: m is the message.  SInce it is a binary string, we interpret it as a 
+       number.
+        Then we take m^e % n = c <- the encrypted message
+
+    4: To decrypt
+        c^d mod n = m
+
+Testing for primality is much more efficient than attempting to factor.
+    O(s^3) where s is the number of bits
+
+The trick for these very large numbers is that they are all modula n.
+    If we have 2 nubers, a and b.  And we want to do some operation then mod
+
+    (a + b) % n == ((a%n) + (b%n)) % n
+
+    This holds true for any operation

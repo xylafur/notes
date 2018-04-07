@@ -1,0 +1,337 @@
+3-21-18
+    
+Magnetic field due to a single charge with constant velocity
+
+    The equivalent of columbs law for magnetic forces
+
+    (magnetic_constant * q* V x r) / (4 * pi * ro**2)
+
+        Where r is a unit vector from point charge to where the field is measured
+            the point we are measuring the field at relative to the charge
+
+        ro is the distance from the point charge o where the field is measured
+
+
+Magnetic field of a current element:
+    dB = (magnetic_constant * I * dl x r) / (4 * pi * ro**2)
+
+        r again is the unit vector
+        dl is a vector of length dl in direction of the current
+
+    Basically the same equation as before but for a current carrying wire
+
+    This explains things like planetary magnetism, cause by currents circulating 
+    in the core
+
+
+
+
+
+3-26-2018
+
+Exam is this friday at 4, our class will be replaced by review with no recitation
+
+How to study:
+    In addition to required stuff, he says use the problems at the back of the book,
+    the questions at the end of the chapters
+
+
+We will learn Ampere's Law:
+    how to calculate the magnetic field of a symetric current dirtibutions
+
+    The magnetic equivalent of Gauss's Law
+
+    Usually magnetic fields are procuced by currents
+        though there are excetions we will cover
+
+Solenoid: Coil that carries crrent
+    Multiple current carrying loops to generate a powerful magnetic field
+
+
+Magnetic field of a straight current carrying conductor
+
+ section of wire dl
+  |
+  | wire of length l 
+  | |
+  | v
+  v |                                                       a
+  - |  <- andle phi
+  - |\
+    | \             ^
+    |  \            | Current
+    |   \           |
+    |    * <- point p
+    |---------------> Magnetic Field dB
+    |
+    |
+    |                                                       -a
+
+    We are trying to find the field at point p
+
+    We have the current carriny wire vertically and the the magnetic field 
+    horizontally, the line from the top of l to p is the vector from the section
+    of l (dt) to p, thus r
+    
+    ro is the magnetiude of thawt vector (sqrt(x^2 + y^2))
+
+    dl is upwward pointing
+        dl x r is a vector that points into the plane (from right hand rule)
+
+    dB = (magnetic_constant) / (4 * pi) * I * (dl x r) / r^2
+
+       = (magnetic_constant) / (4 * pi) * I * dy * -k  / r^2
+
+       = (magnetic_constant) / (4 * pi) * I * dy * -k  / (x^2 + y^2) 
+
+
+       We integrate this from -a to a
+
+    => B = (magnetic constant) * I / (4 * pi) * (2*a / (x * sqrt(x^2 + a^2)))
+
+
+    Ifthe wire is infinitely long, sw can substitute (x^2 + a^2) with a^2
+
+
+    => B = magnetic_constant * I / (2 * pi * ro)
+
+    We will simplify this alot with Amper's law
+
+
+Magnetic Field of a straight current-carrying conductor
+    If you have a wire that carries current, then we know thatit produces a 
+    magnetic field, the direction of this field is given by the right hand rule
+
+    Our thumb is in the direction of the current and the field is in the direction
+    that our fingers curl
+
+
+    If the net current is 0, information can be transfered with no power transformsqrt
+
+
+Force between parallel current carrying conductors:
+    if we have two wires that are patallel with a current flowing in the same direction
+    for both of them:
+
+        Each wire will produce a magnetic field, so each wire creates a force on the other
+
+
+    If the wires carry current in the same direction they attract, if its opposite
+    directions they repel
+        for current: oposites repel, like attract
+
+
+    The magnetic force per unit length:
+        F / L = (magnetic_constant * I * I') / (2 * pi * r)
+            where I and I' are the currents in the two wires
+            r is the distance between the wires
+
+
+Ampere:
+    It is a specific Current:
+        the current for 2 parallel conductors of infinite length 1 meter apart 
+        in empty space that causes force of 2 * 10^-7 newtons per unit length
+
+
+
+Magnetic FIeld of a circular current loop
+    Imagine a loop of radius a with counterclockwise currentI
+
+    We want to calculte the magnetic field on the axis of the loop
+
+    This field will only have an x component (because the y component will cancel)
+
+    Bx = mag_constant * I * a^2 / (2 *( x^2 + a^2)^(3/2))
+
+
+    Remember we can imagine a current carrying loop as a magnet, and field lines
+    always go from north pole to south pole
+
+
+
+3-28-2018
+
+Recap:
+    A current carrying wire produces a magnetic field.
+    We can determine the intensity of a magnetic field at a particular point
+
+    The direction of the magnetic field is given by straight wire
+
+    Two current carrying wires placed next to eachother either attract or repel
+    based on the releative directions of both of their currents
+
+    The magnetic field in a current carrying loop can be determined again by
+    the right hand rule
+        curl your fingrs in direction of the current, field is in the direction
+        of the thumb
+
+
+Ampere's Law:
+    Magnetic analog of gauss's law
+
+    closed_loop_integral(B (dot) dl) = closed_loop_integral(B * dl (parallel components))
+    = B * closed_loop_integral(dl) = (magnetic_constant) * I 
+
+
+    The enclosed quantity is the current through this loop
+
+    The line integral of the total magnetic field is the sum of the currents
+    
+    The general statement:
+        
+        closed_loop_integral(B (dot) dl) = (magnetic_constant) * I_enclosed
+
+
+Computing the magntic field for a long cylindrical conductor
+
+    --------------------------  r--|
+                                |  v
+    --------------------------  |
+                                B
+            I
+    <<<---------<<<---------
+
+    The current is to the left, the magnetic field goes over the cylendar
+
+
+    R is the radius of the cylendar, r is the radius of our surface
+
+    The magnetic field inside the conductor
+
+        step 1:
+        
+        the magnitude of the field in the cylendar is B{r)
+
+        accorgding to amperes law
+
+                  ->        ->
+        integral(B(r) (dot) dl) = (magnetic_constant) * I_enclosed
+
+
+        step 2:
+
+        B(r) is equal in magnitude all along the loop, since we are going all
+        around the cylendar, 
+    
+        we can ssimply multipld B and dl because they are always parallel
+
+        closed_loop_integral(B(r) * dl) = B(r) * 2 * pi * r = magnetic constatnt * I / (pi * R^2)
+
+
+        step 3:
+
+        = magnetic_constant * I /(pi * R^2) * (pi * r^2)
+                                     ^
+                                     | current density per cross sectional area
+
+
+        = magnetic constant * I * r^2 / R^2
+                    
+
+    THe magnetic field outside the field
+        step 1 and 2 will be the same.  The left hand side of the equation is the
+        same.  The right hand side will be different because the loop now encloses
+        the entire wire
+
+
+        B(r) * 2 * pi * r = (magnetic_constatn) * I
+
+
+For a long, straight current carrying conductor
+    
+    B = (magnetic_constant) * I / (2 * pi * r)
+
+
+    A thin wire is the same as a thick wire as long as you only measure the field
+
+    r is the distance from the center of the conductor to the point you are 
+    measuring the field
+
+
+A thick wire with uniform charge behaves like an infinatesimally thin wire
+
+Lets think about electrostatics again:
+    IN a parallel plate capacitor, there are two plates with q and -q.  THe 
+    electric field outside is 0, but the field inside is uniform.
+
+    There is something anagolous in magnetism witha solenoid
+
+
+Solenoid:
+    A surled wire that also increases in one direction (electromagnet)
+    the same as many current carrying loops placed next to eachother
+
+    If the solenoid is infinately long, the magnetic field inside is constant
+    and is given by (magnetic_constant) * n * I
+
+
+    There are two kinds of magnets:
+        permanent magnets and electromagnets
+
+    Permanent magnets have a fixed magnetism, electromagnets can create any
+    desired field by driving a specific current through the wire
+
+
+    Outside the solenoid the magnetic field is 0
+
+Field of a solenoid:
+
+
+We haven't talked about where magnetism comes from at the microscopic level
+
+The Bohr Magneton:
+    If an electron goes around some axis, the electron will enerate a magnetic field
+
+    THe bohr magneton is the unit for the angular moment of an electron
+
+    (magnetic dipole moment) = e / (2 * m) * L
+    (bohr magneton) = eh / (4*pi * m) = 9.274*10^-24 J/T
+        where L is the angular momentum
+            L can only take some discrete values (because of some quantum stuff)
+        e is the charge of electron, m is the mass
+        h is planks constant
+
+
+Paramagnetism and diamagnetism:
+
+    K = relative permeability
+        dimensionless factor
+
+    paramagnetism:
+        the one we are most familliar with, permanent magnets
+
+        if placed in a magnetic field, it will change the magnitude (and possibly
+        direction) of the field it was placed in because you would add the fields
+
+    dismagnetism:
+        material that is not magnetic, but develops a magnetic moment when placed
+        in an electric field
+
+        The ammount tby which the relative pereability differs from unity
+        is called the magnetic susceptibility
+
+        x = K - 1
+
+
+    If you place a superconductor in a magnetic field, the magnetic field inside
+    the superconductor is 0, always 0
+        THe magnetic field lines will go around the superconductor
+        the field lines can't go through the super conductor
+
+    ferromagnetism:
+        iron is an example
+
+        atomix magnetic moments line up parallel to eachother in regions called
+        domains, these domains will point in different directions to cause an 
+        overall magnetic field of 0
+
+        When there is no externally applied field, the domain magnetizations 
+        are randomly oriented
+
+
+    Anti ferro magnet:
+        neighboring atoms have moments that point in different directions
+
+        on average the moment is 0
+
+        

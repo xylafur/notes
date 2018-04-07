@@ -1,0 +1,131 @@
+Electromagnetic Inductance:
+    Electricity is generated through electromagnetic induction: a process in
+    which a change in magnetic flux through a circut generagtes emf and current
+
+    The central principle to induction is Faraday's Law which relatd enduced
+    emf to changing magnetic flux in any loop
+
+29.1 Induction Experiments:
+    induced current - moving magnetic field through circut to generate current
+        -paited with induced emf
+
+    The comment element in all of the experiments listed is a change in a magnetic
+    flux through a coil connected to a galvanometer.  The flux changes either
+    because the magnetic field changes or because the coil is moving through a 
+    nonuniform magnetic field
+    
+    induced emf is proportional to the rate of change of magnetic flux 
+        the direction depends on wether flux is increasing or decreasing
+
+29.2 Faraday's Law:
+    magnetic flux is basically number of field lines thorugh a given surface
+
+        d(flux) = B (dot) dA = B dA cos(th)
+
+        (flux) = B (dot) A = B A cos(th)
+            if B is uniform, else itegrate
+
+    Faraday's induction:
+        (emf) = - d(flux)/dt
+
+
+    Direction of induced emf:
+        we can find direction using faraday's induction with some rules
+
+        1: define a positive direction for A
+        2: From directions of A and magnetic field, determine sign of flux
+        3: Determine sign of flux, if positive increasing, else decreasing
+        4: Determine direction of induced current using right hand 
+            Curl fingers around A vector with thumb pointing to A
+
+            if the induced current is positive it moves in the direction of
+            your fingers, else in the opposite direction
+
+    Lenz's Law:
+        Induction effect tends to oppose the change that caused it.
+
+        FOr example teh field generated through a loop by a changing flux will
+        be in the oposite direction of the original magnetic field
+
+    Total emf in a coil with N turns is given by:
+        (emf) = -N * d(flux)/dt
+
+    Generators as Energy Converters:
+        the induced emf doesn't come from nowhere, the energy is supplied by
+        whatever body exerts the force that kept the rod moving
+
+29.3 Lenz's Law:
+    Method for determining the directrion of an induxed emf
+
+    The direction of any manetic induction effect is such as to oppose the
+    cause of the effect
+
+    Induced current opposes the change in flux through the circut
+
+    Lenz's law gives only the directoin of the induced current, the magnitude
+    of the current depends on the resistance of the circut.  The greater the
+    circut resistance the less the induced current that appears to opose any
+    change in flux - the easier it is for a flux chagne to take effect.
+
+    Flux through a loop of zero resistance never changes.  in this case though,
+    the induced current will continue to flow even after the induced emf has
+    disappeared
+
+
+29.4 Motional Electromotive Force:
+    If we move a positively charged rod through a magnetic field
+
+        a    B                  ^   E
+      x | x x                   |   |
+        |                       |   |
+      x | x x  v                |   |
+        |------>                F   v
+      x | x x
+        |
+      x | x x
+        b
+
+      The force is given as you would expect F = qv x B in the upward direction
+      towards a
+      This creates an excess of positive charge at the upper end a and negative
+      charge at b.  This creats an electric field E in a direction oposite to
+      the magnetic force
+      Charge continues to accumulate at the ends of the rod until E becomes
+      large enough for the downward elecric force to cancel exactly the upward
+      magnetic force and
+        qE = qvB
+
+      The potitinential difference is equal to:
+        V = EL = vBL
+
+    Now we place this rod on a u shaped conductor.  No magnetic field acts on
+    the stationary component, but the charge from the ends of the rods
+    redistributes itself along the stationary conductor creating an electric
+    field.  The moving rod has become a source of emf.
+
+        emf = vBL
+
+                I
+            <---------
+        x   x   x   x   x
+          |-----------|-----    ^
+        x | x   x   x | x       |
+          |           |---> v   | emf
+        x | x   x   x | x       |
+          |-----------|-----
+        x   x   x   x   x
+                I
+            --------->
+
+    The induced current can be obtained by
+        vBL = IR
+
+
+    Generalizing:
+                 ->  ->        ->
+        d(emf) = (v x B) (dot) dl
+
+        (emf) = (closed_loop_integral) (v x B) (dot) dl
+
+        Which is also equal to the negative change in magnetic flux
+

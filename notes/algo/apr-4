@@ -1,0 +1,135 @@
+Hashing:
+    k is simply the key we are insertting
+
+
+    Initially all of the elements in the hash table are not occupied
+
+    Obviously if you have absolutley no knowledge about your values, then you
+    actually may need to set a side a bit with each field to determine if it is
+    occupied.  If however you know that all of the values you will insert are non
+    negative, you can use -1 to simulate a non occupied entry.
+
+    The element is either 
+        non occupied
+        occupied by k
+        occupied by something other than k
+
+
+    When we will insert or access, we must first determine where the element will
+    be.  
+            If we were trying to insert it, if we find it we throw an error.  If we don't
+            find it then it isnt there meaning we insert it there
+
+            If we are looking for it and we found it all is hunky dory
+
+    
+    If we are searching and we see that the element is non occupied, we can presume
+    that k does not exist in the hash table and we can insert it there
+
+    If we fins something that is not k, then it is occupied by something else
+    and we must find the next valid spot to insert k.
+        there are more associated addresses with a single key
+
+        If we get through many addresses and find a location that is not occupied,
+        then we conclude that k isnt there.  We then insert k into that unoccupied
+        position
+
+    "Hashing is basically [where] I take my papers, throw them up in the air
+     and scatter them everywhere but in the same location always"
+
+    Deleting:
+        as you could imagine, this creates a huge issue with deleting
+
+        for a particular key, say k0, we will look in slots 0, 2, 4, 6
+
+          0   1   2   3   4   5   6   7   8   9
+        |   |   |   |   |   |   |   |   |   |   |
+
+
+        if we insert 3 elements (a, b, c) at key k0 we will have
+
+          0   1   2   3   4   5   6   7   8   9
+        |a  |   | b |   | c |   |   |   |   |   |
+
+        if we then go and delete be
+
+          0   1   2   3   4   5   6   7   8   9
+        |a  |   |   |   | c |   |   |   |   |   |
+
+        we will never be able to find c with k0 because it will first look at
+        slo 0, then slot 2 and will conclude that the element c is not there
+
+Hash Function:
+    we want this to be as random as possible
+
+    in this, m is the height
+
+    there are a number of ways that this can be done:
+        linear probeing:
+            not random, basically just go to the next valid slot
+            a[i+1][k] = (a[i][k] + 1) mod m
+
+            suffers from major flaw, primary clusteing
+
+
+            if you have an occupied region that is large, then the probability
+            that you will get into that region is higher than for others
+
+
+            a large cluster is more likely to get larger than a small cluster,
+            because we are just attempting to slap the element right after the
+            calcualted spot on the hash table
+
+        Quadratic probing:
+            our step gets quadratically bigger each time the region is populated
+
+            a[i+1][k] = (a[i][k] + i] mod m
+
+            there can be some problems; eliminates primary clusteing but has
+            other defficiencies
+
+        Double Hashing:
+            substansially different from m
+
+            we use a secondary hash function for the same k
+
+            h(k) = a[0][k]
+            alpha = hh(k), alpha != 0
+             a[i][k] = (a[i+1][k] + alpha) mod m
+            
+            
+Hashing:
+    you need to be mentally prepared to waste space
+
+    there is this notion known as the load factor:
+        
+        (occupied entries) / (total entries)
+
+        basically percent populated
+
+        it is actual that the load is greater than .8 we have a problem
+
+
+    The problem with hasing is that it is unavoidable that you will run into
+    the worst case (where the number of probes is equal to the number of occupied
+    entries)
+        he is not saying that is is likely, just that it is possible: the 
+        standard adversarial argument
+
+    Hashing is not for people who are hung up on worst case, only good if you
+    consider the average
+
+    WIll only be efficient if the laod factor is less than 80%
+      
+    If our hasing funciton is completley random, then we need less than two 
+    probes, independent of the number of elements in our hash table
+
+
+
+    What is concerning here is that if you hav a hash table with 100 million
+    entries, you are going to was 20 million of them
+        could be a huge size issue
+
+
+When workingn with a hash, since the load factor is important, it is good to
+know the total number of elements you expect to be in your hash table
