@@ -1,0 +1,383 @@
+In autamataa, generally both 'theory' and 'doing'
+
+In this course you have to file a degree plan in order to recieve a grade
+
+Automata Theory:
+    What does it have to do with CS?
+
+    THere are a number of answers to that:
+        Automata theory is a theory that allows us to dilineate certain aspects
+        that are somewhat related to some extent to computational complexity,
+        but from a different point of view.
+
+        For computational complexity, you start with an algorithm and figure
+        out how long it takes to function and space required, etc.
+
+        Automata theory is slightly related but asks different questions.
+        It starts with different computational models.  AN algorithm is a
+        general computational model, though not the most general.
+
+        For the time being, you can assume that an algorithm is the most
+        general computation you can deal with.
+
+        Automata deals with more restrictive mdels; certain things can't be
+        dont with a finite amount of space.  If you look at an algorithm, that
+        is typically not the case.  Programs are usually limited by their
+        computational platform (so there is a finite amount of space) but the
+        underlying algorithm is typically not limited.
+
+        Finite automata:
+            You have a finite amount of space avaliable to you.  (different
+            from a atypical algorithm).
+
+        There are certain restrictions that can be applied to the computational
+        model.  Automoata theory asks what kind of changes will occur based on
+        these restrictions.  We can define classes of problems based on the
+        computational model we assume.
+
+    A brief Indication of what we have:
+        Three classes of problems 'languages':
+            Ultimetley the things we deal with can be definied in terms of a
+            language (will be explained what a language is later)
+
+            1 - Describe using a rather large number of totally different
+                mechanisms:
+                Anytime you have a formally defined object that can be dfinied
+                using radically different ideas, methods and approaches; you
+                probably have a very natural object.
+
+                Regular languages.
+                    Can be definied using a large number of different notions
+
+                    Finite automoata:
+                        Deterministic
+                            Basically means - what you would normally expect.
+                            One step and then the next and then the next
+
+                        Nondeterministic
+                            You get to a fork and could go either way, you pick
+                            one.  Branching???
+
+                            By and large means what nondeterministic suggests.
+                            YOu have to make a guess where you will go (which
+                            if you guess wrong will lead to consequences)
+
+                    Regular Expressions
+                        A descriptive mechanism.  How to describe what is
+                        necesarry for a word being in a language.
+
+                        Example:
+                            How would you describe what is an identifier in a
+                            programming language?
+                                Yuo need a letter, then that letter can be
+                                followed by nothing or one or more letters or
+                                digits or some special symbols
+
+                        That is basically a regular expression.
+                        You tell what a legal identifier is.
+
+                    Regular Grammars
+                        Similar to finite automata.  Think of grammar for
+                        english.  SUch as a sentence has to consist of a noun
+                        and a verb.  In formal grammars there are exactly the
+                        same thing.  We can define specific grammars (called
+                        regular grammars) that achieve the same thing as a
+                        finite automoton (either finite or not) or a regular
+                        expressions
+
+                    Certain Types of equations (language equations)
+                        Probably is to some extent the most abstract notion.
+                        It is simply a set of equations.  You know linear
+                        equations, you solve linear equations under a certain
+                        set of conditions (and get a vector or something).
+
+                        You can do the same thing when your constants are
+                        languages rather than numbers.  Combine them with
+                        operators (language operators, different than
+                        traditional) and you can solve those language equations
+                        just as you would solve a regular numerical equation.
+
+
+                    The important observation is that each of these things
+                    describes the same class of automata
+
+
+                If we have a language, then an automata is a method where we
+                feed words into the mechanism and it tells us if the word is in
+                the language or not.  Basically a binary outcome.  Yes or No.
+                You can initially view a formal language as english (or some
+                other natural language).  You have a dictonary - telling us
+                wether or not a word is a part of the language.  You look it up
+                and it will tell you wether or not is is a part of that
+                language - this is essentially what an automaton does.
+
+            2 - Context free languages:
+                Push down automata:
+                    difference between finite automaton.
+                    If you take a computational model, and say that this is all
+                    the memory that is avaliable, which gives rise to finite
+                    automoata.
+                    Generally algorithms will require addiontal space, which is
+                    not going to be constant.  From this point of view it is
+                    clear, that algorithms that do not allow you to work with a
+                    constant amount of space, will not work as a finite
+                    automoaton
+
+                    Pushdown adds an unlilmited form of space.  It adds it in
+                    the form of a stack.  Giving you an infinite amount of
+                    memory that is organized as a stack.
+
+                    THough this seems like a weird restriction, it is actually
+                    quite natural.
+
+                This is a way that you can come up with a new class of
+                languages.  ANy regular language is a context free language,
+                but every context free language is not a regular language
+
+                Context free grammars:
+
+
+                One could throw in certain types of language equations, but
+                that is not particular interesting
+
+            3 - Turing Machine:
+                In pushdown we ahve an unlimited amount of space (though
+                organized as a stack).
+                In the case of a turing machine, you have addiontal space
+                avaliable, which is unlimited and allows you to go anywhere you
+                want (much more general than the stack).  Basically a tape
+                where you have a read write head and you can go anywhere you
+                want on the tape.
+
+                A turing machine, is more general than a pushdown automoata,
+                with is more general than a finite automota.
+
+                Essentially the control of each of these 3 types are the same.
+
+                YOu have states in which your machine can manipulate thing.
+                The fundamental difference is weether or not there is extra
+                space allowing computation to be done and if that space is
+                restrictive
+
+        So what we will do is study these 3 classes of languages.  There is an
+        additonal aspect, which is computability.
+
+        Computability:
+            Rather difficult, challenging and perhaps very painful topic to get
+            your brain wrapped around.
+
+            To illustrate without any details:
+                When you deal with an algorithm, you assume that it is
+                deterministic - you always know what is the next step
+                (depending on the input).  But in addition to that you make a
+                passive assumption (which is perhas at the root of the
+                difficulty), which is the fact that you expect your algorithm
+                to terminate.
+
+                Any time you want to solve something, you assume that it will
+                hault at some point.  You execute and you will get an answer.
+
+
+                This is where computability comes in.  You can define problems
+                that have solutions - in a binary sense - is it or is it not.
+                It either gives you the solution or tells you there is no
+                solution, in both cases you get an answer.  Generally this is
+                the case.  Probably have never dealt with a case where a
+                program may not termiate.
+
+                Turing machines are very powerful concepts.  They allow us to
+                clearly capture the essence of an algorithm - but do more than
+                that.  A turing machine is not necesarilly going to halt.
+
+                There is a class of languages, that goes well beyond the kind
+                of things that can be solved with a yes or no.  There are
+                problems that you can obtain a turing machine that will halt if
+                there is a positive answer.  But it will not halt, ever, if
+                there is no positive answer.
+
+                The mental pain comes from the fact that if you have a question
+                with a yes or no answer, only one of those two will be correct.
+                THe problem is that you do not have a computational method,
+                that will halt necesarilly for the yes or the no.  It may halt
+                for one of them, but it may not halt for the other.
+
+
+    Classes we typically deal with will always halt.
+        Exactly what you will have if you have an algorithm.
+
+        There is a class of languages where this is no longer true.  You can
+        get a positive answer, if the answer is positive, but it will not halt
+        ever if the answer is not positive.
+            There are problems for which no turing machine will halt
+
+        And then there are classes of languages outside of that, that you
+        cannot define at all.
+            This is a question of cardinality
+            Not as hard of a question as the possibly not halt
+
+        There are many things that cannot be definied in some formal way
+
+
+Language (in more detail):
+    A language starts with an alphabet, which will be Denoted by "A"
+        an alphabet you can think of either as an english alphabet, or 0 and 1
+        or just a single letter (though this makes it much more complicated,
+        and creates implications)
+
+        So if you have not enough letters in your language, it might screw
+        things up.  If you have 2 or more though, it is possible to express
+        anything
+
+    So we have an alphabet, the first thing we have to do is define words
+
+    A word is a sequence of letters, 0 or more.
+        (things get weird, a sequence of 0 letters?) That is called the empty
+        word, which is denoted by 3
+
+    SO if we have n letters: a1, a2, ..., an
+    we can define a word:
+        w = a1 a2 ... an
+
+    And its length (in letters)
+
+        length | w | = n
+
+    SO the first question we want to ask is, how many words are there?
+        There are infinitly many words (since we are not limited on the length
+        of words)
+
+    The number of words over the alphabet A is countably infinite.  WHich
+    simply means that we can enumerate the words.  We can give them each an
+    'id' or so.  We can enumerate though all of them, reach all words
+
+    fi you have c characters, then you have c^n words of length n
+
+    you can gen an enumeration of all words - which means that not only will we
+    capture each word, but for each number we will have a word.
+
+        Length  0   1    2       3       4    ...   n
+                1  c^1  c^2     c^3     c^4     ... c^n
+
+        In this way, we can enumerate all words, each word has a number, and
+        each number coresponds to a word
+
+        THis means that the number of words, over any finite non-complete
+        alphabet is countably infinite. We have a mapping between the set of all words
+        and the set of all integers.  The set of all words is usually denoted
+        by
+
+            A*
+
+            Which is countable infinite
+
+            ANd can be mapped to the set of integers
+
+    So now...... what is a language?
+
+    A language over the alphabet A is actually a trivial thing:
+        It is any subset of A*
+
+        Before we talk about this, lets talk about any operations on words:
+            We've seen a basic operation, the length of the word.
+
+            We want to be able to do concatenation
+
+                if u and v are subsets of A*, then uv is also a subset of A*
+
+                main operatin that we apply to words
+
+                Should be obvious that concatenation is not commutive.. u+v is
+                not the same as v+u
+
+                sometimes it can be, but it is not guarrenteed
+
+                It is associave though.  So
+                    u + v + w = u + (v + w) = (u + v) + w
+
+        SO any subset of A* is considered a language.  Obviously if our
+        alphabet is our english alphabet, then english meets that definition.
+        No english words aren't made of up of the english alphabet
+
+        SO now we have to differentiate two languages:
+            The empty language:
+                obviously the empty set is a subset of any set.  ANd therefore
+                the empty set is a language, known as the empty language
+
+                Contains no elements
+
+            The langugae consisting of the empty word:
+                Contains 1 element: The empty word
+
+        Now we can extend, though concatenation, from words to languages
+            L1, L2 subset of A*
+            L1 + L2 = {x subset of A* | there esists u which is a subset of L1
+                       and v which is a subset of L2 and x = u + v}
+
+            A concatentation of 2 languages, is all possible combination of two
+            languages.
+
+            SO for L + empty language:
+                there are no words in this language.  THis is because we cannot
+                find a u, there are no elements that are a subset of the empty
+                language
+
+            If we do this with the language of the empty word:
+                L + empty word language = L
+
+                THis is because u can be anything in L, v has to be the empty
+                word
+
+                any word plus the empty word is just that original word.
+
+                SO we combine each word in the language L with the empty word,
+                then we are just left with L
+
+                thus: L + empty word language = L
+
+            This again verifys the claim that concatenation is not communutive,
+            but is associative
+
+            GIven that a language is a subset of some other language A*, we can
+            define all set operators
+
+            Operators:
+                Union
+                    u
+
+                Intersection
+                    n
+
+                Complement
+                    -
+
+                Demorgan's law holds
+
+                    S1 n S2 = --------
+                               -     -
+                               S1 u S2
+
+            THe uninon of any two languages is also a language, since they
+            would both be a subset of A* anbd their union would also be a
+            subset of A*
+
+            At this point we have all set operators, but we need one more:
+
+            THe star operator:
+                A somewhat more complicated operator, in that if we have a
+                language L
+
+                L* = U,i>0  L^i
+
+                Basically I copies of L concatenated together
+
+                L^i = { {3} if i = 0, L*L^i-1, if i >=1 }
+
+
+                L^3 = L L^2 = L L L
+
+                SO if L is a finite language, L* will probably be infinite
+                SO the star operator is actually very powerful.  It makes
+                something that is finite very easily into something that is
+                infinite
+
+Tomorrow we will look at a number of questions
