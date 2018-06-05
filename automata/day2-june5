@@ -1,0 +1,284 @@
+WHat is a programming language?
+    Essentially a set of correct programs, where each correct program in that
+    lanauge is a word.
+
+    Each syntactically correct program would be a word in that language.
+
+    So an entire program is a word then I guess?
+
+Brain Teaser:
+    Given a language, we defined the star operator as
+
+    L* = U L^i
+        i>=0
+
+    L = empty_set if i = 0 else L * L^i-1
+
+    All languages for which L* is finite:
+        There are two parts to this:
+            We can show for some language L that L* is finite
+
+            The hard part is showing that for no other languages can L* be
+            finite
+
+        An example of a language with finite L*, the empty language
+
+        Le = empty language
+        Le^i = [empry word}
+
+            Le^i = {empty word} + concat(empty_set, empty_set ^ i -1)
+
+            Essentially the only component that is definiet for empty set * is
+            the final case where i = 0 where, the empty word.  Everything else
+            is the empty language, which is nothing.
+
+        Lets try the language consisting of the empty word:
+            L = {E}
+            L* = {E}*
+
+            Because its a set, it will only be the empty word
+
+        So now we know of 2 languages with finite L*
+        SHows that languages are perhaps more rational than numbers because in
+        this case we are bowing our heads and saying what is empty to the power
+        of 0, then it is the set containing the empty word.  Where as 0^0 is
+        undefined
+
+        The question is now, are there any others? No.  But how do you show
+        this?
+
+
+        If L is not the empty language and is not the langugae just consisting
+        of epsilon, then L* is infinite.
+            Proving this is the harder part.  If we show this the we can show
+            that those 2 languages are the only o for which L* is finite
+
+            If L is not empty, then there has to be a word in it obviously -
+            and if L is not tthe language consisting of the empty word, then
+            there has to be a word in L that is not E.
+
+            From this we get that there exists a word in L and that word is not
+            the empty word.
+
+            This means that the length of that word, named w, has to be at
+            least length one.
+
+            Now we look at the language, consisting of w, which obviously has
+            to be a sibset of L.  Furthermore it is obvious that {w}* is a
+            subset of L*
+
+            We can see that {w}* = {E, w, ww, www, ... }
+
+            Therefore, since we showed that this will happen for any set that
+            does not consist of only the empty word or no words, and {w}* is a
+            subset of L*, then L* will be infinite
+
+How many Languages are there?
+    Are there countably many languages is the real question, can we enumerate
+    over all languages?  No
+
+    We will use proof by contradiction:
+        Lets assume that the set of all languages over the alphabet A is
+        countable.  So that means that we can write down L1, L2, L3 and so on
+        and that those are all languages.
+
+        We can write down an enumeration of the words along the x axis
+        And then along the other axis we write the enumeration that we assume
+        to exis of the languages
+
+        And then we define a new language L
+
+        (remember that if this is an enumeration of all languages, then all
+        languages have to appear)
+
+        wi is only in L if wi is not in Li
+
+        SOr each language you basically have an infinite vector where we write
+        if that word is in that particular language
+
+        We esentially flip every word along the diagnol to give us another
+        vector that defines a new language
+
+        Esentlially what I think he is saying is that if we have some vector
+        that we contains all of our languages and the associated word based on
+        enumeration (the diagonal), if we flip all of the bits for words being
+        present in that diagonal, then we know that that vector cannot possibly
+        exist because we know if that diagonal vector language contains
+        particular words
+
+
+            w1  w2  w3  w4  w5  w6  w7  w8  w9
+        L1
+        L2
+        l3
+        L4
+        L5
+        L6
+
+Out of all of the languages that exist, only a very small number of them can be
+described.  THis is because the number of languages if infinite but the number
+of words is countable
+
+Start looking at regular languages.
+    The first mechanisms for regular languages are finite automoata
+
+    FInite Automata:
+        Simple Example:
+            Essentially an automaton tells you if a word is in a language
+
+            He drew the example figure2.1
+
+            In his state diagram (the name of the thing he drew, figure 2.1),
+            how does the transition based on the partiular state he is in and
+            the next letter.  For most you see that if he gets a b, he stays
+            at that state, but if he gets an a it will take him to the next
+            state
+
+            If the automaton ends up in an accepting state at the end of the
+            supplied words, then the word is accepted and the word is then said
+            to be in the language
+
+        You will observe in this case that for any state there is exactly one
+        transition for each character.  Meaning that this autamata is
+        deterministic - we don't have to guess.
+
+        Back to the example:
+            We can write the diagram as a table:
+                Have to tell which are the accepting state(final states) the
+                starting states and all of our transitions
+
+                THe arrow -> indicates where we end up, the upward arrow ^
+                indicates wether or not that state is accepting
+
+                FInally we have to indicate the transitions
+
+                        a   b   ^
+                    ---------------
+              ->q0  |   q1  q0  0
+                q1  |   q2  q1  1
+                q2  |   q3  q2  1
+                q3  |   q0  q3  0
+
+                It is deterministic again, because we know exactly where we
+                would go at each point
+
+        Formally A deterministic finite automaton:
+            D = (A, Q, T, qo, F)
+
+                A is the alphabet of inputs
+                Q is the finite non empty set of states
+                T is the transition function
+                qo is the starting state, must be in Q
+                F is the set of final states
+
+            Is a function that takes in a state and a letter and maps it to
+            another state
+
+            What we still have to define is the language that the automaton
+            defines
+                L(D)
+
+                To do this, we have to find some method that is similar to how
+                we traced our finger though the inial example and saw all
+                words.
+
+            We have to extend T to words in A*
+                _
+                T = Q x A* -> Q
+                    We extend our transitin function (which is for letters) to
+                    words
+
+                a)  T(q, E) = q for all q that are a subset of Q
+                b)  w = av if a is a subset of A and v is a subset of A*
+
+                    T(q, w) = T(q, av) = T(T(q, a), v)
+
+                    a is a letter and v is just everything that is left for our
+                    word.  Basically just parse words by parsing one character
+                    at a time
+
+                THe language:
+                    L(D) = { w subset of A* | T(qo, w) subset of F}
+
+                        Basically the language is all words that put us in a
+                        valid final state
+
+                    all words accepted by D
+
+                So once you have defined a finite autamaton, we have described
+                an entire languge.
+
+What happens if we drop the deterministic assumption for our automaton:
+    He has given us a new example: figure 2.2
+
+    This is no longer deterministic
+
+                        a   b   ^
+                    ---------------
+              ->q0  |   q1  q0  0
+                q1  | q2,q3 q1  1
+                q2  |   q3  q2  1
+                q3  |   q0  /   0
+
+        SO is aab accepted?
+            What is acceptance? is there a path that gets us to a final state?
+
+            In this case, there is a path that leads to a final state.  So even
+            though there is a possible path for the input aab that doesn't lead
+            to a final state, because there is a path that exists that is a
+            final state then this is a valid word
+
+            Basically accpeted means there exists a path that uses the entire
+            words and ends in a valid final state
+
+        In this class, deterministic finite autamata will alsays have at least
+        1 branch for each state for each letter in the alphabet
+
+    In this class, deterministic finite autamata will alsays have at least 1
+    branch for each state for each letter in the alphabet
+
+    NFA: N = (A, Q, T, q0, F)
+
+        T is the only difference, it takes a state and a letter and can give
+        yhou a set of states
+
+        T = Q x A -> 2^Q
+
+            meaning that if we take state and a letter, then that is a set of
+            states m >= 0, 0 denoting that this could be the empty set (no
+            state to transition to)
+
+        We want a language of all accepted words.
+
+        We have to extent T to
+            T = 2^Q x A*
+
+        What happens if we simply record all the states we can reach?
+        We move on nfrom paths, to set of states that can be reached.  THis is
+        good because the number of paths can grow exponentially, but the number
+        of states is limited by the cardinality of q
+
+        a)  p is a subset of Q
+
+            T(P, E) = P
+
+        b)  w = av , a subset of A, v subset of A*
+            T(P, w) = T(P, av) = T(U T(p, a), v)
+                                    ^
+                                 Subset of Q
+
+        SO if the set T(qo, w) contains a final state, then the word is valid
+
+        L(N) = {w subset of A* | T(qo, w) n F != NULL}
+
+
+Is one of these concepts mroe powerful than the other?
+    Any deterministic finite automata can be viewed as a non deterministic
+    finite automata
+
+    So the only pssibility is that a non-determinisitc finite automaton can do
+    stuff that a deterministic one cannot
+
+Given a NFA, you can construct a DFA that accepts exactly the same words.  TO
+do this you go trough all possible states and determine each valid ending
+state.
