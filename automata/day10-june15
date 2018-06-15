@@ -1,0 +1,276 @@
+Problem 1a from the sheet he gave us:
+    We assume the language is regular, meaning that there is a DFA D that can
+    represent the language
+
+    let n be the number of ___ of D
+
+    Consider z = 0^n 2 1^n, z is in L, z is in L(D)
+
+    z = w z' , w = 0^n => T(q0, w) = 
+
+
+Gribach Normal FOrm:
+    GNF
+
+    A 0-> a B1, ..., Bm
+        m >= 0
+
+    Initally we are interested in something seemingly unrelated - left
+    recursion:
+        Left recursion says there exists some variable suce that A derives in
+        more or more steps A:alpha:
+
+                             +
+        E A in N such that A => A:alpha:
+
+        *                          +
+        =>  means 0 or more steps  => means one or more steps
+
+        In left recursion, we will end up with nothing to the left of our
+        variable.
+
+        If we have a context free grammar in which some variable does not
+        exist, we can conclude that we will eventually run out of variables -
+        none of our variables can be reused so we will run out eventually.
+        THis means that the language is finite
+
+    Many compilers parse by expanding productions and derivations.  We need
+    recursion because we have infinite languages ?
+
+    So we need recursion, but don't like left recursion, so we will get rid of
+    it.
+
+    Immediate Left Recursion:
+        A -> A:alpha: which is in P
+
+        In one step we transition into A:alpha:
+
+        The variable from the left hand side, will be at the beginning of the
+        right hand side.
+
+        SO what we want to do first is get rid of all immediate left recursion.
+
+    Example:
+        A -> Ba
+        B -> Cb
+        C -> Dd
+        D -> Aa
+
+        Rules:
+            1. No useles variables
+            2. No :epsilon: production
+            3. No unit productions
+
+        We want to convert A into things that don't start with A
+        :beta i: cannot start with A
+
+        A -> A:alpha 1: | ... | A :alpha m: | :beta 1: | ... | :beta n:
+
+        So all of our productions are A productions.  If m is 0, then we don't
+        have to do anything, because there is no immediate left recursion
+
+        What if n is 0?  Then A is useless, because we can not transition into
+        a terminal.  A can't be useless because we said we have no useless
+        symbols
+
+        We will reduce this by the following
+
+        A -> :beta 1: | ... | :beta n: | :beta 1: A' | ... | :beta n: A'
+
+        A' -> :alpha 1: | ... | :alpha m: | :alpha 1: A' | ... | :alpha m: A'
+
+        This gets rid of immediate left recursion, but does not create any more
+        immediate left recursion.  We can see this because nothing starts with
+        A
+
+        In addition, since we have no epsilon productions, none of the betas
+        can be epsilon
+
+
+        We have to verify that our old production are equivalent to our new
+        productions.
+            We see that A goes to A alpha something, so we can write that we
+            have A followed by any number of instances taken from the alphas
+            
+                  *
+                A => A(:aphla 1: :union: :alpha m:)*
+
+            We see that we can get any string of alphas from this??
+
+            We now can use the beta
+                  *
+                A => A(:aphla 1: :union: :alpha m:)* 
+                  => (:beta 1: :union ... :union: :beta n:) (:alpha 1: ... )*
+
+                This is what our original productin produces
+
+            Now we want to see what our new production produces
+
+                   * 
+                A' => (:alhpa 1: :union: :alpha m:)*A'
+                   => (:alha 1: :union: ... :union: :alpha m:)*(:alpha 1:
+                                                        :union : ... :apha m:)
+
+                Now we want to see what :beta: producres
+
+                  *
+                A => (:beta 1: :union ...) :unoin: (:beta 1: ...)(:alpha 1:
+                                                :union: ...)*(:alpha 1: ...)
+
+
+            Which we see is equivalent to our original.  Our betas and then 0
+            or more alphas
+
+
+        We still have to figure out how to remove general left recursion
+
+    How to get rid of general left recursion:
+        A1, ..., Am for all 
+
+        Some orders may be more cumbersome then others, but this will work with
+        any possible order.  SO the important thing is that we fix the order
+
+        We are going to do this:
+            goal:
+                if Ai -> Aj:delta: in a production, then j has to be greater
+                than i
+
+                basiaclly we're working towards a base case, we work though our
+                variaibles so that we don't have infinite recursion.
+
+                So for A1, the only way we can hit this is if A1 goes to A1.
+                In that case though, that would be immediate left recursion,
+                which we already know how to get rid of
+
+                If A2 violates this, it either goes to A1 or A2.  If iut goes
+                to A1, we replace that A1 by A2, and then we have immediate
+                left recursion
+
+
+                So now we can conclue that worst case A2 will start with A3
+
+                We keep doing this until there are no violations and we have
+                removed all immediate left recursion
+
+            We will end up with something like:
+
+                A1 -> A2
+                A2 -> A3
+                .
+                .
+                .
+                Ai -> Ai+1
+                .
+                .
+                .
+                As-1 -> As
+                As -> terminal
+
+        So we want to fix all of the variables
+
+        for i=1 to s
+        do
+            for j=1 to i-1
+            do
+                if [ Ai -> Aj:alpha: is a production at this poitn in the algo ]
+                then
+                    replace it by Ai -> :gamma: :alpha: where Aj -> :gamma:
+                    ranges over all Aj production at this point in the
+                    algorithm
+                fi
+            done
+
+            Eliminate immediate left recursion among the resulting Ai
+            producitons
+
+
+        done
+
+    Example:
+        A1 -> A2a
+        A2 -> A3b
+        A3 -> c | A1a
+
+        we go through the loops
+
+        i = 1, 
+            the only thing that we might have to do is eliminate immediate
+            left recursion among A1 productions, which there isn't any, so we're
+            done
+
+        i = 2, j=1
+            THere is no immediate left recursion and it doesn't go back to A1
+            so we are done
+
+        i = 2
+            j=1
+                We have some backtracking!  SO we have to replace A1a with what
+                we get from all of the A1 productions, and plug that inot A1
+
+                A3 -> A2aa | c
+
+            j = 2
+                We do have an A3 goes to A2 at this point!
+
+                So we do the substituciton thing but for A2 this time
+
+                A3 -> A3baa | c
+
+            Now we have to eliminate immediate left recursion
+
+                baa is our alpha, c is our beta:
+                
+
+                What we get is
+                    A3 -> c | cA'
+                    A' -> baa | baaA'
+
+    Now we have to realize that we don't just want recursion, we want gribach
+    normal form.  Which says that the riht hand side of any production has to
+    be a single terminal followed by any number of variables
+
+    Continuing our example:
+        A3 satisfies above, so it is okay.
+
+        Then we look at A2, the b is on the right side, which isn't a problem
+        because we can replace it by a variable, but we have the A3 at the
+        beginning, we want it to start with a  terminal.  We notice that all A3
+        productions start with a terminal, so we replace our A3 in the A2
+        produciton with the actual productions of A3
+
+            A2 -> ab | cA'b
+
+        But again we can just say that
+            A2 -> aXb | cA'Xb
+            Xb -> b
+
+        So now we go back to A1
+
+            A1 -> cXba | cA'Xba
+
+            A1 -> xXbXa | xA'XbXa
+
+            Xa -> a
+
+
+Intersections:
+    In regular expressions we have union concat and star
+
+    It is obvious that if given two regular langauges you cn construct DFA or
+    regex from it.  So all of these operators onregular langagues will produce
+    another regular language
+
+    Compliment operator switches all final and rejecting state.  SO every word 
+    that was not accepted before is accepted now, and vice versa.  You get 
+    exactly the oposite of the old automaton
+        The problem is that we have to make things deterministic
+
+        The nice thigs about the 3 operations that are the basis for regex, is
+        that we get a FA from any of the operations applied to regular
+        languages.
+
+        So if we wanted to do the union o the compliment, we could have to get
+        the FA for the thing we are applying the compliment to, then we flip
+        all of the accepting and not accepting states, then we have another FA
+
+    For intersection just use demorgans law

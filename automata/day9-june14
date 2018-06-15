@@ -1,0 +1,227 @@
+We are nooking at normal form (for regular grammars):
+    Normal form is a way of putting restrictions on the form of a production
+    for a context free grammar
+
+    Generally the form of a production in a context free grammar is:
+        A -> :alpha:
+
+
+
+
+
+    Chonsky Normal Form:
+        We are going to achieve Chonsky normal form which says that all
+        productions are og the form:
+            A -> a || A -> BC
+
+        Steps to achieve:
+            1. Eliminate useless symbols
+                A useless symbol is a symbol (terminals and non terminals) that
+                do not play any role in the generation of the language L(G)
+                    Where G is a general context free grammar
+
+                So what does this mean?  Play no roll?
+                    There are 2 ways in which a symbol may not play any role in
+                    the generation of L(G).  You may not be able to reach a
+                    variable from the starting symbol (coresponds to a FA in
+                    which you cannot get from the inital state to a particular
+                    final state (or any other state), obviously that state is
+                    useless)
+
+                If we have a variable x in N that there does not exist a w in T*
+                such that x can go to w
+                    If x doesn't produce anything (remember L(G) has nothing to do with
+                    variables).  If there is a variable that doesn't generate anything over
+                    the terminals, then that variable can not contribute anything to L(g)
+
+
+                Suppose we have:
+                    S -> aAA | bSS | cB
+                    A -> aA | bC | AC
+                    B -> :epsilon: | DbD
+                    C -> Cd | CA | AA
+                    D -> bD
+
+                we are going to go through all of the variables and see if it can
+                get to the terminals
+
+                    We systematically go thorugh all variables and see if there are
+                    variables that satisfy our assumption that terminals can be
+                    reached from them.
+
+                    First we find a variable that accepts just a terminal. Then we
+                    go through variables that reference this variable. Because if
+                    we can reach the variable that genreates a terminal then it is
+                    valid
+
+                S| |x|x
+                A| | |
+                B|x|x|x
+                C| | |
+                D| | |
+
+                    SO in our case, B produces a terminal so it is okay.
+                    S can produce B, which means we can reach a terminal through S
+
+                    WHen we go through again, we see that there are no new variables
+                    that can reace S or B.  Meaning that they are all useless and we
+                    can get rid of them.  We can also get rid of any production that
+                    reaches them
+
+                    We can also drop terminals that could only be reached through
+                    the variables that we dropped
+
+                we end up with:
+                    S -> bSS | cB
+                    B -> :epsilon:
+
+
+            2. ELiminate epsilon productions
+
+                If there does not exist a derivation:
+                    S => :alpha: :cross: :beta:
+
+
+                    For X that is in N :union: T, then X is useless
+
+                Example:
+                    S -> aSb | aAb
+                    A -> :epsilon:
+                    B -> aBc | aCd
+                    C -> cd | aCd
+
+                    (first we do what we did in 1) (this is step 1)
+                        _____
+                        S| |x
+                        A|x|x
+                        B| |x
+                        C|x|x
+
+                    we see that they are all okay based on the first reduction
+
+                    WHen we see if very variable can be reached
+
+                    We start with S, and we see that we can only reach A and
+                    S..
+                        this means that B and C are deemed useless
+
+                    Again we can elimanate all productions that reference these
+                    variables
+
+                Another example:
+                    S -> aSb | aAb
+                    A -> AA | SB
+                    B -> aBc | aSb
+
+                    In this case there is not a single word that we can derive,
+                    because there is not a production that creates only a
+                    terminal
+
+
+            3. Eliminate unit productions
+
+                A -> :epsilon:
+                    (we can say that every A will be converted into epsilon)
+                    aAbAc => abAc => abc
+
+                A -> :epsilon: | :alpha:
+                    (we want to get rid of a goes to epsilon, but cannot assume
+                     that all A's go to epsilon now, we have to look at 2
+                     possibilities now. Either A is replaced by epsilon or it
+                     is replaced by alpha)
+
+                    We have to look at all possible outcomes..
+
+                Example:
+                    S -> aAb | AcA
+                    A -> :epsilon: | AS | BB
+                    B -> AA | BcB
+
+                    We can remove the epsilon state from A:
+                        S -> ab | aAb | c | cA | Ac | AcA
+                        A -> S | AS | BB
+                        B -> :epsilon: | A | AA | BcB
+
+                    Now we have to remove the epsilon from B.....
+                        S -> ab | aAb | c | cA | Ac | AcA
+                        A -> S | AS | :epsilon: | B | BB
+                        B -> A | AA | c | cB | Bc | BcB
+
+                    Since we have already done all the A goes to epsilon stuff,
+                    we can just drop the epsilon from A:
+                        S -> ab | aAb | c | cA | Ac | AcA
+                        A -> S | AS | B | BB
+                        B -> A | AA | c | cB | Bc | BcB   
+
+
+                What happens of you have a grammar that does generate epsilon?
+                    S -> AA | aSb
+                    A -> :epsilon: | cAd | BB
+                    B -> SS | aBc
+
+                    This grammar can generate the empty word
+
+                    S -> :epsilon: | A | AA | aSb
+                    A -> cd | cAd | BB
+                    B -> SS | aBc
+
+                We simply go through the process and offer all possible ways
+                so if We have A -> B and B is the only production, then we
+                replace all A's with B's
+                    if there is something else, then we have to offer all
+                    possible productions (replace by all productions rather).
+
+                    Exactly the same as with epsilon production, but instead of
+                    making the variable disappear we replace it
+
+                If you're lazy, you should eliminate epsilon first, then unit
+                productions
+
+
+        After this we can easily construct Chonsky normal form (the heavy
+        lifting is in these 3 steps)
+
+        Examples:
+            S -> A | SS | B
+            A -> a | S | B
+            B -> BB | SSb
+
+            First we go and check if all of these symbols are useful.. (they
+            are, A generates something, and both S and B can generate A)
+
+            We go through and look at replacing all unit productions
+            (we are replacing S with A and then going through possibilities)
+
+            S -> AA | AS | SA | SS | B
+            A -> a | S | B
+            B -> BB | AAb | ASb | SAb | SSb
+
+            Then we can go through and replace B's
+
+            S -> AA | AB | AS | BA | SA | BB | BS | SB | SS
+            A -> a | B | S
+            B -> BB | AAb | ABb | ASb | BAb | SAb | BBb | BSb | SBb | SSb
+
+            then we go through and replace A again
+
+        if we have A -> :alpha: then we know that alpha can't be epsilon and
+        alpha can't be in N
+
+            It can't be a variable and can't be empty.  We're replacing all of
+            our variable with terminals
+
+        If alpha is length 1, then we can just use that variable
+        If alpha is at least length 2, then we will represent it as 2 variables
+
+        :alpha: = :alpha1: :alpha: :alpha2:
+
+                = :alpha1: Xa :alpha2:
+
+        Xa -> :alpha:
+
+        :alpha: consists of 2 or more variables and no terminals
+
+        We're just replacing all terminals with variables that produce those
+        terminals
+
+        If alpha is exactly of length 2, then we are done.  A -> BC

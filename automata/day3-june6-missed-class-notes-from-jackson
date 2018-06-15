@@ -1,0 +1,98 @@
+nondeterministic and nfa are the same, both of them can do anything the other
+will do.  DFA will always have more states
+
+NFA are not unique.  Imagine we have 3 states all in a line, initial state on
+the left, middile is a regular state and last is the acceptance.  You can dray
+that in a variety of waves, such that you have 2 identical languages that can
+be formed if you were using nondeterministic
+
+shown in figure 3.1
+
+DFAs are unique.  They can only be represinted in the form they are given.
+
+we can make NFA automata much simpler by putting it into a single DFA.  If two
+states have the same behavior, or preform the same thing, then you can remove
+one and make it much simpler.
+
+You can only do this if the language is indeed the same.  Apparently we can't
+tell if languages are the same, only if they are different
+
+To test if we can reduce states further, we preform an inductive step, assuming
+that all states are the same.  Assuming also that this is a dfa and we use a
+dfa table to reduce it.
+
+Given a table representing a DFA (we will use the one in figure 3.2)
+
+We preform a proof by contradition to show if states can be combined.
+
+We start with the lowest word size (where the left most column is the word
+length) and then increase the length to determine if they can be merged.  The
+first step is to determine groupings based on the final accepting state.
+Since we are assuming that because if they are.
+
+We cannot merge a non accepting state with an accepting state, because they are
+dpoing different things.
+
+We seperate these into two seperate boxes, one for accepting and the other for
+not accepting
+figure 3.3
+
+We know we can't merge them all together, but we could possibly group them into
+smaller units.  We have only determined if they are accepting or not, not what
+each state is actually acomplishing anything
+
+We write our grouping off to the side, then we look at our table (the final
+state doesn't matter yet), then we compare a and b for each number, the 
+ordering of the numbers doesn't matter though.  We want to see if the a and bs
+are the same.  Like a vector, we imagine a and b as vectors - actually more
+like a tuple.  We don't consider scalar multiples.
+
+Remember we are assuming that the groupings are the same.  SO from the figure
+3.4
+we assume 2 4 and 6 from the figure are all the same
+
+Since we are treating 2 4 and 6 as the same, we are trying to see if we can
+geep them the same.  We compare them based on the group that they're in, so 
+
+If the members from both A and B are in the same group, we assume that the 
+
+When we go though this example for the figure we are given, we can show that
+they are the same because they're a and bs are all in the same group, 2 4 6.
+
+Then we would repeat the procvess for 2 4 6.  If we end up getting the same
+grouping that we got in step 1, t hen we can trat them as only 2 states.
+Inthis case, we can rewrite these 6 states into 2 states
+
+We will now use the same table as before, but change 6 b from 5 to 4
+
+Going through 1 3 5 we notice we will get the same thing, but then we will
+seperate anything that isnt valid from the other group into another group.
+Then we assume that all those groups are equal and go see if we have to create
+any more groups recursively until we have proven that all the groups that we
+have are valid and no more groups need to be made.
+
+Those groups are now the states for our new automata
+
+In this case we cannot reduce it, we will see that each state is its own group
+
+Regular Expressiongs:
+    not like comp sci regex, but acomplish is the same goal
+
+    The syntax is much different.  We define everything ourselves as we define
+    our own regex.
+
+    Any number is soemthing that represents value n.  THen we define all of our
+    operators.  We have to describe everythnig we want to represent.  We start
+    with numbers, and we create a varaible for whatever teh numbers are.  THen
+    those variables will devnoet the value of them.  We can represent them as
+    the variables or as the numbers
+
+    We can define what a word is, what a emptry word is and also the empty set.
+    So something like an element is a part of something, represented in figure
+    3.5 and 3.6
+
+    Then we can define things further, such as union operato.  THen we can
+    think abouthow we can represent things with our start operator (same from
+    regex you know)
+
+

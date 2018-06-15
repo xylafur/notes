@@ -1,0 +1,173 @@
+WHy is intersection evil?
+
+Regex:
+    We have an letter in the alphabet, the empty word and the empty set.
+
+    We have definied all of our operators.
+    Now we want to take a regular expression and construct a finite automata.
+    Given a regex, we have a language that is denoted by that regex.
+
+    for example alpha denotes the language L(alpha)
+
+    we want a dfe acceipting L(alpha)
+    Why?
+        Becuase usually it is better to write down a DFA.  FOr example
+        compilers use finite automata into tokens during lexial analysis, we
+        need to define these tokens in term of regex though
+
+        Regex is a description device, automata is an acceptance device
+
+    We want to construct an NFA.
+        Given a regular expression alpha, we construct an NFA in sub alpha such
+        that L(N sub alpha) (the language accepted by the autamoton) fis the
+        language defined by alpha.
+
+        THe harest part is constructing this N sub alpha
+
+        Before we construct the NFA:
+            Say the alphabet is A={a, b}
+
+
+            (a^b union b^a^a)*^a
+                is this a valid regex?
+
+                we have pemdas:
+                    *
+                    concat - ^
+                    union
+
+                we know that this regex is a regular expression is both sides
+                of a concatination are valid regex
+
+                so the whole thing is a regex is both a and (a^b union b^a^a)*
+                are valid regex
+
+                then we subdivide this further and verify that all are regular
+                expressions
+
+                this all seems very verbose, but this is what we will use in
+                the construction process
+
+            We will create a finite automata for a, then one for b, then one
+            for the concatination, then all valid concatinations, then the
+            union and the start and the final concatenation
+
+            So we need to construct an automata for each letter, then the
+            operators.
+
+        Constructing the Automaton:
+            First we need to define
+
+            What is it that we need to do?  Well we are assuming we have
+            already constructed finite autonata for a and b, we we have in N
+            sub a and N sub b.
+
+            We know that N sub a accepts the language a, and teh same for b.
+
+            Since these are both finite automata, we can devine them as
+            quintupples.  They will most likely have the same alphabet
+
+            N sub a = (A, Q sub a, T sub a, q0, F a)
+            N sub b = (A, Q sub b, T sub b, q0, Fb)
+
+            we have to enforce one more condition though.  It is possible to
+            take an automaton that shares some of its states with the other
+            automata.  SO we will stipulate that Qa and Qb do not share any
+            states (other than the initial state q0)
+
+            Beyond this there is a crucial assumption.  If you apply this
+            construction (what we have stated)
+
+            If you start in the inital state, then you will never have a
+            transition that goes back to the initial state - every transition
+            from theinitial state has to leave the initial state, and nothing
+            can ever lead back to the initial state.
+
+
+            SO when implementing the union, we will have to implement another
+            intial state.
+
+        Lets get started with the actual construction:
+            Qa union Qb = {q0}
+
+            For this, union, we just have our two automatons share an initial
+            state.
+
+            Union:
+                N1 = (A, Q1, T1, q0, F1)
+
+                Q1 = the sum of the cardinalty of the two sets - 1, -1 because
+                they share an inital state
+
+                What about the final state?
+                    A valid final state from either side.
+                    So union of the inal states from both sides
+
+                    If one of the inital states is a final state, then we have
+                    to includ e that in our final state set
+
+                Transition function:
+
+                    F(q, a) = if q = q0 : Ta(q0, a) untion Tb(q0, b)
+                              else if: q is a subset of Qa - {q0} Ta(q, a)
+                              else: q is a subser of Qb = {q0}
+
+                Concatenation:
+                    N2 = (a, Q2, T2, q0, F2)
+
+                    we need a mechanism that allows us to move into the other
+                    automata
+
+                    What we can do is add the transitions from the inital
+                    states of one from the final state of the other.
+
+                    SO to create the concatenation uv, we have to first verify
+                    u and then jump to the correct transition of v
+
+                    We have to cinsider final states of both sides, if the
+                    intial state of the second automaton is rejecting, then we
+                    need the final state of 2.  Otherwise we could just have 1.
+                    Since the intial state of 2 would be a valid final state,
+                    meaning it accepts the empty word
+
+
+                    Q2 = Qa :union: Qb
+
+                    F = Fb if q0 is not in Fb, else Fa :union: (Fb - {q0}) if
+                        q0 is in Fb
+
+                    T2(q, a) = if q in Fa: Ta(q, a) union Tb(q, a)
+                               if q is in Qa - Fa: Ta(q, a)
+                               if q is in Qb - {q0}: Tb(q, a)
+
+                Star Operator:
+                    We take a final stae and point them back to the transitions
+                    from the intial state of the same automaton.  BAsicall we
+                    loop back toa the beginning, allowing us to complete a word
+                    again and again and again
+
+                    N = (A, Q3, T3, q0, F3)
+
+                    Q3 = Qa
+
+                    F3 = Fa :union: {q0}
+
+                    T3(q, a) = Ta(q, a) union (T(q0, a) if q is in Fa
+                               else Ta(q, a)
+
+
+            See figure 4.3 for an example of converting the regex into a finite
+            automata
+
+                We have to do things in the order of our operator presidence.
+                We start by creating an automata for each of the letters (or
+                words rather) and then we would do concat because it is the
+                first acording to our presidence
+
+
+            Once we end up with the finite automata we can then reduce it into
+            a DFA.  THis is also shown in FIgure 4.3
+
+
+            the number of non starting states in the NFA is equal to the number
+            of letters that are in the regex

@@ -1,0 +1,84 @@
+We will convert this regex into FA:
+    (a^b* :union: b^a*^a)*
+
+    We construct a table for each of the individual letters that appears in the
+    regex.
+
+    This will all be shown in figure 5.1
+
+    The star operator allows us to accept the inital state for whichever part
+    it was applied to, because it includes the empty word
+
+    Remember we always check about the inital states when we do concatenation.
+    If the accepting state of one is accepting, we have to do the unionof the
+    inital state, with the state that transitions to that state
+    This isn't true only for the inital state, if we encounter a state that is
+    accepting, we have to do a union with the inital state of the other, has to
+    be some way to link the two words together.  It looks like if anything is
+    accepting from the left hand word, we will do a union with the inital state
+    of the right hand word.  Again because if anything would lead to a complete
+    word on the left side, it must also lead to the start of the word which we
+    are concating with
+
+    The union is very trivial, ititerally just accept anything
+
+
+    on figure 5.2, we willbe converting our contructed NFA from the regex into
+    a DFA
+
+Review:
+    So there are 2 types of FA.  THey can both define the same class of
+    lanugage, basically anything you can do with an nfa you can do with a dfa
+    and vice versa.
+
+    We have also shown that given a regex, we can convert that into an FA
+    (which as we know could be either nfa or dfa).
+
+    Based on what he have derived, regex and FA are not equivalent.  ALl we
+    have shown is that given a regex, we can convert it into a FA.  It is
+    conceviable that there are things we can do with FA but not with regex, we
+    have only convered it one way.
+
+    But thats what we're going to do right now
+
+Constructing regex from FA:
+    (after we do this we have shown that they are equivalent)
+
+    We have the equation:
+        X = L^X :union: M
+
+    L and M are languages of A
+    X is a variable
+
+    We want a class of languages that is b, or if it is not b starts with a.
+
+    figure 5.3 and 5.4
+
+    From this finite automaton, we can define a system of equations, this is
+    shown in figure 5.4.
+
+    From this system of equations, we will systematically remove one variable
+    at a time until we are left with a regex describing the language we are
+    accepting in the automaton
+
+    We used this rule:
+        X = L^X :union: M
+
+    We want to reduce our automata into a regex of this form
+
+    What we're doing is coming up with a system of language equations and we
+    are solving it.  THe solution to that system of language equations ends up
+    giving up a regex.
+
+    The trick is that whenever we deal with a system we are trying to get rid
+    of variables, one variable at a time.
+
+    In the example, L is a language, M is a language, and X is a language.  L
+    and M are given languages though, X is an unknown language
+
+    This means that we have no established that FA = Regex
+
+    Given any finite automaton, we can find any regex that describes the
+    language accepted by that FA
+
+    We always want to solve for the variable that solves for the inital state
