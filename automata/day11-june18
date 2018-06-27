@@ -1,0 +1,232 @@
+2b from the exercise sheet:
+    He wants us to start with this
+
+    _____________
+    ____
+    01*0  u   10*
+
+
+    He then goes on to represent the regex as an automaton
+
+            0   1   2
+        0   1   /   /   0
+        1   3   2   /   0
+        2   3   2   /   0
+        3   /   /   /   1
+
+
+    THen he converts it into a dfa
+       
+            0   1   2
+        0   1   /   /   0
+        1   3   2   /   0
+        /   /   /   /   0
+        2   3   2   /   0
+        3   /   /   /   1
+
+    THen we do the compliment
+
+            0   1   2
+        0   1   /   /   1
+        1   3   2   /   1
+        /   /   /   /   1
+        2   3   2   /   1
+        3   /   /   /   0
+
+    Then we construct the automaton for 10*
+
+            0   1   2
+        0   /   4   /   0
+        4   5   /   /   1
+        5   5   /   /   1
+
+
+    Then we can do the union
+
+            0   1   2
+        0   1  4,/  /   1
+        1   3   2   /   1
+        2   3   2   /   1
+        3   /   /   /   0
+        4   5   /   /   1
+        5   5   /   /   1
+        /   /   /   /   1
+
+
+    THen we reokace the numbers with letters and convert to a dfa
+                0   1   2   
+        A       B  C,F  C   1
+        B       D   E   C   1
+        C, F    CG  C   C   1
+        C       C   C   C   1
+        D       C   C   C   0
+        E       D   E   C   1
+        C, G    CG  C   C   1
+
+    Then when we do the compliemtn we just flip the final states
+
+                0   1   2   
+        A       B  C,F  C   0
+        B       D   E   C   0
+        C, F    CG  C   C   0
+        C       C   C   C   0
+        D       C   C   C   1
+        E       D   E   C   0
+        C, G    CG  C   C   0
+
+
+    Now he is reducing the dfa... not gonna write that down
+
+    The minus operator is short hand for taking ithe intersection with the
+    compliemnt
+                        _____
+        _       _   _   _   _   _____
+        a - b = a n b = a u b = a u b
+
+
+
+
+now he will do 1 c:
+    He says to step back and concentrate on the essential.  ONce we do this it
+    won't be as mistifying
+
+    both 1c and 1d are over a one letter alphabet, which basically means
+    counting.  This means we can replace the language by a set of number.
+    A set of natural numbers where essentially we take the length of the word
+    and represent it as a valid word.
+
+    If a word has n states, then there has to be a loop.  We can take this loop
+    any number of times and still end up in the same accepting state, whcih
+    won't effect the finally acceptance of the word
+
+
+
+    That v2 in the pumping lemma has to have at least 1 letter.  In terms of
+    those numbers, this is now a linear progressions.  Any word that is in that
+    language, if we pump we can get more and more a's - making it a linear
+    progression.  If you look at the definitions in 1c and 1d, they are not
+    linear.  Meaning that if you write down how these words exist, you can see
+    that the gaps in between words are increasing.  This means that if we pump,
+    we will get things that fall in between existing words.
+
+    No matter v2, if the word gets long enough, the gaps get too large for us
+    to deal with.  If we pump we will fall in between words.
+
+
+    1
+    4
+    9
+    16
+    25
+
+    we can see the gaps get larger and larger.  We have to pick an automaton
+    with n states.  If we look at a^n^2, what does this mean?  We can cut off
+    the first n letters and pump them.
+
+        n^2 = n + (n^2 - n)
+
+    SO now we can pump as many times as we want
+
+        v1 v2^i v3
+
+    After we realize we can pump, we know that we will end up with
+
+        n^2 + |v2| a's
+
+    This word, which would be accepted by the dfa, is not in the languageo
+
+    since 1 <= |v2| <= n and our next word would need to be of length
+        n^2 + 2n + 1
+
+    our word that we constructed n^2 + |v2| will not be equal
+
+    SO our whole proof is that we show there is a dfa that accepts the language
+    but also accepts other things due to the pumping lemma.
+
+    We construct an automata that should only accept our language, we show that
+    it also accepts other things, or accepts something that should be rejecting
+
+
+Now hes gonna do 3b:
+    This language obviously generates epsilon.  We will remove epsilon though.
+    All 3 variables can generate something from terminals
+
+    So we do all epsilon permutations
+
+    S -> aAA | aA | a | A | 3 => S -> aAA|aA|a|A
+    A -> bBBB | B   => A -> bBBB|bBB|bB|b|B
+    B -> bSSS | S | 3 => b-> bSSS|bSS|bS|bS
+
+    then we remove all unit productions.  We replace any standalone variables
+    with what it can be
+
+    S -> aAA | aA | a
+    A -> bBBB | bBB | bB | b | B
+    B -> bSSS | bASS | bSAS | bSSA | bAAS | bAA | bSA | bAAA | bSS | bAS | bSA
+        | bAA | bS | bA | b | S
+
+    For example where A goes to B, we replace all A's by B (or we give them the
+    possibility that they could go to B, or not go to B, similar to how we do
+    the epsilon elimination)
+
+4a)
+    Hes not actually doing 4a, but someting simmilar
+
+    A1 -> A2 * A1 | a
+    A2 -> A3 * A1
+    A3 -> A4 * A1
+    A4 -> A1 * A1
+
+    The only thing we might have to dod is eliminate immediate left recursion
+    but there is none.
+    
+    When we iterate through and get to A4, we see that it goes back to A1.  So
+    we have to take the two A1 productions and get
+
+    A4 -> A2 * A1 * A1 | a * A1
+
+    We then see we have to remove the A2
+
+    A4 -> A3 * A1 * A1 * A1 | a * A1
+
+    Then we see A3 is in there..
+
+    A4 -> A4 * A1 * A1 * A1 * A1 | a * A1
+
+    And now if goes back to itself.. soo.
+
+    A4 -> a * A1 | a * A1 * A4'
+
+
+    A4' -> A1 * A1 * A1 * A1 | A1 * A1 * A1 * A1 * A4'
+
+    We produce A4 with the rule
+        A = :alpha: A | :beta:
+
+        A = :beta: | :beta: A'
+
+        A' = :alpha: | :alpha: A'
+
+
+
+New stuff:
+
+Closure:
+    We have two classes of languages.  COntext free languages and regular
+    languages. Closure under an operation basically means we take 2 languages
+    from a class and apply the operation and ask if the language is again in
+    that class.
+
+    SO if we take regular languages, we have union, concat, start and
+    compliment.  If we have two languages R1 and R2 (becuse they're regular) we
+    can say that the union of them is also a regular language.  The same goes
+    for concetenation and the star.  This is because we can apply these to a
+    regex and get a regex back
+
+    For compliment its still a regular expression.  FOr this we use a DFA to
+    show this.  If we flip all of the accepting states in a DFA we still end up
+    with a DFA.
+
+
+    FOr regular expressions, if we have n letters then te number of states we
+    have is <= n^2 + 1

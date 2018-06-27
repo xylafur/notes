@@ -1,0 +1,175 @@
+Questions:
+    If we want to convert some context free language to chomsky or gribach
+    normal form and there is a production that ONLY produces epsilon, do we
+    need to swap all instances with that variable with that varaibles and
+    nothing or just with nothing
+        yes we can remove all epslons as well as any instance of a variable
+        that only produces epsilon
+
+    When eliminating immediate left recursion, if you end up with a production
+    that can create 3 things and only one of those has immediate left recusion,
+    do the two that do not have immediate left recutin become our beta?
+        yes
+
+When we do derivation, they are repetitive.  If we have some grammar with
+productions:
+
+    E -> E + T | T
+    T -> T * F | F
+    F -> (E) | id
+
+    This is an arethmatic expressoin that actually gives us the grammar we
+    expect.
+
+    When we write down these derivations, we keep repeating stuff over and ver
+    and over.  For instance if we try to parse a + b + c
+
+        E => E + T => T + T => F + T => id + T => id + T * T => id + id * T => id + id * id
+
+    You can seee we wrote the plus over and over and over.  THis is wasteful,
+    so what we can do is generate a tree
+
+        E
+        |
+       E+T
+      /   \
+     T    T*F
+    /     |  \
+   id     F   id
+          |
+          id
+
+        Then we use what is called the leaf profile, which will end up getting
+        us id + id * id
+
+        We use the leafs to get the id's and then fo up to get the operations.
+        We can take this tree, and get the left most derivation.  We start from
+        the root and then goes left to right all the way down to the left and
+        then back up and down the right.  Similar to printing a avl tree in
+        ascending order
+
+Taking this and looking at chomsky normal form:
+    G = (N, T, P, S)'
+    A -> BC | a
+
+    like he said, you need recursion to have an interesting language
+
+    L(G) is infinite if there is recursion
+
+    Lets look at a derivation, we start with S and that S can go to 2 varibles.
+    THen each of those 2 variables goes either to 2 variables or to a terminal
+    So if the word is long enough, then it is clear that there has to be a
+    variable that is repeated.  If you don't get to reuse variables, then you
+    will eventually run out of variables, meaning you have finite length for
+    words
+
+
+
+            A1              2^0
+            |
+          A2 A2             2^1
+        /      \
+      A3 A3    A3 A3        2^3
+    /    |     |    \
+  A4A4  A4A4  A4A4  A4A4    2^4
+
+
+    So if we have a string, W in L(G) and the length of W is >= 2^n-1 + 1, this
+    means that one of the variables is referenced more than once, meaning there
+    is recursion
+
+    If we look at the leaf profile, we can see that the first word generates
+    something, and then we decend and others generate something (two things in
+    each case).  So the first Ai generates some subtree for a string, then
+    below that there is another subtree that generates a string that is a
+    substring of the upper tree/string
+
+
+    If we have a word that is sufficiently long, then there exists u v w x y
+    such that z = u * v * w * x * y
+
+    and |zx| >= 1
+
+    and u v^i w x^i y is in L(G) for all i >= 0
+        we know that this word for every value of i has to be in the langugae
+        becaue clearly there is a derivation tree for that language.  And here
+        we see that we have an infinite set of words that exist in the language
+
+    This is known as the pumping lemma for context free languages
+
+    This pumping lemma is a little more restrictive because the word has to be
+    in the language to do this.
+
+    If we have a word that is long enought, we can cut it into 5 pieces, and u
+    and y can be epsilon but v w and x cannot be.
+
+
+    What is this good for?  The usefulness of the pumping lemma for context
+    free languages is exactly the same as the pumping lemma for regular
+    languages, it allows us to show that there are languages that are not
+    context free
+
+
+Proving languages are not context free with the pumping lemma for CFG:
+    Claim: {a^n b^n a^n | n >= 1} is not context free
+
+
+    Assume L is context free.
+    Then there exists a context free grammar G = (N, T, P, S) in chomsky normal form.
+
+    let m be the number of variables in G (it has to have some number of
+                                           variables so we just call that m)
+
+    Consider: z = a^2^n b^2^n a^2^n
+        obviously this word is in the language and could be genreated by the
+        grammar.
+
+        Since we are assuming that we have m variables, it is obvious that our
+        z is long enough to pump! (well alot longer than what we need)
+
+        That means there exists u, v, w, x, y and |vx| >= 1 and 
+            u v^i w x^i y is in the language for all i >= 0
+
+        Now we have to look at this for all the values an i and see that it
+        will give us a string that is generated by the grammar.  Obviously what
+        we are going to aim at is that we take some value for i (prefferably
+        not i = 1) and show that on the one hand for that value of i, the
+        grammar must generate that word, therefore the word is in the language,
+        but it cannot be in L because it violates some fo the requirements for
+        all of the words in L.
+
+        Basically our z consits of a bunch of a's, a bunch of b's, a bunch of a's
+
+        Now we are going to take our z and look at different possibilites for x
+        and for y.  The only way we can fuck with this and disprove it is by
+        playing with the x and the y (because u, v and w are all fixed)
+
+        We assume u v w and x only consist of a's
+            in this case, any value for i other than one will fuck this up. o
+
+            uwy = a^n - |vx|  b^n a^n can't be in the language, but is
+            generated by the grammar
+
+
+        The next possibility is that x contains a b.  So we look at x is
+        strictly over b's (and no a)
+            in this case if i is equal to 0 again, wewill either remove an a or
+            a b
+
+        If x contains a and b's, then we have either abab or baba if i = 2,
+        which doesn't fit in the language
+
+
+        THen we can assume that v is in the first a's and x is in the second
+        a's
+            that means that i = 2 will give us a contradicion because we have
+            not enough b's
+
+
+        If we can't come to a contracition for one of the possibilities, we
+        have proven nothing.  We have to show that there is a contradition for
+        all posibilities to disprove it, and that ther eis no contradiciton for
+        all possibilities to show that our assumtion is true. THough we want to
+        do the contradiciton because showing no contradition isn't a valid
+        prooof I don't think
+

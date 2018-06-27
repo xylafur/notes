@@ -1,0 +1,159 @@
+We said that a finite automaton has finite memory 
+A pda can count, but if can only compare 2 things.  Could do A^n B^n, but we
+can't do A^n B^n A^n because we have established that whatever we can do with a
+context free grammar can be done with a pda - so if we can show it can't be
+done with a cfl then it can't be done with a pda.
+
+This means we have the ability to count - but it is limited.  So lets do away
+with the restriction, the memory that we have will no longer be a stack (that
+is the restrection a pda gives us)
+
+What we need is a more relaxed computational model - A turing machine.
+
+Turing Machine:
+    We have a finite automaton, with a tape (semi infinite, as long as it needs
+    to be, it starts somewhere but doesn't end anywhere)
+
+    The tape consists of squares (called cells) and we have a finite automaton
+    with the tape and a read write head.
+
+    We ahve this for read write head
+        looks at that particular cell
+        looks at the state of the controller
+
+        and based on this it does 3 things (but can choose 1 or more)
+            1. CHanges state (if it wants to)
+            2. It can change what it looks at (change what is in the cell)
+            3. Move read write head to right or left
+
+    We have a turing machine that consists of a set of states.
+
+    M = (Q, T, To, M, qo, F)
+        
+        Q: Finite non empty set of states
+        T: alphabet of input symbols
+        To: alphabet of Tape symbols
+            Has to include all input symbols and a special blank symbol
+
+        M: Move function
+            takes a state and a tape symbol
+
+            The machine is in some state, and looks at a particular cell
+
+            gives us another state, another state symbol and either left or
+            right
+
+            M(Q x To) -> Q x To x {L, R}
+
+        qo: initial state
+        F: set of final states
+
+
+Example:
+    tape:
+        a a a b b b a a a [blank -> ]
+
+    initial configuration:
+        input word is on the initial portion of the tape and the automaton
+        (turing machine) is in the initial state and the read write head looks
+        at the first square of the tape.
+
+
+    a a a b b b a a a [blank -> ]
+    ^
+
+    what we will do is replace this litle a by capital A and move to the right
+    we keep moving until we see the first b
+
+    A a a b b b a a a [blank -> ]
+      ^
+    A a a b b b a a a [blank -> ]
+        ^
+    A a a b b b a a a [blank -> ]
+          ^
+
+    THen we change that to capital B
+
+    A a a B b b a a a [blank -> ]
+          ^
+
+    Then we move to the right until we find the first little a and change it to
+    a capital A
+
+    A a a B b b a a a [blank -> ]
+                ^
+    A a a B b b A a a [blank -> ]
+                ^
+
+    THen we move back to the left till we find the first capital A
+
+    A a a B b b A a a [blank -> ]
+    ^
+
+    THen we move to the right and change the next a to A
+
+    A a a B b b A a a [blank -> ]
+      ^
+
+    A A a B b b A a a [blank -> ]
+      ^
+
+
+    Then we keep going though this until we get here
+
+
+    A A A B B B A A A [blank ->]
+                    ^
+
+
+    Then we go through the tape, and see if we find and lowercase letters.  If
+    we keep going form the beginning we hope to see a blank and not any
+    lowercase.
+
+
+That was informal.. now we will formally define the turing machine
+
+Formal definition of the same turing machine:
+   
+            a           b           A           B           [blank]
+    _______________________________________________________________
+    q0  |(q1,A,R)   |   /       |   /       |   /       |       /
+        |           |           |           |           |
+    q1  |(q1,a,R)   |(q2, B, R) |           |(q1,B,R)   |       /
+        |           |           |           |           |
+    q2  |(q3,A,L)   |(q2,b,R)   |(q2,A,R)   |    /      |       /
+        |           |           |           |           |
+    q3  |   /       |(q3,b,L)   |(q3,A,L)   |(q4,B,L)   |       /
+        |           |           |           |           |
+    q4  |(q4,a,L)   |   /       |(q5,A,R)   |(q5,B,L)   |       /
+        |           |           |           |           |
+    q5  |(q1,A,R)   |   /       |   /       |(q6,B,R)   |       /
+        |           |           |           |           |
+    q6  |   /       |   /       |(q6,A,R)   |(q6,B,R)   |       /
+        |           |           |           |           |
+    q7  |   /       |   /       |   /       |   /       |   (qf,Blank,L)
+
+
+    {a^n b^n a^n | a >= 1}
+
+Type 0
+
+
+
+
+Example 2:
+    {a^i b^j a^k | 1 <= i < j < k}
+
+
+    We now need a way to indicate we have more b's than a's.
+    WHich means we have to find at least one little b after we have no more
+    little a's on the left.
+
+    After we have verified this we start converting the b's in the middle and
+    the a's on the right.  Then we verify that there are no more little b's and
+    we have to verify that there are still at least 1 little a on the right.
+
+
+We have to make sure that we are not falling off the left end of the tape.  If
+we do we die.:wqa
+

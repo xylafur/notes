@@ -1,0 +1,278 @@
+Push down automaton
+
+P = (Q, T, R, delta, q0, Zo, F)
+
+    Q = set of states
+    T = input symbols
+    R = set of stack symbols
+    S =
+    qo =
+    Zo = initial state of the stack
+    F = final states
+
+L(P) iss accepted by a fixed accepting state
+N(P) is accepted only by the empty stack
+
+We want to simulate P in such a way that we can sense when the stack is empty
+
+    If we have P, then there exists a PDA P' such that: L(P') = N(P)
+
+    Well P is given by our function above
+
+    We want to define P' such that
+        P' = (Q', T, R', delta', qo', Zo', F')
+
+        This is what we have to sontruct, the only thing we clearly know is the
+        input symbols
+
+
+        We can put a new thing at the bottom, Zo'
+
+
+    THen we transition to the starting state of P, which means that we have to
+    put Zo on top of Zo', and we go to qo.  ALl of this is done with epsilon
+    moves - we are not consuming anything
+
+    (qo', w, Zo') -> (qo, w, ZoZo')
+
+    THen we can do whatever is done in P.  Because it has the same initial
+    state, and the same inital stack symbol.  SO whatever we can do in P to
+    process w, we can keep all of the old transitions from P in P' - meaning we
+    can do everything we did in P.
+
+    so,
+
+    (qo', w, Zo') -> (qo, w, ZoZo') -> (qf, :epsilon:, Zo')
+
+
+    in P we haver:
+        (qo, w, Zo) -> (q, :epsilon:, :epsilon:)
+
+        this means that the PDA accepts an empty stack
+
+    So in our P' definition the final state is the same as our final state in
+    P' - we just have our extra starting stack symbol on the bottom of the
+    stack.
+
+    Thats all that on the stack after we clear w.  THis is how we know we have
+    cleared the original stack - because we are left with our new starting
+    stack symbol
+
+    We can only transition to qf after we are left with only that bottom stack
+    symbol that we added.
+
+    Q' = Q :union: { qo', qf' }
+
+    R' = P :union: {Zo'} , where Zo' is not in P
+
+    F' = {qf}
+
+    :delta:'(q, a, Z) = :delta:(q, a, Z)
+
+        q is a subset of Q, a is a subset of (T :union: {epsilon})
+
+    :delta:'(q, epsilon, Zo') = {(qf, epsilon)} for all q in Q
+        
+        if we have cleared out the stack, no matter in what state we are in, we
+        want to accept.  In our old automaton, we would accept when we
+        transitioned to an accepting state and all ofther states didn't accept.
+
+        So this means that we simulate our situation, wehre we transition to
+        the final state of the old automaton.  SO everything that can be one in
+        P can be done in P'.  Once we have gotten to the point where our stack
+        is empty in the old automaton (which is the same point in our new
+        automaton whre our new stack symbol is on the top) then we know that
+        this new automaton is going to accept by final state.
+
+        ANything that is rejected by the old sutomaton is also rejected by the
+        new automaton.  There is nothing that the new automaton accepts that
+            the old automaton would have rejcted
+
+
+        The new automaton would only accept something if it exposes the bottom
+        marker on top of the stack.  this is the same as saying that the old
+        automaton cleared out its stack
+
+
+If we are given an automaton that accepts by final state, we want to construct
+an automaton that accepts by final state.
+    Given P = (Q, T, R, gamma, qo, Zo, F) then there exists a push down automaton
+    P' = (Q', T, R', :gamma':, Zo', {})
+
+    such that N(P') = L(P)
+
+
+    so we are accepting by final state, meaning that we have 
+        P:
+            (qo, w, Zo) -> (qf, epsilon, gamma)
+
+            Such that gamma is in R*
+
+        qf is a final state
+
+    What we want to do is basically there is that gamma sitting there and we
+    don't know what it is.  It could be anything.  SO what we want to do is
+    something that is simmilar to what we did before.  We want to simulate P in
+    P' .  ANd when P gets to a final state we are going to provide an epsilon
+    move to a state where we can clear out the stack
+
+    SO we want a state Qe, such that 
+        delta'(qe, epsilon, Z) = (qe, epsilon)
+
+        THis means that this state will empty any stack.  It doesn't take in
+        any sumbols and doesn't care whats on the stack.
+
+        once we tranasition here it will clear out anything - meaning we can
+        make this stack disappear
+
+        We can also throw in the new inital stack symbols so 
+
+        for all Z in ( R :union: {Zo'} )
+
+        We want to end up throwing in a new inital stack symbol, so we have to
+        be careful about how we clear it, and add it to the stack symbol that
+        we make disappear.
+
+        This would work without the initial stack symbol.  We could add a
+        transition where any time we see a final state we transition to qe, but
+        that will not work.  Because our automaton P might in fact empty its
+        stack.  For P if it empties the stack and is not in a final state it is
+        rejected.  If it empties out the stack and is not in a final state then
+        it will reject.  But if we were to just simulate P in P' without
+        haveing that additional stack symbol.  Meaning we useout old stack
+        which starts with Zo at the beginning, then the old automaton could
+        empty the entire stack.  In the new automaton that would mean that the
+        stack is empty and that it is accepted.
+
+
+        So now we have to put a new bottom marker on the stack.  We know that
+        there will be something.  If the old automaton P empties its stack, the
+        new one doesn't.  Thre is a new Zo' - which accepts us something from
+        N(P') that empties the stack in P but shoulnd't be accepting.
+
+        WIth this new provision, we know that the stack is not empty because
+        the only way we can empty out the new bottom marker because only qe can
+        empty it out.
+
+        The old automaton can't get rid of Zo'.  SO the move funtionof the old
+        automaton delta does not deal with Zo'.
+
+
+        The only way we can go to qe is if we are in a final state.
+
+        So we want to start with the inital configuration
+
+            P' = (qo', w, Zo')
+
+            what we want is a transtition to a situation where we can end up in
+            qe.
+
+            So,
+                                        moves in p
+                                            |   we are ina final state with
+                                            |   stuff on top
+            (qo', w, Zo') -> (qo, w, ZoZo') -> (qf, epsilon, gamma Zo')
+                          -> (qe, epsilon, gamma Zo') -> (qe, epsilon, epsilon)
+
+        Whatever is accepted by final state in the old automaton then it is
+        accepted by the empty stack in the new automaton
+
+
+    So we can now writes down formally what out P' is
+
+    Q' = Q union {qo', qe'}
+
+    R' = R union {Zo'}
+
+    Obviously we have no final states now.
+
+    delta'(qo',epsilon, Zo') = delta(q, a, Z) for q in Q - a being a terminal
+                                                           or epsilon, Z being 
+                                                           an old stack symbol
+
+    delta'(qe, epsilon, Z) = (qe, epsilon)
+                             for all Z in R and Zo'
+
+    delta'(qf, epsilon, Z) = delta(qf, epsilon, Z) union {(qe, Z)}
+                             for all q in F and all Z in R
+
+So now we know that both of these type of PDA are equivalent
+
+
+Let L be a context free language.  There exists a PDA such that L = N(P)
+    HOw do we get a push down automaton that accepts a CFG by empty stack?
+    Well we are going to nasty.  L is a CFL
+
+    Let G be a context free grammar for L, let G be in gribach normal form
+        if we want to accept epsilon then we can just make a new accepting
+        state that we transtition to if we get nothing
+
+    So we say
+        G = (N, T, P, S)
+
+    P = (Q, T, gamma, delta, qo, Zo, {})
+
+    Now lets look at gribach nrmal form grammar and the derivation that occurs
+        the first step is S => a B1, ..., Bm
+
+        We do a left most derivation
+            in a lmd it follows that we are going to have at least B1 and
+
+            S => aB1,..,Bm => abC1,...Cm => ... => w
+
+          *
+        S => alpha = only terminals followed by only variables
+
+        alpha = w beta
+            w is in T*
+            beta is in N*
+
+        it should be quite trivial to construct a PDA that consists of that
+
+        Terminals are the stuff that has already been consumed, and the
+        variables are things that we still have to process.  
+
+
+    Q is just the inital state
+
+    We already know T
+
+    gamma is the variables of the grammar
+
+    Zo is S
+
+    if A => aB1,..,Bm is in P then we have 
+        delta(qo, a, A) contains (qo, B1, ..., Bm)
+
+
+
+Example time!:
+    S -> aAA | bSSA
+    A -> bB | c
+    B -> aSBSA | cBBB
+
+
+
+            a           b           c           epsilon
+      _____________________________________________________
+    qo|
+      |
+    S |  (qo,AA)     (qo, SSA)      /               /
+      |
+    A |     /           (qo, B)   (qo, epsilon)     /
+      |
+    B |  (qo, SBSA)     /         (qo, BBB)         /
+      |
+
+
+    This push down automaton simulates a left most derivation
+
+
+    check a word
+    abcbca
+
+    (in this case he is cheating a bit, because he is using a gribach normal
+     form grammar that is a bit special.  It is special because the terminal on
+     the right hand side is unique. It is deterministic - there is a unique
+     derivation which either succeeds or fails to accept the word, ther eis no
+     guessing)
