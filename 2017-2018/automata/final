@@ -1,0 +1,14 @@
+L1 - L2 is empty for 2 recursive languages
+    not recursively enumerable, may take an infinite amount of time
+
+If both languages are recursive:
+    If we are looking for a particular word it is recursive
+        this is because the word will either be accepted or rejected for both
+        languages, then we can apply the operator to the result
+
+    If we are trying to determine if they are empty:
+        this will be recursively enumerable.  Because if the intersection or
+        difference is empty, then we have to go through every possible word
+        that exists in the lanague.  SInce there are an infinite amount of
+        words that exist then its going to take an infinite amount of time,
+        meaning it may not halt

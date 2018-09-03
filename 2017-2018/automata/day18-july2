@@ -1,0 +1,58 @@
+Are recursive languages closed under our operators?
+    Union:
+        Yes.
+        There is a turing machine that will halt for both, so we can find if a
+        word is in the union without any problems.
+
+    Concatenation:
+        Yes.
+
+    Star:
+        Yes.
+        No reason why we can't just go back to the beginning after we hit a
+        final state
+
+    Compliment:
+        Yes, just have to accept everything that wouldn't be accepted
+
+    Intersection:
+        Yes, because we can be both union and compliemnt
+
+Recursively Enumerable (includes things that are recursively enumerable but not
+                        recursive):
+    If we have a turing machine for L1 and one for L2, we have to be a little
+    careful because now we cannot run a word on the first turing machine on the
+    second because it may not terminate
+
+    We have to run the turing machiens in parallel because of this - if one of
+    them accepts then we can accept
+
+    Union:
+        Yes
+
+    Compliment:
+        No.
+
+        If you have a language that is RE, you will find a turing machine that
+        accepts, but it does not halt on every input.  SO if you want every
+        input it may not halt
+
+        Anything that would be accepted in the compliment would not halt
+
+    Intersection:
+        We can run them in parallel, if it is accepted for both then if they
+        are both accepted then the word is in the intersection.  If both of
+        them halt we can say they are in the intersection, if it doesn't halt
+        we can't say anything
+
+Ambiguity is a property of the grammar being used:
+    If there is a language that exists a grammar that is ambiguous, there may
+    or may not be a grammar that exitsts that is not ambigious
+
+    Ambiguity is nasty, you think you can come up with an algorithm to
+    determine if it is ambisious, but that is also undecidable.
+
+    If you take this to another level you can get what is known as an
+
+    Inheritly Ambigious Languague:
+        Context free language for which every context free grammar is ambigious
