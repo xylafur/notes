@@ -1,3 +1,4 @@
+3-19-2018:
 We have learned alot about electricity and electrostatic, so we will now be 
 learning about similar concepts for magnets.  There are many things in common,
 but many things are different.  
@@ -127,3 +128,102 @@ Magnetic field of a straight current carrying wire:
 
     Dots represent vectors coming out from plane, x's represent vectors going
     into the plane
+
+
+
+
+3-21-2018: 
+RECAP:
+    One of the most fundamental things is the Magnetic force equation
+        F = qV x B
+
+        Charges at rest produce electric field.  FOr magneic field, charges have 
+        to be in motion.  Moving charges generate a Magnetic Field, and a magnetic
+        field effects moving charges
+
+    We use the right hand rule to describe the direction of the magnetic field
+    from current through a wire
+
+Magnetic Flux:
+    If we consider some area and image a magnetic field going through it with
+    angle phi THe magnetic flux is then defined as 
+        Magnetic Flux = Integral(B (dot) dA) = Integral(B*cos(phi)*dA)
+
+    THe magnetic flux through any closed surface is 0
+
+    THe SI unit of magnetic field is Testla, Gauss is also a common unit
+        T = N/A * m
+        1G = 10^-4 * T
+
+Motion of charged particles in a magnetic field:
+    Because the force is perpendiculr to the velocity, the foce cannot do any
+    work.  
+        Meaning it can change the direction of the velocity, but can never
+        change the kinetic energy
+
+        The megnetic field will never change kinetic energy; the magnetic field
+        does not do work.
+
+    Remember that the magnetic field only prodduces a force from a component
+    of velocity that is perpendicular to the field.  
+
+When charged particles accelerate, they produce radiation: known as van allen 
+radiation
+
+The magnetic force on a current carrying concuctor:
+
+    if the field is perpindicular to the current
+        F = nqvA * lB
+
+    More generally:
+        F = I * l x B
+            where l is the vector length that points in the direction
+
+
+
+
+
+3-23-2018: 
+Magnetic dipole ina nonuniform magnetic field:
+    The direction of the force will be changing depending on the magnetic field
+    and current, or more explicitly the directions of those fields.
+    The right hand rule still holds true
+
+    We could use this, to have a current carrying loop be pushed away by a 
+    magnetic field.
+    There would be a magnetic moment in the oposite direction of the force
+
+    A current loop can be thought of as another magnet
+
+    A magnetic moment is the property of a magnet that interacts with an 
+    applied field to give a mechanical moment
+        A mechanical moment in this case would be either force or torque
+
+There is another way to produce an magnetic field.  Electrons have a 'spin', there
+are some elements that have an unpaired spin in the outermost orbital.  That spin
+responds like a current carrying loop
+
+In unmagnetized iron, there are many magnetic moments that are oriented randomly
+in such a way that they cancel out
+
+When this iron is brought in a magnetic field, the magnetic moments are all
+aligned in the direction of the magntic field
+
+
+How magnets work:
+    the bagnetic field of the bar magnet gives rise to a magnetic moment in some 
+    unmagnetized material (that has the property of magnetism, such as iron)
+
+    Because the field of the bar is not uniform, the magnetic dipole is 
+    attracted toward the magnet
+        This is because of the same reason of the current carrying loop, the
+        y components of the forces cancel but the x components point toward
+        the magnet
+
+Direct current motor:
+    a rotor is a wire loop that is free to totate on an axis, the rotor ends 
+    are attached to two curved conductors that form the commutator
+
+    This rotor will rotate based on the way the current is directed and magnets
+    are oriented
+
