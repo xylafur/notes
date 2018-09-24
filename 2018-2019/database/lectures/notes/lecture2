@@ -1,0 +1,27 @@
+Key Terms:
+    Conceptual Design - The what
+
+    Entity:
+        Anything about which data can be collected and stored
+
+    Entity Set:
+    Attributes:
+        property of an entity set
+
+    Keys:
+
+    Relationship:
+        Connections between entity sets
+        such as a project "is managed" by a professor
+
+    Relationship Set:
+    Descriptive Attributes:
+
+    Multiplicity:
+
+    Key Constraint:
+    Participation Constraint:
+    Multiway Relationship Sets:
+    Weak Entity Sets:
+    Is-a Relationship:
+    Aggregation:

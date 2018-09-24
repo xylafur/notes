@@ -1,0 +1,75 @@
+DB Stuff
+
+Key Definitions:
+
+A candidate key is a key that uniquely identifies rows in a table. Any of the 
+identified candidate keys can be used as the table's primary key. Candidate 
+keys that are not part of the primary key are called alternate keys. One can 
+describe a candidate key as a super key that contains only the minimum number 
+of columns necessary to determine uniqueness.
+
+Prime attributes are the attributes of the candidate key which defines the 
+uniqueness (Eg: SSN number in an employee database)
+
+A primary key is a column in a table whose values uniquely identify the rows 
+in the table. The primary key is chosen from this list of candidates based on 
+its perceived value to the business as an identifier.
+
+A primary key value:
+
+    Must uniquely identify the row;
+    cannot have NULL values;
+    Should not change over the time;
+    and Should be as short as possible.
+
+If the primary key is a combination of more than one column then it is called 
+as composite key.
+
+
+Normalization / Decomosition:
+
+R(A, B, C, D)
+𝑆={AB→C,C→D,D→A}
+
+First, let's note that in this case there are three keys, not only one:
+
+AB
+BD
+BC
+
+This means that all the attributes are primes, so the relation is by 
+definition already in Third Normal Form.
+
+For the BCNF, you have described the “analysis algorithm”, which is the 
+algorithm presented in every good book on databases. But, with this example, 
+you have also discovered that in normalizing, you can have different results, 
+that can depend for instance on the order in which the dependencies that 
+violates the normal form are chosen (not in this case, but possible in other 
+cases with this same algorithm), or by using a different algorithm (there are 
+others, not interesting from a practical point of view).
+
+In your example, the second decomposition, which is in BCNF as you correctly 
+stated, cannot be produced by the analysis algorithm: there is nothing wrong 
+about it, in general there is no guarantee that this algorithm will produce 
+the “best” decomposition (for instance a decomposition with a minimum number 
+of relations), and, if this is an exercise, you have done it correctly!
+
+What instead is interesting to note, also from a practical point of view, is 
+if the decomposition satisfies all the important properties, i.e. if it 
+preserves the dependencies of the original schema (since the decomposition 
+produced by the algorithm is instead guarantee to be always a lossless 
+decomposition).
+
+And you can see that both the decompositions fail under this aspect. The 
+decomposition in R2(B, C), R3(C, D), R4(D, A) does not preserve the 
+dependency A B → C, while the decomposition R1(A, B, C), R2(C, D) does not 
+preserve the dependency D → A. This means that in practice both of them 
+reduce the redundancies and other anomalies of the data, at the expense of 
+losing an important contraint over them.
+
+So, knowing that the relation is already in 3NF, one could be satisfied by 
+this result and leave the relation in this form. This means the preservation 
+of the dependencies, together with a limited amount of redundancy, which in 
+practice can be tolerated.
+
+

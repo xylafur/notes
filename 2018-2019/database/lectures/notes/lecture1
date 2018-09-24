@@ -1,0 +1,195 @@
+Chapter 1:
+    Key Terms:
+        Data:
+        Information:
+        Data Model:
+        Schema:
+
+    Database:
+        A very large integrated collection of Data
+
+        Made out of entities and relationships
+
+        Tables contain rows:
+            these rows are known as tuples
+
+        Columns:
+            are called attributes
+
+    DBMS:
+        software that allows you to create a database, gives you a query
+        language?
+
+        Gives you the tools to design the database, create entry forms,
+        validate the data entered, query the database and produce reports
+
+        Can do things such as crash recovery, security control
+
+
+    The difference between a filesystem and a database is a database is all
+    centeralized into one location
+
+    Data Model:
+        collection of concepts for describing data
+
+        schema is a description of a aprticular collection of data using the
+        given data model
+
+        relational data model is the model in this case:
+            the relation is basically a table with rows and columns
+
+            every relationship has a schema, that describes the columns and
+            fields
+
+Levels of ABstraction:
+    views:
+        how uses see the data
+
+    conceptual logial schema:
+        what we are representing, only a single per the database
+
+    Physical schema:
+        files and indexes, the how
+
+        how the database is actually implemented ad saved to disk
+
+        schemas are defined using the DDL (SQL), Sata is modfied using the data
+        minipulation language
+
+    
+    University Database example:
+        External Schema (view):
+            course_info(cid:string, enrollment: int)
+
+        Conceptual Schema - The What:
+            Student
+            Course
+            Enrolled
+
+        Physical Schema:
+            relations are stored as unordered files (heap?)
+            index based on the first column of student
+
+
+
+    Univerity Systems:
+        Entities are faculty, students, courses
+        relationsships are taking
+
+
+Data Independence:
+    an application is insulated from how the data is structured and stored
+
+    logical data independence:
+        protection from changes in logical structure
+
+    physical data independence:
+        protection from changes in how the data is stored on the disk
+
+Concurrency control:
+    we have user programs (transactions) and want to take advantage of the fast
+    cpu
+
+    disk accesses are slow, so we want several DB user programs running at the
+    same time
+
+
+    these user programs should be insulated from eachother
+
+Transaction:
+    insert, queue..
+
+    this is an atomic sequence of actions
+
+    each reansaction must leave the database in a consistent state
+
+    users can specify some simple integrity constraints, it is the user's job
+    to perform these transactions
+
+    scheduling concurrent transactions:
+        can create a schedule that interweaves the actions of these
+        transactions
+
+        like if two transactions are trying to read or write the same object,
+        locks are used and the DBMS keeps track of the lock
+
+        If the transaction Ti wants to write X and Tj wants to read X, the lock
+        will force these to be ordered
+
+        This can force a deadlock, Tj wants Y, Tj wants Y
+
+    Ensuring Atomicity:
+        all or nothing, event when the system crashes in the middle of
+        execution.
+
+        There is a log that keeps track of all of the actions carried out by
+        the DBMS, the logentry is stored in a safe location.
+
+        The Log:
+            log record goes to disk before the changed page
+
+            the transaction id is recorded with the entry in the log, so if you
+            wanted to undo shit you could follow this log chain
+
+Structure of the DBMS:
+    there are many components:
+        Disk Space managment
+            allocates and deallocateds pages on the disk
+
+        buffer managment
+            handles pages in memory
+
+        files and access managment
+            looks at the tuples and shit
+
+        relational operators
+        query optimization
+
+Building blocks of the database:
+    entity:
+        generalized category representing person, place or thing
+
+    attributes are specific characteristics of a particular entity
+
+    There is a single table/ relation for each entity:
+        fields are columns that store data represenging an attribute
+
+        rows store data for seperate data records/rows/tuples/records
+
+        Key fields uniquely identify each record
+
+        there is also a primary key
+
+    Foreign Key:
+        is the primary key of another table, points to that other table
+
+Relationships:
+    ERD Diagram: ENtity relationship diagram
+        used to clarify table relationships
+
+
+    There are multiplt types:
+        many to one
+        one to one
+        many to many
+        one to many
+
+Normalization:
+    Relationships need to be normalized
+
+    Referential integrity rules:
+        baesd on foreign keys
+
+        when we have primary key and then a foriegn key, we encounter issues
+        with parent and children
+
+Operations of RElational DBMS:
+    select
+
+    join:
+        combies tables
+
+    projects:
+        creates a subset of columns
+
+
