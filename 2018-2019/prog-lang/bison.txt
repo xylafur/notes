@@ -91,7 +91,7 @@ Using GLR on Unambigious Grammars:
 
     when this is passed into a normal LR(1) grammar, bison complains about one
     reduce/reduce conflict.  THe parser will just choose one, probably wrong
-    
+
     if we change the grammar to be used to GLR, it will resolve this
 
     there are 2 potential problems:
@@ -118,5 +118,56 @@ Locations:
     value as well as the locations
         by default, bison takes the location of the beginning of the first
         symbol and the end of the last symbol
-    
 
+Bison Output: the parser implementation file:
+    takes in a bison grammar file and outputs c code for a parser
+
+    the parser groups tokens into groupings according to grammar rules, it runs
+    the rules defined as it does this
+
+    the tokens come from a lexer
+        bison calls the lexer whenever it wants new tokens
+
+    we need to provide the lexer as well as a function for error cases
+
+    all symbols defined in the bison parser implementation file bein with yy or
+    YY
+
+Stages in using bison:
+    1: specify the grammar in a form recognized by bison (the grammar file)
+        must also describe the action to be taken for each rule when it is
+        recognized
+
+    2: write a lexical analyzer to processinput and pass tokens to the parser
+        can use handwritten code or yylex
+
+    3: Write a controlling function that calls the bison-produced parser
+
+    4: write error reporting routines
+
+    to turn the source code into a runnable program:
+        1: Run bison on the grammar to produce the parser
+        2: Compile the code output by bison as well as any other source files
+        3: link the object files to produce the finished product
+
+the overal layout of a bison grammar:
+        %{
+        Prologue
+        %}
+
+        Bison declarations
+
+        %%
+        Grammar rules
+        %%
+        Epilogue
+    prologue:
+        types and variables, can use preprocessor commands
+
+    Declarations:
+        declare names of terminal and non terminal symbols, operator presedence
+        and the data types of semantic values of various symbols
+
+    epilogue:
+        any code you want to use
+        often put definitions of functions declared in the prologe
