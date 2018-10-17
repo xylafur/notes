@@ -1,0 +1,34 @@
+Functional Programming
+    Functions in general:
+        Try to be like Mathematical Functions
+            a mapping from members of one set (domain) to members of another
+            set (range)
+
+
+        mostly discrete functions
+            goes more into discrete mathematics
+
+            not really for things with vectors
+
+        if the mathematical object is too complex, you wouldn't use a
+        functional language for it
+
+Functional forms:
+    higher order function - or functional form:
+        either takes functions in as parameters or yields a funtion as a
+        result.. or  both
+
+    function composition:
+        a FF that takes two functions as parametrs and yields a function whose
+        value is the first actual parameter function applited to the
+        application of the second
+
+        h(x) = f( g( x ) )
+
+    Apply - to all:
+        functional form that takes a single function as a parameter and yields
+        a list of values obtained by applying the given function to each
+        element of a list of parameters
+
+loop invarient
+    don't need this in functional programming because there are no loops
