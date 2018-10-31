@@ -1,0 +1,122 @@
+Still Lambda calculus
+    What we have discussed:
+        variables
+
+    What we have not discussed:
+        type conventions for lambda calc
+
+        thats what we will discuss today
+
+    we want:
+        to define datatypes for arithmatic expressions
+
+        it would be nice to have a safety mechanism where data types are
+        correctly preserved
+
+        function types and the typing relation
+
+Data types are sets
+
+Boolean and Nat Terms:
+    t::=    true
+            false
+            if t then t else t
+            0
+            succ t
+            pred t
+            iszero t
+
+    a conditional is basically a function with 3 params
+        condition, if true return stmt and if false return stmt
+
+The minimum we need for a language are booleans and integers
+
+Type saftey can not only be enforced with lexical and syntactic analysis
+
+Nonsense Terms:
+    some terms don't make sense.  THey are neither bools or natural numbers
+
+    succ true or iszero false both don't make sense
+
+
+Fixed point Function:
+    any function such that the result is the value itself
+
+    identity function is an example of this
+
+We have two major sets:
+    booleans (functions that map to bools) and natural numbers (functions that
+    map to positive ints)
+
+    once we are inside a set we want to make sure that we don't end up in the
+    other set, for type saftey we want to keep everything confined within its
+    own set
+        you come from outside the set into it and stays there
+
+        the only exception to this is the iszero function
+
+A type system:
+    Extended lambda calculus with data types
+        pure lambda caluclus is impractical
+        the idea here is that we have th constructs that simplifys and makes
+        things more convinent, for the end goal of having a full programing
+        language
+
+    1. Type expressions:
+        T ::= ...
+
+    2. Typing Relation:
+        t: T
+
+    3. typing rules giving an inductive definition of t: T
+        we define some basic definition for data typds and then we have
+        mechanisms for checking data types in general
+        
+
+    these three will give us a complete and sound definition of data types
+        complete
+            for any expression we should be able to determine its datatype
+
+            there should be no case where we cannot determine the data type
+
+        sound
+            no contradictions, nothing can be both true and false
+
+            a contradiction would be two different return types for a function
+
+    1:
+        T ::= Bool | Nat (type expressions)
+
+        true : Bool
+        false : Bool
+        0 : Nat
+
+        Defining expected input and output types for functions
+            t1: Nat
+            succ t1: Nat
+
+            t1: Nat
+            pred t1: Nat
+
+            t1: Nat
+            iszero t1: Bool
+
+            t1: Bool, t2: T, t3: T
+            if t1 then t2 else t3
+
+        lowercase t is a term while upper case T is a type
+
+        the inductive step of this is we can know the return type based on the
+        input parameters
+
+###############################################################################
+##########              BACK TO GRAMMARS AND COMPILERS               ##########
+###############################################################################
+Syntax analysis:
+    - low level lexical analyzer
+
+    - high level syntax analyzer based on a context free grammar
+
+
+
+
