@@ -1,0 +1,78 @@
+1) ambigious grammar
+    #this branch might be an example
+    branch : if <conditional> <body>
+           | if <conditional> <body> else <body>
+
+    we could produce 2 or more trees
+
+
+    E   : E + E
+        | E * E
+        ;
+
+    x + y * z
+
+        this is ambigious and does not account for presedence
+
+2) What happens when you a function is called
+    - save the address, push it on the stack
+    - jump to the function
+    - Allocate local variables for the function, push them on the stack
+    - execute the function
+
+3) old vs new languages
+    old: Fortran, algo, pascal, C
+
+    new: java, C++, python
+
+4) in lamda calculus distinguish between variable, lambda and grammar
+    variable:
+        substitution, local variables, place holders - no addresses
+    
+    lambda:
+        binding between a variable and an expression
+            through this binding the variables are split between free and bound
+
+    grammar:
+        t : t                       #variable
+          | lambda t.expression     #variable to expression
+          | tt                      #application
+          ;
+
+        (lambda x.x)(1) == 1
+
+    multiple arguments:
+        need a lambda build on another lambda
+
+
+    alpha:
+        renaming
+
+    beta:
+        reduction
+
+
+5) minimal instructions CPU:
+    what are the minimal instructinos you need in the evaluation of an
+    interpreter and compiler
+
+    storage:
+        retrevial and storing
+
+
+6) Contrast 1 instruction per line vs mult per line
+    
+
+7) 2 main types of parsers
+    top down:
+        recursive descent
+        Simpler to defins sometimes but not as good for modern languages
+
+    bottom up:
+        LR:
+            most common
+            bison is LR
+
+            shift / reduce
+
+    
