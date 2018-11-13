@@ -1,0 +1,48 @@
+The assembly code will actually be very simmilar to the higher level code (if we
+assume we are using something lke c, c++, java, not python with their iterators
+and all that), but with many more statements.  Before the beginning and the end
+of the outer assembly loop construct, we would insert the inner assembly loop
+construct.
+    In an assembly loop construct we have the label marking the beginning of the
+    loop, then we compare the iterated value against whatever the bound is, we
+    branch if that condition is met to the label signifiying the end of the
+    loop, otherwise we continue and execute the statments inside of the loop,
+    increment the variable and jump back to the beginning of the loop.  The
+    inner and outer loops would both be implemented the same way, but the inner
+    loop will be inserted inbetween the comparison / branch if and the
+    increment/branch back to beginning of the inner loop.
+
+
+$C code
+int i, j;
+for(i = 0; i < 10; i++){
+    for(j=0; j < 10; j++){
+        /*do something*/
+    }
+}
+
+$assembly psuedocode
+
+    mov #0 r1
+    mov #0 r2
+loop1:
+    gtr r1 #10
+    bif endloop1
+
+loop2:
+    ifgtr r2 #10
+    bif endloop2
+
+    ; something code
+
+    add r2 r2 1
+    goto loop2
+
+endloop2:
+    add r1 r1 1    
+    goto loop1
+
+endloop1:
+    ; code after nested loop
+
+

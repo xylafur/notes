@@ -1,0 +1,44 @@
+c++: list -> vector
+    allocation:
+        you can create a list either the stack or the heap.
+        Using the new keyword will allocate memory from the heap
+
+    manipulation:
+        you can use a pointer to manipulate or pass around the vector in c++,
+        you can also pass it in using the reference keyword
+
+    clean up:
+        If you allocate the list from the heap then you will have to manuall
+        clean it up.
+
+    array example:
+        int arr [50];
+
+    list example:
+        std:vector myarr = new vector;
+
+
+In Java, lists (ArrayList would be the type) are objects so they are created on
+the heap.  
+    
+    allocation:
+
+    manipulation:
+        objects are passed into functions by reference implicitly.
+
+    clean up:
+        Java has garbage collection, which means as the programmer you do not
+        free memory that you were granted from the heap.  WHen there is not
+        enough free memory garabge collection will be invoked and release all
+        unused heap memory
+
+    array example:
+        int [] arr = new int [50];
+
+    list example:
+        std:vector myarr = new vector;
+
+
+
+python:
+    
