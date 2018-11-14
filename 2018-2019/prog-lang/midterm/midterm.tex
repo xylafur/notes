@@ -1,0 +1,255 @@
+\documentclass[11pt]{article}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstdefinestyle{MyC++} {
+        frame=tb,
+        language=C++,
+        aboveskip=3mm,
+        belowskip=3mm,
+        showstringspaces=false,
+        columns=flexible,
+        basicstyle={\small\ttfamily},
+        numbers=none,
+        numberstyle=\tiny\color{gray},
+        keywordstyle=\color{blue},
+        commentstyle=\color{dkgreen},
+        stringstyle=\color{mauve},
+        breaklines=true,
+        breakatwhitespace=true,
+        tabsize=3
+}
+\lstdefinestyle{MyC} {
+        frame=tb,
+        language=C,
+        aboveskip=3mm,
+        belowskip=3mm,
+        showstringspaces=false,
+        columns=flexible,
+        basicstyle={\small\ttfamily},
+        numbers=none,
+        numberstyle=\tiny\color{gray},
+        keywordstyle=\color{blue},
+        commentstyle=\color{dkgreen},
+        stringstyle=\color{mauve},
+        breaklines=true,
+        breakatwhitespace=true,
+        tabsize=3
+}
+
+\lstdefinelanguage{Asm} {
+        keywords={mov, gtr, bif, ifgtr, goto, add, r1, r2}
+}
+\lstdefinestyle{MyAsm} {
+        frame=tb,
+        language=Asm,
+        aboveskip=3mm,
+        belowskip=3mm,
+        showstringspaces=false,
+        columns=flexible,
+        basicstyle={\small\ttfamily},
+        numbers=none,
+        numberstyle=\tiny\color{gray},
+        keywordstyle=\color{blue},
+        commentstyle=\color{dkgreen},
+        stringstyle=\color{mauve},
+        breaklines=true,
+        breakatwhitespace=true,
+        tabsize=3
+}
+\lstset{language=C++,frame=none}
+\lstset{language=C,frame=none}
+
+\begin{document}
+
+\title{James Richardson\\Midterm}
+\maketitle
+
+\newpage
+\section{C++ Functional to Postfix Notation}
+For this question I am going to assume that this the functional expression
+\it{add(5, multiply(4, 3))} \rm{would be given to me in list format as}
+\it{["4", "3", "multiply", 5, "add"]}
+\rm\\\\
+
+\begin{lstlisting}[style=MyC++]
+#include <string.h>
+void convert_postfix(char ** input, unsigned int input_length, char * output){
+    //We are assuming that the memory for output has been allocated before
+    //being passed into this function and that its length is sufficient
+    int index = 0, ii;
+    for(ii = 0; ii < input_length; ii++){
+        if(!strcmp(input[ii], "add")){
+            output[index] = '+';
+        }else if (!strcmp(input[ii], "multiply")){
+            output[index] = '*';
+        }else{
+            strcpy(output + index, input[ii]);
+            index += strlen(input[ii]);
+        }
+        //so we have a buffer in between each character or integer
+        strcpy(output + index, " ");
+        index += 1;
+    }
+}
+
+int main(){
+    /*
+     *  Assuming that the parsing happens somewhere in here
+     */
+    char * postfix_notation = malloc(computed_length);
+    convert_postfix(parsed_input, input_length, postfix_notation);
+    printf("%s\n", postfix_notation);
+    free(postfix_notation);
+}
+\end{lstlisting}
+
+\newpage
+
+\section{Mutation in C++}
+Variable multation in c++ is enabled by default.  If we declare and define an
+integer i then we can overwrite that value with another integer later.
+We can use the const keyword to disable mutation of particular variables.
+
+In passing variables into functions, mutation is generally disabled by default.
+When you pass in an integer, float, bool or another simple data type then that
+variable or value is passed by value to the function - which means that a copy
+is made of the value and placed into the function stack.  If we want to pass in
+a variable that can be mutated into a function, we can pass in that varaible
+either as a pointer or by reference.
+
+
+To discover the possible performance implications of this, let us consider a
+function that takes in 2 matricies and then adds them.  This function will be
+useless because it won't actually return anything for simplicity.  We will also
+assume that the complier doesn't pull any funny business and actually
+executes the code rather than ignore it for optimization.
+
+You can't really pass arrays by value in c++, you can pass in structs by value
+though.  I will create a matrix sctruct type for this example to allow us to
+pass in the matrix by value.\\\\
+
+\textbf{By Value Example}
+\begin{lstlisting}[style=MyC++]
+#define MATRIX_SIZE 100
+typedef struct _matrix {
+    int vals [MATRIX_SIZE] [MATRIX_SIZE];
+} matrix;
+
+void add_matricies(matrix a, matrix b){
+    /*  Add the matricies
+     */
+}
+\end{lstlisting}
+
+
+
+To pass in these matricies by value, we have to copy each of the elements
+into a new location on the function stack.  Instead of the size of the matrix
+being 100, lets consider it to be n.  We are copying two matricies into the
+fucntion by value, each of those matricies being of size $n * n$.  this means that
+the time complexity to copy in both of these matricies into the fucntion stack
+would be $2 * O(n^2)$, or in proper O() notation, $O(n^2)$\\
+
+Now let us consider the situation where we pass in the matricies by reference
+using a pointer\\
+
+\textbf{By Reference Example}
+\begin{lstlisting}[style=MyC++]
+#define MATRIX_SIZE 100
+typedef struct _matrix {
+    int vals [MATRIX_SIZE] [MATRIX_SIZE];
+} matrix;
+
+void add_matricies(matrix * a, matrix * b){
+    /*  Add the matricies
+     */
+}
+\end{lstlisting}
+
+In this case, we do not have to copy the values of each of these matricies.
+Instead we just pass a reference to the locatin of each of the matricies to the
+function - this is done by pushing those addresses onto the function stack.
+Those operations are both order of 1.  Meaning that to pass in the matricies by
+reference it takes O(1).. quite an improvment over the pass by value approach.
+
+
+
+
+\newpage
+\section{Conversion of Nested Loops into Assembly}
+When considering a nested loop in both a higher level language and in assembly
+language, 
+the assembly code will actually be very simmilar to the higher level code (if we
+assume we are using something lke c, c++, java, not python with their
+iterators).
+Though the assembly version of the loop will undoubtedly have many more
+statements and will use goto statements rather than implicit looping
+constructs.\\
+
+A loop in assembly functions as follows (we are assuming the machine is
+register based):
+\begin{itemize}
+    \item Check against the termination condition.  The result of this
+        operation is stored ina special register.
+    \item If the result of that condition was 1, branch to the end of the loop,
+        otherwise continue executing at the next instruction.
+    \item The next \textit{n} instructions will be the actual body of the loop,
+        whatever that is.
+    \item The very last instruction in the assembly loop construct is to jump
+        back to the beginning of the loop.
+\end{itemize}
+
+
+
+Writing a nested loop in assembly is about the same as writing one in a higher
+level language.  In the section that contains all of the code for the body of
+our loop, we would simply insert another assembly loop construct.  This inner
+assembly loop construct would have its own beginning address, check condition
+and ending address.\\\\
+
+\newpage
+Below is an example of a nested loop written in C followed by the same nested
+loop written in c++.\\
+
+\textbf{Nested Loop in C}
+\begin{lstlisting}[style=MyC]
+int i, j;
+for(i = 0; i < 10; i++){
+    for(j=0; j < 10; j++){
+        /*do something*/
+    }
+}
+\end{lstlisting}
+
+\textbf{Nested Loop in Psuedo Assembly}
+\begin{lstlisting}[style=MyAsm]
+    mov #0 r1
+loop1:
+    gtr r1 #10
+    bif endloop1
+
+    mov #0 r2
+loop2:
+    gtr r2 #10
+    bif endloop2
+
+    ; something code
+
+    add r2 r2 1
+    goto loop2
+
+endloop2:
+    add r1 r1 1
+    goto loop1
+
+endloop1:
+    ; code after nested loop
+\end{lstlisting}
+
+
+\end{document}

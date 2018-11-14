@@ -1,7 +1,10 @@
 The assembly code will actually be very simmilar to the higher level code (if we
-assume we are using something lke c, c++, java, not python with their iterators
-and all that), but with many more statements.  Before the beginning and the end
-of the outer assembly loop construct, we would insert the inner assembly loop
+assume we are using something lke c, c++, java, not python with their iterators),
+but with many more statements and goto statements rather than implicit looping
+constructs.
+
+Before the beginning and the end of the outer assembly loop
+construct, we would insert the inner assembly loop
 construct.
     In an assembly loop construct we have the label marking the beginning of the
     loop, then we compare the iterated value against whatever the bound is, we

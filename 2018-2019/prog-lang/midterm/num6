@@ -1,0 +1,45 @@
+Currently our interpreter only supports integers, strings and boolean types.
+In the case of our interpreter, we use a stack based virtual machine to compute
+the actual program; the virtual machine executes bytecode that we created.  The
+lexer/parser convert the python file into this bytecode and then this bytecode
+is executed.
+
+The way our Virtual Machine's instruction set is implemented, we have seperate
+math instructions for the different types of value types: for instance we use
+the pushi and addi commands to push an integer onto the stack and then add the
+top two integers from the stack.
+
+To add functionality that allows the use of floating point numbers we would
+firstly have to properly tokenisze them.  Our parser would then need to be
+updated to accept floating point numbers in the grammar.  When this is
+converted to the abstract syntax tree, the node for that value would be of
+'float' type rather then integer.  When the abstract syntax tree is converted
+into bytecode we would have to make sure to use the proper instructions for the
+new type.  In addition we would probably want to add a casting instruction
+(though this isn't necessary if we decide that the language won't support it).
+
+This floating point number type would be implemented using the IEEE specified
+scientific notation that other programming languages use to represent numbers.
+Our instructions would have to know how to manipulate a floating point number
+in this format in the same way that our machine must know how to manipulate
+integers in twos compliment.
+
+Type checking could be handled when converting from the AST.  Our expr nodes
+can have a type, either integer or floating point.  Like most languages, we
+would probably implement it such that if there is a floating point number
+involved then the other number will also be treated as a float and then the
+result will be a float.
+
+Conversion would be a simple bit operation.  Floating point numbers are
+represented something like:
+    <sign bit><exponent><significand>
+
+When converting, we would have to decide on a convention, either rounding or
+truncating.  For this question I will assume we use truncation.  So if we have
+10.5, out number would become 10.0, then we would convert this to the integer
+10.
+We would convert this to an integer by copying over the significand into the
+integer and then shifting this number over based on the exponent of the float.
+
+
+https://stackoverflow.com/questions/7977265/what-happens-at-background-when-convert-int-to-float
