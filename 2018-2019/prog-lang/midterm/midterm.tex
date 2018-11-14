@@ -1,6 +1,9 @@
 \documentclass[11pt]{article}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{url}
+\usepackage[utf8]{inputenc}
+\usepackage{pmboxdraw}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -41,6 +44,43 @@
         tabsize=3
 }
 
+\lstdefinestyle{MyJava} {
+        frame=tb,
+        language=Java,
+        aboveskip=3mm,
+        belowskip=3mm,
+        showstringspaces=false,
+        columns=flexible,
+        basicstyle={\small\ttfamily},
+        numbers=none,
+        numberstyle=\tiny\color{gray},
+        keywordstyle=\color{blue},
+        commentstyle=\color{dkgreen},
+        stringstyle=\color{mauve},
+        breaklines=true,
+        breakatwhitespace=true,
+        tabsize=3
+}
+
+\lstdefinestyle{MyPython} {
+        frame=tb,
+        language=Python,
+        aboveskip=3mm,
+        belowskip=3mm,
+        showstringspaces=false,
+        columns=flexible,
+        basicstyle={\small\ttfamily},
+        numbers=none,
+        numberstyle=\tiny\color{gray},
+        keywordstyle=\color{blue},
+        commentstyle=\color{dkgreen},
+        stringstyle=\color{mauve},
+        breaklines=true,
+        breakatwhitespace=true,
+        tabsize=3
+}
+
+
 \lstdefinelanguage{Asm} {
         keywords={mov, gtr, bif, ifgtr, goto, add, r1, r2}
 }
@@ -69,6 +109,7 @@
 \title{James Richardson\\1555520\\Programming Languages Midterm}
 \maketitle
 
+%num1
 \newpage
 \section{C++ Functional to Postfix Notation}
 For this question I am going to assume that this the functional expression
@@ -108,6 +149,7 @@ int main(){
 }
 \end{lstlisting}
 
+%num2
 \newpage
 
 \section{Mutation in C++}
@@ -179,7 +221,7 @@ reference it takes O(1).. quite an improvment over the pass by value approach.
 
 
 
-
+%num 3
 \newpage
 \section{Conversion of Nested Loops into Assembly}
 When considering a nested loop in both a higher level language and in assembly
@@ -251,34 +293,41 @@ endloop1:
     ; code after nested loop
 \end{lstlisting}
 
+%num4
 \newpage
 \section{The Influence of Older Languages on Modern Ones}
 
 \begin{enumerate}
 \item Lisp\\
-    First to intruduce garbage collection
-    \footnote{https://en.wikipedia.org/wiki/Lisp}
+    First to intruduce garbage collection.  Garbage collection is used by many
+        modern language such as Java, python and ruby.  Having garbage
+        collection in a language further abstracts the user from the hardware.
+    \footnote{\url{https://en.wikipedia.org/wiki/Lisp}}
 
 
 \item Stimula\\
-    First Object oriented programming language.
-    \footnote{https://en.wikipedia.org/wiki/Simula}
+    First Object oriented programming language.  Stimula featured all of the
+        common elements in modern OO languages such as inheritance and
+        polymorphism.
+    \footnote{\url{https://en.wikipedia.org/wiki/Simula}}
 
 
 \item Algol 58\\
-    Introduced the difference between comparison ans assignment operators
-        := assignment, = equality
+    Introduced the difference between comparison and assignment operators
+        := assignment, = equality.  Though most modern languages use == for
+        equality checking, the influence from algol 58 in this regard is still stignificant.
 
-    \footnote{https://en.wikipedia.org/wiki/ALGOL_58#History}
+    \footnote{\url{https://en.wikipedia.org/wiki/ALGOL_58#History}}
 
 \item Algol 60\\
     First programming language to use code blocks.  Algol 60 used 'begin' and
         'end' instead of the C curly braces though.
-    \footnote{https://en.wikipedia.org/wiki/ALGOL_58#History}
+        \footnote{\url{https://en.wikipedia.org/wiki/ALGOL_58#Historys}}
 
 \item Algol 60\\
-    One of the first languages to introduce the dangling-else delima.
-    \footnote{https://en.wikipedia.org/wiki/ALGOL_58#History}
+    Regarded as the first language to intruduce the dangling else delemia.
+    \footnote{\url{https://en.wikipedia.org/wiki/ALGOL_58#History}}
+    \footnote{\url{http://www.mathcs.emory.edu/~cheung/Courses/170/Syllabus/06/if4.html}}
 
 \end{enumerate}
 
@@ -289,35 +338,59 @@ endloop1:
 \textbf{c++: list = vector}
 \begin{itemize}
     \item allocation:
-        you can create a list either the stack or the heap.
+        You can create a list either the stack or the heap.
         Using the new keyword will allocate memory from the heap
 
     \item manipulation:
-        you can use a pointer to manipulate or pass around the vector in c++,
-        you can also pass it in using the reference k=word
+        You can use a pointer to manipulate or pass around the vector in c++,
+        you can also pass it into functions using the 'reference' keyword. The
+        list can also be passed around by value if you want to.  The same goes
+        for arrays.
 
-        the list can also be passed around by value if you want to.
+
+        There is an implicit array in the Vector data type.  The size and
+        current index of this array is kept track of by the object.  When you
+        insert an element into an Vector, if the inner array is full, the
+        size of the array will be doubled and then all elements from the old
+        array will be copied into the new one.
+
+
 
     \item clean up:
         If you allocate the list from the heap then you will have to manually
         clean it up.
 
-    \item array declaration example:
-        stack
-            int arr [50];
-        heap:
-            int arr [50] = new int [50];
-
-    \item list declaration example:
-        stack:
-            std:vector<int> my_stack_vec
-        heap:
-            std:vector<int> * myvec = new vector
-
-    \item list insert elements example:
-
-    \item list delete elements example:
 \end{itemize}
+
+
+\textbf{Examples}
+\begin{lstlisting}[style=MyC++]
+//Array allocation, insertion and deletion.
+//stack
+int arr [50];
+arr[0] = 5;
+//the memory used by this array will be freed automatically when it
+//leaves the stack frame
+
+//heap:
+int arr [50] = new int [50];
+arr[0] = 5;
+delete [] arr;
+
+//There is no way to append new elements to an array, they are of a fixed size
+
+//List allocation, insertion and deletion.
+//stack:
+std:vector<int> my_stack_vec;
+my_stack_vec.push_back(5);
+//like the array, the memory will automatically be freed when it leaves the
+//stack frame
+
+//heap:
+std:vector<int> * myvec = new vector;
+my_vec->push_back(5);
+delete myvec;
+\end{lstlisting}
 
 \pagebreak
 \textbf{Java: list = ArrayList}
@@ -332,6 +405,12 @@ endloop1:
         objects are passed into functions by reference implicitly, there is no
         way to pass them into a function by value.
 
+        There is an implicit array in the ArrayList data type.  The size and
+        current index of this array is kept track of by the object.  When you
+        insert an element into an ArrayList, if the inner array is full, the
+        size of the array will be doubled and then all elements from the old
+        array will be copied into the new.
+
     \item clean up:
         Java has garbage collection, which means as the programmer you do not
         free memory that you were granted from the heap.  WHen there is not
@@ -343,16 +422,26 @@ endloop1:
         will also have to constantly be cleaned up as its size is increased,
         the old array that was used to hold the previous data of the list will
         have to be freed.
-
-    \item array declaration example:
-        int [] arr = new int [50];
-
-    \item list declaration example:
-
-    \item list insert elements example:
-
-    \item list delete elements example:
 \end{itemize}
+
+
+\textbf{Example}
+
+
+\begin{lstlisting}[style=MyJava]
+//array declaration and manipulation:
+int [] arr = new int [50];
+arr[9] = 5;
+//the array will automatically be deleted by the garbage collector.
+//there is no way to insert new elements into the array, it is of fixed
+//size
+
+//ArrayList declatation and insertion
+ArrayList arr = new ArrayList();
+arr.add(5);//how we add new elements into the list
+//the list will be automatically cleaned up by the garbage collector
+\end{lstlisting}
+
 
 
 \pagebreak
@@ -364,26 +453,38 @@ endloop1:
 
     \item manipulation:
         lists are passed by reference implicitly in python, there is no way to
-        pass them by value.
+        pass them by value.  The lists are implemented in the same way as in
+        c++ and Java, they are implicit arrays that increase in size when they
+        become full.
 
     \item clean up:
-        The garbage collector will clean up unused objects when the python vm
-        runs out of memory or drops below a particular treshold.
-
-    \item array declaration example:
-        There are no arrays in python (well you can use numpy but its not a
-        python builtin)
-
-    \item list declaration example:
-        L = []
-
-    \item list insert elements example:
-        L.insert(1)
-
-    \item list delete elements example:
-        L.pop() or L.remove(1)
+        The garbage collector will clean up unused objects when the python VM
+        runs out of memory or drops below a particular treshold.  We can also
+        'delete' a list using the 'del' keyword in python.  This does not
+        trigger garbage collection though, only removes the reference to the
+        object.
 \end{itemize}
 
+
+\textbf{Example}
+
+
+\begin{lstlisting}[style=MyPython]
+#array declaration and manipulation:
+#There are no arrays in python
+
+
+#list declaration, manipulation and deletion
+L = []
+L.append(5)
+L.append(6)
+#elements can be removed from the list either using
+L.pop()
+#or by using
+L.remove(5)
+
+del L
+\end{lstlisting}
 
 
 
@@ -559,18 +660,49 @@ follows:\\
 \end{lstlisting}
 
 
-\textbf{Example 1}
-\begin{lstlisting}
-        (λx.(λy.(λz.x + y + z)))(1)(2)(3)
-        (λy.(λz.1 + y + z))(2)(3)
-        (λz.1 + 2 + z)(3)
-        1 + 2 + 3
-\end{lstlisting}
+\noindent
+\textbf{Identity Example}
 
 
-\textbf{Example 2}
-\begin{lstlisting}
-\end{lstlisting}
+$(\lambda x.x)(1)$\\
+\indent
+$1$\\
+
+
+\noindent
+\textbf{3 Parameter Example 1}
+
+
+$(\lambda x.(\lambda y.(\lambda z.x + y + z)))(1)(2)(3)$\\
+\indent
+$(\lambda x.(\lambda y.(\lambda z.x + y + z)(3))(2))(1)$\\
+\indent
+$(\lambda y.(\lambda z.1 + y + z)(2))(3)$\\
+\indent
+$(\lambda z.1 + 2 + z)(3)$\\
+\indent
+$1 + 2 + 3$\\
+\indent
+$6$\\
+
+
+
+
+\noindent
+\textbf{3 Parameter Example 2}
+
+$(\lambda x.(\lambda y.(\lambda z.x * y * z)))(1)(2)(3)$\\
+\indent
+$(\lambda x.(\lambda y.(\lambda z.x * y * z)(3))(2))(1)$\\
+\indent
+$(\lambda y.(\lambda z.1 * y * z)(2))(3)$\\
+\indent
+$(\lambda z.1 * 2 * z)(3)$\\
+\indent
+$1 * 2 * 3$\\
+\indent
+$6$\\
+
 
 
 
