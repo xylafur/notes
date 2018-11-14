@@ -286,26 +286,378 @@ endloop1:
 \newpage
 \section{Memory Management in Various Modern Languages}
 
+\textbf{c++: list = vector}
+\begin{itemize}
+    \item allocation:
+        you can create a list either the stack or the heap.
+        Using the new keyword will allocate memory from the heap
+
+    \item manipulation:
+        you can use a pointer to manipulate or pass around the vector in c++,
+        you can also pass it in using the reference k=word
+
+        the list can also be passed around by value if you want to.
+
+    \item clean up:
+        If you allocate the list from the heap then you will have to manually
+        clean it up.
+
+    \item array declaration example:
+        stack
+            int arr [50];
+        heap:
+            int arr [50] = new int [50];
+
+    \item list declaration example:
+        stack:
+            std:vector<int> my_stack_vec
+        heap:
+            std:vector<int> * myvec = new vector
+
+    \item list insert elements example:
+
+    \item list delete elements example:
+\end{itemize}
+
+\pagebreak
+\textbf{Java: list = ArrayList}
+\begin{itemize}
+    \item allocation:
+        Both ArrayLists and arrays are not simple data types, they cannot be
+        stoed on the stack.  They must be allocated from the heap.
+
+        Both are created using the new keyword
+
+    \item manipulation:
+        objects are passed into functions by reference implicitly, there is no
+        way to pass them into a function by value.
+
+    \item clean up:
+        Java has garbage collection, which means as the programmer you do not
+        free memory that you were granted from the heap.  WHen there is not
+        enough free memory garabge collection will be invoked and release all
+        unused heap memory.
+
+        An ArrayList would definitely be more complicated to clean up due to
+        the fact that it has more metadata than a regular array.  An array list
+        will also have to constantly be cleaned up as its size is increased,
+        the old array that was used to hold the previous data of the list will
+        have to be freed.
+
+    \item array declaration example:
+        int [] arr = new int [50];
+
+    \item list declaration example:
+
+    \item list insert elements example:
+
+    \item list delete elements example:
+\end{itemize}
+
+
+\pagebreak
+\textbf{python: list = list , no arrays}
+\begin{itemize}
+    \item allocation:
+        In python everything is on the heap.  Lists will therefore be on the
+        heap just like everything else.  There are no arrays in python.
+
+    \item manipulation:
+        lists are passed by reference implicitly in python, there is no way to
+        pass them by value.
+
+    \item clean up:
+        The garbage collector will clean up unused objects when the python vm
+        runs out of memory or drops below a particular treshold.
+
+    \item array declaration example:
+        There are no arrays in python (well you can use numpy but its not a
+        python builtin)
+
+    \item list declaration example:
+        L = []
+
+    \item list insert elements example:
+        L.insert(1)
+
+    \item list delete elements example:
+        L.pop() or L.remove(1)
+\end{itemize}
+
+
+
 
 %num 6
 \newpage
 \section{Requirements to Handle Floating Point and Integer Numbers in Python}
+Currently our interpreter only supports integers, strings and boolean types.
+In the case of our interpreter, we use a stack based virtual machine to compute
+the actual program; the virtual machine executes bytecode that we created.  The
+lexer/parser convert the python file into this bytecode and then this bytecode
+is executed.\\
+
+The way our Virtual Machine's instruction set is implemented, we have seperate
+math instructions for the different value types: for instance we use
+the pushi, pushi and addi commands to push an integer onto the stack and then add the
+top two integers from the stack.\\
+
+To add functionality that allows the use of floating point numbers we would
+firstly have to properly tokenisze them.  Our parser would then need to be
+updated to accept floating point numbers in the grammar.  This is the easiest
+step, the regex would be something like:\\
+\begin{lstlisting}
+\d+\.\d*|\d*.\d+
+\end{lstlisting}
+
+When this is converted to the abstract syntax tree, the node for that floating
+point value would be of type 'float' rather then integer.  When the abstract
+syntax tree is converted into bytecode we would have to make sure to use the
+proper instructions for the new type.\\
+
+Type checking could be handled when converting from the AST.  Our expr nodes
+can have a type, either integer or floating point.  Like most languages, we
+would probably implement it such that if there is a floating point number
+involved then the other number will also be treated as a float and then the
+result will be a float.  So any expr node that uses a floating point number
+node or another expr node that uses a float will be marked as such.  All of the
+integers in these nodes will have to be converted into floating point
+numbers.\\
+
+
+To achieve this we would need to add a casting instruction to convert from the
+format used to represent floating point numbers and the format used to
+represent integer numbers.\\
+
+This floating point number type would be implemented using the IEEE specified
+scientific notation that other programming languages (and CPUs/ ALUs) use to
+represent numbers. Our Virtual Machine would have to know how to manipulate a
+floating point number, we would give the VM a special instruction so that it
+knows we are using a floating point number.\\
+
+Conversion would be a simple bit operation.  Floating point numbers are
+represented something like:\\
+\begin{lstlisting}
+    <sign bit><exponent><significand>
+\end{lstlisting}
+
+
+When converting, we would have to decide on a convention, either rounding or
+truncating.  For this question I will assume we use truncation.  So if we have
+10.5, out number would become 10.0, then we would convert this to the integer
+10.\\
+We would convert this to an integer by copying over the significand exactly
+into the integer and then shifting this number over based on the exponent of
+the float. \footnote{https://stackoverflow.com/questions/7977265/what-happens-at-background-when-convert-int-to-float}
 
 %num7
 \newpage
 \section{The Dangling Else Deleima}
+I will use Java in answering this question rather than python.\\
+The ambiguity comes from the fact that the curly braces are optional in the
+java if-then-else block.  Using the curly braces to define where our if block
+starts and begins will resolve ambiguity.  The following example shows this:\\
+
+
+\textbf{Ambigious if else grammar}
+\begin{lstlisting}[style=MyC++]
+if ( <bool expr> ) <stmt> | if ( <bool expr> ) <stmt> else <stmt>
+\end{lstlisting}
+
+
+
+Using this grammar, let us consider the following example.\\
+
+\begin{lstlisting}[style=MyC++]
+if (true)
+    System.out.println("true");
+    if (false)
+        System.out.println("False");
+    else
+        System.out.println("not False");
+\end{lstlisting}
+
+
+
+Based on the way that this is indented, we could assume that the else statment
+goes with the inner if.  But this is not the way it will necesarrily be parsed.
+Since whitespace is not considered in Java, this is equivalent:\\
+
+\begin{lstlisting}[style=MyC++]
+if (true)
+    System.out.println("true");
+    if (false)
+        System.out.println("False");
+else
+    System.out.println("not False");
+\end{lstlisting}
+
+
+The output of this program could either be\\
+
+\begin{lstlisting}
+>>> true
+\end{lstlisting}
+
+
+if the else block is considered to be part of the outer if statment.  Or\\
+
+\begin{lstlisting}
+>>> true
+>>> False
+\end{lstlisting}
+
+
+
+
+if the else is taken to be part of the inner statment.  Whatever convention the
+compiler/ parser uses is what will determine the order.
+
+If we add in curly braces to the grammar definition:
+
+\textbf{Unambigious if else grammar}
+\begin{lstlisting}[style=MyC++]
+if ( <bool expr> ) { <stmts> } | if ( <bool expr> ) { <stmts> } else { <stmts> }
+\end{lstlisting}
+
+
+Considering the same example as before but with the new grammar:
+
+
+
+\begin{lstlisting}[style=MyC++]
+if (true){
+    System.out.println("true");
+    if (false){
+        System.out.println("False");
+    }
+    else{
+        System.out.println("not False");
+    }
+}
+\end{lstlisting}
+
+
+
+There is only one that this can be parsed based on the grammar, since we are
+inside the <stmts> block of the outer if stmt.  The contents of this stmts
+block is determined by the curly braces.  In python it is determined by the
+whitespace
+
+
 
 %num8
 \newpage
 \section{Minimal BNF for Lambda Calculus and Examples}
 
+The minimal grammar given by the professor during the exam review was as
+follows:\\
+\begin{lstlisting}
+        t : t                       #variable
+          | lambda t.expression     #variable to expression
+          | tt                      #application
+          ;
+\end{lstlisting}
+
+
+\textbf{Example 1}
+\begin{lstlisting}
+        (λx.(λy.(λz.x + y + z)))(1)(2)(3)
+        (λy.(λz.1 + y + z))(2)(3)
+        (λz.1 + 2 + z)(3)
+        1 + 2 + 3
+\end{lstlisting}
+
+
+\textbf{Example 2}
+\begin{lstlisting}
+\end{lstlisting}
+
+
+
 %num9
 \newpage
-\section{Type Saftey in Lambda Calculus}
+\section{Type Safety in Lambda Calculus}
+Typed Lambda Calculus is implemented with only two simple data types, booleans
+and integers.  Each of these can be considered two completley different sets
+with no commonalities.  In the words of the professor, "once we are inside a
+set we want to make sure that we don't end up in the other set. For type safety
+we want to keep everything confined within its own set."\\
+
+We know how integers interact with integers, and we know how booleans interact
+with booleans.  By confining each of these types to their own sets and
+ensuring that both of the sets are independent we can stay in the realms of
+what we understand and know how to to.  Type safety is implemented by keeping
+these two sets seperate.\\
+
+There is an exception to this however: The is zero function is a way for us to
+map out of the integer set and into the boolean set.\\
+
+In regards to data types, we want to have a complete and sound definition.  We
+can achieve this using three constructs:\\
+\begin{enumerate}
+    \item Type Expressions:\\
+        T ::= ...\\
+        Here we define what our types are
+
+    \item Type Relations:\\
+        t: T\\
+        Here we define the relationship between a variable and its type
+
+    \item Typing Rules Giving an Inductive Definition of t: T\\
+        We define basic defitions for data types and then we have mechanisms
+        for checking data types in general.
+\end{enumerate}
+
+
 
 %num10
 \newpage
 \section{Grammar for Arithmetic Expressions with Parenthesis}
+The idea behind this is that anything encapselated in parenthesis should be at
+the very bottom of our grammar defition.  Something being lower in the grammar
+means that it has higher presedence than the things before it.
+
+\begin{lstlisting}
+expr1: <expr2> + <expr1>
+     | <expr2> - <expr1>
+     | <expr2>
+     ;
+
+expr2: <expr3> * <expr2>
+     | <expr3> / <expr2>
+     | <expr3>
+     ;
+
+expr3: - <expr4>
+     | + <expr4>
+     | <expr4>
+     ;
+
+expr4: ( <expr1> )
+     | NUMBER
+     ;
+\end{lstlisting}
+
+
+Recursive descent parsers work recursively (as implied by the name) while LR
+parsers work using a stack.  Recursize descent parsers start from the beginning
+of a file while LR parsers start from the end.
+
+For an LR parser, tokens are pushed onto the stack.  At any point in time, the
+parser can either shift a new token onto the stack or reduce.  In a properly
+constructed grammar we always know if we will shift or reduce.  
+
+\textbf{Recursive Descent Example}
+
+
+\begin{lstlisting}
+\end{lstlisting}
+
+\textbf{LR Example}
+
+
+\begin{lstlisting}
+\end{lstlisting}
 
 
 
