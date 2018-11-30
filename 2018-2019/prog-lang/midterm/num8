@@ -1,0 +1,26 @@
+
+The minimal grammar given by the professor during the exam review was as
+follows:
+        t : t                       #variable
+          | lambda t.expression     #variable to expression
+          | tt                      #application
+          ;
+
+
+
+
+
+
+
+        (λx.(λy.(λz.x + y + z)))(1)(2)(3)
+        (λy.(λz.1 + y + z))(2)(3)
+        (λz.1 + 2 + z)(3)
+        1 + 2 + 3
+
+
+
+
+
+        (λx.x)(1) == 1
+
+
