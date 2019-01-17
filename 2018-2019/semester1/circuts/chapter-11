@@ -1,0 +1,41 @@
+11.1 - Introduction:
+    Capacitor voltage cannot change instantly - it can not jump from one value
+    to another abruptly.  It climbs gradually and smothly: capacitor voltage
+    must be continuous at all times
+
+    The current is not continous.  It jumps from 0 to E/R amps instantly
+        once the capacitor is fully charged the current drops to 0 through the
+        capacitor and the entire line involving that capacitor
+
+        this is because the current is only due to the moving electons as the
+        capacitor is changing
+
+    Steady State:
+        when the current and voltage stop changing the circut is said to be in
+        steady state.  V = E and I = 0
+
+        Since the capacitor has voltage across but no current it looks like a
+        short circut
+    
+    Discharing:
+        If the capacitor is charged to E volts, it will momentarily act as a
+        voltage source of E volts when it begins discharging.  THe current
+        jumps to -E/R amps.  The volrage and current decay to 0 over time
+
+
+    Time Transient Analysis:
+        time begins at 0 when the switch is flipped to charge or discharge -
+        depending on what we are looking at. After the switch, voltage and
+        current become functions of time.
+
+        we Ic(0) is not defined because of the discontinuous jump
+            to get around this, we define 2 values for 0s.  t = 0-s as t = 0s
+            just prior to switching and t=0+s as t=0s just after switching
+            
+            therefore ic(0-) = 0A and ic(0+0) = (+/-)E/R
+
+
+        exponential functions:
+            waveforms are exponential and vary according to e^-x or (1 - e^-x)
+
+11.2 - Capacitor Charging Equations:

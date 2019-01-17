@@ -1,0 +1,45 @@
+Class information will on his website
+    http://www2.cs.uh.edu/~ceick/4368.html
+
+
+AI:
+    Ask yourself if you consider yourself to be intelligent - what are the
+    ingredients needed for this?
+        - You can take in information and solve problems with that
+        - you can drive a car
+        - whatever belongs to being intelligent is part of artificial
+          intelligence
+
+    AI develops programming paradigms, languages, tools  and enviornments for
+    application areas for which conventional programming fails
+        it is possible to do this in other programming languages, but may take
+        much more code
+
+    The first version of LISP didn't have any numbers
+
+    Soft computing:
+        toolboxes, one way to view AI is just a bunch of tools
+            compute the probability based on symptoms based on data or something
+
+    The study of how to make computers do things which at the moment people do
+    better
+        IF there is a restrictive domain, then can we really call them
+        artificial intelligence?
+
+        Its harder to make something more generic, rather an AI dedicated to a
+        very particular task
+
+
+Physical Symbol System Hypothesis:
+    We ask questions like can computers be creative, can they actually think?
+
+    What the brain does can be thought of, at some level, as a kind of
+    computation
+
+    We have to reduce problems to some kind of computation  
+        if we can't reduce that to a single kind of computation, we have to do
+        the best we can
+
+Knowledge Representation:
+    There are sometimes better ways to display a problem that makes it more
+    obvious

@@ -1,0 +1,58 @@
+A note on operating systems
+    you don't have 2**64 bits in a 64 bit architechture?
+        certain bits are reserved from flags
+
+        for windows I believe
+
+    He's saying that the linux os is more siphistocated
+        the way they did 64 bit vs 32 bit
+
+
+    Threads are what really sets windows and unix apart:
+        there is also incompatibility between ATT unix, bsd and linux threads.
+
+        He says linux is more c threads whereas the unix are more posix style
+        threads
+
+Back to Functional Programming / Lambada Caluculs:
+    2 important things:
+        alpha rule:
+            helps us avoid ambiquity
+
+        beta reduction:
+
+    Lambda Calculus:
+        computation takes the form of beta reduction
+            we have many nested lambda function
+
+        The variable in our lambda function is basically a local variable
+            (lambda x . t1) t2 => [x -> t2]t1
+
+            in this case we substitute the local variable x with t2, we bind x
+            to t2
+
+        beta regex:
+            term in the form:
+                (lambda x.t1)t2
+
+        a beta normal form is a term containing no beta-redexes
+            stop when you cannot further reduce
+
+
+        programming in the lambda calculus:
+            we need:
+                Currying:
+                    taking in a function and then returning a function with one
+                    last parameter
+
+                    we can define functions with multiple parameters much
+                    simpler
+
+                bools
+                pairs
+                church numberals and arithmetic
+                lists
+                recursion
+                    call by name and call by value versions
+
+

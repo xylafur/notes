@@ -1,0 +1,27 @@
+Lisp:
+    1: First to intruduce garbage collection
+
+    https://en.wikipedia.org/wiki/Lisp
+
+Stimula:
+    2; First Object oriented programming language:
+        had everything: inheritance, virtual functions etc
+
+    https://en.wikipedia.org/wiki/Simula
+
+
+Algol 58:
+    3: introduced the difference between comparison ans assignment operators
+        := assignment, = equality
+    
+    https://en.wikipedia.org/wiki/ALGOL_58#History
+
+Algol 60:
+    4: introduced code blocks using `begin` and `end` keywords
+
+    5: one of the first languages to introduce the dangling-else delima because of
+    the removal of the then statmeent to if then blocks
+
+    https://en.wikipedia.org/wiki/ALGOL_58#History
+
+

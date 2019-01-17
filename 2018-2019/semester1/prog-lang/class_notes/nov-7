@@ -1,0 +1,138 @@
+we are going to talk about sub programs:
+    There is the assumtion that you have long source code
+        somehow you need to modularize it
+            pices of code that are executed, testing independiently
+
+        we want these modules tobe as independent as possible
+
+    Our CPU code (assembly) is not moduilarized
+        it is just a long block of source code
+        there are gotos and such but its just one long set of isntructions
+            one long piece of source code
+
+    Object Oriented Programming:
+        there isn't a notion of oop in assembly or functional programming
+
+        somehow classes are an evolution of modularization
+            we still consider alot of the aspects of modualization when caking
+            oo code
+
+        we want our objects to be not big
+            but how small should these things be?
+
+    There is a historical reason for the idea of small fucntions / modules
+        terminals didn't display alot of text
+            we want to be able to see the entire function on one screen
+
+    The 2 kinds:
+        functions
+            should functions return a single thing?  WHat if we want multiple
+            things back?
+
+            returns 1 value:
+                simple:
+                    int, string, bool
+                complex:
+                    lists, arrays, ...
+
+                objects:
+                
+
+            returns multiple values:
+                can return multiple things
+
+        procedures:
+            way more flexible than functions
+
+
+
+        in c every subroutine is a function
+            this is what the void return type is for
+
+            functions are better from a theoretical standpoint because there are
+            no side effects, easier to test
+                                                            
+    Syntax
+        what do we need?
+            some way to define a function / procedure
+
+            some way to call a function / procedure
+                how to pass parameters, how to retrieve values of variables
+                    our variables can either be global or local
+
+                    we want to assume that variables reference local variables
+                        local variables are better from a mathematical
+                        perspective
+
+                        they are less effiecient from a programming perspective
+
+
+                    this stems from the fact that variables will have the same
+                    name, we want to distringuish between global x and x local
+                    to our function
+
+                we want functions to be black boxes
+                    how many parameters do we need to achieve this
+
+                if we look at the origins of computing, specifically fortran:
+                    - specifically made for matrix manipulation and computations
+                        - used in linear algebra
+                        - we have operators
+                            - genrally we want the matricies to become a certain
+                              form
+                        - we factorize them
+
+                Fortran vs Algol:
+                    Fortran:
+                        super fast
+                        compiled easily
+
+                    Algol:
+                        
+
+                How are we going to pass parameters:
+                    some will be input
+
+                    some will be output
+
+                    some are both in and out
+
+                    types:
+                        positional
+
+                        named
+
+oop:
+    we went from
+        procedures -> functions -> modules
+
+        modules:
+            some data
+            functions
+            procedures
+
+            looks alot like a class
+
+            modules:
+                some data
+                functions
+                procedures
+
+                looks alot like a class
+
+                modules:
+                    some data
+                    functions
+                    procedures
+
+                    looks alot like a class
+                    things that started to implement this
+                        modula
+                        oop pascal
+                        delphi
+        
+
+
+
+    Semantic
+    Evaluation

@@ -1,0 +1,50 @@
+Chapter 1:
+    1-1 Introduction to 1s and 0s:
+        - Analog is one of continuous values
+        - Digital is one of a set of discrete values
+
+    1-3 Digital and Analog Systems:
+        - Digital systems manipulate values in digital form
+            - Advantages:
+                - Ease of design
+                - accuracy and precision are easier to maintain
+                - programable operatoin
+                - less affected by noise
+                    - analog 'noise' will not be able to distort due to the fact
+                      that they operate very differently
+
+                - Ease of fabrication (using IC chips)
+
+            - Limitations:
+                - everything around us is analog, so to deal with digital
+                  technology we have to convert from analog to digital
+
+                - we have to convery a physical thing into an analog electrical
+                  signal.
+                    - then we can convert this to digital
+                    - then we can process this information usinging digital
+                      logic
+                    - then we have to convert the output back into analog
+
+
+        - Analog systems manipulate values in analog form
+            - basically anything in real life is analog
+            - any sound we hear is analog in nature
+
+        - Generally sensors are analog - or produce analog output
+            - this means that we're going to have to convert it before we can
+              process it using digital logic
+
+    1-5 Representing Binary Quantities:
+        - There is a threshold of invalid values between what represents 0 and
+          what represents 1
+            - for example maybe 0V to .8V represents 0 and 2V to 5V represents 1
+                - gates are designed in this way.  So I guess that these values
+                  depend on the threshold of the gate on the transistor
+
+            - This is called TTL (transistor transistor logic)
+                - the IC's in our system based on this, we have a range of
+                  voltages like this
+
+            - CMOS:
+                - something completley different than TTL

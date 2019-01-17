@@ -1,0 +1,173 @@
+tokens in bison have both token type and a semantic value
+    grammar rules know nothing about tokens except their types
+
+    the semantic value has contains what the thing actualy is
+        token: INTEGER
+        value: 4
+
+grammar rules in bison can also have associated actions that are made up of C
+statements
+    when bison recognizes a match as a rule, it executes the action
+
+    example (rule that says an expression can be the sum of two subexpressions
+
+        expr: expr '+' expr     { $$ = $1 + $3 };
+
+    the action says how to produce the semantic value of the sum expression
+    from the values of the two subexpressions
+
+Writing GLR Parsers:
+    bison's default parsing algorithm is LR(1), this cannot always decide
+    whether to apply a cerain grammar rule at a given point.
+        it may not be able to decide based on what has been read so far which
+        grammar rule to apply:
+            reduce/reduce conflict
+
+        it may not know if it needs to read more input and apply a reduction
+        later:
+            shift/reduct conflict
+
+    if the grammar used is not easily modified into LR(1), a more general
+    parsing algorithm may be needed
+        you can include 
+            %glr-parser 
+        among the bison declarations, this will result in a generalized LR
+        parser
+            handle bison grammars that contain no unresolved conflicts
+
+            when faced with shift/reduce and reduce/reduce, it does both
+                basically splits in two branches
+
+                each of these branches could encounter the same problem and
+                split again
+
+                branches either hit a parsing error and die, or it merges with
+                another parser because they produce the same set of symbols
+
+            while there are multiple parsers semantic actions are recorded but
+            not performed
+
+Using GLR on Unambigious Grammars:
+    good in cases where you need mroe than one symbol of look ahead
+
+    GLR can take quadratic or cubic worst-case time
+
+
+    if the context containing the conflict cannot be nested, then you won't hit
+    bad case complexities
+    an example of the case where the complexity is not nested is listed below
+
+        
+
+        %token TYPE DOTDOT ID
+
+        %left '+' '-'
+        %left '*' '/'
+
+
+        %%
+        type_decl: TYPE ID '=' type ';' ;
+
+        type:
+            '(' id_list ')'
+        | expr DOTDOT expr
+        ;
+
+
+        id_list:
+            ID
+        | id_list ',' ID
+        ;
+
+
+        expr:
+            '(' expr ')'
+        | expr '+' expr
+        | expr '-' expr
+        | expr '*' expr
+        | expr '/' expr
+        | ID
+        ;
+
+    when this is passed into a normal LR(1) grammar, bison complains about one
+    reduce/reduce conflict.  THe parser will just choose one, probably wrong
+
+    if we change the grammar to be used to GLR, it will resolve this
+
+    there are 2 potential problems:
+        1: analyze conflicts reported by bison to make sure that GLR splitting
+           is only done
+           a GLR parser splitting when it doesn't need to can cause problems
+           much less obvious that a LR parser
+        2: consider interactions with the lexer
+           once a split parser consumes tokens without performing any actions
+           during the split, the lexer cannot obtain information via parser
+           actions
+
+Locations:
+    to produce verbose and userful error messages we must keep track of the
+    textual location or each syntactic construct
+
+    in bison, each token has its semantic calue as well as an associated
+    location
+
+    we can get these locations through actions , @$ is the location of the
+    whole grouping, @1, @3 can be used to get subexpressions
+
+    when a rule is matched, there are default actions to compute the semantic
+    value as well as the locations
+        by default, bison takes the location of the beginning of the first
+        symbol and the end of the last symbol
+
+Bison Output: the parser implementation file:
+    takes in a bison grammar file and outputs c code for a parser
+
+    the parser groups tokens into groupings according to grammar rules, it runs
+    the rules defined as it does this
+
+    the tokens come from a lexer
+        bison calls the lexer whenever it wants new tokens
+
+    we need to provide the lexer as well as a function for error cases
+
+    all symbols defined in the bison parser implementation file bein with yy or
+    YY
+
+Stages in using bison:
+    1: specify the grammar in a form recognized by bison (the grammar file)
+        must also describe the action to be taken for each rule when it is
+        recognized
+
+    2: write a lexical analyzer to processinput and pass tokens to the parser
+        can use handwritten code or yylex
+
+    3: Write a controlling function that calls the bison-produced parser
+
+    4: write error reporting routines
+
+    to turn the source code into a runnable program:
+        1: Run bison on the grammar to produce the parser
+        2: Compile the code output by bison as well as any other source files
+        3: link the object files to produce the finished product
+
+the overal layout of a bison grammar:
+        %{
+        Prologue
+        %}
+
+        Bison declarations
+
+        %%
+        Grammar rules
+        %%
+        Epilogue
+    prologue:
+        types and variables, can use preprocessor commands
+
+    Declarations:
+        declare names of terminal and non terminal symbols, operator presedence
+        and the data types of semantic values of various symbols
+
+    epilogue:
+        any code you want to use
+        often put definitions of functions declared in the prologe

@@ -1,0 +1,133 @@
+General Overview of topics we will cover in the course:
+    Knowledge Representation:
+        Things can be more obvious or intuitive depending on the way in which we
+        represent them.
+
+        Sometimes it even reduces the work significantly
+
+    Natural Language Understanding:
+        Natural language is very ambigious.  In natrual language processing we
+        have to have specific defaults that we assume if the opposite is not
+        stated.  We can classify something into a stereotype, and use the
+        associated defaults with that stereotype
+
+        Understanding the goals of people, knowing ways of accomplishing those
+        goals can be useful to understanding a story
+
+
+            Example: John wants to buy a house
+                - John will have to find a house
+                - John will need a way to pay for this house
+                    - he could rob a big bank
+                    - he could marry a rich woman
+                    - etc
+
+
+            - goals will additionally have sub goals, ways of achieving those
+              broader goals
+                - Then we are able to form plans based on those goals
+                - we can also make subplans for goals
+
+        - Planning:
+            - we have those goals and sub goals
+            - you have a set of goals and operators
+            - based on if we are able to achieve goals or not we might apply
+              different operators
+
+    Heuristic Search
+        - Heuristo (greek): I find
+
+        - Heuristics: rule of thumb based on experience
+            - if we have domain specific knowledge we can adjust our algorithm
+              to use that knowledge
+            - this can help us reduce the things we need to search
+                - then if it fails we can search other things
+
+            - Main ideas:
+                - search space reduction
+
+
+
+    Evolutionary Computing:
+        - Based on the survival of the fittest
+            - start off with some initial solutions, then breed new solutions
+                - some have properties of mother or father
+            - then we only allow the ones that are better to breed more
+
+            
+    Soft Computing:
+        - in conventional programming you have 2 value logic
+            - mostly uses a symbolic 
+
+        - Soft computing is fuzzy logic
+            - turning on the AC at 70 vs turning the AC on a little at 70
+            - kind of like an analog aproach
+                - depending on the specificis of the value we can have different
+                  behavior
+
+            - we use things like belief networks that help with decision making
+
+            - can have soft solutions
+                - the result needs to be within some threshold rather than some
+                  exact value
+
+                - alot of interpolation
+                    - constructing a range of new data points within a range of
+                      discrete data points
+
+    Learning:
+        - the only way you can learn is if you make some error or recieve some
+          feedback
+
+        - various types
+            - Supervised learning:
+                - learning from examples
+                - the developer is the one who provides the example
+
+            - Reinforcement Learning:
+                - feedback is only received with repect to an action taken by
+                  the agent
+
+            - Unsupervised Learning:
+                - learning without feedback
+
+        - Classification Model:
+            - Pass supplied training data into classification algorithms
+                - these algorithms produce a model
+
+            - Then you use unseed data and test it against the model
+        
+        - KDD (Knowledge discovery in Data):
+            - Definition: "KDD is the non-trivial process of identifiying valid
+                           novel, potentially useful, and ultimately
+                           understandable patterns in data"
+
+Intelligent Agents:
+    - Try to simulate what humans do, systems that act like humans
+        Ex: Robots that play soccer
+        Ex: Robot waiters
+
+    - Many attributes
+        - Perception
+        - Robotics
+        - Language (communication)
+        - Knowledge
+        - Reasoning
+            - Based on what I know, will this happen?
+
+        - Learning
+            - assuming you get some sort of feedback
+
+    - Many motivations for doing this
+        - make money, help people, etc
+
+
+AI Tools:
+    - a tool that can be used for a specific purpose
+        Example: Belief network tools
+
+    - Provide AI techniques in non agent settings
+
+
+        
+

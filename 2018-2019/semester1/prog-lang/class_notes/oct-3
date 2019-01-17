@@ -1,0 +1,60 @@
+- Homework 2
+    - would be good to have a function being able to call another function
+
+    - He thinks he removed it, but we will have to support it for sure for the
+      next homework
+
+    - Will definitely have parenthesis in homework 4, so we may want to add
+      them into homework 2 so we don't have to do it for homework 4
+
+
+    - we need for Homework
+        - Scanner
+        - Parser
+        - Evaluator
+
+        - We need 2 stacks
+            - 1 for the parser
+            - 1 for the evaluator
+
+*******************************************************************************
+*******************************************************************************
+************************** CONTINUING FROM LAST TIME **************************
+*******************************************************************************
+*******************************************************************************
+
+- Categories of Variables by Lifetimes
+    - Stack-dynamic
+        - Storage bindings are ceated for variables when there declaration
+          statesments are elaborated
+
+        - If scalar, all attributes exceppt address are statically bound
+            - Local variables in C programs and java programs
+
+            - Advantage:
+                - Alows recursion, concerves storage
+
+            - Disadvantage:
+                - overhead of allocation and deallocation
+
+                - Subprograms cannot be history sensitive
+
+                - Inefficient references
+                    - because variables are local it is difficult to access
+                      them outside their enviornment
+
+    - Explicit Heap-dynamic
+        - Allocated and deallocated by explicit directives,specified by the
+          programmer, which take effect during execution
+
+        **** The heap is much larger than the stack
+
+        - referenced only though pointers or references
+
+        - Advantage
+            provides for dynamic storage managment
+
+        - Disadvantage
+            - inefficient and unreliable
+
+

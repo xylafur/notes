@@ -1,0 +1,30 @@
+Two big themes in the course:
+    Functional Programming:
+        significantly different than imperitive procederal
+
+    OOP:
+        would definitely fall in the same broad category as imperitive and
+        procederal
+
+    And if these two can be used together (they can to some extent)
+
+
+Python and how it relates to what he wants from the homework:
+    recursive
+        he wants to see linear tail recursion
+
+    lists
+
+Recursion:
+    Linear Recursion:
+        only make a single recursive call
+
+    Tail Recursion:
+        we build up the stack and then evaluate back from the stack and remove
+        the stack
+
+
+
+Functional Programming:
+    No mutation, no assignments at all
+        his makes debugging easier, the state of things don't ever change

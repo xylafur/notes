@@ -1,0 +1,56 @@
+The ambiguity comes from the fact that the curly braces are optional in the
+java if-then-else block.  Using the curly braces to define where our if block
+starts and begins will resolve ambiguity.  The following example shows this:
+
+
+Ambigious if else grammar
+
+if ( <bool expr> ) <stmt> | if ( <bool expr> ) <stmt> else <stmt>
+
+if (true)
+    System.out.println("true");
+    if (false)
+        System.out.println("False");
+    else
+        System.out.println("not False");
+
+based on the way that this is indented, we could assume that the else statment
+goes with the inner if.  But this is not the way it will necesarrily be parsed.
+Since whitespace is not considered in Java, this is equivalent:
+
+if (true)
+    System.out.println("true");
+    if (false)
+        System.out.println("False");
+else
+    System.out.println("not False");
+
+The output of this program could either be
+>>> true
+
+if the else block is considered to be part of the outer if statment.  Or
+
+>>> true
+>>> not False
+
+if the else is taken to be part of the inner statment.  Whatever convention the
+compiler/ parser uses is what will determine the order.
+
+If we add in curly braces to the grammar definition:
+
+if ( <bool expr> ) { <stmts> } | if ( <bool expr> ) { <stmts> } else { <stmts> }
+
+if (true){
+    System.out.println("true");
+    if (false){
+        System.out.println("False");
+    }
+    else{
+        System.out.println("not False");
+    }
+}
+
+There is only one that this can be parsed based on the grammar, since we are
+inside the <stmts> block of the outer if stmt.
+
+
