@@ -1,0 +1,33 @@
+Embedded System Constraints:
+
+Real Time Systems: (3 types)
+    Hard Real Time:
+        A timing constraint will never be missed
+
+        saftey
+
+    Firm Real TIme:
+        We are going to do our best to meet deadlines
+    
+        the value of the sytem is just lowered a bit if we miss it but it still
+        functions
+
+        audio, video streaming
+
+    Soft Real TIme:
+        value of a task diminishes the later it completes
+
+        email, webservers
+
+
+
+Embeded systems are:
+    reactive
+
+    have to operate in real time
+
+    have constraints
+
+    ubiquitous
+
+    Systems which combine digital and analog, subsystem and interfaces

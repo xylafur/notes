@@ -1,0 +1,10 @@
+#!/bin/bash
+#make sure multilib is installed
+sudo pacman -S lib32-ncurses
+sudo pacman -S gconf
+sudo pacman -S libgconf
+
+pushd /home/yelsek//aur
+git clone https://aur.archlinux.org/ncurses5-compat-libs.git
+makepkg -si --skippgpcheck
+popd
