@@ -2,3 +2,7 @@
 *.mp4
 *.doc
 *.pdf
+.*.un*
+.*.sw*
+2018-2019/semester2/networking/Wireshark\ Labs/*
+*Wireshark\ Labs*

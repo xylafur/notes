@@ -1,0 +1,73 @@
+- Number systems and codes:
+    - BCD Code:
+        - when a decimal number is represented as the binary equivalend, this
+          is called straight binary coding
+            - sometimes it is useful (for speed reasongs) to represent a number
+              as some combinarion of decimal and binary
+
+        - Binary-Coded-Decimal Code
+            - each digit of a decimal number is represented by its binary
+              equivalent
+                - ex: 874 == 1000 0111 0100
+
+            - 4 bits are always used for each digit
+                - 2 digit decimal numbers are not valid
+                - so 0000 to 1001
+
+            - comparison of BCD and binary
+                - BCD is not a number system, its kind of a hack of the regular
+                  decimal number system
+    - The Gray Code
+        - when multiple input conditions change to a digital system, this can
+          be misinterpreted and cause an error
+            - Gray code is a way of trying to reduce the probability of errors
+
+        - only one bit will ever change between numbers
+
+        - the most significant bit is the same as in binary,
+            - the other bits in gray code represent wether adjacent binary bits
+              are the same or different
+
+    - The byte, nibble and word
+        - nibble
+            - half a byte, 4 bits
+
+        - words
+            - a group of bits that represents a certain unit of information
+            - the size of the word depends on the size of the data pathway in teh
+              system
+
+    - alphanumeric codes
+        - in a nutshell: the codes that represent all of the characters on your
+          keyboard
+
+        - ascii:
+            - 7 bit code
+            - padded with a zero as the left most digit
+
+    - parity method for error detection
+        - whenever information is transmitted from one device (the transmitter)
+          to another devices (the receiver) there is a possibility that errors
+          can occur
+            - a major cause of these transmission errors is electrical noise
+
+            - the most common way of detecting and possibly correcting errors
+              caused by electrical noise is a pairity bit
+
+        - pairity bit
+            - extra bit attached to a code group being transfered.  The bit is
+              given its value in one of two ways
+
+                - even pairity bit
+                    - the pairity bit is chosen so that the total number of 1s
+                      in the group is even
+                        - if one of these bits randomly flips during
+                          transmission, we will know because there will be an
+                          odd number of 1s
+
+                - odd pairity bit
+                    - the same thing as the even pairity, but uses an odd
+                      number of 1s instead of an even
+
+                - neither of these methods would work if two bits were fliped
+                  instead of just one

@@ -1,0 +1,517 @@
+- 1.1 What is the internet?
+    - We will answer this in terms of hardware and netowrk infastructure
+
+    - Nuts and Bolts
+        - computer network that connects a bunch of different devices
+
+        - Things that connect to the internet are called 'end systems'
+            - these end systems are connected together by a network of
+              "communication links" and "packet switches"
+
+            - communication links are the physicsal connection
+
+        - Information is slapped with headers and footers for each segment -
+          these things are called packets
+
+            - these packets are reassembled on the end system
+
+        - Packet switches take packets arriving through one of its
+          communication links and forwards the poacked to an outgoing
+          communication link
+            - there are 2 main types of packet switches
+                - routers
+                    - typically used in the network core
+
+                - link-layer switches
+                    - - typically used as the network core
+
+            - the patch traversed by these packets is known as the route
+
+        - end systems access the internet thorugh Internet service providers
+            - lower tier ISPs are interconnected through international
+              upper-tier ISPs (such as AT&T, Sprint, etc..)
+
+
+        - End system, switches and other pieces on the internet run protocols
+            - Transmission Control Protocol (TCP) and the Internet Protocol (IP)
+              are two of the most important protocols in the Internet
+                - IP:
+                    - the format of the packets sent
+                - Known as TCP/IP
+
+            - The IETF (Internet Engeinnering Task Force) Creates these
+              protocols
+                - people who work on infastructure must follow them
+
+
+
+    - Services Description
+        - the internet can be viewed as an infastructure that procides services to
+          applications
+
+        - distributed applications involve multiple end systems that exchange data
+          with one another
+            - these applications do not run in the packet switches
+
+        - End systems attached to the internet procide a socket interface that
+          specifices how a program running on one end system asks the internet
+          inrastructure to deliver data to a specific destination program running
+          on  another end system
+
+            - this socket interface is simmilar to the need to write teh sending
+              address and name of the person you want to send a snail mail letter
+              to
+
+        - for protocols
+            - there are specific messages that we send
+            - and specifiic actions we take in response the the received reply
+              (including no reply)
+
+            - entities must use these same protocols to really communicate
+
+        - Network Protocols
+            - All activity in the Internet that involves two or more communicating
+              remote entities is governed by a protocol.
+
+
+- 1.2 The Network Edge
+    - This is more about the components of a computer network (and the internet
+      in particular)
+
+      - Hosts are divided into
+        - Clients
+        - Servers
+
+        - we say that hosts are at the "edge of the network" since they are the
+          end user
+
+    - Access Networks
+        - two types of broadband
+            - DSL (digital subscriber line):
+                - over a telophone line
+
+                - 3 different frequency ranges are used to allow for regular
+                  telophone calls, upload and download
+
+            - Cable
+                - fiber optic cable connects neighborhood level junctions to
+                  cable head end (CMTS) (the ISP I guess?)
+                    - the CMTS converts analog signal sent from the cable
+                      modems to digital format
+
+                    - cable is divided into two channels, a downstream and an
+                      upstream
+
+                - Everyone gets everybodys packets
+                    - we are all sharing the same cable
+                    - if a bunch of people are using the internet in your area
+                      it will slow down for everyone
+
+            - Fiber to the Home
+                - a strand of fiber goes from the ISP to the neighborhood
+                  splitter
+
+                - two methods of splitting
+                    - Active OPtical Networks
+                        - essentially switched ethernet
+
+                    - Passive Optical Networks
+                        - each home has an optical network terminator
+
+
+                - these junctions then connect to individual houses with cable
+                  wire
+
+
+
+
+    - Access in the Enterprise (and the home): Ethernet and wifi
+        - in many networks lan is used to connect an end sstem to the edge
+          router
+
+    - Physical Media
+
+        - HFC : mix of fiber and cable tech like we have in most homes
+        - Can be fiber, copper, radio waves, etc
+
+        - Guided Media
+            - guided along a solid medium (fiber, cable)
+        - Unguided Media
+            - wave propogates in teh atmosphere and outerspace
+
+- 1.3: The Network Core
+    - Packet Switching
+        - Networked systemes exchenge messages
+            - these messages are divided into packets
+            - the packets are sent to their destination through a series of
+              packet switches
+
+        - Store and Forward Transmission
+            - how most packet switches handle input
+            - the packet switch must receive the entire packet before it can
+              begin to transmit the first bit of the packet to the outbound
+              link
+
+            - the delay for each packet to reach its destination caused by
+              routers it equal to
+
+              d(n): (n+1)*L*R
+                where n is the number or routers, L is the number of bits to
+                send and R is the bit/sec rate
+
+        - Queuing Delays and Packet Loss:
+            - each output from a packet switch has its own output buffer
+                - if the buffer is full when a new packet arrives to be
+                  transmitted on that link, the packet is lost
+
+        - Forwarding Tables and Routing Protocols
+            - The destination of a packet is written in its header
+
+            - each router has a forwarding table
+                - this table maps destination addresses (or portions of
+                  addresses) to the router's outbound links
+
+                - when a router recieves a packet, it reads the packets
+                  destination address and then forwards it to the next router
+                  based on its routing table
+
+            - how do these tables get set?
+                - there are a number of special routing protocols that are used
+                  to automatically set routing tables
+
+    - Circut Switching:
+        - 2 fundamental approaches to moving data through a network
+            - circut switching
+            - packet switching
+
+        - resources are reserved for the duration of the communication session
+          between end systems
+            - in a packet switched network these things are not reserved
+
+        - this is what is used on telophone networks.
+            - you have to wait for someone to answer the phone
+            - when they do the two of you have a dedicated link
+
+            - the two parties get a dedicated transmission rate for the
+              duration of the connection
+
+        - Multiplexing in Circut-Switched Networks
+            - a circut is implemented with either
+                - frequency-division multiplexing
+                    - the frequency spectrum of a link is divided up among the
+                      connections actoss the link
+
+                    - like in a teleophone network
+
+                    - the width of the band is called the bandwidth
+
+                - time-division multiplexing
+                    - time is divided into frames of fixed duration, and each
+                      frame is divided into a fixed number of time slots
+
+                        - one time slot from each frame is dedicated to a
+                          particular user
+
+                        - so the frames are shared between a number of users
+                          equal to the number of slots
+
+        - Packet Switching Versus Circut Switching
+            - With circut switching, users are often idle and just sasting
+              their time slots
+                - this means that no one is able to connect using that time
+                  slot still though
+
+            - if someone has a very large file to send or recieve and there
+              isn't much activity on the network then packet switching is
+              definitely better
+                - they get much greater bandwidth than they would with a time
+                  slice
+
+
+    - A Network of Networks
+        - Individual ISPs connecting to one another
+
+        - One global ISP will act as a provider, connecting many smaller ISPs
+          known as customers
+
+            ** This is called Network Structure 1 **
+
+            - additionally there are multiple global ISPs that are themselves
+              interconnected
+
+                - since many smaller isps may be connected to one global ISP
+                  but not the other, and vice versa, the global ISPs MUST be
+                  interconnected
+
+
+                ** WIth the above addition, this is: Network Structure 2 **
+
+
+            - in practice this is even more leveled
+                - there are Regional ISPs that handle connecting to access
+                  ISPs
+
+                - these regional ISPs have to get their connection from a
+                  Global ISP
+
+                - there be further even subsets in some places
+
+                ** Network structure 3 **
+
+        - There are also PoPs in the real world
+            - A PoP is a group of one or more routers int he same location of a
+              prociders network where a customer ISP can connect to the
+              provider ISP
+
+        - Access, regional or even Global ISPs can peer with one another
+            - peering happens between ISPs in the same level
+
+            - if two networks are peering then they are connected directly so
+              that traffic between them connects directly
+
+            - there can be a peer hub known as an Internet Exchange Point (IXP)
+
+        ** All of this together is known as Network Structure 4 **
+
+
+        ** Network Structure 5 is detailed below **
+            - We add in "content-provider networks"
+
+                - google is a leading example
+                    - they have massive data centers all around the world
+                      interconnected on their own private network
+
+                    - it attemps to do this by avoiding all upper level global
+                      ISPs by peering from access network to access network
+
+- 1.4: Delay, Loss and Throughput in Packet-Switched Networks
+    - We leave in the real world and sometimes packets are lost.
+        - computer networks try to maximize throughput
+
+    - Overview of Delay
+        - There are several types of delays at each node along the path from
+          server to host
+            - total nodal delay:
+                - What it sounds like, combination of all delays while packets
+                  travel through nodes
+
+            - nodal processing delay
+                - the time required for a router to analyze the packets header
+                  and figuring out where to direct it
+
+                - can also include time needed to check for errors
+
+                - usually in the order of microseconds
+
+            - Queuing Delay
+                - while the packet is in a router's queue
+
+                - depends on how many packets are already in the queue
+
+                - can usually be from microseconds to milliseconds
+
+            - Transmission Delay:
+                - We assume packets are served FIFO
+
+                - The amount of time required to push all of the packet's bits
+                  into the link
+
+            - Propagation Delay
+                - The time needed for a packet to propogate from the output of
+                  router A to the input of router B
+                    - the packet itself will propogate at the specific medium's
+                      propogation speed
+
+                    - ranging from 2 * 10^8 m/s to 3 * 10^8  m/s
+
+                - The propogation delay will obviously be d / v
+                    - there is a propogation delay between every router
+
+            - Transmission vs Propogatoin Delay
+                - Transmission Delay is amount of time required for the router
+                  to push the packet out
+                    - a function of thepacket's length and the transmission
+                      rate of the link
+
+                    - Has nothing to do with the distance between two links
+
+                - Propogation delay is the amount of time it takes from a
+                  packet to go through the ethernet cable (or whatever medium)
+                  from one end to the other
+                    - this has nothing to do with the size/ length of the
+                      packet, only the distance between two routers and the
+                      medium used
+
+            - Again, the total nodal delay is the sum of all of these delays
+
+    - Queuing Delay and Packet loss
+        - Queuing Delay is the only type of those mentioned that can vary from
+          packet to packet
+
+            - because of this we ususally use statistics to meature it
+
+        - It is measured using something called "Traffic intensity"
+            - Traffic Intensity = L * a / R
+                - L = bits ina packet = bits / packet
+                - a = packet arival rate = packets / sec
+                - R = transmission rate = bits / sec
+
+            - if La/R > 1 then bits are ariving faster than they can be
+              transmitted from the queue
+
+                - the queue will increase in size continually and the queue
+                  will reach infinite size
+
+                - because of this, you want to design your system such that
+                  traffic intensity is no greater than 1
+
+            - If La/R < 1
+                - If packets arrive periodically there will be no delay
+
+                - if packets arrive in bursts, there will be no delay for the
+                  first and a significant delay for the last
+
+        - Packet loss;
+            - in real life, queues are not infinite
+
+            - if the queue is full when a packet arrives, the packet will be
+              dropped
+
+    - End to End Delay:
+        - Now we consider delay with all of the nodes a packet must pass through
+
+        - We have all of the types of the delays considered so far happening at
+          each router.  So we sum each of these delays for each of the routers
+
+    - Throughput on computer networks
+        - throughput is the rate at any time at which data for a file is
+          recieved
+
+            - the average rate at which the data is being recieved for a
+              specific application
+
+        - the throughput will be the transmission rate of the bottleneck link
+
+        - if multiple devices are sharing a common link, then that link may
+          very well become the slowing factor for throughput
+            - if there are 10 server client pairs that all operate at 1Mbps and
+              then they all share a link that is 5Mbps, the total throughput to
+              each server client pair will be .5Mbps
+
+- 1.5 Protocol Layers and Their Service Models
+    - Layered Architecture
+        - Layers allow us to seperate components of a complex whole into
+          simpler parts
+
+        - also, if a layer has some given functionality, the layers above and
+          below it know how to use this fucntionality
+
+        - this also allows the implementation of a layer to change, as long as
+          it retains the same functionaity
+
+    - Protocol Layering
+        - Network hardware and protocols are organized in layers
+
+        - we are interested in the service model of a layer
+            - the services that a layer offers to the layer above
+
+        - a protocol layer can be implemented in software, hardware or a
+          combination of the two
+
+        - drawbacks of layerign
+            - multiple layers might implement the same fucntionlity
+                - for example all layers do error checking
+
+            - an upper layer might need access to information that only a layer
+              below it contains
+
+        - the layers taken together are called the protocol stack
+            - the internet protocol stack consists of 5 layers
+                1 - physical
+                2 - link
+                3 - network
+                4 - transport
+                5 - application layers
+
+            - Application Layer
+                - where network applications and their application-layer protocols
+                  reside
+
+                - distributed over multiple end systems
+
+                - a packet of information in the application layer is called a
+                  message
+
+            - Transport Layer
+                - transports application layer messages between application
+                  endpoints
+
+                - two transport protocols
+                    - TCP
+                        - Connection oriented service
+                        - guaranteed delivery of application layer messages
+                        - flow control, sender reciever speed matching
+
+                        - breaks long messages up into shorter segments
+                            - this is done as a congestion control mechanism
+
+                    - UDP
+                        - connectionless service to its applications
+                        - provides no reliability
+                        - no flow control
+                        - no congestion control
+
+                - a packet in the transport layer is refered to as a segment
+
+            - Network Layer
+                - Responsible for moving network layer packets known as datagrams
+                  from one host to another
+
+                - provides the service of delivering the segment to the transport
+                  layer in the destination host
+
+                - includes the IP protocol
+                    - defines the fields in the datagram
+
+                - also contains routing protocols
+                    - determine the routs that datagrams take between sources and
+                      destinations
+
+                - often refered to as the IP layer
+
+            - Link Layer
+                - Moves a packer from one node to the next node
+                    - moves datagrams from the Network layer to the next host and
+                      then passes that to the Network layer
+
+                - Services provided depend on the specific link layer protocol
+                    - some offer reliable delievery
+
+                - Examples
+                    - ethernet
+                    - wifi
+                    - cable access
+                    - PPP
+
+                - Packets in this layer are called frames
+
+            - Physical Layer
+                - moves individual bits within a fram from one node to the next
+
+                - different for the physical connection type
+
+
+
+
+
+        - OSI Model
+            - Another protocol stack
+            - has two extra layers
+
+    - Encapsulation
+        - Link layer switches only implement layers 1 and 2
+        - Routers only implement layers 1, 2 and 3
+
+        - when we package an application layer into a Transport layer, all of
+          the data of the application layer packet is encapselated in the send
+          transport layer packet

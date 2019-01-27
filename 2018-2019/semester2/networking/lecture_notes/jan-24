@@ -1,0 +1,143 @@
+- Cable network (continued)
+    - very broad network, have the ability to easily divide those frequencies
+      into multiple channels
+
+        - some of these channels were used to transmit internet rather than tv
+
+    - Access Network : home network
+        - ISP -> modem -> router, firewall, NAT -> wireless access point
+
+    - Enterprise access networks
+        - ISP -> institutional router -> switch -> servers
+                       \
+                         -> Ethernet switch -> host systems
+
+    - Wireless access networks
+        - shared access network connects every end system to the router
+        - wireless LANs
+            - like ur home wifi
+            - not restricted, in the public domain
+
+        - wide-area wireless access
+            - provided by cell towers
+
+
+- Moving information
+    - we take data and send it as packets
+
+    - before packets we sent everything as a continuous stream of information
+        - we are much more likeley to be able to pick out 1s and 0s if the
+          signal is digital if the signal is noisey and full of a bunch of
+          distrotion / noise
+            - we can guess what something is if we know its either a 1 or 0
+            - we can't really guess what something is if it is analog and could
+              be anything
+
+    - the wireless signal itself is signal, but we encode digital information
+      on it
+
+    - transmission time:
+        - time it takes to transmit an entire packet
+        - how long it takes the router to put all of the information onto the
+          ethernet cable
+
+    - propogation speed:
+        - time that it takes for a bit to move through one router to another
+        - how long our info travels through the thernet cable
+
+
+
+- Physical media
+    - guided media
+        - things like wires
+        - the signal strength is pretty good over longer distances - especially
+          compared to radio
+
+    - unguided media
+        - signals propogate freely
+
+        - radio
+            - propogation issues
+                - copies that make it from source to destination
+                    - copies your signal from propogation will bounce off of
+                      objects and hti the reciever at a later time
+
+
+                - since the signal propagates in all directions
+                - the signal strength when it reaches the tower is almost
+                  nothing
+
+                - then also reaching the tower is garbage on the same frequency
+
+
+            - a trick to avoid the proogation issues is MiMo
+                - multiple antaneas inside of the tower reciever broadcaster
+                  that a user connects to
+
+                - also multiple anteanas inside of the phone or whatever is
+                  sending the signals
+
+
+
+
+LECTURE 2 (SLIDESHOW 2)
+
+- The network core
+    - there are special areas on the internet where only routers are talking to
+      each other
+        - they just trade traffic
+
+- Packet switching
+    - we have a router in between the source and the destination
+
+    - store and forward
+        - the entire packet must arrive at a router before it can be
+          transmitted on the next link
+
+        - with packets we could send a single bit at a time, but that is not
+          the store and forward model
+            - this only works if you are the only one using the network
+
+        - there is obviously going to be a delay as we wait for each router
+          along the way to receive, process and then forward the packet to the
+          next destination
+            - depending on the network, different types of delay will be more
+              prominant
+
+- Two key network-core fucntions
+    - routing
+        - determines source destination route taken by packets
+
+        - what decisions to teach the router to take.  If it comes from this
+          port on this network, send out on this port
+
+        - software that runs that tries to determine the best way
+
+        - outputs a table
+
+        - no router has a map of the internet, or knows the fastest way to any
+          other link
+            - make a good guess though
+
+            - routers don't know the best entire way, they know the next step
+              though
+
+    - forwarding
+        - move packets from one input to appropriate router output
+
+    - circuit switching
+        - sending bits at a time, not packets.  Connection from end to end
+            - everybody gets the same signal, so send just one continuous
+              stream
+
+        - the internet only does packet switching, but we can do online radio
+          and tv etc, tech that uses circut switching
+
+        - we can sort of hack the internet and use circut switching on the
+          packet network
+            - packets are broken up into very small ones so that routers are
+              more likely to have room for them
+            - the internet doesn't treat these packets any differently though
+
+- Internet structure
+    - 

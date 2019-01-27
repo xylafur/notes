@@ -1,0 +1,182 @@
+Research Methods
+
+- Accurately asscessing something with IO
+    - use a scientific experiment with a control group
+        - muse make sure non control is not aware that they are being
+          monitored, this can lead to the hawthorne effect
+
+        - none of the participants must be aware that they are being monitored
+          or it can effect results
+
+- Research Questions
+    - a question needs to be very specific in regards to what it is studying
+        - the very particular factor in question sould be specified.
+        - to broad of a question may have too many variables
+
+        - we want to narrow the question so that we are really only measuring
+          one variable
+
+- Important Research and Design concepts
+    - generalizability:
+        - conclusions of a study can be extended to people of another group
+        - often a concern for studys that take place in a lab.  Will this study
+          have the same results out in the field?
+
+    - Random assignment and random selection:
+        - Random assignment
+            - means of controlling for subject variables that are not of
+              intrest
+                - we assign people to 'treatment conditions' randomly
+                    - For example the people who are selected to be trained are
+                      actually randomly selected from everyone
+
+            - both groups should have roughly the same characteristics if it is
+              not what we are measuring.  If age is not important, both groups
+              should have roughly the same distribution of ages
+
+        - Random Selection
+            - The subjects in the study are chosen by a nonsystematic method
+            - we choose people from all pools, not just one
+
+    - Confounding
+        - two or more variables are intertwined in such a way that conclusions
+          can not be drawn about either one
+
+        - you want to do your best to seperate these two factors so that you
+          can draw accurate conclusions about the other
+
+
+    - Research Designs
+        - the basic structure of a scientific study
+            - can be either experiemental with active manipulation of
+              conditions or passive observation
+
+        - Experiments
+            - design in which there are one or more independent variables and
+              one or more dependent variables as well as a random assigmnet of
+              subjects
+
+            - field experiemnt: done in an organization rather than lab
+                - generalizability is more likely
+
+            - quasi-experiment design: one or more of the features of a true
+              experiment have been comprimised
+
+
+        - Survey Designs
+            - series of questions to study one or more variables of interest
+
+
+            - cross sectional design
+                - all data were collected at a single point in time
+
+            - longitudinal design
+                - data collected from more than one point in time
+
+            - disadvantages
+                - employees are not good sources of info about variables of
+                  interest
+                    - people overrate their own performance
+
+                - cross sectional nature of most surveys makes it difficult to
+                  draw conclusions about which variables were likely to be the
+                  cause of which other variables
+                    - longitudinal designs can be more helpful for drawing
+                      conclusions
+
+                - usually response rate is low, which means you didn't get a
+                  good sample size
+
+            - Experience Sampling
+                - repeated measurements over short time intervals
+                - helps reduce biases from faulty memory
+
+        - Observational Design
+            - researcher observes employees in their organizational settings
+            - can be done with or without the employees knowledge
+
+        - Qualitative Studies
+            - reliance on nonquantitative methods
+
+            - generally researcher observes and records information in a
+              narrative form
+
+                - conslusions can be drawn from observance of the same behavior
+                  multiple times
+
+                - can be a good means to generate a hypothesis from
+                  observations
+
+
+- Measurement
+    - process of assigning numbers to characteristis of people or things
+
+    - either categorical or continuous
+        - categorical measurement
+            - values of a variable represent discrete categories
+            - numbers on a football team are a good example
+
+            - the numbers don't represent some actual measurement, more just a
+              hash or something
+
+        - continuous measurement
+            - numbers represent an amount of the characteristic in question
+
+
+    - Classical Measurement Theory
+        - ever observation of a variable can be divided into to components:
+          true score and error
+
+        - errors are random influences on the observed score
+
+        - each item in a test contains both a true score and an error, they
+          should cancel eachother out
+            - this does not guearrentee that we are accessing what we intended
+              to access
+
+    - Reliability
+        - consistency of measurement across repeated observations of a variable
+          in the same subject
+            - something is reliable if the error is low
+
+        - Internal consistency reliability
+            - how well multiple measures for the same subject agree
+
+        - Rating
+            - Inter-rater reliability is the extent to which ratings by two of
+              more raters are related to one another
+
+        - test retest reliability
+            - the consistency of measurement when it is repeated over time
+
+        - the first requirement of a measure is that it is reliable
+            - this is not the only consideration though, we do not know if the
+              measure is valid or not
+
+
+    - Validity
+        - has to do with inferences that can are made about what an observed
+          score measures or represents
+
+            - not a measuring device, but inferences made about a measuring
+              device
+
+        - types of validity
+            - Face validity
+                - mesure appears to access what it was designed to access
+
+                - not always the best thing, things can seem to provide face
+                  validity but aren't actually valid
+
+            - Content Validity
+                - multiple item measure of a variable does an adequate job of
+                  covering the entire domain of the variable
+
+            - Criterion-related validity
+                - scores on a measure of inteset relate to other measures that
+                  they should relate to in theory
+
+
+- Statistics
+    
+

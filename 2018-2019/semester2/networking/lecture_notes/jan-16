@@ -1,0 +1,184 @@
+- Much easier to remove noise from physical medium rather than radio waves
+    - Though they don't always shield wire's properly and this can lead to some
+      noise
+
+    - People reserve frequencies for their company or whatever
+
+- THe names of radio statios comes from regional:
+    - W means america and K means west of the missisippi for instance
+
+- the signal strength that people can broadcast at is also regulated
+    - so people in neighboring regions can't broadcast in the same frequency
+    - so radios in texas can bleed to mexico
+        - this might piss them off and stuff
+
+    - Pirate radio:
+        - Super powerful radio station in mexico that broadcast a whole lot
+            - way more powerful then they should have been able to
+
+
+- Goals in chapter 1:
+    - get a feel for termonoligy associated with the internet
+    - the internet will be a main example, but we will use other types of
+      networks as well
+
+
+- What is the internet?
+    - collection of networks whos users have agreed to conform to a set of
+      standards
+
+    - devices:
+        - hosts:
+            - devices on the edge of the system, end systems
+            - servers, desktops, smart fridges, etc..
+            - run network applications
+
+            - they are able to connect to the internet because they have
+              software that allows them to send packets on the network
+                - we use sockets to communicate with packets on our computer
+                    - sockets can send out packets (given particular
+                      parameters) and can also recieve them (if they are
+                      programmed to listen)
+
+        - packet switches
+            - recieve incoming packets (a particular data structure) and can
+              determine the destination based on header information in the
+              packet.
+                - may not always be the best way to get to a particular host,
+                  but they send it in the right directoin (though its not
+                  always the fastest)
+
+                - tries to make the best guess
+
+            - commonly called routers
+                - but switches are also a subclass of packet switches
+
+
+        - communication links:
+            - connects all of the end systems together
+
+            - physical medium
+                - or radio
+                - but it is the actual transmission mediuim
+
+            - speed of a network
+                - we are not talking about how long it takes for something to
+                  get from one end to the other
+                    - regardless of how you encode data, nothing changes the
+                      speed at which data travels through a medium
+
+                    - everything travels at the speed of light
+
+                - how to we measure speed then
+                    - when you have the packet and you are ready to send it
+                        - from the time you start sending the first, to the
+                          time it takes to send the last bit
+                            - we keep track of how many of these we can do a
+                              second
+                    - use the term bandwidth
+                        - how quickly can you shit out all of these bits
+
+
+
+
+    - Once we have communication links, and all of these devices
+        - connecting them together and using the tcp/ip protocol makes them part
+          of the internet
+
+        - you can have devices interconnected, but not have them be part of the
+          actual internet (lan)
+
+        - we have protocols that define the rules or language on how to speak
+          with other devices
+            - there are rules about packet size and structure and stuff, but as
+              long as all of these rules are met then something is considered
+              valid from the protocol point of view and can communicate with
+              other devices that also know how to use this protocol
+
+            - the IETF gets together and drafts up a document for a new
+              protocol
+                - they pass judgment of it and wether or not it is considered
+                  valid
+
+                - you also get comments from other people
+                    - they can give you their 2 cents
+
+                - these documents specify very specifics about protocols
+                    - parameters, needed functions, the format of timestamps
+                        - every last thing that you need to conform with the
+                          protocol completley
+
+    - The internet society
+        - when people agree that something is to be a standard, it is moved
+          through a process, if it passes through this process then all devices
+          on earth must conform to this
+            - if they don't then they just won't be able to connect to the
+              internet
+
+    - The internet, a service view:
+        - a programming interface to apps
+            - just something that almost happens in the background.  Layers and
+              layers of apis
+                - because of these layers you don't have to know anything about
+                  the specifics of how this communication happens
+
+- The network edge
+    - how to end systesms connect to routers that are on the closest edge?
+        - government involvment
+            - the same kind of infastructure used by telophone networks
+                - access networks: veriety of technologies that take trafic and
+                  get it all of a router that is connected to the internet,
+                  communication through a provider of some sort
+
+            - you have to go through these middle man
+                - you can't lay your own cable
+                - you can't lay your own sewer lines
+                - you have to pay the company that procides this infastructure
+
+            - there are government agencies that regulate these industries
+
+    - Access network:
+        - very often performance of a technology isn't what wins, its money,
+          politics and religion
+
+        - DSL:
+            - this is a good example of the above statement:
+                - we send voice over a phone line using as little frequency
+                  range as possible (30Hz to 3000Hz or so)
+
+                - since we used this range on our cables for phones they wanted
+                  to use this for internet traffic as well
+                    - they didn't want to deploy new technology to every single
+                      house, rather they wanted to use existing infastructure
+
+                - a modem splits up the upper range of frequencies into
+                  different sections
+                    - it then determins which of these are usable and which are
+                      noisy and can't be used
+
+                    - you use the sections that are avaliable for telephone
+                      traffic.
+                        - the upload and downlod is asymetrical though, have
+                          more downstream than upstream
+
+                        - this allowed for up to 20mbps down
+                            - this required no new infastructure (other than
+                              modems)
+        - cable network
+            - the cable companies did the same thing
+                - they removed some tv stations and dedicated some of these not
+                  to encode movie, but rather to encode data from the internet
+
+            - the difference between this and the phone DSL connection
+                - phone connections, there was one to each house
+                - for cable, the stations were shared, since everyone was
+                  getting the same data
+
+                - this leads to problems with having to share bendwidth between
+                  other users
+
+
+
+        - fiber
+
+
