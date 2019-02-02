@@ -1,0 +1,133 @@
+- Network Security
+    - Software is one area of attack
+        - the software being attacked is typically in the application layer
+
+    - Types of attack
+        - Direct attack
+            - you know who attacked
+
+        - Botnet Attack
+            - Infect a different system, or multiple systems
+            - an infected computer does a particular attack on a particular
+              target
+
+            - the total load from the comprimised system is enough to take the
+              website down
+                - big websites have mechanisms to handle this though
+
+        - Amplification Attack
+            - send requests into systems or routers that pretends to be from
+              some website
+
+            - then they all respond and flood the target
+
+
+- Chapter 2: Application Layer
+    - remember we have the 5 layer network stack
+        - we are starting from the top
+
+    - examples
+        - http
+            - governs the exchange of information with a web server
+            - tells who the client and who the server is
+        - ftp
+        - smtp / POP3 / IMAP
+
+    - creating a network app
+        - take an application and add commands that make calls to socket
+          libraries
+
+    - models
+        - client - server
+            - what we normally use
+            - problem is: scaling
+                - denial of service attacks
+
+        - p2p
+            - may be a server to poibt you at users but thats it
+            - two systems just connect together
+
+            - no single bottleneck
+
+            - bad for ISPs
+
+            - very resilliant
+
+    - processes communication
+        - we can view socket libraries as proceders that allowed a computer to
+          communicate with itself, but now with other servers
+
+        - the process is just some programmingin a host
+            - the process can communicate within the own server using ICP
+            - or processes can communicate with other hosts on the network by
+              exchanging messages
+                - becomes a set of client and servers
+
+    - socket
+        - piece of software tha tcatches whatever the app throws at it
+        - uses whatever you sent to it with the rest of the network stack
+            - this will send the messages
+
+        - the socket is able to claim reponses after they come back
+
+
+
+    - addressing processes
+        - we use PIDs to keep track of processes
+        - sockets know what pid a message was from / is going to
+            - for a given operating system this is mapped to something that is
+              specified by an RFC
+
+        - ips are used to identify the system
+        - ports are used to identify the process
+
+    - we need the app layer protocol to handle
+        - when to start a request
+        - when to respond
+        - valid syntax
+        - semantics
+
+    - what is a socket
+        - instantiation of routines and data structes that implement the
+          way in which your machine can pass information to the transport
+          language
+
+        - the port is the way to identify a particular socket
+
+
+    - Transport services
+        - TCP: Usually used by things that need reliability
+            - reliable transport
+                - won't throw anything away until it knows it arrives
+
+            - flow control
+                - make sure the reciever has enough open space in his buffer
+                  before packetrs are sent
+
+            - congestion control
+                - are the packets we're sending even arriving?
+                - if they aren't then there is congestion and we need to back
+                  off
+
+            - no timing guarantees
+
+            - is connection oriented
+                - asks the server for permissions first
+
+        - UDP
+            - unreliable data transfer
+                - no flow control, no congestion, no timing, no throughput
+
+            - can implement reliability themselves by just asking again if the
+              packets didn't send properly
+    - Security
+        - SSL
+
+    - HTTP;
+        - use to send web pages
+
+        - contains objects
+            - referenced by the base file in text (html)
+            - this specifies the specifics of how these objects populate
+
+        - tries to get things back and forth

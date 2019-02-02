@@ -178,5 +178,47 @@ Research Methods
 
 
 - Statistics
-    
+    - variariance
+        - dispersion measure that is the arithmetic mean of the squared
+          differences and the arithmetic mean of the same values
+    - Standard Deviation
+        - square root of the variance
+
+
+    - 2 types of stats are used
+        - Descriptive statistics
+            - provide ways of reducing large amount of data to summary
+              statistics
+            - these can be interpreted much more easily
+
+            - Regression
+                - by-product of correlated variables where one can be used to
+                  predict another
+
+        - Inferential Statistics
+            - hypothesis and questions of most studies cannot be addressed by
+              descriptive statistics alone
+
+            - allows us to draw conclusions that generalize from the subjects
+              we have studied to all the people of interest by making
+              inferences on probabilities
+                - we judge statics applied to other groups using statitical
+                  tests
+
+    - Meta-Analysis
+        - compare the results of multiple iterations of the same study to
+          determine if the results come from chance or from bad sampling
+
+
+    - Mediator and Moderator variables
+        - Mediator:
+            - hidden variable that explains the cause of correlation between
+              two values
+
+            * Explains the relationship between two values
+
+        - Moderator
+            - affects the relationship between two other variables
+
+            * changes the relationship between two values
 

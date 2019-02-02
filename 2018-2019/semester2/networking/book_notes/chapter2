@@ -1,0 +1,116 @@
+The Application Layer
+
+2.1 Principles of Network Applications
+    - write programs that run on different end systems and communicate with
+      each other over the network
+
+    - Application architecture
+        - client server architecture
+            - these is an always on host, called the server
+                - services requirets back to the users
+
+            - users are called clients and request things from the server
+
+            - lots of times a server can't keep up with all of the client
+              requrest
+
+        - p2p
+            - minimal to no reliance on dedicated servers
+            - hosts talk to eachoher directly
+
+        - hybrid
+            - combines some elements of both
+
+    - Process communication
+        - on the same system they use IPC, governed by the systems OS
+
+        - processes on different systems communicate with messages
+
+        - client and server processes
+            - the process that initiales the communicatino is called the client
+
+        - interface between process and the computer network
+            - a message sent from client processes to server process must go
+              through all the underlying network infastructure
+
+            - sockets are this interface
+
+            - processes is to house as socket is to door
+
+        - addressing processes
+            - need to identify the id of the host and the id of the process
+              running on that host
+
+            ip identifies the host, port identifies the process
+
+    - Transport Services avaliable to Apps
+        - as the app developer you have to choose the transport layer protocol
+          that matches what you want the best
+            - some protocols are better for other things, it depends on what
+              you want to do
+
+        - Reliable Data transfer
+            - the protocol will make sure that all of the data recieved by the
+              other host (or server) is as it was intended.  Just pass it to
+              the socket and the reliability will be taken care of
+
+        - Throughput
+            - the protocol provides some regulation or attempt to make the
+              throughput constant
+
+            - elastic applications make use of as much or as little throughput
+              is avaliable
+                - email, ftp, web transfers
+
+        - Timing
+            - a protocol could guarantee that ever bit from the sender will
+              reach the destination within 100 msec
+
+        - Secturity
+            - the protocol could encrypt all data be default
+
+
+    - Transport Services Provided by the Internet
+        - security
+            - neither tcp nor udp procide and encryption
+            - SSL is a secutirty enhancement for TCP
+
+        - TCP
+            - connection oriented service with reliable data transfer
+
+            - connection oriented
+                - there is a handshake that alerts the client and server
+                  allowing them to prepare for the packets
+                - after the handshake there is a connection between the sockets
+                - this connection is full duplex, so messages can be sent both
+                  ways
+
+                - tears down the connection when it is finished
+
+            - reliable data transfer
+                - tcp handles making sure the data makes it to the destination
+                  wthout error
+
+
+
+        - UDP
+            - lightyweight transport providing minimal services
+            - no guarentees or nothing
+
+    - Application layer protocols
+        - what they define
+            - the types of messafges exchanged
+            - the syntax of the messages
+
+            - semantics of the fields
+            - rules for how and when messages are sent and responded to
+
+        - some have RFCs and are public domain
+        - others are proprietary
+
+        - will cover examples in following sub chapters
+
+
+
+
+

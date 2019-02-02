@@ -87,5 +87,101 @@
             - take the program counter and offset it by some ammoutn
 
 
+- Assembly Language Programming
+    - We're gonna write all our code in C, but its important to know how to
+      undertand assembly for this processor
+
+    - Most operations in this assembly goes from right to left
+
+    - Logic operations
+        - AND {Rd,} Rn, <op2> ;Rd=Rn&op2
+        - ORR {RD,} Rn, <op2> ;Rd=Rn|op2
+        - EOR {RD,} Rn, <op2> ;Rd=Rn^op2
+
+    - Shift
+        - Shift right is a divide by 2
+        - Shift right is a multiply by 2
+
+        - We need to know if we have a signed or unsigned
+            - logical shift
+                - for unsigned number
+                - a 0 is placed as the most significant bit
+
+            - arithmatic shift
+                - the most significant bit is preserved
+
+    - Arithmetic Operations
+        - We need to keep track of how many bits we will end up with
+            - if we add two 32 bit numbers then we will have overflow because
+              the result will by 33 bits
+
+            - this is even worse for multiplication
+
+        - To prevent overflow in our software, we are going to predict the
+          largest value our result will be and predict if there will be
+          overflow
+            - we can also promote a number to a higher precision
+            - use a long rather than just an int
+                - 64 bits vs 32
+
+        - Division
+            - can't divide by 0
+            - watch for dropout
+                - loss of bits
+
+        - Signed or unsugned
+            - the numbers we are working on must be the same sign
+
+        - ADD {RD,} Rn, <op2>
+        - SUB {RD,} Rn, <op2>
+        - CMP Rn, <op2>
+
+    - Stack
+        - can be used for temp storage
+        - can also be used for local variables
+
+        - To push we have to decrement our stack pointer by 4 (because of 32
+          bit addressing) and then move whatever to the new SP position
+            - This means that the stack grows up (towards 0)
+
+        - to pop we just do the opposite
+            - read the SP first and then increment the SP
+
+    - Function calls
+        - a form of abstraction
+
+        - We have the low level (implementation)
+        - and the high level (function call)
+
+        - 'BX LR' is 'return'
+            - Takes value in LR and puts it into PC
+
+        - BL (branch link) instruction
+            - sets the LR to the return address (the instruction after the
+              call)
+
+            - set the PC to the function address
+
+    - Conditionals
+        - must know if we are working with signed or unsigned
+
+    - loops
+        - use the cmp instruction
+
+        - use things like BEQ
+
+    - Main things
+        - worry about overflow and dropout
+
+        - undestand the number of bits in our numbers and if they are signed or
+          unsigned
+
+
+
+
+
+
+
+
 
 
