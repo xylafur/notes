@@ -1,0 +1,92 @@
+We will cover backtracking a bit and then talk about the problem set
+
+- Constraint Satisfaction Problem
+    - example
+        - for the problem
+
+             two
+             two
+            ----
+            four
+
+        - variables:
+            t, w, o, f, u, r
+
+        - we come up with the constraints
+            o + o = r
+            w + w + x1 = u
+            t + t + x2 = o
+            x3 = f
+
+            - where x1, x2, and x3 carry over
+
+            - the constraint is that all of the variables have values between 0
+              and 9 and none of the variables can have the same value
+
+
+    - We have a state
+        - which is defined by variables with values form the Domain
+
+
+    - another example, map coloring
+        - we have a variable for each state
+        - the domain is the valid colors (blue, red and green)
+        - constraint: adjacent regions must have different colors
+
+
+    - we have a hyper graph formed form the constraints
+        - a hyper graph uses hyper edges
+
+        - a hyper edge connects more than two nodes
+
+    - we form a constraint graph based on the constraints
+        - this may or may not be a hyper graph
+
+    - typs of constraints
+        - unary
+
+        - binary
+
+        - higher order
+
+        - preferences (soft constraints)
+            - an example is scheduling
+                - minimize the spread of of the schedule for the students, put
+                  the clases back to back
+
+            - try to keep constraints but they can sometimes be broken
+
+            - we can assign degrees of happiness
+                - like some breaking of constraints are more okay than others
+
+- Backtracking Search
+    - variables assignments are communative
+        - the order in which we define them does not matter
+
+    - recursive
+        - you select a variable such that the constraint is satisfied
+        - then you call the function again with that varaibles taken out until
+          it is complete
+
+        - if we reach a point where it is not longer feasable to satisfy the
+          constraints, then we backtrack and try the last one with a different
+          variable
+
+        - eventually what could happen is we back track to the assignment of
+          the first variable and then pick the next and go through the rabbit
+          hole again
+
+    - improving efficency
+        - which variable should be assigned next?
+            - we might choose it based on some heurisic
+                - for example choose the variable with the fewest remaining
+                  constraints
+
+                - of the one that has the most constraints
+
+        - the order in which values should be attempted
+
+    - traditional backtracking
+        - always pick variales and values in the same order
+
+
