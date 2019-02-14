@@ -1,0 +1,162 @@
+THE LAST PROBLEM OF THE PS1 SHOULD BE AVALIABLE ON WEDNESDAY
+
+- Last time we gave a short introduction to CS Problems
+    - we have a set of variables
+    - these variables have some sort of value that they can encompas
+    - then we have some sort of constraint that must be satisfied
+
+    - you can either follow in a particular order for the variables and values
+        - or we can find some more intelligent solutions
+        - choosing those that have the least or most amount of constraints
+
+    - problem structure
+        - in addition we can look at the overall structure of the problem
+        - for instance the state coloring problem with japan rather than
+          australia
+            - japan is multiple islands, they aren't touching land masses
+            - so we don't have to worry about colors between these
+
+        - we can put our constraint satisfaction prblem into multiple different
+          constraint satisfaction problems
+            - with the japan example, each of the land masses will be a
+              different CSP
+
+
+- Tre Structured CSPs
+    - we can have a constriant graph
+        - if this graph has no loop
+            - if can then be solved in O(n * d^2)
+
+- Iterative algorithms for CSPs
+    - we can use hill climibg or simulated annealing for these problems
+
+    - the states consist of solutions
+        - these are not neccisarily solutions to the constraint satisfaction
+          problem
+
+        - we can use this and swap particular values in a solution state that
+          doesn't fit the constraints
+            - we choose one or two of the values that are in conflict with the
+              constraints
+
+            - the state space can get really big
+
+        - value selection canbe handled by min-conflicts heuristic
+            - choose the state that conflicts with the fiewest constraints
+
+    - Example
+        - queen free for all
+            - we can look at how many queens can kill eachother in a particular
+              state
+
+            - we move a queen such that the number is reduced
+
+    - Summary
+        - states that are defined by values of a fixed set of variables
+
+        - backtracking is used to solve this
+
+        - variable ordering and value heuristics is important because it can
+          affect the performance of the solving algorithm
+
+        - forward checking
+            - some special piece of code that determines that a solutoin is
+              impossible to find based on the current configuration (ebcause of
+              only two of the variables for instance) before you go and compute
+              it all
+
+        - we can divide the CSP into multiple CSPs if they are properly
+          isolated
+
+        - in many problems, we also have soft constraints
+            - we consider the magnitude that some constraint is violated
+
+
+- Games
+    - bridge (and card games in general)
+        - covers many fields of AI
+        - if we know the cards that each player has, then we can just use the
+          apha beta algorithm
+            - the difficulty comes from the uncertainty
+
+###############################################################################
+##  Intro to Evolutionary computing
+###############################################################################
+- contents
+    - evolutionary computing systems have been used to solve multiple problems
+        - backgammon is an example
+
+    - there is evolutoinary computing, what is the related to other areas?
+
+    - Baed on biological inspirations
+        - in the same way that nural networks is insired
+        - uses darwinian evolution theory (simlified)
+        - uses a few things from genetics (also simplified)
+            - we have 2 solutions, we breed new solutoins that have some
+              properties of one solution and some properties of the other
+              solution
+
+- Key components of an EC system
+    - we need a fittness function
+        - because stuff is bawed on survival of the fittest
+
+    - then we need a chromosomal representation
+        - how we represent the solutions
+        - could be vectors, or a tree
+        - what datastructure we use to represent the solution
+
+    - also need some sort of selection mechanism
+        - has mutatino operators
+            - mutation meaning we change one or two things on a solution
+
+            - we have both binary and unary mutations
+                - can just mutate just one of the solutions in a unary or breed
+                  them together with bunary
+
+    - population managment is another aspect
+        - we have a population of solutions, not just one
+        - then we have some sort of selection mechanism that selects who will
+          breed in the next operation
+
+        - we also can have a copy operator
+            - if we just breed, we won't retain old solutions which may be
+              better
+
+        - we may take some solutions and put them into the matign pool
+            - these solutons may be selected baed on some fittenes function
+
+            - we don't want to select just the best though, we may end up being
+              stuck at some point
+                - he did not explain why though
+
+        - we have to find the right amount of selective pressure
+            - otherwise the populatino mught become too hemoginous
+
+
+        - we also must determine who dies
+            - there are multiple strategies
+                - almost everyone dies
+                    - but we often have a copy operator
+
+    - There are multiple names for this..
+        - evolutoinary computing, evolutionary algorithms, generic algorithms
+
+    - we always have a population
+        - cross over operators are always important
+
+    - can be viewed in many different ways
+        - belongs to computational intelligence and soft computing
+
+        - can be used as a search paradigm and as an approach for machine
+          learning
+
+        - used to simulate generics
+
+
+
+    - EC as randomized algorithms
+        - advantages of a probabilistic / randomized algorithm
+            - you will get different solutions every time that you run it
+
+            - they don't get stuck
+

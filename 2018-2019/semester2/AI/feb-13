@@ -1,0 +1,166 @@
+###############################################################################
+##  Assignments
+###############################################################################
+The first exam will be March 1st!
+PS2 will be due after spring break
+We are prerty much done with search
+
+We will try to develop an evolutionary computing function such that we can
+solve the traveling salesman
+
+
+We have some reading material!
+    - this is on his website in the lectrues section somewhere
+
+Homework
+    - Number 6 does not have to be generic
+        - it only has to solve this particular problem
+
+    - we will have a new file uploaded soon wthat has more in depth
+      instructions on how to and what to submit
+
+
+###############################################################################
+##  Evolutionary Computing
+###############################################################################
+
+- Evolutionary Computing
+    - As a search
+        - Works with population of solutions
+
+    - can also be used as a machine learning paradigm
+
+    - a part of computer science, not biology
+
+        - takes treminology from bioloigy
+            - Enviornment   ->  problem
+            - Individual    ->  candidate solution
+            - fittenss      ->  quality
+
+        - Based on Darwinian Evolution
+            - part 1
+                - instincts and lifecycles of lifeforms are geared toward
+                  reproduction
+
+                - fittness in natural evolution is derived
+                    - we assign high fitness to individuals with many offspring
+
+            - part 2
+                - phenotypic traits
+                    - determine physical differences, unique to each individual
+
+                    - can be inherited if the owner mates
+
+            - everybody in the population has particular qualities
+                - some of these qualities are good
+                - we breed them such that we obtain all combination of
+                  qualities
+
+    - Mutation
+        - a child can obtain generic material not inherited from either parent
+
+        - usually bad in biology, usually good in EC
+
+        - can cause changes that won't come from crossover alone
+            - can be catastrophic, neutral or advantageous
+
+    - Modelling
+        - we want to learn our model
+        - we have inputs and outputs, want to determine what the model is
+            - develop some sort of prediction model
+
+    - Simulation
+        - we are given the module, and want to answer what if questions (obtain
+          the output) based on input
+
+    - building systems that adapt
+        - we take in some sort of enviornemntal response and produce a behavior
+
+        ????
+
+        - we adapt over time?
+
+###############################################################################
+##  Traveling Salseman
+###############################################################################
+- The traveling salseman problem
+    - problem statement
+        - We are given cities and costs to travel between cities
+
+        - we have to visit every city and end up back where we started
+
+        - we want to find the optimal path such that the cost is the minimum
+
+
+    - using evlutionary computing to solve
+        - we might take two solutions
+        - then we try using the cross over operator to take some particular
+          paths from one solution and the other
+
+        - typical Mutation operators
+            - all os these operators are randomized, for any given operator
+              there are multiple ways that the chromisomal set can be
+              manipulated
+                - te selection of those particular ways is based randomness
+
+            - neightbor swapping
+                - just swap two various cities
+                - then we will end up with 2 different paths
+
+            - inversino transformation
+                - flip a particular section
+
+            - insertion transform
+                - pick one or a sectino and insert it somewhere else in the
+                  list
+
+
+- Key components of an EC system
+    - Chromosomal Representation
+        - the way in which we model the problem
+        - for the traveling salseman it is the list of cities we travel in
+          order
+            - we not want the 1 in our chromosomal representation
+            - we could just assume that it has a one at the beginning
+
+        - we can create some sort of normal form (he might be talking about the
+          chromosomal representation)
+            - we put the representation in a normal form so we can identify i
+              two are the same
+
+
+    - Generitc Operators
+        - The biologicial operators (like cross over)
+            - This is something different? He went off on a tangent
+
+            - we need some sort of comain specific cross over operator
+
+    - Selection Mechanism
+
+    - population managment
+        - who lives and who dies
+
+
+- Rulette WHeel selection
+    - we have some solutions and the associated fitness val
+
+    s1: 0.7
+    s2: 0.2
+    s3: 0.1
+
+    - then we create a roulette whell (basically a pie chart that uses the
+      numbers from the solutions fitness
+
+        - then we take a random number and select one of the elements form the
+          wheel based onthat number
+            - we do this twice, and then create an offspring with those two
+            - if we get the same solution twice we just copy it
+
+        - basically we spin the wheel
+
+- Tournament Selection
+    - doesn't care about the place, we only use the winner
+        - didn't understand the method of choosing the winner, but there is a
+          very low probability that we choose a solution with small fittness
+          function
+

@@ -1,0 +1,89 @@
+- DNS
+    - we can have mutliple strings that point to a particular ip
+
+    - we cache recent dns lookups
+
+    - to open a socket connection, we need an ip address
+        - the application must look up the ip for the given hostname if the
+          hostname is what was given
+
+        - then after it gets the ip, it can do the socket call
+
+        - we are able to do this because we are given the dns server ip off the
+          bat
+            - or we set it ourselves
+
+            - we will talk about how we are given this later
+
+    - we can often have an external and internal dns servers
+
+
+    - before we ask the dns server for a given ip, we check our own internal
+      cache
+        - ips are given a validity time frame, if we check again for that
+          hostname wthin that timeframe then we use our cache
+
+        - this timer doesn't get reset when we acces the cache
+
+    - DNS can be regional
+
+
+    - TTL is how long the dns cache is valid for
+        - the time limit on our cache
+
+    - DNS records
+        - A
+            name: hostname
+
+        - NS
+            - name is domain
+
+        - CNAME
+            - an alias for some real name
+
+
+    - DNS protocol
+        - data structure with particular fields that we send out
+        - there is a place in the daratructure to fill in the answer to our
+          questions
+            - so the dns server will send back a modified version of the packet
+              we sent
+
+    - Updating DNS
+        - register a name with the dns registar
+
+
+
+    - DNS attacks
+        - sending a shit ton of fake dns requests to bog down the dns server
+
+
+
+
+- P2P applications
+    - so far we have only talked about client server architecture
+
+    - drive telecommunication companies crazy
+        - because they are setup to go in only a couple directions
+
+    - the distribution time is completley based on the weakest link
+
+    - max upload rate is based on the total number of uploaders
+
+
+- Video streaming and CDN's
+    - pretty much the #1 consumer of bandwidth
+
+    - how they deal with the huge demans
+        - distributed application infastructure around the world
+
+    - one thing thats much different about delivering over the internet
+        - don't want to use a fixed bandwidth all of the time
+
+        - we only need to send things that change from one frame to the next
+
+        - we might have a particular bandwidth budget
+            - we want to send a packet after some particular time frame
+
+            - some things change gradually, and this mechanism does not keep up
+            - every down and then the entire frame will be retransmitted
