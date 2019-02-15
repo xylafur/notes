@@ -1,0 +1,108 @@
+Battery and Voltage Regulation
+    - We want to get a constant voltage to power our system
+
+    - the battery we are using is a NiMH that can provide up to 7.2V
+
+
+- Power Budget
+    - When using something like a microcontroller we have options
+        - we could save power by turning particular components on or off
+
+        - out particular launchpad (MSP432) has ease of use modes
+        - we can easily put it to sleep or turn off particular components
+
+    - Compare the average current with the voltage we are using
+        - this should be less than the storage of our batteries (defined in out
+          amp-hours)
+
+    - we want to design the system (if we have that option) such that is uses
+      the lowest possible voltage
+        - we combine this with our mode regulation to use the lowest total
+          power possible
+
+- Amp hours
+    - the charge transferred by a steady current of one amp flowing for one
+      hour
+
+- Batteries
+    - two classes
+        - primaray batteries
+            - use it once and throw it away
+
+
+        - secondary batteries
+            - rechargable
+
+
+    - structure
+        - We have an electrolite with a cathode (+) on one side and an anode
+          (-) on the other side
+
+    - using multiple batteries
+        - we sum the voltages together, but we have to consider the amp hour
+          used by all of them
+            - for instance each of our batteries (NiMH) have voltage of 1.2V
+              and each has 1.8 Amp hours of avaliable energy
+
+            - when we combine 6 of them togehter, we will have a voltage of
+              7.2V but we still only have 1.8 Amp hours of current/h (at that
+              voltage)
+
+- Voltage regulation
+    - we run at 5V, not 7.2V
+
+    - The output voltage needs to be constant (duh)
+    - we use an amplifier, capacitors and resistors
+
+    - this is very inneficient
+        - we turn 7.2V * 100mA => 5V * 100mA
+            - we just lose that 2.2V * 0.1A = .22W
+            - this thing gets hot because of that (how the energy dissipates
+
+    - We are provided with a linear regulator
+        - we have to soder it on with a couple of 4.7 micro farad capacitors
+
+
+- Voltage regulator with switching regulators
+    - a different class of regulators
+        - more efficient
+        - we lose much less energy to heat
+
+
+    - they are constructed using a physical switch
+        - they generate alot of electro magnetic field noise
+
+        - they use a didode, capacitor and diode
+
+
+    - the advantage is its muuuuch more efficient
+
+    - disadvantages
+        - more complex circuit
+        - noisy
+
+
+- Summary
+    - we have a need for regulation because what the board wants is not exactly
+      what the batteries provide
+
+    - the ammount of time that our robot will run is directly poportional to
+      the current usage by the robot and the current output of the batteries
+
+
+
+
+
+Lab 1:
+    - This lab is to study the batteries and how they power the robot
+
+    - we attach a resisitor to the batteries
+        - we connect 2 multimeters, one for measuring current and the toher for
+          measuring voltagef
+
+    - we watch and wait to see how long it takes for the batteries to discharge
+
+Lab 2:
+    - We are going to power the system from the batteries
+
+    - 

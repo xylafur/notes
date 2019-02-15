@@ -1,0 +1,68 @@
+- Markup / webpages
+    - Originally the server had the html file and sends it to the client
+
+    - nowadays systems create information on the fly and convert it to html and
+      then send it to the client
+        - he's talking about like templating and using stuff from data from a
+          database or something
+
+        - some of the stuff is static, but alot of it is dynamically created
+          based on stuff from the database
+
+- HTTP
+    - the transport protocol
+        - caries the html from the server to the client
+
+    - uses tcp
+        - high value transport
+        - delivers in order
+
+    - is stateless
+        - keeps no record of your info or whats going on.  Just routes
+
+    - stateless prototocol
+
+    - the browser handles the http messages and then renders the html
+
+    - types of connections
+        - non-persistent connection
+            - shuts the conection after each object is recieved
+
+        - persistent connection
+
+    - request message:
+        - GET
+            - asking for a file
+            - specifies the version of HTTP
+
+        - POST
+            - usually when the user hits a button or enters input
+
+            - the input is generally sent with the request
+
+        - multiple header lines
+            - some are optional
+            - they have the format
+                - <key> : <value>
+
+    - faking states
+        - the programs have to do it!
+
+        - since http is stateless we can do a sort of hack to include
+          infromation like variables or just other info
+
+        - URL
+            - we can include information in the url, seperated by special
+              characters like &
+
+        - cookies
+            - information that you permit to be stored on your harddrive
+
+- Web caches (proxy server)
+    - servers that keep copy of things requested often
+        - put copies of objects close to the end user
+
+    - The goal is to lower the average response time
+
+    - good for server owners
+        - good for distributing traffic

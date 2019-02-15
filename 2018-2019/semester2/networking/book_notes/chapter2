@@ -112,5 +112,75 @@ The Application Layer
 
 
 
+2.2 The Web and HTTP:
+    - Overview of HTTP
+        - the web's application layer protocol
+        - uses tcp
+
+        - stateless protocol
+            - the server does not maintain any information about the clients
+
+        - client (browser) and server program
+            - exchange http mewssages
+
+        - Web Page
+            - consits of object ( a file ) addressable by a single URL
+
+
+
+        - Non Persistent and Persistent Connections
+            - The programmer of the http application can choose if the
+              connection between a client and server are persistent or
+              non-persistent
+                - http uses persistent mode by default though
+
+            - Non Persistent Example
+                - client initiates tcp
+                - http client sends a requirest to the server which contains
+                  the path of the object
+                - the server recieves the message and then computes and sends a
+                  reponse message
+                - the server teslls the process to close the tcp connection
+
+                - the http client recieves the reponse and the termination
+                  requrest
+
+                - this happens again for each additional object
+
+            * Each TCP connection has one request and response
+
+            - Persistent COnnections
+                - tcp connection is left open after sending the reponse
+
+                - the next messages are sent over this same connection
+
+                - usually has a timeout for when it closes the connection
+
+    - HTTP Message Format
+        - two types of messages
+            - request and response
+
+        - lines
+            - request line
+                - the first line
+                - has 3 fields:
+                    - method field (get post head put delete)
+
+                    - url field
+
+                    - http version
+
+            - header lines
+
+
+
+
+
+
+
+
+
+
+
 
 

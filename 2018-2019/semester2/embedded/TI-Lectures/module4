@@ -1,0 +1,145 @@
+- Software Design
+    - Concept of modular design
+        - a module is a thing that implements a complete task
+        - we can view these in a call graph
+            - like a tree, where each function that a function calls is pointed
+              to
+            - leaves are the functions being called, roots are the functions
+              calling them
+
+
+        - Data Flow graph
+            - we have a flow chart that shows the flow of information through
+              our modules
+
+        - modularity  of a system is a funciton of the number of modules
+            - we want to maximize the number of modules
+            - and want to minimize the interconnections between them
+
+            - a quantitive method of interconnection is Bytes / sec
+
+        - The whole idea of a modular system is to reduce complexity
+            - using multiple threads can achieve this
+
+            - we are going to use multi threading through interrupts
+                - we have the main loop, and then interrupts triggered by
+                  specific events
+
+    - System Design
+        - how to think about software before you start typing
+
+        - we define this with a state
+            - what do we know?
+
+            - or what do we think we know?
+                - but then, what do we know to know for sure?
+                - what actions do we need to do if we are correct?
+                - how do we preform those actions?
+
+            - think about this problem and write down all of the states that
+              our system goes through
+
+        - Can also break things into modules
+            - successive refinement, stepwise refinement, systematic
+              decomposition
+                - all the same, break the big task up into smaller tasks
+                - break those smaller tasks into even smaller tasks
+                - when we have broken down the tasks into very small simple
+                  tasks, we should be able to implement those
+
+                    - sometimes breaking things into multiple parts is not
+                      better, could make things more complicated
+
+                    - the way in which we break things apart is important
+                        - we want to break things up into SIMPLER pieces
+
+            - the interfaces to our model are key
+                - as we break things apart, we have to continually think about
+                  how these components will talk together
+
+    - Header files
+        - the interfaces are implemented in the header
+
+        - we want the definition of these modules to be in our header files
+            - seperate what it does from how it works
+
+        - prototypes, comments and shared structure are all present in the
+          header
+            - no actual definitions or variables are in a header file!
+
+    - Code file
+        - how it actually works
+        - we want to repect the private setup of other functions, don't want to
+          touch things form the c files
+
+
+- C Programming
+    - just to introduce programs and concepts for programming in C
+
+    - what we need to do
+        - do a conversion from taking input, fitting it to a curve, and then
+          outputing
+
+        - we also need to think about where we are in the maze
+
+    - called a structured langauges
+        - because we use
+            - entry point
+            - conditionals
+            - input outputs
+            - connectors
+            - functions
+            - and expit points
+
+    - logic operations
+        - and can be used as a mask to select bits and to clear
+        - xor is used to toggle
+
+    - ports
+        - our pins
+
+    - shifting
+        - we use shifting to divide and multiply
+        - we must know is the number is sightned or unsigned
+            - we do this by choosign the type in C
+            - the compiler will ahndle knowign which actual shift to use
+
+    - math
+        - we have to keep track of over and underflow when we do math
+        - may need to restrict the input or keep track of the bits needed for
+          ht numbers we are using
+
+        - we can premote, perform, check, demote
+            - make the result variable use more bits
+            - add the numbers together into that larger number
+            - check if we went over flow the number of bits we want
+            - chop off higher bits, putting it back into the original size
+
+        - with division we may lose alot of bits
+
+    - variables
+        - permanent allocation
+            - globals
+                - public scope, any file can use it if they extern it
+
+            - static
+                - permanent allocation in private scope
+                - like global but limited to a particular file, other people
+                  can't extern it
+
+        - local
+            - automatic
+                - private to the function
+                - dynamic allocation
+                    - either in a register or on the stack
+            - static
+                - permanent allocation in private scope
+                - at the same location in memory always
+                    - so if we call a function with a static variable multiple
+                      times, it won't reset every time
+
+        - we want to reduce the scope of variables as much as possible
+
+        - everybody has access to ports provided by TI
+            - we will not treat these with who has access but rather who uses
+              it

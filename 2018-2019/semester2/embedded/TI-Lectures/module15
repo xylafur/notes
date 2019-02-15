@@ -1,0 +1,168 @@
+###############################################################################
+#   VIDEO 1
+###############################################################################
+
+Data Acquisition Systems
+    - we are going to sample the distance from a transducer
+
+    - we need to know how to sample data from our world
+        - we're gonna discuss how we use the ADC
+
+
+We will be using the IR Distance transducer
+    - it is very noisy
+
+
+This is a control system, we have something that we will be controlling
+    - we will use the distance to wall from the IR sensor as our transducer /
+      input
+
+    - then we use the ADC and give it to the microcontroller
+
+Sampling / converions from analog to digital
+    - to convert something that is continious into something discrete
+
+    - two limitations
+        - there is a minimum and maximum distance that we can measure
+            - and we only have a particular count of digits, so we have a
+              particular 'resolution'
+                - resolution is the smallest difference that we can measure
+
+            - when we do the A->D conversion we don't get the actual answer,
+              just something that is close to it
+
+        - time limitation
+            - depending on our sample frequency, we will have some maximum
+              discrete value frequency
+
+            - if we sample at 1Hz, we can represent the signals from 0->1/2 HZ
+
+            - we have a minimum and maximum time
+                - depending on our buffer size, we will have another limitation
+
+                - we have a 'frequency resolution'
+                    - the sampling rate / number of elements in array
+
+        - We have an approcimation in amplitude adn in time
+            - in amplitude its determined by the A-D converter
+            - in time its determined by the sampling rate we run our A-D
+              converter
+
+
+MSP432 ADC14
+    - if we set up the ADC in 3.3 V it will take a voltage in between 0 and 3.3
+      it will convert it to a number between 0 and 16,383
+
+
+    - the faster we sample, the more noise we will get
+
+Doing the conversion in software
+    - we wait until the ADC is ready
+    - we then set the 'software start' bit
+    - then we wait until the ADC is finished sampling
+    - then we have the output
+
+Jitter
+    - the variation in our sampling times
+    - in a real time system, we want a low jitter
+    - we want it to be much much less than the time we want to be out sampling
+      time
+
+###############################################################################
+#   VIDEO 2
+###############################################################################
+Data Aquisition Systems Continued
+    - in the last video we talked about using an ADC converter and sampling at
+      some particular rate
+
+    - This video is about noise!
+        - how we might determine how much noise there is
+        - and how to reduce that noise
+
+
+Nyquist Theorem:
+    - if we sample at 2000 Hz
+        - then all of the input signals between 0 and 1000Hz would be properly
+          sampled
+
+        - any signal that is >= 1/2 fs (1000Hz) is going to enduce an error
+            - this error is called aliasing
+
+    - Spectrum analyzer
+        - we will view our signal in the frequency domain
+        - this gives us the amplitude of the fignal as a function of frequency
+
+        - we will just throw away any signals beyond 1/2 fs
+            - this can fold down and cause an error though
+
+        - if the amplitude is less than some particular value, we can just
+          throw it away
+            - and signal less than 3.3V / 16384 will be undetectable
+
+Noise Statistics
+    - in a static manner
+        - we consider the distance to the wall in mm as P1
+            - we do this a multitude of times
+            - for each measurement we count the number of times we get it
+            - this will give us our probability mass function
+                - the number of times each measurement was created
+
+            - the average is an estimate of the signal
+                - the standard deviation is an estimate of the noise
+
+            - we consider the coeficient of variation
+                - the noise / amplitude of the signal
+
+                - if we take log abse 2 of this, we get the number of bit
+                  associated with the noise
+
+        - then we repeat this with a new actual distance
+
+        - the definition of resolution is
+            - if we were to change the signal by some amount, our system can
+              detect it
+
+            - so if the two mask functions are statistically different, then
+              the resolution is less than the distance between the two
+              distances
+
+Transducer
+    - we take in some distance as the input
+    - the output is some voltage
+
+    - it will send out light and get it back
+
+    - problems
+        - non monotonic
+            - there are two possible distances for a particular voltage
+
+            - to handle it, we restrict the range
+
+        - hyperbolic
+            - the graph that we get when we plot voltage against distance is
+              not linear
+
+Getting rid of noise
+    - Probability Mass function
+        - gives us a statistic of the noise to actual data
+
+    - central limit theorem
+        - if we take our data and we add it up
+            - as we add more and more data that is independent and random
+            - as the number of data elements is aproaching inf the curve
+              becomes gaussian
+
+
+
+    - Analog Filter
+        - 
+
+    - Digital Filter
+        - averaging filter
+            - we average the last N data points
+
+            - low pass nature
+
+
+Problems with filters
+    - we have a tradeoff between noise and speed
