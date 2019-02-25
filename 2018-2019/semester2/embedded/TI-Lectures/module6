@@ -1,0 +1,96 @@
+GPIO
+
+Video 1:
+    - We're going to talk about the pins, ports and interfacing for this
+      microcontroller
+
+    - the end goal is to use the line sensor
+
+    - IO:
+        - we have 84 IO pins on this board
+            - not all of those are GPIO
+
+        - types:
+            - digital
+                - serial stream of bits
+
+            - timer
+                - some period of time high / low means particular things
+
+            - analog
+
+        - we can collect multiple pins together, and call them a port
+            - most of our ports are 8 bits wide
+
+        - alot of our pins have multiple names
+            - these are used for alternate functionality such as timer or
+              analog
+
+    - logic types
+        - we can have negative logic, where log means true
+            - this is like low enable I guess
+
+
+    - Digital Interfacing
+        - how to pass digital data between two systems
+
+        ..........
+
+        - we have a max supported current and a min supported current
+            - he goes in about defining high and low voltage and hwo thats
+              intrpreted by the MOSFET circuit
+
+        - voltage can only be between 0 and 3.3V at any time on any pin
+
+Video 2 - Programming GPIO
+    - This module is all about the software aspect of communicating between
+      systems
+
+    - how the software works
+        - we can either be input or output with the GPIO
+
+        - to set a pin to be an input we have to set its direction register to
+          a 0
+            - so we have to specify how we will be using a particular GPIO pin
+
+- input: data into the processor
+    - steps to initializing pin 1 as input
+        - we select with a low value to the particular register we want
+        - so to select pin 1 we write ~0x2 to both of the select registers
+        - then we write a zero to bit 1 on the direction register for this port
+          to signify that it will be an inpuit
+
+    - friendly programming is where we only mess with what we need
+
+    - doing the actual input
+        - there are 8 bits in this register but we only deal with our pin
+
+        - we just read from that particular ping with an and mask
+
+            return P1->IN & 0x02
+
+- output
+    - need to initialize the pin just as before
+
+    - it is exactly the same process, but we set that direction bit to high
+      rather than low
+
+    - writing
+        - we read in the original bits from the registers
+        - we set our bit to 0
+        - then we update our bit to what we want
+
+        p1->OUT = (P1->OUT & (~0x01)) | new
+
+        - we clear out bit and then update it if it needs to be.  We ahve to
+          clear it first because if it was 1 and we wanted to change it to 0
+          the or wouldn't change it
+
+- solid state relay
+    - takes in an optical interface as the input
+
+
+
+
+
+

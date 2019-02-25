@@ -174,10 +174,333 @@ The Application Layer
 
 
 
+2.3 Electronic Mail in the Internet
+    - Email is asynchronous
+
+    - Three Major Components
+        - user agents
+            - handles sending outgoing mail
+            - outlook, gmail are examples
+            - retrieves massages from the mail server mail box
+
+        - mail servers
+            - contains mailboxes
+
+            - has a message queue of outgoing messages that haven't been
+              delivered
+
+        - simple mail transfer protocol
+            - application layer protocol for internet mail'
+            - uses tcp
+
+            - sides
+                - both execute on any given server
+
+                - client
+                    - sender's mail server
+
+                - server
+                    - recipients mail server
+
+            - Limitations
+                - limited to 7 bit ascii characters
+                - with multimedia, non ascii stuff has to be encoded in ascii
+                  and then decoded
+
+        - Does not normally use intermediate mail servers
+            - if the other mail server is down, the message stays in the
+              outgoing queue for some specific ammount of time, retrying every
+              now and then
+
+        h
+
+
+        Alice sending message to bob example
+
+        alice's user -> arrives in  -> client side    -> smtp client  ---
+        agent sends     allice's       see's message     sends data     |
+        message         mail server    opens tcp         to bob's       |
+                        queue         to bob's server    server         |
+                                                                        |
+        -----------------------------------------------------------------
+        |
+        --> bob's server        ->  Bob uses his
+            places message          user agent to
+            in his mailbox          read it whenever
+
+
+    - Comparison with HTTP
+        - both send files
+
+        - HTTP is a pull protocol, pulls data from someone
+        - SMTP is a push protocol, pushes data to somewhere
+
+        - SMTP is restricted to 7 bit ascii, HTTP isn't
+
+        - HTTP multimedia objects are all encoded as their own response
+          message, for SMTP, everything is in a single message
+
+
+    - Mail Access Protocols
+        - A user's agent will use smtp to send a message to that same user's
+          mail server.  Then that mail server sends the message to destination
+          mail server, then that mail server delivers it to the end user's
+          agent either some web interface using http or POP3 or something
+            - we relay to the original sender's mail server because that mail
+              server has actions if the destination is unreachable
+
+            - the end user can't use smtp to request messages form their mail
+              server, because SMTP is a push protocol not a pull
+
+                - this user instead uses something like POP3 or IMAP
+
+        - POP3
+            - very simple, limited
+
+            - stages
+                - user agent opens tcp connection port 110
+                - autorizes
+                    - checks username and pass
+
+                - transaction
+                    - user agent retrieves messages
+                    - can also mark messages for delection
+
+                - update
+                    - messages marked for deletion are deleted
+
+            - no state information in between sessions
+
+        - IMAP
+            - POP3 allows you to download messages to your computer
+                - you could then organize them and everything
+                - but what if you want to access those from another computer?
+                - This is where IMAp comes in!
+
+            - Mail access protocol
+                - more complex than POP3 though
+
+            - Will move incomoing messages into folder
+                - gives the user ability to manipulate those folders and move
+                  things in and out of folders
+
+            - Maintains state about the user
+
+            - Allows the user to download only particualr messages and only
+              parts of particular messages
+
+        - Web based email
+            - The message is sent to your web server through http
+            - the message is then sent to the recipients mail server using smtp
+
+            - you can retrieve messages from your web server using HTTP
+
+
+2.4 DNS - The internet's directory structure
+    - hostnames are just a human mnemonic to identify servers
+
+    - About DNS
+        - it is:
+            - distributed database implemented into a hierarchy of DNS servers
+            - an application layer protocol that allows hosts to query that databse
+
+        - Runs over UDP on port 53
 
 
 
+    - Services provided by DNS
+        - Host aliasing
 
+        - mail server aliasing
+            - the hostname we using for our mail server may not be the actual
+              place that that mail server is located
+
+            gmail.com -> relay1.west-coast.mail.google.com
+                - or something like that
+
+        - load distribution
+            - can make certain websites distributed over many actual servers
+            - google.com can point to many ip addresses
+
+    - how it works
+        - an application uses the client side of dns and specifies a hostname
+        - this is sent into the network to the dns server at port 53 using UDP
+        - the the dns server replys with a mapping
+        - this mapping is then passed ot the application
+
+        - kinda like a black box, but there is alot going on behind the scenes
+
+    - distributed, heirarchical database
+        - three calsses of dns servers
+            - root servers
+                - about 400 all over the world
+
+            - top level domain servers
+                - for each of the top level domains: com, org, edu, gov, ..
+
+            - authoritatice dns servers
+                - every organization with publicly accessible hosts have to
+                  provide a publically accessible dns records that map the
+                  names of those hosts to ip addresses
+
+            ALSO
+            - local dns server
+                - each isp has a local dns server
+                - when a host connects (typically through dhcp) the ip address
+                  of the local dns servers is returned
+
+        - the client first contacts a root server
+            - the root server sends the ip for a TLD server
+            - the TLD server sends back the ip of the authoritative server
+            - then the client contaces the authoritative server
+
+    - caching
+        - we are able to avoid goign to the root server almost ever because of
+          caching frequenct lookups
+
+    - DNS records and messages
+        - dns servers that implement the distrubited database store resource
+          records taht provide hotnamt to ip mappings
+            - each reply carries one or more resource recoredso
+
+        - fields of a resource record
+            - (Name, Value, Type, TTL)
+
+            - TTL: how long the reouces should live for
+
+            - Name and value depend on type
+
+            - Type=A
+                - name is a hostname
+                - value is an ip address for the hostname
+
+            - Type=NS
+                - name is a domain
+                - value is the hostname of an authoritative dns server
+
+            - Type=CNAME
+                - value is a canonical hostname for the alias hostname Name
+
+            - TYPE=MX
+                - Value is the canonical name of a mail server that has an
+                  alias hostname 'name'
+
+        - If the DNS server is authoritative for a particular hostname, then
+          the DNS server will contain a type A record for the hostname
+
+            - otherwise the server will contains a type NS record
+
+    - DNS Messages
+        - both query and reply messages have the same format
+
+        - first 12 bytes is the header
+            - the identifier contained in the header is copied into the reply
+              message
+
+
+    - Inserting Records into the DNS database
+        - first you have to register you domain with a registrar (like godaddy)
+
+        - then you provide the registrar with the ip addresses of your primary
+          and secondary authoritative dns severs
+
+
+2.5 Peer to Peer File Distribution
+    - each peer can redistribute a portion of the file that has recieved to any
+      other peers
+
+    - distribution time increases linearly with the number of peers
+        - the more peers you have, the longer it will take to send the file to
+          allof them
+
+        - when a peer recieves from data though, it can upload that data to
+          other peers
+
+        - total distribution time is then also based on how much each peer
+          distributes
+
+
+    - upload rate
+        - equal to the original distributers upload rate plus the upload rate
+          of all the peers
+
+    - torrents
+        - users download chunks of a file, and then redistribute those chunks
+          to peers
+
+        - each torrent has an infastructure node called a tracker
+
+        - when a peer joins the torrent, it registers itself with the tracker
+          and informs the tracker that it is still in the torrent every now and
+          then
+
+        - the tracker sends a list of peers to each user
+            - the user establishes a tcp connection with those peers
+
+        - the user can request a list of all its neighbors chunks
+            - then the user calculates which chunks it needs and which it
+              should ask the neighbors for
+
+        - unchoked peers
+            - whoever gives us the most chunks, we give the most chunks to
+
+            - every now and then we choose another additional peer and hope
+              that they will seed back
+                - this person is called 'optimistically unchoked'G
+
+
+
+2.6 Video Streaming and Content Distribution Networks
+    - Internet Video
+        - video is simply an array of pixels
+        - We can compress video on the fly to get different levels of quality
+          and different bit rates
+
+    - HTTP Streaming and DASH
+        - The video is stored at an HTTP server as a regular file with a
+          particular url
+
+        - the client requests this file over a TCP connection
+            - it places the bits into a buffer
+            - when this buffer is full enough playback can begion
+
+            - DASH is a http based streaming protocol where the video is
+              encoded into several different versions
+
+                - each version has a different bit rate and because of that
+                  quality level
+
+    - Content Distribution Networks
+        - manages servers in multiple geographically distributed locations
+
+
+        - usually follow one of two different server placement philosophires
+            - enter deep
+                - deploy server clusters in access ISPs all over the world
+                - get close to users as possible
+
+            - bring home
+                - bring the isps home by building large clusters at a smaller
+                  number of sites
+
+        - data is replicated across the clusters
+
+        - CDN operations
+            - the CDN intercepts requests and determines the best server for a
+              given user at a given time
+
+            - then must redirect the user to that cluster
+
+            - this is acompluished using dns
+                - when a user requests a video, the user is redirected to a
+                  cluster based on their location that distributes the media
+
+                - then a second dns request for that host name returns the ip
+                  of the cluster to use
+
+
+
+2.7 - Socket Programming: Creating Network Applications
 
 
 

@@ -1,0 +1,115 @@
+Flip Flops and Related Devices
+
+- Combinational vs Sequential Circuits
+    - So far we have been using combinational
+    - In combinational circuits, there is no memory.
+        - we just have the gates
+        - the output of these gates is based only on their input
+
+    - Sequential circuits use memory elements called Flip-Flops
+        - A flip flop is just an element constructed from Gates that has a
+          notion of state
+
+        - Flip flops are known by other names such as Latch and Bistable
+          Multivibrator
+
+5-1 Nand Gate Latch
+    - Two Nand gates are cross coupled so the output of NAND1 is one of the
+      inputs to NAND2 and vice versa
+        - these outputs are also the outpout of the circuit
+
+    - We have two inputs, one connected to one NAND and the other conencted to
+      the other
+        - they represent SET and RESET repectively
+
+        - both should be held high at all times unless we are going to set or
+          unset
+
+    - The set and reset triggers for the NAND latch are active low.
+        - We pulse one of them with a low signal to either set or reset the
+          latch
+
+5-2 NOR Gate Latch
+    - We can make the same construct as we did in the last subchapter but using
+      NOR gates.  All that happens is the inputs become active high instead.
+
+    - When we first supply power to the circuit, it is not possible to predict
+      the starting state of the latch
+
+
+5-4 Digital Pulses
+    - a propogating wave with only one crest or trough
+
+    - a pulse is called positive when it is low and then goes high momentarily
+
+        1     _
+        0 ___/ \___
+
+    - a pulse is negative if it is high and then goes low momentarily
+
+        1 ____   ______
+        0     \_/
+
+    - we consider these pulses to be square, but they aren't actually
+        - rise time and fall time signify the time it takes the voltage to go
+          between 10% and 90% of the total vlaue
+
+
+
+    - the leading edge is the first slope (when the pulse goes from its
+      starting positin to its pulsed position) and the trailing edge is when it
+      returns to its original position
+
+    - the pulse width is the time between when the leading edge and trailing
+      edge are at 50% of their total value
+
+
+5-5 Clock Signals and Clocked Flip FLops
+    - with a clock signal, we can create synchronous systems
+        - the state of a flip flop can only change when the clock signal is
+          high or low (depending on how we define it)
+
+        - these changes don't happen when the clock is in a particular state,
+          but rather when it is transitioning between particular states
+            - this transisition is called an edge
+
+    - setup and hold times
+        - setup time
+            - how long the input to a flip flop must be held at that value
+              before the clock edge
+
+        - hold time
+            - the time that that signal must be held after the clock edge
+
+5-10 Asynchronous Inputs
+    - We have been dealing with the syncronous inputs of various flip flop
+      types, they are only used on the correct clock edge
+        - most clocked FF also have one or more asynchronous inputs
+
+        - they act as override inputs and can be used to set or unset the flip
+          flop independent of the clock and other inputs
+
+        - they take precedence over the regular sync inputs
+
+5-11 Flip Flop Timing Considerations
+    - Maximum Clocking Frequency
+        - there is a limit to the speed of our clock
+        - any faster than this and the flip flop won't trigger reliably
+
+    - Clock Pulse High and Low times
+        - the manufacruter will specify how long the clock must remain low
+          before it goes high and how long it must stay high before it goes
+          low
+
+5-12 Potential Timing Problem in FF Circuits
+    - we assume that any flip flop will consider the input that it is given
+      immedietly before the correct edge trigger for that flip flop.
+
+    - so if we have two flip flops connected, the second will take whatever
+      value was present to it from the first before the edge trigger
+        - then on the edge trigger it actually makes that change
+
+5-14 Flip Flop Synchronization
+
+
+

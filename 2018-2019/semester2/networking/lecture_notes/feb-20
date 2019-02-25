@@ -1,0 +1,120 @@
+- Checksum:
+    - remember we do that wrapping add thing
+    - then we do the ones compliemnt
+    - then we put that number in the checksum section
+
+    - when the reciever gets the packet they do the wrapping add of the packet
+      (excluding the checksum number)
+    - then they make sure that that number and the checksum, when added, equall
+      all ones
+
+- Reliable Data Transfer
+    - We write out what we are planning with a finite state machine
+
+    - the only thing different than FSM's that I know is that on the
+      transitions he likes to put
+        - event causing the transition          on the top
+        - and actions taken on transition       on the bottom
+
+    - what we do to create reliable transfer over reliable medium
+        - sender
+            - we wait for a call from layer above (application layer)
+
+        - reciever
+            - wait for call from layer below (from the network layer)
+
+    - over a channel with some bit errors
+        - what do we do ass humans if people make errors in a conversation?
+            - say excuse me?  Hmm?  Uh? or something like that
+            - we ask for a correction
+
+        - what computers do to recover from errors
+            - acknowledgments (acks)
+                - reciever explicitly tells the sender that it recieved the
+                  packet ok
+
+            - Negative acknoowledgements (Naks)
+                - tells the sender that it got an error and it needs to be
+                  resent
+
+            - FATAL FLAW
+                - what if the ack or nak is corrupted?
+
+                - we will implement something called stop and wait
+                    - send packet, stop and wait for response
+
+            - so now before we send the user's data to the reciever, we attach
+              a checksum to the data
+                - then we send that packet out
+                - then we wait for a reponse from the reciever
+
+                - the sender maintains the packet to re send if it needs to
+
+                - if we get an ack back as the sender, we know all is good and
+                  can send more packets
+
+            - what if there is an error?
+                - the sender gets back a nak
+                - then the sender resends the packet
+
+            - still, how do we handle bad acks or naks
+                - we now have two different state sets, one deals with the even
+                  packets and the other deals with the odd packets
+
+                - we make sure that we get an ack or nak for the right packet
+
+*******************************************************************************
+*   ASK IN CLASS
+*******************************************************************************
+                - don't see how this really solves anything though... this is
+                  something I should ask in class
+                    - nevermind!  It was explained how this fixed this by
+                      seeing the reciever side!
+
+            - reciever side
+                - we start recieving even packets
+
+                - if the packet we get from below is corrupted then we send
+                  back a nak
+
+                - if its not correct, but its not an even if we are in the even
+                  state or its not odd and we are in the odd state, then we
+                  don't transition and send back an **ack**
+                    - the idea behind this is because we don't know it was
+                      expected here, we send back the ack
+
+                    - this will handle the case where the sender re sends
+                      because the ack is corrupted
+
+    - NAK-Free protocol
+        - if we don't get what we expected because its corrupt, why should we
+          send a nak?
+            - because what if we never recieve the packet?
+                - a router along the way dropped it because it was so corrupt
+
+        - the sender has to handle this, so their paradigm can't depend on
+          knowing if the reciever didn't get it, or why the reciever needs it
+          re sent
+            - packets get lost more than they get corrupted
+
+            - so in the case of an error, we just don't repond with anything
+              instead of a nak
+
+            - the sender will eventually (hopefully) the packet again
+
+        - we need a timer of some sort!
+            - when do we give up and when do we try to send again?
+
+
+        - what this looks like
+            - the sender will wait for a call from above
+            - build the packet, add checksum, and send it over the network
+
+            - we wait for an ack
+                - if we recieve a corrupt packet or an ack for the wrong num
+                    - we resend the same packet
+
+
+    - Golden rule of protocol
+        - send as little data as possible for as short a distance as possible
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$

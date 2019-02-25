@@ -1,0 +1,24 @@
+- add the lowest f cost node that has some successors not currently in the tree
+    - if the memory is full and not all of the nodes in the memory are from the
+      same path, first we must drop a node to make room
+        - we drop the shallowest, highest f cost leaf
+
+        - make note of the best cost descendent for the parent if it is better
+          than the parent's original or the parent has none
+
+    - if memory is full and all of the nodes in our memory are from the same
+      path and the node that we just expanded is not a goal state
+        - we know that we cannot reach the goal through this path, we make the
+          leaf that we just expanded have a f value of infinity
+
+        - then we drop this node
+
+
+    - if we have expanded all of the children of a node, we update the fvalue
+      of the parent to the lowest f value of all the children
+
+    - if a node is a goal node, but the cost to this particular node is grater
+      than the predicted cost of the root, we will not expand this goal node
+
+
+
