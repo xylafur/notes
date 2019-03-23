@@ -1,0 +1,156 @@
+###############################################################################
+#   Supervised Learning - Learning From Examples
+###############################################################################
+- I missed the basics that were covered last wednesday
+
+- Overfitting
+    - we want to construct a model, a classification algorithm
+        - they can be very complex (polynomial function or something)
+
+        - or very simple (linear regression)
+
+    - there is a point of no return where the complexity (number of nodes) is
+      too much
+        - at this point, the percent error will begin to increase, rather than
+          continue to decrease
+
+    - happens when models are more complex than neccessary
+        - over sensitive to noise
+
+    - the cure
+        - if you have a lot of training examples that cover the entire space of
+          the classification algorithm
+
+    - training accuracy doesn't do much more than saying, we memorized the
+      examples
+
+    - Occams Razor
+        - if you have 2 models that have the same testing algorithm with the
+          same accurcy, you should always use the more simple one
+
+- Metrics for Performance Evaluation
+    - two kinds of errors for classification in a classification model with 2
+      distrinct classes
+        - you classify type one as type two
+        - you classify type two as type one
+
+    - if instread you had 3 classes
+        - when we create the confusion matrix, a column of zeros with only a
+          single value along with a row of zeros for that value will be such
+          that it is impossible? to confuse that with the other entries
+
+          - In the below matrix, we can confuse class 1 and class 2 easily, but
+            neither with calss 3
+
+          - the top row specifies the predicted, the side column specifies the
+            actual
+
+                C1    C2      C3
+          C1    40    10      0
+          C2    10    40      0
+          C3    0     0       50
+
+          - these numbers are the distribution, for example we have 10 entries
+            that are actually C1 but were classified as C2
+
+
+    - in medicine, the misclassification can be a very very bad thing
+
+
+###############################################################################
+#   Neural Networks
+###############################################################################
+- 3 blue one brown has a couple videos about machine learning
+    - we watched the neural network one, it is very good
+
+- Artificial Neural Networks (ANN)
+    - Black box
+        - takes inputs
+        - gives particular outputs
+
+        - one particular way of looking at neural networks
+
+    - bias
+        - some constant value that modifies the value of a node
+
+    - acctivation function
+        - what we use to wrap the value computed by the weightrs and bias
+
+        - can be something like a sigmoid, or something as simple as a
+          piecewise
+
+        - generally they you something non-linear
+            - this way we can learn non-linear models
+
+    - Architecture
+        - you might not always want everythnig connected to everything
+
+        - sometimes it is useful to only consider particular aspects of the
+          input
+
+        - can use tanh, sigmoid, linear, etc
+
+    - terminology
+        - composed of units (nodes)
+
+        - each node has an activation level
+            - this is a particular number that it stores
+
+        - input function
+            - takes the input data in, linear
+
+        - activation function
+            - takes the input funciton and bounds it
+            - non-linear
+
+
+    - learning
+        - have a training set (input with desired output)
+        - have the architecture of the neural network, so we know what is
+          conencted with what
+
+        - we know the activation function
+
+        - so what you learn, is the weights
+            - THE ONLY THING YOU LEARN IS THE WEIGHTS OF THE NETWORK
+
+            - you change the weights such that it approches the desired correct
+              percentage
+
+            - the networks use hill climbing
+                - steepest descent
+
+                - the function is differentiable
+                    - you can determine the direction where the error goes
+                      down the most
+
+        - you learn such that a particular percentage of the input data sets
+          are classified correctly
+
+    - two fundamental problems
+        - how do I learn good weights that minimize error?
+
+        - If you have the output layer
+            - how to use the error information to find weights to minimize the
+              error function
+
+            - we need to know the error at the inner ways, so we know which way
+              to increase or decrease
+                - you use a back propogation algorithm
+
+
+
+
+
+###############################################################################
+#   Group Project
+###############################################################################
+- we want to eventually use the minimum number of moves to reach a goal state
+    - moving to pick up and drop off locations counts as moving
+
+- recommended state space
+    - where the agent is, if he carries a block
+
+- Use 2 Q tables
+    - one for when the agent is carrying the block
+    - one for when the agent is not carrying the block

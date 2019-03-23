@@ -1,0 +1,184 @@
+###############################################################################
+#   Group project info
+###############################################################################
+- Make sure to use version 5 of the problem!
+
+- The world
+    - It is a grid world, a 5x5 cross grid
+    - there are pick up locations and drop off locations
+        - the drop off locations can only be stacked 5 boxes high
+
+    - there are multiple squares with blocks on them
+
+- Application
+    - we have a robot with a starting location (given as a coordinate)
+    - we have to move all of the blocks to the drop off locations
+
+- operators:
+    - North, south, east and west
+        - obviously we cannot move outside of the grid
+
+    - If the agent is in a pickup cell and is not carrying a block, he will
+      automatically pick it up
+
+    - if the agent is on a drop off cell and the cell still has capacity and
+      the robot has a block, he will automatically drop it off
+
+- What we can use
+    - feedback, we cannot use any external knowledge
+
+    - knowledge
+        - state we are in
+        - operators
+
+        - we don't know if a square is a pick up or a drop off location
+
+    - the q table form the last run
+        - this contains the movements we made from particular states
+
+- rewards
+    - picking up a block gives us 13 bucks, dropping off the blocks gives us 13
+      bucks
+
+    - for every time we move, we lose a dollar
+
+
+- Policies
+    - Random
+        - the oeprator moves randomly, eh will always pick up and drop off if
+          he can
+
+    - PExploit
+        - pick up and drop off if we can
+
+        - we choose our direction based off of the q table
+            - which ever direction has the highest utility is the one we choose
+              80% of the time
+                - if there are ties for best, you choose randomly
+
+            - if you don't choose the one with the best utility, you choose
+              randomly one of the other choices
+                - you would roll again
+
+    - PGreedy
+        - just pick the direction of the best utility
+            - the only time there is randomness is if there is a tie between
+              highest utility
+
+
+- Performance Measurement
+    - we have a bank account
+
+    - also we conut the number of operators we apply
+        - all of them, moving and pickup / dropoff
+
+- State space of the problem
+    - (i, j, x, a, b, c, d, e, f)
+
+    - (i, j) is the position of the agent
+    - x is 1 if the agent carries a block, 0 otherwise
+    - (a, b, c, d, e, f) are the number of blocks in cells
+        - (1, 1), (3, 3), (5, 5), (5, 1), (5, 3), (4, 5)
+
+    - Initial state:
+        (1, 1, 0, 5, 5, 5, 0, 0, 0)
+
+    - Terminal State:
+        (*, *, 0, 0, 0, 0, 5, 5, 5)
+
+        the stars have to corespond to the drop off cells
+
+Recommended Reinforcement Learning State Space
+    states have the form (i, j, x)
+
+
+
+###############################################################################
+#   Supervised and Unsupervised Learning
+###############################################################################
+- In reinforment learning we have feed back, but we might not always know lead
+  to that positive or negative feedback
+
+- at the beginning, we just pay attention to what states are good and what
+  states are not good
+
+- Bellman Equation
+    - The idea is that if we know everything about the state space we can use a
+      bellman equation to solve it
+        - we take our state space and choose the operator that leads to the
+          highest utility
+
+
+    - The equations look like
+        U1(s) = 3 + max(U2(s), U3(s))
+            -in this case, state 1 has a reward of 3 and we choose the better
+            of states 2 and 3 to transition to
+
+    - not based on policy
+
+- Temporal Difference Learning
+    - we don't make any assumption about knowing the search space
+        - each move you update a single utility
+
+        - the new utility is a combination of the old utility and the new utility
+            - the rate at which the utlity changes depends on the learning rate
+            - the higher the learning rate the more important the future
+
+            - if the learning rate is to high, then it is highly probable that
+              the model will just forget the past
+                - if the learning rate his high, we might converge more quickly
+
+        - the future is dependent on gamma, which is distrinct from the learning rate
+
+
+    - we update the utility of a state based on the new observations / the new
+      reward of the state transition
+        - this is modified by our utility rate
+        - the higher the utility rate, the faster we update the utility of a
+          particular state based on the recieved reward
+
+
+    - new_estimation = old_estimation * (1 - a) + observed_value * a
+
+    - you get utility with respect to a particular policy
+        - if you use 3 policies you get 3 different results
+
+- Off policy learning
+    - doesn't use any policy
+        - in general you get the same result
+
+    - simmilar to a greedy search?
+
+    - bellman update is an example
+
+    - better for static worlds with little need for exploration
+
+- on policy
+    - we have a policy
+        - if we run with different policies we get different results
+
+    - example: temporal difference
+        - the policy is the learning rate!
+
+
+###############################################################################
+#
+#   WE HAVE AN EXAM ON MONDAY
+#
+#   OPEN BOOK / OPEN NOTES - NO COMPUTERS
+#
+###############################################################################
+- Mostly Search
+
+- Some game theory
+    - Nash equillibrium
+
+    - we need to read the wikipedia page he provided
+
+- Reinforcment Learning
+    - he provided an article we need to read
+
+
+###############################################################################
+#   Eick's Research
+###############################################################################

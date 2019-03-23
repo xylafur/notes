@@ -1,0 +1,104 @@
+We have a test on monday!
+
+He will give us a homework today, it is due before monday (the test);
+    it will be due saturday
+
+Homework
+    we will have a given effeciency, sending one packet at a time, we have to
+    determine how many packets have to be in flight for the effeciency to be at
+    some higher level
+
+Pipelining
+    - We send a particular number of packets at the same time
+    - the reciever can only handle one packet at a time
+
+    - go back n
+        - the reciever can only recieve one back at a time, they must be in
+          order
+            - the responder will send back to the sender the last packet he got
+              correctly
+
+        - each packet will have its own ack back
+
+        - if we lose multiple packets, we assume we got as far as the highest
+          ack
+
+        - if our timer goes off, we go back to the beginning of our window
+
+        - as soon as you get an ack for a packet you forget about it and shift
+          you window to the right
+
+            - we have packets we've gotten acked back for, packets that we've
+              sent but not gotten the ack back and packets that are ready to
+              send but haven't been sent
+
+        - we use sequence numbers to identify packets
+
+        - variables
+            - next packet number
+                - when we get a new packet from above, this is the number for
+                  this next packet
+
+            - base packet
+                - the start of our window
+
+            - window size
+
+
+    - selective repeat
+        - individually asks for particular mixed packets, rather than telling
+          the sender that the last one they saw was N
+
+        - we store packets that we get out of order
+
+        - every packet has its own timer
+
+        - have to have more sequence numbers than window size
+
+How TCP Reallly works
+    - Dull duplex
+
+    - connection-oriented
+        - knows how much buffer yhou have
+
+    - always point to point
+
+    - header
+        - alot of shit
+
+        - source port, dest port
+        - sequence number
+        - is ack
+        - checksum
+
+    - sends the number it wants next rather than the last one it recieved
+
+    - reliable flowcontrol
+        - retransmission
+        - timeout
+        - duplicate acks
+            - if the reciever is like "I want 10" over and over, you send 10
+            - if you get 3 copies of an ack after getting the first one, you
+              declare it lost and resend that byte
+
+    - has a cumulative ack
+
+    - Three way handshake (opening a connection)
+        - client requests a connection with a server with a syn
+
+        - the server responds with a syn-ack
+
+        - the client acks back to the server
+
+    - closing a connection
+        - there are different steps depending on who wants to close the
+          connection
+
+
+     - congestion control
+        - our network needs to be able to handle more than just our traffic,
+          because we will have to resend any packets that are dropped or
+          corrupted
+
+
+

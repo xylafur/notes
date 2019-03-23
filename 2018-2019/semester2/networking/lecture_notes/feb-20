@@ -118,3 +118,64 @@
     - Golden rule of protocol
         - send as little data as possible for as short a distance as possible
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+- Explicitly Ealing with errors and Loss
+    - we will be adding timers now
+        - we will wait a reasonable ammount of time for a response to a packet
+          that we sent
+
+    - sending our packet
+        - build the packet
+        - add the checksum
+        - put it on the wire
+        - start a timer
+
+        - if we recieve a packet and its not what we want, we don't do anything
+            - this deals with garbage showing up
+                - maybe malicious who knows, don't wanna respond to the
+                  reciever about this crap though
+
+        - if we don't recieve the right ack back within our timeout, we resend
+          the packet and restart the timer
+
+        - when we get back the corect ack, we just wait for the next message
+          from above
+
+    - performance
+        - shitty performance, because this is a stop and wait.
+        - one packet at a time
+
+        - if we could keep sending these packets that would be much better
+
+        - utilization
+            - # of sent bits / the time between sending and ack back
+
+        - if we lose packets.. its even worse
+            - we have to wait the length of the timer, which is longer than the
+              propogation delays of the message and the ack back
+
+        - there is a possible ocomplication where it takes longer than the
+          timer to get the ack back... this causes a bad back to back
+          dpropogation issue
+            - we keep sending duplicate packets and the reciever keeps sending
+              back acks for those but delayed
+
+
+            - this is because we only have packets 0 and 1
+                - if they were all individially numbered we would have a
+                  greater idea of what was going on
+
+- Pipelined protocols
+    - we send multiple packets over the network to the reciever
+        - this is some predefined number of packets that we allow to be in
+          transit at a time
+
+    - we want an ack back every now and then, but don't have to hear them all
+      before we send more packets
+
+    - There are Two different protocols for this strategy
+        - go back n
+            - have a 1 packet recieve window
+
+        - selective repeat
+            - larger recieve window

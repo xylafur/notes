@@ -1,0 +1,102 @@
+Transport Layer Services
+    - how to make the network more reliable
+
+    - flow control
+        - do you have room for all this
+
+    - congestion control
+        - how packed is the highway?
+
+    - the two main transport layer protocols
+        - tcp and udp
+
+What does the transport do
+    - provides a logical stream of info between 2 hosts
+        - software that runs behind the scenes that gets information from one
+          place to the other
+
+        - does not care whats going on above, what the content is
+
+    - programs break things into messages
+        - the transport layer may break those into smaller chunks
+            - it does this to be nice to everyone else and control congestion
+
+Below the transport layer
+    - the network layer is right below
+        - this is where IP comes from
+
+
+Protocols
+    - TCP
+        - reliable
+
+    - UDP
+        - unreliable
+
+Multiplexing and Demultiplexing
+    - multiplexing
+        - you take alot of pieces of data and push them through a single wire
+        - you have to figure out what rule you put things on the wire by
+
+        - if you have alot of different programs using the network, their
+          packets must be multiplexed through the outgoing link
+            - one given server will have to handle all of those requests
+
+    - demultiplexing
+        - seperate all of the incoming information
+
+
+    - how demultiplexing works
+        - whenever you start a network application, it knows how to use the
+          socket library
+            - a given application will have a given port
+            - it identifies with its port in its messsages to the reciever
+
+        - the 'portmaster' knows how to send reponses from the incoming replys
+            - this is because you supply the destination port as well
+
+    - every piece of data around the internet has
+        - src ip, dest ip, src port and dest port
+
+
+This lecture will be all about ports
+
+
+
+Connectionless Transport (UDP)
+    - UDP was defined a long time ago, in th 80s or something
+
+    - no handshaking, every packet is independent
+
+    - no state, small header, blasts away as quickly as desired
+
+    - UDP checksum
+        - does care if the packets arrive corrupted
+
+        - UDP Checksum algorithm: Ones compliment
+            - adds all the numbers up (incliuding the checksum which is
+                                       initially 0)
+            - any wrap around is added back into the number
+            - then we do a bitwise not on the number
+
+            - to check, the reciever calculates the sum and adds it to the
+              provided checksum
+                - since we did the ones compliment on the original, then when
+                  we add them together (if its correct) the number will be all
+                  1s
+
+Principles of Reliable Data Transfer
+    - How to avoid congestion
+
+    - The illusion we want to provide is that the network is reliable (even
+      though it isn't)
+
+    - The user just calls some "reliable data transfer" function
+        - this function has to do alot of meta functions
+        - number the packets
+        - timeout specifications
+
+    - How to do it
+        - 
+
+

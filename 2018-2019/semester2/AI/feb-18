@@ -1,0 +1,211 @@
+Agenda for today
+    - we will finish EC
+    - then have some anouncments
+    - search
+    - Game thory
+    - Reinforcment learning (if we have time)
+
+
+###############################################################################
+##  Evolutionary Computing
+###############################################################################
+
+Evolutionary computing
+    - Difference between this and other search approaches
+        - EC works with populations
+            - look at alot of solutions in parallel
+
+        - EC has the cross over operator, and can use two solutions to  create
+          a new solution
+
+        - EC can be used for optimization functions
+            - good in cases where the function is quite nasty and we can't
+              easily take the derivative
+
+        - EC is Non deterministic, based on probability
+            - this has the advantage of helping us find many good solutions
+
+    - Applying EC to the Travelling Salesman
+        - we have our cost matrix and the salesman that has to visit every city
+          exactly once, finding the minimum path
+
+        - sketch of an EC system to solve
+            - we use a rollete algorithm as our selection algorithm
+                - we "spin a rollete wheel" where the size of each portion is
+                  based on the goodness of a solution
+
+            - we use alot of mutation at the beginning, none towards the end
+                - this will help us explore alot of the search space
+
+        - we can compare solutions based on the number of paths they have in
+          common
+
+        - coming up with a cross over operator
+            - this is a dificult task for this proble
+
+            - we have to take some edges from the mother and some from the
+              father, but we can't create anything new
+                - creating something new could be mutation
+
+                - if an edge is present in both the mother and the father then
+                  it must occur in the child
+
+            - the complexity should be low
+
+        - cross over operator examples
+            - Donor-Reciever-Crossover
+                - Take a slice from the donor
+                    - the slice can be of various sizes, but must be less than
+                      50%
+
+                - then append other edges from the reciever
+
+                - sometimes you have to add some mutation
+
+            - Top-Down Edge Preserving Crossover
+                - if there is something in both parents, it is always copied
+
+                - we start with the edges in common
+                - then we alternate between the two parents and add in a new
+                  edge
+                - then when we can't add any more we add random edges
+
+        - Non-Greed Approaches for the TSP
+            - greedy
+                - start with the lowest cost path
+
+            - there are alot of different approaches, hill climbing, best
+              first, clustering, simulated annealing
+
+            - clustering
+                - we group alot of clustered cities together, thwn we just
+                  connect those clusters
+
+                - we simplify these clusters by applying our traveling salseman
+                  solution to the clusters individually
+
+
+###############################################################################
+##  Announcment
+###############################################################################
+- Group Project
+    - we have to have groups of 5 people
+
+    - we will be assigned groups unless we send an email to the TA before
+      tomorrow at 9am
+
+    - groups will be anounced on wednesday
+
+- Late Assignment Policy
+    - we can submit ONE problem set late by up to 36 hours
+
+- Midterm
+    - March 4th
+
+    - we do have a in class review
+
+
+
+###############################################################################
+##  Search (review?)
+###############################################################################
+
+Best First Search
+    - an expansion strategy where we expand the most desirable node
+
+    - Greedy Best First Search
+        - we take the solutin that is closest to our goal solution
+            - it might be really expensive but we don't care
+
+        - we onl have the g function
+
+    - A* (greedy algorithm) (is this the same as Greedy Best first Search?)
+        - for an A* search, we may need to wait a long time to expand the goal
+          state
+            - it will sit in the open list for awhile because once we expand
+              the goal state all bets are off
+            - we want to make sure that there aren't any better paths
+
+- Greedy Algorithms
+    - no guaranteed to be optimal
+    - solves solutions fast
+
+Admissible Heuristics
+    - a function is admisible if the h function never OVER estimates the true
+      cost
+        - we can underestimate without issue
+
+    - there is a select group of algorithms where you can overestimate a little
+        - we haven't talked about any of these though
+
+Consistent Heuristics
+    - I zonned out... have to look this up or read about it
+
+
+Dominance
+    - if we have two or more h functions, for all n one of them will dominate
+        - if a function is dominant then we choose that as the h for our search
+
+
+    - a function is dominant if it is closer to the actual truth
+        - it must also not overestimate though
+
+SMA* algorithm
+    - I guess we are going to talk about this later because he says the slides
+      don't agree
+
+    - an effort to make A* more efficient by reducing the size
+
+
+###############################################################################
+##  Game Theory
+###############################################################################
+
+Context
+    - in our discussion we will only look at 2 player
+
+Game Theory
+    - study of mathmatical models of conflict and cooperation between
+      intelligent rational decision makers
+        - we have a group of player
+        - there are multiple "games"
+            - players can be friends or enemies
+
+    - Applicatoins
+        - AI
+        - political
+        - economics
+        - secutiry
+            - you have defenders and attackers
+
+    - Strategy
+        - who are we trying to get to win?
+            - are we playing to have our team succesed?
+            - are we rtrying to win by ourselves?
+
+        - can be mixed
+            - pocker: bid alot with very good hands, but also bid alot with
+                      bad hands to fake people out
+
+        - we have to come up with probabilitiyes regarding what to do
+            - and then we have to consider these probabilities against what our
+              enemy might do
+
+
+    - Nash
+        - 3 elements to every game
+            - payers
+            - strategy
+            - payoff
+
+        - normal form
+            - we have a matrix
+                - im the case of 2 players, each player having 2 options,
+                  its a 2x2 matrix
+
+                - this matrix is called the payoff matrix
+
+            - its a parallel game
+                - everyone makes a selection and then you view the payoff
+
+

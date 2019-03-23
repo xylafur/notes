@@ -1,0 +1,15 @@
+Uses both the actual distance to the current node as well as the estimated cost
+to the goal state
+
+We look through all of the starring nodes neighbors
+then we determine the new cost
+    - our cost to this point + cost to that neighbor
+
+    if we haven't visited this node, or we have and this cost is lower
+        - then we append it to our cost dicts
+        - we compute the priority: this cost plus the estimated cost to goal
+            - then we put this next node in the priority queue based on the
+              computed priority
+
+            - we update where we came from
+

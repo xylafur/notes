@@ -1,0 +1,100 @@
+Reinforcment learning, intro to ML, review
+
+###############################################################################
+#   Reinforcment Learning
+###############################################################################
+- I just went back and updated monday's notes
+
+
+###############################################################################
+#   Machine Learning intro
+###############################################################################
+- We want to optimize form performance criterion
+    - What percentage accuracy of classification for example
+
+- We have either a teacher or examples
+
+- Machine learning is the study of algorithms that improve their performance
+  with experience
+
+- Supervised Learning
+    - We have training examples
+        - our dataset with alot of information
+        - the output is the label
+
+    - learns a 'model'
+        - the model takes the properties of the input and returns either a
+          classification
+
+- unsupervised learning
+    - association analysis
+
+- we need to preprocess this data as well as summarize it in the end
+
+- transfer learning
+    - we have algorithms that predict crime and we want to use this knowledge
+      to predict bad doctors
+
+    - use information from one domain to inform about another domain
+
+- Deep learning
+    - "make everything big"
+
+    - neural networks with like 5000 layers
+
+- There is no way to specify what you already know with machine learning models
+    - models have to start from scratch!
+
+###############################################################################
+#   Review!
+###############################################################################
+- There is a review list on his webpage!
+    - it has questions and answers
+
+- if something is not in the review, then it won't be on the test
+
+- Nash Equlibrium (number 2 from the review)
+    - the algorithm is in the slides
+        - go thorough the slutions of 1 player, and assume the best solution
+          for the other player
+            - if one player chooses this, whats the best option for the other
+              guy
+
+        - a nash equilibrium is whenever a particular choice is best for both
+          playes
+            - it is possible for a game to have more than one nash equilibrium
+            - it is also possible for a game to not have any nash equilibriums
+
+- reinforcment learning (number 3 form review)
+    - for probabailstic moves, we need to figure out the value of choosing a
+      particular movement
+        - this is called the expected probability of a particular operator
+
+- temporal difference learning (also number 3):
+    - all utilities are initially 0
+
+
+- evolutionary computing (number 5):
+    - crossover operator
+        - also called explotation operator
+
+        - takes peices of parents and never introduces anything new
+
+    - role of mutation operator in evolutionary computing
+        - random changes, potential to introduce something new
+
+    - rollete rule selection
+        - the proportion that each solution gets depends on its fitness
+          relative to the sum of all fitness
+
+- A*
+    - guaranteed to find the optimal solution, but not guaranteed to be
+      efficient
+
+    - heuristic is not admissible if we over estimate
+        
+
+
+
+
+

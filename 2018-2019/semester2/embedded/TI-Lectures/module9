@@ -1,0 +1,88 @@
+- SysTick Timer
+    - Build in clock that all arm cortex have
+
+- Usage
+    - can create time delays
+    - can also be used for a periodic interrupt
+
+- How it WOrks
+    - has a 24 bit counter
+    - decrements at the bus requency, every 20.83 ns
+
+    - in software you set the load register
+        - the counter will decrement this
+        - once it reaches 0, the timer will re load the original value
+
+        - basically a mod n+1 counter
+
+- Initialization
+    - here are only 3 registers associated
+        - control register
+            - has enable, src and count flags
+
+        - load
+            - the reload value that was discussed in the previous section
+
+            - we load the initial value of the counter
+
+        - val
+            - current value of the counter
+
+- Using it like a stopwatch
+    - we store the value at a particular time, then we store the value at
+      another particular time
+
+    - since we subtract down, we subtract STOP from START
+        - this gives us the number of clock periods that passed
+
+        - we multiply this by the clock period time, 20.83 ns
+
+    - we have a resolution of 20 ns
+        - the delta can't be more than 349 ms, which is how long it takes for
+          the timer to roll over
+
+- Using it as a delay
+    - we can use bit 16, the count flag
+        - - when ever the timer rolls over to 0 the count register is set
+
+    - we set the time we want to wait into the load register, then we clear the
+      count value by writing any value (he writes 0)
+
+    - then we wait until the count bit is set by just spinning
+
+    - to wait longer than 349 ms, we just have a wrapper function that will
+      call the delay function multiple times
+
+
+- PWM
+    - going to use it to control our motor
+
+    - talking about speed
+        - how fast is a system?
+            - if we have input to a system, and then change that input
+            - the system will repond to that change, and change its output
+
+            - the time it takes to change its output, is the time constant
+
+    - pulse width modulation
+        - we want to create a wave form that is faster than our time constant
+            - the period must be higher than the time constant of the device!
+
+
+            - we set the output high for an ammount of time, then set it low
+              for an amount of time
+
+            - the period of this waveform should be fixed
+            - the amount of time that the waveform is high should be variable
+
+        - another word for this is variable duty cycle
+
+
+    - in software
+        - set the output high, sleep for the high time
+        - set the output low, sleep for the low time
+        - over and over
+
+
+   
+    - 

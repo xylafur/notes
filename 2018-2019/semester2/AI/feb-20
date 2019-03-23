@@ -1,0 +1,128 @@
+###############################################################################
+#   Video from some AI conference
+###############################################################################
+
+###############################################################################
+#   Nash Equilibrium
+###############################################################################
+- We want to find some strategy for a game that we are playing
+
+- Nash Equilibrium
+    - if we have 3 players, and we know what they all chose something and all
+      get some kind of payoff
+        - its some sort of maximum of the overall playoff
+
+    - any combination of strategies in which each player's strategy is his or
+      her best choice given other players best choices
+
+- How to find
+    - pretend you are one of the players
+    - assume your opponent choses a particular action
+    - determine your best action based on that oponent's action
+
+- other considerations
+    - we also consider what if the opponent changes his or her mind and choses
+      another option
+
+- Sequential Decisions
+    - Like a board game
+    - work backwards to determine how people behave
+
+    - we create a tree (decision tree)
+        - then get our evaluation
+        - determine the value of the leaves
+        - peopogate upwards and determine the minimum or maximum
+
+
+###############################################################################
+#   Group Project - Groups
+###############################################################################
+We're in group 12
+
+- Learning Paths in a Transportation World
+    - we are given a world and operators
+
+    - have to pick up blocks and drop off blocks
+        - if we drop it off we get some sort of reward
+
+- We have a grid with pick up and drop off locations
+
+- each drop off location has a maximum capacity
+
+- he agent starts ina particular place
+    - it can move along with grid
+    - if it is in a pickup location, it picks up a block (if there is one to
+      take)
+
+    - if he is carrying a block and goes to a drop off location, he drops off
+      the block
+
+    - the terminal state is all of the drop off locatiosn are full and the
+      agent is in a drop off location
+
+- after we rn though the problem with our agent
+    - then we reinitialize the game
+
+    - the Q table still contains everything that we learned though
+
+
+###############################################################################
+#   Q learning
+###############################################################################
+- the goal is to get the greatest reward
+
+- it stores what it learned over time
+    - it uses whats called a Q matrix
+
+- if something was succesful in a previous run, then the utility of that state
+  goes up
+    - this means that we are more likeley to go to it quickly
+
+- Bellman equation
+    - if we know everything there is a function to return the best path
+
+    - we start out not knowing anything
+        - so the goal is to learn enoough to find out the optimal path
+
+- The end goal is to learn what action is good in what state
+
+
+###############################################################################
+#   Reinforcment learning
+###############################################################################
+- Intro
+    - supervised learning
+        - learning from example
+        - we have a data set of examples that are classified
+
+
+    - reinforcment learning
+        - more chalenging because we get less feedback
+            - and this feed back doesn't tell us what is right and wrong
+
+        - we must explore to know
+
+        - examples
+            - chess (reward comes at the end of game)
+            - ping pong (reward comes for each point)
+            - animals (we have netative and positive rewards, hunder pain etc)
+
+        - deals with adaptaion
+            - good states can become bad, and the agent will adapt
+
+            - we can change the reward of a particular node over time
+
+        - soemtimes things chagne too, so we don't want to pick the exact same
+          way every single time after we find a "solution"
+            - generally you have something like, 80% of the time we go to the
+              best state, but the other 20% we just choose a random one
+
+        - also, random policy is not bad for exploration
+            - if we have an unknown world we might start off learning with a
+              random policy
+
+        - some edges have a transition probability, they don't work every
+          single time
+
+
+

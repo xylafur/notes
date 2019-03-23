@@ -1,0 +1,97 @@
+###############################################################################
+#   Recap
+###############################################################################
+- We were talking about the group project, specifically the state space
+    - Mapping State spaces
+        - it can be useful, when the state space is very large, to map our
+          state space into multiple sub state spaces
+
+    - again for each poition, we need to know the value of moving in any
+      particular direction for both when we have the block, and when we do not
+
+        - additionally, the values of directions for patciular blocks will
+          change when the drop off locations are full
+
+    - the more states that you have, the slower your learning
+        - because you have to populate the entries for each state
+
+    - the goal is to measure the performance for the variou learning algroithms
+        - the performance measure is the size of the bank account
+
+- Simplified PD world
+    - There is a simplified version of the project
+
+    - he suggests that we try to solve this before we try the group project
+
+    - It seems to be in the reinforcment learning slides
+
+###############################################################################
+#   Machine Learning
+###############################################################################
+- feet forward neural network (ann?)
+    - links never go backwards, they only go forwards
+
+    - the connection between nodes is knwon as the arcitecture
+
+- learning
+    - you compute an error (learning from examples)
+        - we know the correct answer, so we have the neural net spit out an
+          answer, we know if the result is correct or not
+
+    - learns by taking the training examples and trying to adjust weights so
+      that the error gets lower
+
+    - regarding the error
+        - the sign is important, it tells us if we need to increase the weight,
+          or decrease the weight
+
+        - we have an error function that computes the error of the model
+    
+    - Uses steepest descent hill climbing
+        - our error function is diferentiable, so we can compute a gradiant
+
+        - we can then use the gradient to determine the the direction of
+          sleepest decrease of the error fucntion
+
+            - we use this to find the direction, then there is an issue with
+              how far should you step
+
+            - we sample points in that direction, then we find the best of
+              those points, and that becomes our now point
+
+    
+
+            - we change the weights based on this directoin and movement
+                - we have a learning rate, which is how much we adjust the
+                  weights by
+
+                - you need a good learning rate, large enough to compute fast
+                  enough, but small enough that you don't over step
+
+- Back Propogation
+    - problem that exists for multi layer neural networks
+        - you have to have a hidden layer
+            - only having two layers is too simple?
+
+    - you start off with the error from the output node(s)
+        - then you go node by node through the out put, and back propogate the
+          node
+    
+- activation functions
+    - in hw 2, there is a problem where we are to use a neural network tool
+        - the problem is about cancer classification
+        - the only thing that we will change is the actvation function
+
+- characteristics of ann
+    - 2 layer networks are Baaaaad
+        - he didn't go into why, but empahsized
+
+        - you need a hidden layer for reasonable performance
+
+    - problems with over fitting
+    
+    - gradient descent can get stuck in local min
+
+        
+
+
