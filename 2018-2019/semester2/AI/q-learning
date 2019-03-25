@@ -1,0 +1,56 @@
+- What is Q Learning?
+    - It is a type of reinforcment learning
+
+    - the agent learns an action-utility function giving the expected utility
+      of taking a given action for each state
+
+    - Does not need to model the enciornment
+        - can compare the expected utilities for its avaliable choices without
+          needing to know their outcomes
+
+        - Because of this, Q Learning Agents can not look ahead!
+
+- Passive Learning
+    - The agent's policy is fixed
+
+    - the agent does not know the transition model, meaning it does not know
+      the probability of reaching state s' from state s after doing a
+
+    - the agent also does not know the reward function
+
+    - the agent runs a set of trials
+        - using the particular policy
+
+        - the agent continues until it reaches a terminal state
+
+        - the agent only knows the current state, and the reward for that
+          current state
+
+    - Expected utility
+        - the expected sum of (discounted) rewards obtained if we use our
+          particular policy
+
+        U(s) = E * Sum(t -> inf, gamma ^ t * R(St) )
+
+        St is the state reached at time t
+
+- Direct Utility Estimation
+    - utility of a state is its reward-to-go
+        - expected total reward from this state onwards
+
+        - each iteration provides a sample of the quantity for each state
+          visited
+            - with inifinite iterations, these values converge to the real
+              value
+
+
+- policy and reward
+    - our mapping from the set of states, to the set of actions
+
+    - we can either be finite or infinit
+        - if we are infinite, we have the discount rate gamma
+            - we care less about the future with a lower discount rate
+
+- enviornment
+    - knwon states and known rewards for various actions
+

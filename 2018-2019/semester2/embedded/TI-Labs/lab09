@@ -1,0 +1,3 @@
+- Going to make an LED pulse with PWM
+    - Need to create a wave with a constant frequency, but varying duty cycle
+    - The brightness of the LED relates to the average of duty cycle

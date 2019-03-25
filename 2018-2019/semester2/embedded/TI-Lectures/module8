@@ -1,0 +1,48 @@
+- Interfacing Input Devices Using switches:
+    - software driver
+        - set of functions to create an abstract module
+
+    - switches
+        - switches are either pressed or not pressed...
+
+        - Pull down resistor
+            - when the switch is pressed current can easily flow
+
+            - logical low when switch is not pressed
+
+            - this is positive logic
+                - pressed maps to high voltage
+
+        - pull down
+            - ther way around, switched being closed is logical high
+
+            - negative logic
+                - the 'true' input condition (pressed switch), produces a low
+                  volrage
+
+        - the two switches on the side of our board are negative logic
+
+- Software Driver
+    - set of functions to use a device
+
+    - we have init functions and a suite of functions to be continuously called
+
+LEDs
+    - Resistors are linear components
+
+    - Diodes are not linear components.
+        - The anode is the positive side and the kathode is the negative side
+
+        - the Current / Voltage graph is exponential in fact
+
+        - the power through the LED is what controls the brightness
+
+        - we need a resistor in series with the LED to control the power
+            - the value of the resistor to use can be calculated from:
+
+            R = (power supply V - desired voltage) / desired current
+
+            - where desired volrage * desired current is the power that we want
+              for our led
+
+

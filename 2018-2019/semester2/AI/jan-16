@@ -130,4 +130,7 @@ AI Tools:
 
 
         
-
+if s' is new then U[s'] = r'
+if s is not null then
+    increment Ns[s]
+    U[s] = U[s] + learning rate * (Ns[s],)(r + gamma*U[s'] - U[s])

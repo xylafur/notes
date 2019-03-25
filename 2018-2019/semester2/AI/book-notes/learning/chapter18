@@ -1,0 +1,153 @@
+18.1 Forms of Learning
+    - any component of an agent can be bettered through learning
+        - this depends on prior knowledge, representation and feedback
+
+
+    - representation and prior knowledge
+        - input is germerally in the form of 'factored representation'
+            - a vector of attribute values
+
+    - Inductive Learning
+        - learning a general function or rule from specific input output pairs
+
+    - analytical learning
+
+    - deductive learning
+
+    - types of feedback
+        - unsupervised learning
+            - the agent learns patterns in the input even though there is no
+              explicit feedback
+
+            - most common task is 'clustering'
+                - grouping input into clusters
+
+        - reinforcment learning
+            - the agent learns from a series of reinforcments (rewards or
+              punishments)
+
+
+        - supervised learning
+            - learns a fucntion that maps an input to a particular output
+
+18.2 Supervised Learning
+    - given a straining set of input output pairs
+        - find a function that maps these inptus to outputs
+
+    - we get a hypothesis, a potential function
+        - run the hypothesis against examples outside of the training set and
+          see if it holds up
+
+    - types of output
+        - classification
+            - from a set of values
+
+        - regresion
+            - a number
+
+    - the function is a polynomial
+        - you want to choose the simplest possible function for the model
+          because of ockham's razor
+
+
+        - complex functions may fit the training set better, but simple ones
+          may generalize better
+
+18.3 Learning Decision Trees
+    - Representation
+        - represents a function that takes a vector of attribute variables as
+          input and returns a single output value
+
+        - both the input and the output can be continuous
+            - or it could just be boolean
+                - positive = true
+                - negative = false
+
+        - each node is a test
+            - branches out from that test represent the output of that test and
+              can take you to another node
+
+            - leaf nodes are outputs
+
+    - Expressiveness
+        - Any propositional logic fucntion can be represented as a decision
+          tree
+
+    - Inducing from examples
+        - we want to keep the tree as small as possible
+            - least total depth for description of all cases
+
+        - depending on the order of the tests, you can weed out some tests all
+          together
+
+        - when constructing a tree, check the most important variable first
+            - that is the variable that makes the most difference on the result
+            - then do a divide and conquer sort of algorithm
+
+        - there can be issues though for combinations that have not been
+          wittnessed
+
+    - Choosing Attribute Tests
+        - the perfect split is such that each attribute divides the examples
+          into either all positive or all negative sets
+
+
+
+18.9 Support Vector Machines
+    - Form of supervised learning
+        - good if you don't have specialized prior knowledge about a domain
+
+    - three attractive properties
+        1: Maximum margin separator
+            - decision boundary with the largest possible distance to example
+              points
+
+        2: Creates a linear seperating hyper plane
+            - embeds data into higher-dimensional space using kernel trick
+
+            - data might not be seperatable in a particular dimensional space,
+              but if would be in a higher dimensional space
+
+        3: Non Parametric
+            - retain training examples and potentially need to store them all
+
+            - flexibility to represent complex functions, but are resistant to
+              overfitting
+
+    - Some examples are more important than others, and may lead to and paying
+      more attention to them can lead to better generalization
+        - SVMs attempt to minimized expected generalization loss
+
+
+
+    - we choose a separator between the sets of points that is farthest away
+      from the examples we have seen so far
+        - this is called the maximum margin separator
+
+        - the margin is twive the distance from the line to the nearest point
+
+    - how to find this meximum margin
+
+    - support vectors
+        - points closest to the separator
+        - they hold up the seperating plane
+
+    - kernel function
+        - K(xj, xk) = (Xj :dot: xk) ^ 2
+
+        - kernel trick
+            - we plug in the kernel function to the equation to generate the
+              margin
+            - this allows optimal linear separators to be found efficiently in
+              feature spaces with many dimentions
+
+            - replace the dot product with the kernel function, this results in
+              a kernalized version of the fucntion
+
+
+    - soft margin
+        - allows examples to fall on the wrong side of the decision boundary,
+          but assigns them a penalty proportional to the distance required to
+          move back from the boundary
+
+

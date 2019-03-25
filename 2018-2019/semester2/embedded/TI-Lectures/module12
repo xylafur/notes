@@ -1,0 +1,33 @@
+DC Motors
+
+- Findamentals of EM Fields
+    - The DC motors will use induction to spin the wheels
+    - we need to be able to handle a fair amount of current to spin the Wheel
+
+- After the Field
+    - we need to create a force from the created field
+
+- Physics of the Motor
+    - There is a wire on uor rotor
+    - the rotor allows the wire to rotate
+    - there are brushes touching the wire, causing current to travel through
+      the wire
+
+    - the magnets on the side cause the wire to rotate
+
+    - current
+        - looking at current as a fucntion of time
+
+- Connecting the Motor
+    - we need an interface to connect the motor to Micro controller.
+
+    - remember that we need to generate quite alot of current (1/2 amp) but the
+      current from the microcontroller is about 6mA tops
+
+    - we don't change the volrage applied to the motor to change speed, we just
+      change the duty cycle
+
+        - Power to Motor = H / (H+L) * Vm * I
+            - we adjust H and L
+
+    

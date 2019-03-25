@@ -1,0 +1,90 @@
+Finite State Machine
+
+- Abstraction
+    - this is technically a software abstraction technique
+    - it takes the complexity of the problem and shows it in a graphical way
+
+- FSM
+    - FSA
+        - has inputs, outputs and states
+        - knowledge, things we want to remember, is defined in the state
+
+    - what is a state?
+        - description of the current conditions
+            - what we believe to be true
+
+        - two states might have the same input, but are not actually the same
+          thing
+
+    - state transition graph
+        - graphical connection between states
+
+    - what is a controller
+        - software that inputs, outputs and changes state
+
+        - accesses the state graph
+
+    - Example
+        - params
+            inputs (sensors)
+                - are there cars?
+
+            - outputs(sensors)
+                - the various lights
+                - binary output to set the particular lighes
+
+
+            - controller
+                - parses our state graph
+                - looks at the input and create state change to another state
+
+            - state transition graph
+
+        - traffic light control!
+
+        - we will have wait states, where the only thing we do is actually wait
+
+        - creating the traffic light controller STG
+            - we can either make a table or a diagram
+
+            - basically just consider when we transition from each state based
+              on teh inputs
+
+            - also determine the output for a particular state (which lights to
+              set to what value)
+
+        - tables can map directly to software
+            - we just make a struct that holds all the entries from our table
+            - then we can just directly put the table into a struct def
+
+- Mealy Versus Moore
+    - Moore FSM
+        - output value depends on the current state
+            - either the output is the state, or the output is created by that
+              state
+
+
+    - Mealy FSM
+        - output value depends on input and current state
+
+        - this is when you have the input and output on a transition
+
+                   in/ out
+          state1 ----------> state2
+
+        - useful when the output is how to change state
+
+
+
+Another example
+    - creating a system for our robot to track a line
+
+    - essence of FSM
+        - we have a system
+        - this system has inputs, outputs and knowledge (states)
+
+    - problem
+        - we have two sensors, each of them binary.  If the robot sees a line,
+          it is a 1, otherwise its a 0
+
+        - bit 0 is left, bit 1 is right
