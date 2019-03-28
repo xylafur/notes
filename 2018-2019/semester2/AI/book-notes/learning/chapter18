@@ -91,6 +91,150 @@
         - the perfect split is such that each attribute divides the examples
           into either all positive or all negative sets
 
+18.4 Evaluation and Choosing the Best Hypothesis
+    - We want to learn a hypothesis that fits the future data best
+        - stationary assumption
+            - there is a probability distribution over examples that remains
+              stationary over time
+
+        - independent and identically distributed
+            - a way to connect past and future
+
+            - data points are independent of previous examples
+
+        - error rate
+            - proportion of mistakes made by a hypothesis
+
+        - holdout cross validation
+            - only triain on half of the training set
+            - the other half is used to validate the set
+
+        - fold cross validation
+            - extended cross validation algorithm where we squeeze more out of
+              our data
+
+        - peeking
+            - can ruin test data
+
+            - information about the test set leaks into the learning algorithm
+                - this will happen if we use the test set to both form the
+                  hypothesis, and evaluate it
+
+            - avoid it by not touching your test set until you are completley
+              done testing
+
+    - model selection: Complexity vs Goodness of fit
+        - choosing the degree of our polynomial is an example of model
+          selection
+            - we want something that is not to complex, because this results in
+              over fitting
+
+        - after we choose the model (degree of polynomial) then we optimize
+          within that space
+
+        - we want to find the 'size' such that underfitting and overfitting
+          are balanced
+            - for a decision tree, the size can be the number of nodes
+
+        - wrapper
+            - function that performs model selection and optimization
+
+    - from error rates, to error loss
+        - some times particular errors are more acceptable than others
+        - we would rather be wrong in this instance for this error rate than
+          wrong fo rhtat other thing with a lower error rate
+
+        - we should maximize expected utility
+            - loss function
+                L(x, y, ^y)
+
+                - how utility is defined in in machine learning
+
+                - utility lost by using a particular hypothesis compared to the
+                  correct answer
+                    - utility lost when we predict 
+
+                        h(x) = ^y
+
+                    - when the correct answer is
+
+                        h(x) = y
+                - often generalized independent of x
+
+                - There are multiple types
+                    - absolute
+                        - absolute difference between actual and measured
+                    - squared
+
+                    - 0/1 loss
+                        - output a 1 if the answer is incorrect, 0 otherwise
+
+                - E (curly E) is the set of all possible input output examples
+
+                - generalization loss of hypothesis h with respect to L
+                    - if we know the probability distribution P
+                        - sum((x,y) of E, L(y, h(x)) * P(x, y))
+
+
+
+                        - the best hypothesis is the one with the minimum
+                          expected generalization loss
+                            - h* = argmin(all h in H, GenLoss(h))
+
+                    - in most cases we don't though
+                        -  we have to estimaet the generalization loss using
+                           empirial loss
+
+                        - empirical loss(L, E, h) = 1/N * sum((x, y) of E,
+                                                               L(y, h(x))
+
+                        - the estimated best hypothesis is the one with the
+                          minimum empirical loss
+
+                - reasons why h might be different than f
+                    - f is not realizable
+
+                    - the learning function miht return a different hypothesis
+                      for each input set
+                        - the higher the variance among the predictions the
+                          higher the probability of significant error
+
+                        - variance decreases towards 0 as the number of
+                          training examples increases
+
+                    - sometimes, when our space of hypothesis is complex, we
+                      can't search it all
+                        - we have to result to randomized hill climbing or
+                          something
+                        - this will only explore part of the space
+
+            - people used to use small-scale learning
+                - doens to low thousands of examples
+
+            - large scale learning
+                - millions of examples
+
+                - even though we have enough data, the computation to find the
+                  real result is too complex, so we have to resort to sub
+                  optimal results
+
+    - Regularization
+        - We can search for a hypothesis that minimizes the weighted sum of
+          empirical loss and complexity of the hypothesis
+
+        - penalizing complex hypothesis is called regularization
+            - making the functions look more regular - less complex
+
+
+        - feature selection
+            - discarding attributes that appear to be irrelevant
+            - pruning is an examples
+
+18.5 The Theory of Learning
+    - how do we know that our hypothesis will output something correct, if we
+      don't know the inputs / actual function
+                
+        
 
 
 18.9 Support Vector Machines

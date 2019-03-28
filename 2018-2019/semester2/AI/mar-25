@@ -1,0 +1,96 @@
+###############################################################################
+#   Support Vector Machines
+###############################################################################
+- N-Fold Cross Validation
+    - standard techinque to evaluate classifiers and prediction models
+
+    - we assume that we have a classification problem
+        - seperate data into training set and test set
+            - these must be seperate, we can't train on the test set!
+
+        - 3 fold
+            - method that can be applied to any classification problem
+
+            - seperate data into 3 disjoint sets
+                - each exmaple ocurs in exactly one set
+
+            - use n - 1 sets for training
+            
+            - use 1 for testing
+
+
+            - then you swtich up which set was the test set, and you train again
+                - do this until you've used each set as a test set
+
+            - you get a bunch of statistics from this
+            
+            - the larger your data set, the more time consuming this is
+
+    - classification
+        - classification can be viewed as "learning good decision boundaries"
+            - we seperate the classes of our data set with a line
+
+        - SVM use hyperplanes to seperate classes in some data sets
+            - we want to choose a plane such that the margin between the
+              closest of each of the two classes to the margin is maximized
+
+        - equations for the margins, the hyperplanes
+            main margin:        w-> :dot: x-> + b = 0
+            positive margin:    w-> :dot: x-> + b = +1
+            negative margin:    w-> :dot: x-> + b = -1
+
+            - We can use these equations directly to calssify any input by
+              doing w :dot: x
+
+        - margin:
+
+            2 / ||w||
+
+            - we want to maximize this
+
+
+            - which is equivalent to mimimizing the inverse,
+
+                L(w) = ||w||^2 / 2
+
+
+            - you actially are able to find the hyper plane using this
+              technique!
+
+        - non linear seperatable function
+            - if there is no clear way to linearly sepeate the data, we won't
+              get an answer for the marign
+
+            
+            - we can assign some sort of error for things that are mis
+              classified
+                - based on how far they are form the margin, they will take
+                  some penalty
+
+                - so then you maximize the margin, while minimizing error
+
+                - the right most term is the testing error
+
+            - C is chosen using a validation set
+                - it tries to keep the margins wide, while keeping the training
+                  error low.
+
+    - Non linear support vector machines
+        - if our decision boundary is not linear, we have to do something
+          special
+
+        - we have to apply something called the kernel trick
+            - SVMs don't actually learn the complex seperation
+            - they take the training set (x and y) and map it to a higher
+              dimensional space
+
+        - kernel function
+            - the kernel function is a dot product that applies the mapping
+              function
+
+                - 
+###############################################################################
+#   Problem Set 2
+###############################################################################
+
+

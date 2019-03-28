@@ -1,0 +1,97 @@
+- IP Fragmentation
+    - routes overall are pretty stable
+        - so if a datagram gets fragmented, it should be pretty much fragmented
+          the same overall
+
+    - fragments
+        - keep track of their byte offset in the overall packet
+        - keeps track of it if is the last fragment
+
+        - so we know if a packet is fragmented
+            - a packet won't be fragmented if it's byte offset is 0, and it is
+              the last fragment
+
+    - most packets are not fragments
+
+
+    - size / header information
+        - fragments will each have a header, of 20 bytes or something
+
+        - each fragment has its ID (the same for all fragments, one per packet)
+
+        - There is a bit that says if there is more or not
+
+        - length of payload is a field
+
+        - we know the start byte of this fragment
+            - this has to be a multiple of 8 because we take 3 bits out for
+              something else
+
+    - arrival
+        - they can arrive at the other end in any order
+
+- IP Addressing
+    - ipv4 addresses are 32 bit numbers
+
+    - we write them as a base 256 number seperated by periods
+        - this is called dotted decimal notation
+
+    - every place connected to the internet must be able to speak ip
+        - since they are logical and cahnge from one network to another
+
+    - we group networks into subnets
+        - a router has an associated ip address for each network it is involved
+          with
+            - each interface will have its own ip
+
+
+    - switch
+        - moves frames along within a local network
+
+    - logic behind ip addresses and routing
+        - the first n bits of the number identify the group
+            - thi sis called the network number
+
+        - the rest of the 32 - n bits are all identifiers for devices within
+          that network
+            - these are called the host numbers
+
+        - so that means a network can have 2 ^ (32 - n) devices
+
+
+
+    - clustering
+        - we may want to make groupings within our addresses
+
+        - you would assign the next m bits for the groupings
+            - m = log base 2 (number groupings)
+
+        - this is called subnetting
+            - dividing your given addresses into further subnetworks
+
+
+        - you have to tell people where this dividing line is!
+            - this is given by a /number, which is an integer, between 1 and 30
+
+            - this number is the number of bits that are reserved for the
+              identification of the subnet
+
+              - so for 192.168.0.0/24, the first 24 bits are for the subnet
+                identification
+                    - that is, '192.168.0'
+
+    - Classles Inter-DOmain Routing
+        - you can have a subnet of any length
+
+        - you cannot tell by looking at an address what the address mask is
+
+
+    - dhcp
+        - send out a packet with all 1s that says, I need an IP
+
+        - whoever responds to dhcp requests will see this
+
+        - also ask for dns servers, domain search, proxy, ldap, router, etc
+
+
+

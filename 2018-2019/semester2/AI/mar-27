@@ -1,0 +1,37 @@
+###############################################################################
+#   Learning Multi Layer Neural Networks
+###############################################################################
+- use gradient descent to find the direction
+
+- learning weights in intermediate rate
+    - you need an error
+
+    - how do you determine the true value for these hidden layers?
+        - for the output layer, the training example directly has the right
+          answer
+
+        - we back propogate the error from the output node
+
+        - back propogation
+            - you get the error form the output
+                - you do some sort of modification of this error
+
+            - then you compute the error term for nodes in intermediate layer
+
+            - then you update the weights of the network
+
+        - updating weights
+            - new weight = old weight + learning rate * input activation * error
+
+        - error of inner node
+            - derivative of z * weight between inner and outer node * error at the outer node
+
+            - z is the linear input to the outer node
+
+    - output of node
+        a = value of all previos nodes times their weight used as the input to
+        our activation function
+        
+        - the activation function can be something like the sigmoid function
+
+
