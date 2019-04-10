@@ -1,0 +1,66 @@
+###############################################################################
+#   Deep Learning
+###############################################################################
+- The only aspect you really focus on for 'deep learning' is deep neural
+  networks
+    - there are other things though such as deep reasoning and deep
+      reinforcment learning
+
+    - deep is a good buzzword prefix
+
+- recipe
+    - take data
+        - Deep neural networks are super complicated
+        - you need huge data sets for deep neural networks
+        - for image recognition stuff you need likle 14 million images
+
+    - do feature learning
+        - the first layer is input, last layer is output
+        - particular layers can deal with identifying features
+
+    - the neural networks get larger and larger
+        - the most sophisticated ones have more that 150 nodes now adays
+
+    - need high performance computing
+        - crazy gpu things to help with parallalizatoin
+
+    - algortihms
+        - back propogation
+
+        - back propogation through time
+            - for recurrent neural networks
+            - you have links that point backwards, some notion of memory
+
+        - soft max
+            - converts numbers into probability
+
+    - there are many tricks
+        - Deep Learning is mainly an engineering problem
+
+        - Deep Learning Networks hard to train
+
+- applications
+    - computer vision
+        - image and video
+   
+    - speech recognition
+
+###############################################################################
+#   Group Project
+###############################################################################
+- more complicated state space
+    - keeps track of when pick up locations are full and drop off locations are
+      empty
+
+    - the less states you have, the faster you can learn overall
+
+    - the more states we have, the ore complicated it may be to create visuals
+      for them
+
+###############################################################################
+#   FOPL
+###############################################################################
+- There are many types of logic, we focus on FOPL
+
+- we will use resolution for proofs
+    - there are other proof types but this is the one that we use

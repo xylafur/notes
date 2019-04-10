@@ -1,0 +1,100 @@
+- Network Manager
+    - program that often uses snmp
+        - you send a device a message, and generally a device knows how to run
+          snmp
+        - can be used for anything involved with managing networks or systems
+
+    - snmp protocol
+        - every device has to publish what things it can do
+            - this is called a mib
+
+        - a syntax for their commands
+
+
+###############################################################################
+#   Lectue 18
+###############################################################################
+- Down another layer!
+
+- Link / Data Link Layer
+    - Ethernet is something that runs in this layer
+
+- Since there is a huge variety of tings that can send bits
+    - sent over glass or rf radiation or electrical over ethernet
+
+    - thousands of types of these technologies
+
+- Addresses
+    - MAC addresses
+- Termes
+    - we have 'nodes' connected with 'links'
+        - not super universally accepted
+
+    - unit of information at layer 2 is called a frame
+
+    (layer 3 is fragment, layer 4 is segment and layer 5 is message)
+
+- there is a parcitular pattern of data that is reserved only for the beginning
+  of a frame
+
+  - differnt from the layers above bevause now we have to physically deal with
+    connecting two devices together
+        - lots of poeple canshare the medium, but we have to get one source to
+          one destination
+
+
+
+- Error correction and Detection
+    - you need to know how 
+
+
+- Sharing
+    - if its shared, you have to check if anyone else is using it
+
+
+- flow control
+    - at what pace can we get away with sending frames to devies at the other
+      end?
+
+    - half or full deplex?
+
+- where is it implemented?
+    - at the end of every connection
+    - every ether net or cable or whatever is physically connected
+
+    - if you have wifi and ethernet you have 2 different link layer
+      implementations
+
+
+- communication
+    - data link frames have both headers and tails
+
+    - the error correction stuff is in the tail not the head
+
+- Error Detection
+    - in nutsheel - sending extra data
+
+    - just tells you if there was an error or not
+    - does not have the abiliy to fix
+
+    - all error detection algorithms have some probability of returning a false
+      negative
+        - they will say that there was no error when there really was
+
+
+- parity checking
+    - 
+
+- error correction
+    - one way to think about combination of bits, is to consider them dots in
+      space
+
+    - cyclic redundancy check
+        - very complicated, but effective
+
+        - used in networks that is higly prone to errors
+        - where it needs to be detected at every link
+
+
+
+

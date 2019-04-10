@@ -1,0 +1,124 @@
+###############################################################################
+#   Statistics
+###############################################################################
+- Statistical Independence
+    - Probability that someone swims and they also bike
+
+    P(B ^ S) = P(B) * P(S)
+        - only if the two sets are independent of eachother
+
+    - There is the possibility that all people that that swim also bike, so it
+      would not be the multiplication of the two, just the least of the two
+
+    - in general
+        P(B ^ S) = P(S) * P(B|S) = P(B) * P(S|B)
+
+    - P(A|B)
+        - the probability of A, given B
+        - take the set of things where B is true, what is the chance that A is
+          true among that set
+
+- Bayes' Theorem
+    - Allows you to turn around conditional probabilities
+
+    P(B|A) = P(A|B) * P(B) / P(A)
+
+    - you have evidence, you get new information based on this evidence and
+      thus we update the probabilitiy
+
+        - similar to how a doctor diagnoses you
+        - if you have some of the symptoms of a disease (probability that you
+          have the disease is relatively high), then they will test you for the
+          disease
+            - the result of the test will change the probability that you have
+              the disease
+
+- Reasoning Under Unvertainty using Bayes' Theorem
+    - 
+###############################################################################
+#   REview
+###############################################################################
+- On econstraint satisfaction problem
+
+- 80 - 90% machine learning
+
+- One predicate logic question
+
+- overfitting
+    - model is too complex
+        - this might mean a neural network that has too many nodes
+        - or a decision tree that has too many nodes
+            - too many is relative obviously
+
+    - training error is very low, test error is not very good
+
+    - ways we can fix this with decision trees
+        - overfitting is dependent on the amount of training data
+
+        - the more examples we have, the less likeley we will be to over fit
+            - we get more general the more training examples we have
+
+- back propogation
+    - get the error measure into the intermediate layer
+
+- training test and validation set
+    - purpose of test set?
+        - proves the accuracy of the model, tells us how good it is
+
+        - gives us generalization error
+            - how well this model will generalize to new data
+
+    - testing data is important because
+        - validation sets are used to find the best hyper parameters
+
+    - the test and training sets should be disjoint
+
+- FOPL
+    - he wants it in the format of function calls that take in all of the
+      parameters
+
+      Vv ( Vegetarian(v) -> ~ Eats(v, FISH))
+        - if someone is a vegetarian, then they do not eat fish
+        - notice how eats takes in both the person and the FISH constant
+
+- Support Vector Machines
+    - Hyper plane
+        - Supposed to have the maximum margin
+        - The hyper plane seperates examples from different classes
+
+    - Soft Margin
+        - serves two objectives
+            - 
+
+        - w^2 is the inverse margin
+            - we have this because we don't lke to divide by zero
+
+        - The first term minimizes
+            - the inverse margin, not actually the margin itself
+
+        -  The second term minimizes
+            - the error
+            - things on the wrong side
+
+        - advantage of soft margin?
+            - the first aproach (not soft margin) can only be used in
+              situations where the data is linearly seperable
+
+    - what is a support vector?
+        - the edges of the margin?
+        - the data points nearest to the hyper plane
+
+        - if these points were removed, then the overall position of the
+          dividing hyper plane would change
+
+    - whe nyou plug in a point to the hyper plane funciotn, it will either be
+      positive or negative
+        - this will tell you which class it is
+
+- When is greedy bad?
+    - when you need to explore
+    - when the world changes
+
+- tricky thing about sarsa
+    - you have to know the next action
+

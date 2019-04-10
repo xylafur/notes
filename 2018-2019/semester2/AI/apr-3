@@ -1,0 +1,61 @@
+###############################################################################
+#   FOPL
+###############################################################################
+- Match Variables
+    - we have match variables and some unification variables to assign
+      particular values to these match variables
+
+    - Mortal($x)
+        - every one is motral
+    - ~Mortal(Socrates)
+        - 
+
+- Resolution
+    - inference rule
+        - P v R, ~R' v S, R and R' unify, kunify(R, R') = :theta:
+
+    - :theta:(P) v :theta:(S)
+
+    - resolution does not necesarrily halt
+        - there are always new things you can prove, so your proof will never
+          terminate
+
+        - its comparable to breadth first and depth first
+            - if you do breadth first you will find a solution eventually if it
+              exists
+
+            - if you use depth first search, you may just continue in one
+              direction forever and never find a solution
+
+        - the skolam functions can create an infinite search space 
+
+- Transforming FOPL into Clauses
+    - Va]bP(a, b) -> P($a, B($a))
+
+    - For any All quantifier we replace that variable, with a match variable
+    - exestential quantifiers are replaced with a skolumn function that takes
+      iun all of ht ethe previous universal match variables as arguments
+
+        - VaVb]cVd P(a, b, c, d) -> P($a, $b, C($a, $b), $d)
+
+- Unification
+    - we find substituions such that they end up the same based on match
+      variables
+        - if there is no s substitution we can do, the thing fails
+
+    - Unify(P($a, 2, 3), P(5, $b, $c)) = (($a 5)($b 2)($c 3))
+
+Look at the text document he has on his site, figure out what you don't know,
+formulate questions and ask them in class on Monday.
+
+
+###############################################################################
+#   Prolog
+###############################################################################
+- 
+
+###############################################################################
+#   Group Project
+###############################################################################
+- We have to give a presentation
+    - every person in the group has to speak at least 2 sentences
