@@ -1,0 +1,6 @@
+- Can update the qtable for sarsa at time t+1 rather than when we choose the
+  action to take
+    - this way we can store the action we just took and the previous action
+
+    - meaning we don't have to look into the future to figure out what more we
+      are going to take

@@ -1,0 +1,41 @@
+74HC86 x 2
+    XOR
+
+74HC20
+    NAND
+
+74HC32
+    OR
+
+74HC158
+    Quad 2 input multiplexer
+    
+74HCT158
+    Quad 2 input multiplexer
+
+74C85 x 2
+    4 bit magnitude comparator
+
+74HC08 x 4
+    And gate
+
+74HCT00 x 2
+    NAND
+    
+74HC05 x 2
+    HEX Inverter
+
+74HC109 x 2
+    Positive Edge Triggered JK FF
+
+74HC164
+    8 bit serial in, parallel out
+
+74HC02
+    NOR
+
+74HC04
+    HEX Inverter
+
+74AS885
+    8 Bit Magnitude Comparator
