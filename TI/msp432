@@ -1,0 +1,92 @@
+
+###############################################################################
+#   User's guide
+###############################################################################
+http://www.ti.com/lit/ug/slau597f/slau597f.pdf
+
+- General
+    32 Bit Cortex-M4F processor
+
+    - XDS110
+        - onboard debug probe that allows programming and communication to PC
+
+- MCU
+    - 48 MHz crystal clock
+    - 256 KB flash mem, 64KB SRAM, 32KB ROM
+
+    - four 16 bit timers
+        - capture, compare and PWM support
+
+    - 8 serial communication channels
+        I2C
+        CPI
+        UART
+        IrDA
+
+    - ADC
+
+    - Has CRC and AES256 support
+
+- Isolation Block
+    - The two halves of the board are seperated at the dotted line
+
+    - THere are only a few signals that are connected between the two sides
+
+
+- Clocking
+    - external clocks
+        Q1: 32-kHz crystal (LFXTCLK)
+            - provides ower LPM3 sleep currents and higher precision clock
+              source than default internal REFOCLK
+            
+        Q2: 48-MHz crystal (HFXTCLK)
+            - Allows Max operating speed for MCLK and HSMCLK
+
+    - Internal Clocks
+        - can be sourced from many clock sources
+
+        - MCLK
+            - Default Source:       DCO
+            - Default Frequency:    3MHz
+
+            - Master CLock
+            - Sources CPI and peripherals
+
+        - HSMCLK
+            - Default Source:       DCO
+            - Default Frequency:    3MHz
+
+            - Subsystem Master Clock
+            - Sources Peripherals
+
+        - SMCLK
+            - Default Source:       DCO
+            - Default Frequency:    3MHz
+
+            - Low-Speed Subsystem master clock
+            - Sources peripherals
+
+        - ACLK
+            - Default Source:       LFXT (or REFO if there is no crystal)
+            - Default Frequency:    32.768 kHz
+
+            - Auxillary clock
+            - Sources Peripherals
+
+        - BCLK
+            - Default Source:       LFXT (or REFO if no crystal)
+            - Default Frequency:    32.768 kHz
+
+            - Low-speed backup domain clock
+            - Sources LPM peripherals
+
+- Block Diagrams and Pins
+    - they are all present in this document
+    
+###############################################################################
+#   Data Sheet / Specifications
+###############################################################################
+http://www.ti.com/lit/ds/symlink/msp432p401r.pdf
+
+
+
