@@ -1,0 +1,221 @@
+Questions:
+    - at 2:30 he shows it takes 22 instructions...  but 73 cycles? How does
+      that work
+
+- This one is all about Debugging Real Time Systems
+
+- Dump Instrument
+    - an instrument is a thing that we do that is used to test our program
+        - such as a dump function (like a print statement, but we don't have a
+          terminal
+
+    - we copy some information into an array (RAM) our into our flash ROM
+
+    - good or bad?
+        - depends how much this thing effects the thing we are trying to
+          measure
+
+
+        - its bad if it is effecting our overall timing
+
+        - its okay if its a small percentage
+
+            - t / delta(t)
+
+                - t is the time to execute the dump
+                - delta(t) is the time between executions of the dump
+
+                - we have to know how many assembly instructions, and thus how
+                  many seconds (probably micro) this will take
+
+    - variations
+        - continuous
+            - just keep writing to our buffer
+            - our buffer rolls over and then we overwrite things
+
+        - filter
+            - if a condition is true, we record information
+            - reduces our overall volume of data
+
+        - performance debugging
+            - where in my softwhere is this executing?
+
+            - how many times is this called?
+
+
+            - we can generate a square wave out of a pin to time a function
+                - we hook this up to a osscilisope and watch it, then measure
+                  the width of the pulse in seconds
+
+            - we call this mimimally intrusive because all we are doing is
+              writing a bit twice (on and off)
+
+            - problems
+                - we need to remove the critical section
+
+                - we can do bit banding
+                    - each bit in region of memory (bit band region) is mapped
+                      to a an entire word in another region (the bit band alias
+                      region)
+
+                    - writing to a word in the alias region happens in the bit
+                      band region as well, and this takes a single instruction
+                      that eliminates race conditions
+
+                - we write to that one port using a bit banded region
+
+    - using Flash ROM
+        - the first half of the rom is our actual code that we are executing
+
+        - we can put dump data in the second half of our dump data
+
+        - flash cell is a gate trapped between a tunneling oxide layer and a
+          insulating layer
+            - the presence of charges in the gate represents a 0 bit
+
+            - no charge in that region is a 1 bit
+
+        - erasing
+            - we put a voltage on the transistors in such a way that all
+              trapped charge is removed from all gates
+
+            - have to write 4096 bytes at a time
+
+        - slow to write and erse
+            - really fast to read
+
+        - programming
+            - we have an array of data such that its address is in rom
+            - we have the array in ram, and dump it into flash rom
+
+            - this will take on the order of miliseconds
+
+- Interrupts
+    - what it is?
+        - transfer of software execution
+            - kind of like a function
+            - triggered by hardware
+                - a physical event in the computer (trigger) will encoke it
+
+                - soemthing called an interrupt service routine is what calls
+                  the interrupt
+
+            - we can have multiple interrupt driven events
+
+            - can be periodic
+
+    - when should we use it?
+        - what kinds of triggers make sense?
+
+        - if some event needs to be handled, we should trigger an interrupt
+            - arrival of data to a particular port
+
+            - output might be triggered when we are idle
+
+    - if we want them to work together, we have to use some sort of message
+      passing
+
+
+
+    - multi threading using interrupts
+        - we have multiple threads (the execution of a running program)
+
+        - we have the main program (foreground thread)
+
+        - and the interrupt service routine (background thread)
+            - hardware trigger, software action
+
+        - threads will need to share information
+            - they use global variables (or statics)
+
+    - interrupt processing
+        - triggering event
+
+        - current thread is suspended
+            - push registers onto the stack
+            - set the link register to something special
+
+            - set a particular register with the interrupt number
+            - set the PC to the address of our interrupt
+
+        - the ISR is executed
+            - trigger flag gets cleared
+            - do the interrupt stuff
+
+        - the main program is resumed
+            - re populate the stack
+
+    - where are the interrupts located?
+        - at the beginning of rom
+
+        - We need to create a function with the name of one of those mentioned
+          in the intterupt vector
+
+    - priority
+        - some things are more important than others
+            - we will assign a priority to our threads to enforce this
+
+        - the lower the number, the higher the priority
+
+        - an interrupt can only interrupt another interrupt (that is currently
+          running) if it has a higher priority than the other interrupt
+
+        - the three bit value that is the interrupt priority
+            - in the most siginificant byte (little endian)
+
+    - thread synchronization
+        - data structures
+            - flags
+                - simple and powerful
+
+                - one threead will set the bit, another will check it out
+
+
+- Using Systick To Trigger Interrupts
+    - Periodic Interrupts
+        - We are going to read in input from sensors on a periodic basis
+
+    - systick timer
+        - we have a 24 bit down coutner
+        - we write the starting value to the load register
+            - the system then counts down until it gets to 0
+                - the 1 to 0 transition will trigger an inerrupt
+                    - if we have the interrupt flag set
+
+        - we have 3 registers
+            - ctrl
+                - we will set the clock to the bus clock
+                - we want to set interrupts
+
+    - We have to enable interrupts to actually use them!
+        - this should be done at after! we init everything else
+
+- Critical Section
+    - if we ever share anything permanent structure (a global or io port)
+        - if any of those is a write
+
+    - when we want to access global variables
+        - non atomic
+            - we have a pointer to some port
+            - then we fetch the 8 bit value into a register
+                - at this point, the same number is stored in two places
+                - if we modify the one in the register, it won't match up with
+                  the actual value of the port
+
+                - if an interrupt happens at this point, and that interrupt
+                  also uses the value we just modified bad things happen
+                    - that interrupt will do the same process, read register,
+                      modify, and write it back
+
+                    - this will not read in the modified version of the
+                      variable form the firse thread
+
+            - solutions
+                - bit banding
+                - don't use the same port
+                - have the interrupts of the same priority
+                - disable interrupts around the critical section
+
+
+
+

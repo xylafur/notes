@@ -1,0 +1,158 @@
+- Has the ability to do many mathematical operations
+    - we will examin it as an amplifier
+
+- Differential Amplifier
+    - Has two inputs, an output and some gain (positive and negative)
+
+    - What it does
+        - takes the two input signals
+        - applies the internal gain
+        - given an output voltage
+
+    - op amps can't be used as differential amplifiers on their own
+        - This is because the natural gain of the OP amp is enormous
+            - not quite infinite.. but very big
+                - datasheet won't even tell you
+
+            - we have to use negative feedback because the output without any
+              extra components is just too big
+
+- Pins
+    - positive
+        - non inverting input
+
+    - negative
+        - inverting input
+
+    - output
+
+    - Positive gain
+
+    - negative gain
+
+- what happens if you just feed input voltage into the input pins
+    - the amplifier will amplify the difference between the two inputs
+    - the output will be some large constant times the difference
+
+    - this is called the 'open loop' configuration
+
+
+- How Op amps are useful
+    - we need to go from the open loop to adding negative feedback
+
+    - two rules
+        - No current flows into or out of the inputs
+
+        - The op amp does whatever it can to keep the two input voltages the
+          same
+            - (only applies when there is a closed loop)
+
+            - the op amp can't actually change its inputs, but it can change
+              them with feedback
+
+- Op amps can amplify both AC and DC
+
+- Op amp buffer circuit
+
+           V+
+        |\ |
+        | \|
+ 1v ----|+ \
+        |   \
+        |     >-------
+        |   /     |
+    ----|- /      |
+     |  | /|      |
+     |  |/ |      |
+     |     V-     |
+     |            |
+     --------------
+
+     - rule two applies
+        - the output will drive the inverting input so that it has the same
+          voltage as the non-inverting input
+
+           V+
+        |\ |
+        | \|
+ 1v ----|+ \
+        |   \    1v
+        |     >-------
+        |   /     |
+ 1v ----|- /      |
+     |  | /|      |
+     |  |/ |      |
+     |     V-     |
+     |            |
+     --------------
+
+
+    - the output, and both inputs will all become the same value
+        - because of rule number one, nothing will flow in or out of either the
+          inputs
+
+        - this is called a high impedance input
+
+        - but it has a low impedance output
+            - the output can drive a reasonable amount of current
+
+- Non inverting amplifier
+           V+
+        |\ |
+        | \|
+    ----|+ \
+        |   \
+        |     >-------
+        |   /     |
+    ----|- /      |
+     |  | /|      |
+     |  |/ |      |
+     |     V-     |
+     |            |
+     -------R2-----
+     |
+     R1
+     |
+    GND
+
+    - single ended amplifier
+        - always referenced to ground
+
+    - what happens
+        - the feedback resistor (R2) is always larger than R1
+
+        - there is a volrage divider that feeds back a part of the output to
+          the input
+
+    - formula
+        Av (gain) = R2 / R1 + 1
+
+- Inverting Amplifier
+
+         ----R2----------
+         |     V+       |
+         |  |\ |        |
+         |  | \|        |
+INPUT--R1---|- \        |
+            |   \       |
+            |     >---------
+            |   /
+        ----|+ /
+        |   | /|
+        |   |/ |
+        |      V-
+       GND
+
+    - Virtual Ground
+        - the amplifier will try to keep the inputs at the same voltage,
+            - since we are connection out non-inverting input to GND
+
+            - the non inverting input will become ground
+
+        - current is forced upward
+            - there is 0V at the point where the negative meets the wire that
+              ties into the output
+            - then there is a voltage drop across R2
+                - this forces the signal to drop to a negative voltage
+                    - hence the 'inverting' of the inverting amplifier
+

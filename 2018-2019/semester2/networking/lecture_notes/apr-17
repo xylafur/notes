@@ -1,0 +1,144 @@
+- Lan
+    - A collection of devices that can see eachother
+
+    - routers are not something that join computers together but rather
+      something that can seperate two lans
+
+    - You can only see things on your own lan
+        - the router is the bridge between lans, and it needs to know how to
+          see all of the LANs
+
+- Virtual Lans
+    - you can use switches to simulate people being on different lans
+    - this means that not everyone can see everyone's broadcasts and stuff
+        - you can only see those if you are on the correct lan
+
+- Extent of Lan
+    - Broadcast Range
+        - if you broadcast out a message, who all would see it?  All the people
+          that would see it are on your lan
+
+- Multiprotocol Label Switching (MPLS)
+    - Allows you to define people who are all on the same lan but are maybe on
+      different sides of the world or something
+
+    - this sits on top of certain speed point to point network
+
+    - what it does
+        - you define groups with a MPLS tag
+        - you share this tag with your internet provider
+
+        - Your internet provider will program this information into their
+          switches
+
+    - Implementation
+        - you have all of your networks connect to switches in the MPLS cloud
+        - then particlar end points on the other end of the MPLS cloud have a
+          particular flag or identifier
+            - the switches use this identifier to route things through the
+              network to the correct endpoint based on this identifier
+
+
+    - The MPLS identifier goes in layer 2
+        - the header is inserted into the layer 2 packet, right after the
+          ethernet header
+
+    - MPLS capable routers
+        - assign labels based on IP addresses
+            - this has to be done because many 'clients' using the MPLS service
+              might have the same IP addresses (because you just give them your
+              local ip address
+
+
+    - MPLS vs IP paths
+        - with mpls you can add sophisticated rules over ip
+
+        - you have mpls forwarding tables
+            - very similar to the routing tables
+            - you have in label, out label, destinatio and the interface that
+              you send it out of
+
+
+    - MPLS is just a delivery mechanism in layer 2
+
+- Data Center Scale Networking
+    - changes so quickly its crazy
+
+    - can have hundres of thousands of individual addressable hosts
+        - hosts doesn't always mean individual devices (virtual os)
+        - but in our context we will assume it does
+
+
+    - managing all these hosts
+        -old way (isolation)
+            - sandwich servers and data storage servers
+            - connect them with a super high speed switch
+
+            - when we began to use virtual machines and have everyone use them,
+              this model blew up
+
+        - heiarchy
+            - a rack is connected to a switch
+                - TOP OF RACK switch
+            - this switch is connected to a higher level switch
+                - TIER 1 Switch
+
+            - this switch is connected to a load balancer and a router
+                TIER 2 Switch
+
+- Energy and Power Efficency
+    - PUE
+        - ratio of unit energy consumed and energy to power server
+
+
+- A day in the life of a web request
+    - our goal is to identify what happens when someone opens google.com on
+      their laptop
+
+    - what happens
+        - you connect to a wifi network by listening for a beacon
+        - then after connecting, first on layer one, then 2
+        - you make a dhcp request
+            - this heads over udp
+            - this is a broadcast message, you just populate the source address
+                - this packet goes out and then the dhcp server gets it
+
+            - then the dhcp server will respond with an ip address that it took
+              form its pool
+                - the switch has been paying attention
+                - the dhcp server responds with the host's new IP and alot more
+                  information
+
+        - now we have an ip address
+            - we have to figure out the ip of the destinatin server
+
+            - we have been given the name and ip address of our dns server, but
+              we don't know the hardware address
+                - we issue a request for the mac address of the dns server
+                - ARP is used to request the hardware address of the dns server
+                  thorugh a broadcast
+
+                    - the router acts as a middle man, either because it is
+                      running dns or because it is connected to another lan
+                      that has the dns (or another one)
+
+                    - then the router will give you his address to use
+
+        - now we can send our dns request
+            - our request goes to the router, the router drops it onto the next
+              lan
+            - this gets all the way to the dns server
+        
+        - We now have the ip address of the destinaion
+            - we can now use a tcp connection that carries http
+
+            - TCP has to do a handshake
+                - it sends a SYN segment to the desination
+                - the destionation ACKS back
+                - then we ack back with data
+
+        - TCP now carries our http address
+            - the web server uses the correct socket to ensure that the packet
+              ends up in the right location
+
+

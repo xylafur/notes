@@ -1,0 +1,146 @@
+3.5 Connection-Oriented Transport
+    - connection oriented
+        - two processes must first have handshake
+            - send preliminary segments to each other to establish stuff
+
+        - three way handshake
+            - client, server, client
+
+    - logical connection
+        - only between two end systems
+
+    - full duplex
+        - data can flow both ways
+
+    - sending
+        - client has a send buffer
+            - will pass stuff from buffer to network layer every now and then
+
+        - sending something frm buffer
+            - the maximum that can be taken from buffer and put on wire is the
+              'maximum segment size'
+                - the maximum amount of data, not maximum segment size
+
+            - usually done by figurring out the MTU, maximum link-layer frame
+
+            - a typical mss is 1460 bytes
+
+
+    - tcp segment structure
+        - data
+            - all the actual data
+
+        - header
+            - source and destination port numbers
+            - checksum
+
+            - sequence number field
+                - byte stream number that identifies first byte in segment
+                  payload
+
+                - the initial sequence number can be random
+
+
+            - acknowledgment number field
+                - the ack number is the next byte that host A is expecting from
+                  host B
+
+                - if host B sends back ack=536, it has recieved 0-535 already
+
+                - this is known as cumulative acknowledgments
+
+                - acks can piggy back, they can be attached to a message being
+                  sent so that the message fufils a dual purpose
+
+                - a segment that is just an ack will still need a segment
+                  number, even if it has no payload
+
+            - 16 bit recieve window
+                - flow control
+
+            - header length
+                - length of the header in 32 bit words
+                - typically 20 bytes, so 5 32 bit words
+
+            - options field
+                - used for negotiation
+
+            - flag field
+                - ack bit: is this segment an ack?
+                - rst, syn, fin: bits for setup and teardown
+                - cwr, ece: congestion control
+
+                - psh: pass data to uper layer immedietly
+
+                - urg: data is urgent
+
+3.7 TCP Congestion Control
+    - Uses end to end congestion control
+    - the sender will limit its traffic into the network based on percieved
+      network congestion
+        - if there seems to be no congestion, then the send rate is ramped up
+
+    - traffic control
+        - congestion windo
+            - kept track of by the cwnd
+
+            - imposes a constraint on the rate the tcp sender can send trafic
+
+            - last send - last acked <= min(cwnd, rwnd)
+
+    - congestion perception
+        - loss event
+            - three duplicate acks
+            - timeout
+
+            - when happens consider there to be heavy congestion
+
+        - increasing congestion window
+            - the faster acks come back, the faster the congestion window is
+              increased
+
+            - this is called self clocking
+
+        - making good use of network bandwidth
+            - the sender's rate is decreased whenever there is a loss event
+
+            - whenever we get a successful ack, increase the transmission rate
+
+            - bandwidth probing
+                - incrase transmission rate while things are going good, when a
+                  loss event occurrs decrease the reansmission rate
+
+                - the sender tries to probe for the point when congestion onset
+                  occurrs, then backs off and probes again
+
+    - slow start
+        - when a tcp connection begins, cwnd is small
+        - whenever we get an ack, under slow start we send one more additional
+          segment
+            - so basically we double the number of outgoing segments every time
+            - cwnd is the thing that tracks this
+
+        - when do we stop being exponential?
+            - when there is a loss event bc of timeout, set cwnd back to 1
+
+            - ssthresh
+                - this is a treshold value, is set to cwnd/2 whenever
+                  congestoin is detected
+                    - tripple duplicate acks
+
+                - when cwnd >= sshtresh, stop doubling, stop slow start and
+                  enter congestion avoidance
+
+    - fast recovery
+        - value of cwnd increases by 1 MSS for every duplicate ack recieved for
+          the missing segment
+        - after an ack arrives for the missing segment, tcp will enter the
+          congestion avoidance state after deflating cwnd.
+
+    - tcp tahoe
+        - early version of tcp
+        - cur congestion window to 1mss and entered slow start phase after
+          either a timeout or triple ack
+
+    - tcp reno
+        - uses fast recovery with losses

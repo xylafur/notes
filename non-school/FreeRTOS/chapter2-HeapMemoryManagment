@@ -1,0 +1,117 @@
+###############################################################################
+#   Introduction and Scope
+###############################################################################
+
+- From FreeRTOS 9.0.0 onwards you don't have to have heap allocation
+    - you can allocate everything statically
+
+- Dynamic Memory Allocation and its Relevance to FreeRTOS
+    - In the following chapters all objects are allocated and freed from the
+      heap dynamically at run time
+
+    - Heap allocation is not always sutible for real time applications
+        - not thread safe
+        - not always avaliable on small systems
+        - non deterministic
+        - fragmentation
+        - complicate the linker config
+
+- options for Dynamic Memory Application
+    - memory allocation is part of the portable layer
+
+    - the kernel uses vPortMalloc() and vPortFree() to allocate and free memory
+        - these are public functions so they can be used in application code
+
+    - FreeRTOS comes with 5 examples for each of these
+
+        FreeRTOS/Source/portable/MemMang/
+
+
+###############################################################################
+#   Example Memory Allocation Schemes
+###############################################################################
+- Heap 1
+    - Has only malloc, no free
+
+    - memory only gets dynamically allocated before the application starts to
+      preform real time functionality
+
+    - always deterministic and cannot fragment memory
+
+    - subdivides a simple array into smaller blocks
+
+    - you set the size of the array with the TOTAL_HEAP_SIZE define in the
+      config file
+
+
+    - each created task requires a Task Control Block and a Stack to be
+      allocated from the heap
+
+- Heap 2
+    - Not recomended for new designs
+        - heap 4 is basically a better heap 2
+
+    - allocates an array like heap1, but allows stuff to be freed
+        - the array is statically allocated like in heap 1, so it appears to
+          use alot of ram
+
+    - always uses the smallest sequential section of ram that will satisfy the
+      requested allocation
+
+    - does not combine adjacent free blocks
+        - suseptible to fragmentation
+        - fragmentation is not an issue if you are freeing stuff though
+
+    - non deterministic, but faster than most implementations of malloc and
+      free
+
+- Heap 3
+    - uses the standard library malloc and free, the size of the heap is
+      defined by the linker configuration
+
+    - makes malloc and free thread safe by temporarily suspending the scheduler
+
+- Heap 4
+    - subdivides an array into smaller blocks
+        - the array is statically declared
+
+    - uses a first fit algorithm to allocate memory
+        - coalescences adjacent free blocks of memory into a single larget
+          block
+
+        - the malloc uses the first free block of memory that is large enough
+          to hold the number of bytes requested
+
+    - non deterministic, but faster than std lib implementations of malloc and
+      free
+
+- Heap 5
+    - almost identical to heap_4
+    - not limited to allocating from a single statically declared array
+        - can allocate memory from multiple seperated arrays
+
+    - has an init function, is the only heap implementation that has an init
+      function
+        - vPortDefineHeapRegions()
+
+        - basically you pass this function an array of all th heap regions
+
+###############################################################################
+#   Heap Related utility Functions
+###############################################################################
+- xPortGetFreeHeapSize()
+    - returns the number of free bytes in the heap
+    - not avaliable when heap 3 is used
+
+- xPortGetMinimumEverFreeHeapSize()
+    - returns the minimum number of bytes that have ever existed on the heap
+    - lets you know how close you are to running out of heap space
+
+    - only avaliable with heap 4 and heap5
+
+- Malloc Failed hook functions
+    - if malloc ever fails, and the define in the config config
+      USE_MALLOC_FAILED_HOOK is set to 1 then a user defined hook will be
+      envoked
+
+        void vApplicationMallocFailedHook( void );

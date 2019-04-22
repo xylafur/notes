@@ -1,0 +1,168 @@
+period
+resolution
+
+
+Timers
+
+- We are going to be using timers for 3 thigns
+    - periotic interrupts
+    - pwm for motors
+    - as an input for frequency to measure the speed of the wheels
+
+- two stages
+    - modules
+        - we have 4 modules in this board
+
+    - submodules
+        - each module has multiple submodules
+
+- Timers
+    - similar to systick
+        - many more modes though
+
+        - has a constant value and a counter value
+
+    - differnt from systick
+        - 16 bits wide
+        - there are multiple of them, rather than just one
+
+    - SMCLK
+        - system module clock
+        - the bus clock divided by 4
+
+        - everything in this chapter will have the smclk set to 12MHz and
+          setting the resolution to 33ns
+
+
+
+- Registers
+    - we have a 16 bit counter register
+    - we have mutlple constant holding registers
+
+    - bits for submodules
+        - trigger bit
+            - the bits that gets set to cause an interrupt
+
+        - arm bit
+
+    - bits for module
+        - clock select
+
+
+- Clock and Prescale
+    - select our clock
+        - we set the TASSEL register to the SMCLK value
+            00  TAxCLK
+            01  ACLK
+            10  SMCLK
+            11  INCLK
+
+    - after we choose our clock, we can make it count slower
+    - we make it slower by setting the PRESCALE
+
+    - trade off between resuolution and the range
+        - resolution
+            - smallest time to be set as a periodic output
+        - the size of possible values
+
+        - Set partially with the ID register
+            00  /1
+            01  /2
+            10  /4
+            11  /8
+
+    - Resolution = T * 2^ID * (TAIDEX + 1)
+    - Range = Precision * Resolution
+
+- Timer A Modes
+    - Mode control
+        00  Stop
+        01  Up mode, count up to TAxCCR0
+        10  Continuous mode: Timer counts up to 0xFFFF
+        11  Up/down mode: Timer counts up to TAxCCR0 then down to 0x0000
+
+- Clock and Prescale
+    - Steps
+        Halt the Timer
+        Set the timer clock and prescale
+        Set submodule 0 to compare, arm the input
+        Set the TAxCCR0 to the interrupt period minus 1
+        Set the priority in the correct NVIC priority register
+        Enable the interrupt in the NVIC interrupt enable register
+        Reset the timer and start it in up mode
+        Enable Interrupts
+
+- Interrupt Vectors
+    - There is a vector set up for each of the submodules for each of the
+      modules
+
+    - look in the startup file to see the interrupts
+
+- LAB
+    look at 12:57 from the video
+
+2 microseconds * period = T * 2^ID * (TAIDEX+1)(TAxCCR0+1)
+
+##############################################################################
+#   Video 2
+##############################################################################
+- going to be focusing on how to pwm drive the motors with the timer
+
+- Our strategy for PWM
+    - choose a period which is smaller than the time constant of the motor
+    - this way the motor responds to the average
+
+- Precision
+    - how many different duty cycles can we create?
+        - beacuse this is a 16 bit timer, we have theoretically up to 65k
+
+- Gonna be driving the motors with different duty cycles
+
+- Timers
+    - there are a lot
+    - there are 4 submodules
+        - each of these submodules can connect up to 5 IO pins
+        - there are 20 pins that could be associated with the timer
+            - in this example we will use only two
+
+- The period is set by TA0CCR0 register
+    - this is a constant register
+    - we set this to a fixed period
+
+    - then we set a second constant in the submodule
+        - the ration between the two constants will give us our PWM
+
+- How it works, using timer A for two pwm outputs
+    - we will use an up down counter
+
+    - we take the base counting from the system clock
+
+        (1/ systemclock) * prescale = selected clock speed
+
+        - the value in CCR0
+            - will determine the period if the PWM output
+
+        - so if we're interested in a time period of 10 ms, then we have to set
+          CCR0 such that it will make the period 10ms
+
+    - so here are our formulas to get the desired period
+
+        T = Prescale / base clock speed
+
+        Period = 2 * T * CCR0
+
+
+    - The other submodules, submodules 1, 2, 3 and 4 can be used to create PWM
+        - when used in combination with the base clock
+
+    - Toggle reset
+        - We want to use toggle reset on the timer such that we reset the
+          particular pin when the counter matches CCR1
+
+        - we have it do something different on the way up and the way down
+
+        - From this we can determine our duty cycle
+
+        Duty Cycle = CCR1 / CCR0
+
+        - on the way up it clears the bit, on the way down it sets the bit

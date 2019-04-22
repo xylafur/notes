@@ -1,0 +1,28 @@
+- Serial Communication
+    - Fifo queue
+        - data buffer used to hold data as it passes through our system
+
+- FIFO queue
+    - bueffer, stores data
+
+    - we will be using it in a system that creates data
+        - something lilke an input device
+
+    - and with something that uses or destroys data
+
+    - we store data in the FIFO for awhile while its passed from producer to
+      consumer
+
+- Empty FIFO
+    - we have two pointers, one at the beginning (where we will be reading from
+      ) and one at the end (where we will be writing to)
+        - if the two are pointing to the same location, then the queue is empty
+
+- Little's Theorem
+    - we can define the average response time for a packet based on the arrival
+      rate and the total number of pending packets
+
+    - N = :lambda: * R
+
+
+

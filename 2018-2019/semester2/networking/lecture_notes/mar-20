@@ -1,0 +1,200 @@
+LECTURE 11
+
+- TCP is a core component of this course
+    - particularly the state machine diagrams of how they communicate with no
+      knowledge
+
+- We will start talking about the network layer
+    - this runs in all routers
+
+- Somethign profound happening in these systems in modern day
+    - data processing is moved away from the routers into the cloud
+    - routers shjould just route
+
+
+- Network layer
+    - takes packets from transport layer and moves them from location to
+      location
+        - takes things from above, put it into an envelope, and then send it
+          along
+
+        - encapselation
+
+    - runs in all routers and computers on the end
+
+- two key functions
+    - forwarding
+        - taking a packet and extracting the input bits from one of our input
+          links, move them across our electronics to the queue of one of our
+          output links
+
+        - this needs to be really fast
+            - lots of companies have secret sauce to make this really fast
+
+    - routing
+        - determines who to send where
+
+        - makes decision to plan a trip for a packet
+
+- layers
+    - data plane
+        - determines how to forward
+
+        - we look at the header bits of the packet, because it has the
+          destination
+            - these bits arrive first, so we can make quick decisions about
+              where to send this guy
+
+
+    - control plane
+        - network wide logic
+        - sees whats going on, and make routing decitions
+
+        - two control plane approaches
+            - traditional routing
+                - implemented on the routers
+
+                - each router has some smarts, an algorithm (routing protocol)
+                  that determines who is near, who is far
+                    - these routers exchange information with each other
+
+                - every now and then, pushes a routing update to the data plane
+                    - this is called the routing table
+
+                    - every input / output port must have a routing table
+
+            - software defined networking
+                - remote servers
+
+                - the routers do the nuts and bolts forwarding, but there is a
+                  central server that figures out how these routing tables
+                  should be updated
+
+                - there is a local control agent in all of the routers
+                    - this maintains communication with the central server
+
+- Network service model
+    - what does the network layer do as a service?
+        - for the internet, not a whole lot really
+
+    - for other network architectures, can alot of stuff such as
+        - guarantees delivery of datagrams
+        - guarantees datagrams arive in continuous, sequential stream
+
+
+- Whats inside a router?
+    - input cards, output cards, high speed switch with routing tables
+
+    - input card
+        - physically terminates the line
+
+        - gets the bits off of the medium, and onto the link layer protocol
+
+        - data link layer
+
+        - uses header fields to lookup output port
+            - done my smarts inside of each line card
+
+            - each line card is kind of its own partical switch
+
+            - all we care about is the destination
+
+        - may need some buffer area
+
+        - preimptive dropping if the output queue is full
+
+- Destination Based Forwarding
+    - we look at the destination address, and this maps to a output interface
+      card
+
+    - ranges of addresses
+        - start with the same bits
+            - we only have to check these bits in our routing table
+
+            - if the first n bits of the destination address match these bits,
+              then we know to use this rule from the table
+
+        - we use the rule with the longest matching prefix
+            - there may be multiple rules where many of the prefix bits match,
+              but there will always be one that matches better (well in well
+              defined rules)
+
+            - this is usually done inside of the input cards
+                - uses special kind of memory, TCAM
+
+                - you send memory the content that you are looking for, and it
+                  gives you back the address
+
+- Switching Fabrics
+    - switching via memory
+        - first gen routers would see a destination address
+            - hand the address to memory
+
+            - a program running in the memory would make a routing decision and
+              output it
+
+    - switching via bus
+        - all input cards and all output cards share the same bus.
+        - Only one person can use the bus at a time
+
+    - switching via interconnection network
+        - lets you do stuff in parallel
+
+- Queueing
+    - Input Port Queueing
+        - there is a delay because of a queue from incoming packets
+        - if the queue is full then the router drops packets
+
+        - head of line blocking
+            - two input cards both want access to the same output port
+            - one of them has to be picked
+
+    - Output Ports
+        - also ahve buffers
+            - if you can't get the packets out as fast as they are coming in,
+              you have to throw away packets
+
+        - some devices optimistically throw away packets at the input to help
+          everybody out
+            - you can try to make this more fair
+
+            - could be good for some people, bad for other people
+                - can pay more for priority?
+
+
+    - scheduling mechanism
+        - tail drop, priority, random, etc
+
+        - priority
+
+        - weighted fair queueing
+            - doesn't let one high priority queue starve everyone else
+
+LECTURE 12
+
+- Network Layer Programs
+    - routing pritocols
+    - ip protocol
+    - ARP
+    - ICMP
+
+
+    - seperate blocks, but all in same layer
+
+- IP Fragmentation
+    - we can divide big packets up into smaller ones
+
+    - make their way to teh destination as their own packets.  THey ahve their
+      own headers and everything
+
+    - we know if it happens or not
+        - there are flags in the ip header that tell us information about
+          fragmentation
+
+- Every router port has an IP address
+    - every router port belongs to a subnet!
+
+    - if we have a router with 3 ports, it should have 3 ports with 3 different
+      subnets
+
+
