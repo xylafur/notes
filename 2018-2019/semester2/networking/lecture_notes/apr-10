@@ -1,0 +1,96 @@
+- CRC
+    - with parity we can detect odd bit errors, but not even bit errors
+        - if we are convinced that the worst error we can ever encounter is a
+          single bit error, then pairity is ok
+            - this is not true for transmission networks
+    - you can come up with other error detection schemes that can detect more
+      and more errrs by using division and checking the remainder
+        - the higher the number we divide by the smaller the space of
+          undetected errors (because ther errors would have to exist in such a
+          way that the remainder wouldbe the same)
+
+
+- Multiple Access Links, Protocols
+    - why we do packets
+        - devices need to be able to look at chunks to determine if they want
+          them or not, what to do with the packet
+
+        - this gives us a standard of communication
+
+    - if we all had a dedicated wire to each location, we could just use 1's
+      and 0's
+        - since we have to share we need packets
+
+    - types of links
+        - point to point
+            - PPP for dial up
+            - ethernet to switch
+
+        - broadcase (shared)
+            - wifi, TV
+
+    - multiple acces protocol
+        - one that is developed with multiple users in mind
+        - ehternet has multiple users, thats wy we have a MAC address (to
+          determine who is who)
+
+        - the messages that go back and forth to communicate what is going on
+          travels on the same channel as data
+
+        - 3 broad classes for designing a network where people share:
+            - channel partitioning
+                - divide the thing into time slots, give people their own slice
+                - you have a fixed constant, no more no less
+
+                - unused slots go idle
+
+                - dividing frequencies
+                    - people get a dedicated frequency, so no time slots
+                    - cable is an example of this
+
+            - random access
+                - channel is not divided, we allow collisions
+                - people may try to talk at the same time
+
+                - have tobe alot smarter
+
+                - when you do have something to send,you might get the whole
+                  thing to yourself
+
+                - need to know how to handle collisions
+
+                - how do you keep people polite (sharing):
+                    - has to be some randomness.  IF there is a colliion you
+                      wait for a random amount of time
+
+                    - if you don't get it (the network) after ur random wait,
+                      you wait for a different random amount of time because
+                      that means that someone probably has the network
+
+                - aloha net:
+                    - sends out a heart beat.
+                        - all nodes share a 'start transmitting' signal
+                        - so all packets will happen within the same time frame
+
+                    - if you have something to send, do it at the beginning of
+                      one of these heart beats
+
+                    - if there is a collision, you send something out on the
+                      next fram with probability p until you send out ur
+                      message without a collision
+
+                    - huge influencer on ethernet
+
+                    - only use about a 3rd of ur network
+                        - pretty good and really cheap
+
+                - CSMA (Carrier sense multiple access)
+                    - listen before you transmit
+                    - if the channel is idle then transmit ur entire fram
+                    - if its busy then wait until its not
+
+
+            - taking turns
+                - figure out who goes when
+
+

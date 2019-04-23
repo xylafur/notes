@@ -1,0 +1,80 @@
+Link Layer Continued
+
+- Link Layer addressing and forwarding
+    - we are to send something from one computer to another
+        - a to b
+
+    - layer 3
+        - is worried about conneting things end to end
+        - source and destination ip addresses will never change
+            - any router along the way that passes this along will see this
+
+        - the router will look at the source address
+            - based on its routing table it will send it to the following ip
+              address over a particular wire
+
+            - the only thing that the routing table can have is something on
+              the same local lan
+                - basically a router can only forward stuff that it is directly
+                  connecte to
+
+
+    - layer 2
+        - you will only see things on the local lan
+            - things on the same side of a router
+
+        - how do you know the destination mac address? (ARP)
+            - you broadcast the destinatin ip address and ask for the mac
+              address
+                - the router will see this and respond with his mac address
+
+        - the hardware devices between each hop will change
+        
+        - you broacast the ethernet frame to everyone, if its someones
+          destination address they read the packet
+
+    - you're only on a lan when you're in transmission
+        - there is no ethernet information inside of the router, only when it
+          is reading stuff in from a data link or writing stuff out to a data
+          link
+
+- Ethernet
+    - why use a switch?
+        - it will filter out stuff not for a particular destination
+
+    - the layer where you are converting 1's and 0's to whatever medium
+
+    - frame structure
+        - since we are dealing with endless 1's and 0's, we have a very special
+          pattern that signifies the beginning of a frame and another one that
+          signifies the end of a frame
+
+    - unreliable, connectionless
+        - no start or stop signals
+            - people are all just trying to send shit on the wire and don't
+              care about others
+
+
+        - if your frame doesn't make it, wait awhile and try again
+            - if it still doesn't make it, wait a little longer and try again
+
+    - ethernet switch
+        - sits in the middle of a bunch of ethernet wires and filters out
+          things for the wrong people
+
+            - the switch will watch the poeple thats connected to it and figure
+              out who is who
+
+            - switches won't change anything on a packet (as far as we are
+              concerned)
+
+
+- VLAN
+    - pretend like a particular set of hosts are on a seperate local network
+    - particular mac addresses are treated differently
+        - only these particular mac addresses can access these particular
+          servers
+
+    - really important security systrem
+
+    kj

@@ -1,0 +1,91 @@
+- Chapter 6: Wireless and Mobile Networks
+    - background
+        - you have addresses on wireless just like you do on wired networks
+            - we use mac addresses the same as we do for ethernet
+            - this is because the same people from IEEE that manage ethernet
+              stuff manage this stuff too
+
+    - elements
+        - out of all the towers that you can detect
+            - you choose the best bet based on strength and users and stuff
+
+        - phones and tablets are basically 2 way radios
+            - now adays we can have a single antena that can pick up multiple
+              frequencies
+                - it is a spiral 
+
+    - wireless entwork
+        - you don't have to have a base station
+        - you can have an ad hoc network, where everyone is just able to
+          communicate with eachother
+
+        - can inject special header information into the existing headers
+            - this can help providers communicate stuff
+
+
+        - characteristics
+            - loose signal strength much more quickly than ethernet or
+              something
+
+            - propogates in all directions, not directed towards the target
+                - really prone to interference, anything radiation that is the
+                  same frequency
+
+            - multipath propogation
+                - signal bouncing around will arrive later at the same
+                  destination and can interfere with the strongest signal that
+                  makes it first
+
+            - signal to noise ratio
+                - for wire connected networks, you can assume that you'll be
+                  able to transmit data perfectly from one locatin to another
+
+    - Code Division Multiple Access
+        - a unique code is assigned to each user
+
+        - you multiple your data to send by your unique chipping sequence
+
+        - then the reciever multiplies the sender's chipping code with teh
+          recieved data and it will get the original message
+
+            - bits are either 1 or -1, thats why this works
+
+        - if there are more than one senders, their output messages (agter the
+          encoding) are added together
+            - there will be some numbers greater than 1, you know thre is more
+              than one person
+
+- WIFI
+    - the major wireless that we use
+    
+    - there are multiple valid / accepted frequencies that can be used
+
+    - SSID
+        - name of a network
+
+        - each host must associate with it to connect to the network
+
+    - collision
+        - no way to detect collisions with wifi
+
+        - CSMA/CA
+            - raise our hand for permission, respind if we we called on or back
+              off for awhile if someone else is called
+
+            - reserve a channel rather than random access
+
+                - RTS (request to send)
+                    - if you can, you get responded with a CTS (clear to send)
+
+
+- Frames (addressing)
+    - three spaces for mac addresses
+        - the person intended to recieve frame
+        - the person transmitting
+        - the mac address of the router that the access point is using
+
+- Personal Area Networks
+    - bluetooth is an example
+    - need some ad hoc way to make someone a leader
+
+    
