@@ -1,0 +1,185 @@
+- Recap
+    - Dijkstras algo / distance vector
+        - used when you want a comprehansible table for all of the routers
+
+        - This must be ran for every node on the network
+
+        - we build the optimization tree to figure out the best route to send
+          traffic
+
+        - gets run periodically, but can support osscilations
+            - what that means is that as costs change, different nodes can
+              change their opionion about which way they should go
+
+
+- distance vector algorithm
+    - doesn't need to know evey router's point of view
+
+    - just needs to know its directly connected neighbors
+
+    - asks its neighbor how long it will take to get somewhere
+        - this is done recursively
+
+        - the work is thus distributed across all routers on the network
+
+    - how it works
+        - if we are looking for some data, we need to consider my cost as well
+          as the neighbors cost to get somewhere
+
+        - you add up your cost, plus each of the connected routers assumed
+          distance to the destination
+
+        - the bellman for equation says
+            - look at the routers I directly connect to
+                - write down how long it takes to get to each of these
+                - then add in what they say is their distance to z
+
+            min(for all neighbors: cost(me, them) + estimated_cost(them, goal))
+
+        - the whole thing is iteratic in async
+            - if something in the network changes we will get notified
+                - we don't poll or anything
+
+            - iterations are caused by
+                - local link cost change (they notify us when something
+                  changes)
+                - one of the neighbors gets an update (they will propogate this
+                  back to us)
+
+            - wait for something to happen
+                - recompute
+                - update neighbors
+
+    - link cost changes
+        - good news travels fast
+            - bad news should travel slow
+                - it traveling very fast can bring alot of things down!
+
+- Comparison of the two
+    - link state
+        - required O(nE) messages
+            - where E is the # of messages
+
+        - evnerything happens at once
+            - flooding the network, but definitely getting answer
+
+    - distance vector
+        - exchange between neighbors only
+            - convergance time varies
+
+        - speed of convergance
+
+
+###############################################################################
+#   Lecture 14!
+###############################################################################
+- routing scalable
+    - in a large campus, you treat the network as flat
+        - every router can afford to know what every other router is doing
+
+        - not done on the internet because its too big
+
+    - scaling
+        - divide people into clumps
+
+        - people have an AS number
+            - kind of like a group that contains all of the oraniszations
+              subnets and everything
+
+            - only consider that organization as a single clump even though
+              they have multiple subnets
+
+            - this can lead to non optimizations though
+                - if we have an organization forward us to another point, they
+                  may bounce us through multiple of their routers even though
+                  they have a small overall hop count
+
+        - the routing algorithm you run inside you own network is not the same
+          as the routing algorithm outside of it (internet)!
+            - routers have border connections, these are the ones that connect
+              to the other external networks
+
+            - You have interior and exterior gateway protocol
+                - this exterior one is the one that looks as organizatins (AS
+                  numbers) as clumps
+
+    - OSPF
+        - uses link state algorithm
+
+        - Hierarchical version
+            - 
+
+    - Internet inter-AS routing
+        - BGP
+            - run between autonomous systems
+            - pretty much the standard
+
+            - gives us a way to grab info about what is running externally
+            - we have a way to share this with everybody else
+
+            -  the goal is to determine a set of good routes
+
+            - BGP session
+                - when somebody new shows up, you may or may not share his
+                  routes
+
+                    - there is optional friendlyness
+                        - if you don't want to carry data for other networks
+                          across yours then you won't publish it as a possible
+                          route
+
+- Why different policies internally and externally?
+    - With external, we may want to restrict to or from one location
+        - don't wanna haul data for someone else, expecially if they aren't a
+          paying customer
+
+    - internally you have no need to really restrict, its all you
+
+###############################################################################
+#   Lecture 15
+###############################################################################
+- Control plane for a software defined network
+    - before we had a device that could just forward bits
+
+- our routing table will be centerally controlled
+    - allowing for more intelligent decisions
+
+- SDN
+    - we should be able to shape traffic better than just looking at
+      destination address
+
+    - Traffic Engineering
+        - with destination forwarding we can't send people different routes
+          through the same router to the same end point
+            - because its just all based on the destination
+
+    - SDN controller
+        - above the routers we have the SDN controller which is some s4erver
+          that watches the routers and what is above it
+            - can send instructions to the routers
+
+        - communicationg with routers
+            - there are multiple ways to communicate with ur routers
+
+
+          l
+
+###############################################################################
+#   ICMP and SNMP
+###############################################################################
+- These both run in the netwrok layer
+    - not a peer of tcp and udp
+
+- ICMP
+    - way of getting error messages and status messages across
+
+    - 2 types
+        - query
+            - call and response
+
+        - error messages
+            - sends a message backa nd the packet that caused an issue
+
+    
+
+

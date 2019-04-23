@@ -1,0 +1,273 @@
+
+###############################################################################
+#   User's guide
+###############################################################################
+http://www.ti.com/lit/ug/slau597f/slau597f.pdf
+
+- General
+    32 Bit Cortex-M4F processor
+
+    - XDS110
+        - onboard debug probe that allows programming and communication to PC
+
+- MCU
+    - 48 MHz crystal clock
+    - 256 KB flash mem, 64KB SRAM, 32KB ROM
+
+    - four 16 bit timers
+        - capture, compare and PWM support
+
+    - 8 serial communication channels
+        I2C
+        CPI
+        UART
+        IrDA
+
+    - ADC
+
+    - Has CRC and AES256 support
+
+- Isolation Block
+    - The two halves of the board are seperated at the dotted line
+
+    - THere are only a few signals that are connected between the two sides
+
+
+- Clocking
+    - external clocks
+        Q1: 32-kHz crystal (LFXTCLK)
+            - provides ower LPM3 sleep currents and higher precision clock
+              source than default internal REFOCLK
+            
+        Q2: 48-MHz crystal (HFXTCLK)
+            - Allows Max operating speed for MCLK and HSMCLK
+
+    - Internal Clocks
+        - can be sourced from many clock sources
+
+        - MCLK
+            - Default Source:       DCO
+            - Default Frequency:    3MHz
+
+            - Master CLock
+            - Sources CPI and peripherals
+
+        - HSMCLK
+            - Default Source:       DCO
+            - Default Frequency:    3MHz
+
+            - Subsystem Master Clock
+            - Sources Peripherals
+
+        - SMCLK
+            - Default Source:       DCO
+            - Default Frequency:    3MHz
+
+            - Low-Speed Subsystem master clock
+            - Sources peripherals
+
+        - ACLK
+            - Default Source:       LFXT (or REFO if there is no crystal)
+            - Default Frequency:    32.768 kHz
+
+            - Auxillary clock
+            - Sources Peripherals
+
+        - BCLK
+            - Default Source:       LFXT (or REFO if no crystal)
+            - Default Frequency:    32.768 kHz
+
+            - Low-speed backup domain clock
+            - Sources LPM peripherals
+
+- Block Diagrams and Pins
+    - they are all present in this document
+    
+###############################################################################
+#   Data Sheet / Specifications
+###############################################################################
+http://www.ti.com/lit/ds/symlink/msp432p401r.pdf
+
+Description:
+    - 16 bit ADC
+
+    - Floating Point Unit
+        - has single precision floating point module
+
+    - NVIC
+        - up to 64 interrupts with 8 levels of priority
+
+    - Systick
+        - integrated system timer, integrated 24 bit clear on write decrementing
+
+    - Memory Map
+
+        4GB, divided into 8 512 MB zones
+
+                    -------------------
+        0xFFFFFFFF  |   Debug / Trace Peripherals
+                    |
+        0xE0000000  |
+                    |------------------
+        0xDFFFFFFF  |   Unused
+                    |
+        0xC0000000  |
+                    |-----------------
+        0xBFFFFFFF  |   Unused
+                    |
+        0xA0000000  |
+                    |-----------------
+        0x9FFFFFFF  |   Unused
+                    |
+        0x80000000  |
+                    |-----------------
+        0x7FFFFFFF  |   Unused
+                    |
+        0x60000000  |
+                    |-----------------
+        0x5FFFFFFF  |   Peripherals
+                    |
+        0x40000000  |
+                    |-----------------
+        0x3FFFFFFF  |   SRAM
+                    |
+        0x20000000  |
+                    |-----------------
+        0x1FFFFFFF  |   Code
+                    |
+        0x00000000  |
+                    |-----------------
+
+
+    - Code Zone Memory Map
+        - Accessible thorugh the ICODE and DCODE buses and through system DMA
+        - maps the flash, rom and internal SRAM
+
+                    -------------------
+        0x1FFFFFFF  |   Reserved
+                    |
+        0x02100000  |-------------------
+                    |   ROM Region
+                    |
+        0x02000000  |-------------------
+                    |   Reserved
+        0x01100000  |-------------------
+                    |   SRAM Region
+                    |
+        0x01000000  |------------------
+                    |   Reserved
+                    |
+                    |
+        0x00400000  |------------------
+                    |   Flash Memory Region
+                    |
+        0x00000000  |-----------------
+
+
+
+
+        - Flash Memory Region
+            - The 4MB flash memory region is divided into 2 different types of
+              flash memory regions
+                - main memory and information memory
+
+            - flash memory comprises two banks
+                - they can each be accessed independently, one can be erased
+                  while the other is written to
+
+            - 128 bits wide, enabling high code execution performance
+
+
+                        |-----------------
+            0x003FFFFF  |   Reserved
+                        |
+            0x00204000  |----------------
+                        |
+                        |   Information Memory
+                        |
+            0x20000000  |---------------
+                        |   Reserved
+            0x00040000  |---------------
+                        |   Main Memory
+                        |
+            0x00000000  |---------------
+
+                - Flash Main Memory
+                    - up to 256 KB
+                    - 64 sectors of 4KB each, minimum erase granularity of 1 sector
+
+                    - two independent banks for simotanious action
+
+                - Flash Information Memory
+                    - four sections, each with a minimum erase granularity of 4kb
+
+                - Flash Operation
+                    - multiple read and program modes
+
+                    - up to 128 bits can be programmed (set to 0) in a single operation
+                        - there is a buffer that allows the cpu to write 128 bits
+                          since the cpu is only 32 bits wide
+
+
+
+
+
+
+
+
+        - SRAM Region
+            - Also aliased in the SRAM zone of the device
+            - this allows for efficient access to the SRAM both for instruction
+              fetches and data reads
+
+            - Aliasing:
+                - The situation in which a data location in memory can be
+                  accessed through different symbolic names in the program
+
+                        |-----------------
+            0x3FFFFFFF  |   Reserved
+                        |
+            0x24000000  |----------------
+                        |
+                        |   SRAM Bit-Band Alias Region
+                        |
+            0x22000000  |---------------
+                        |   Reserved
+            0x20100000  |---------------
+                        |   SRAM Region
+                        |
+            0x20000000  |---------------
+
+            - SRAM Region
+                - aliasted to teh code zone of the device
+                    - allowing efficient access to sram for instruction fetches
+                      and data reads
+
+            - SRAM Bit-Band Alias Region
+                - bit band alias region for the 1MB SRAM region
+
+                - bit banding is a feature of the cortex M4 processor that
+                  allows the application to set or clear individual bits
+                  through the SRAM space without using the pipeline bandwidth
+                  of the processor to carry out an exclusive read-modify-write
+
+        - Peripheral Zone Memory Map
+
+                        |-----------------
+            0x5FFFFFFF  |   Reserved
+                        |
+            0x44000000  |----------------
+                        |
+                        |   Peripheral Bit-Band Alias Region
+                        |
+            0x42000000  |---------------
+                        |   Reserved
+            0x40100000  |---------------
+                        |   Peripheral Region
+                        |
+            0x40000000  |---------------
+
+
+
+
+

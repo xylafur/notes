@@ -1,0 +1,144 @@
+##############################################################################
+# Software Defined Networking
+##############################################################################
+
+- Problem with routers
+    - routers are still doing what they did in the beginning
+        - routing in the internet has the legacy of least amount of work
+
+    - we just look at the destination address, and send it on the right path
+        - we never know what the entire network looks like
+
+        - we want to be able to do much more
+            - such as when and if we want to forward something, based on
+              destination and origin address
+
+        - recently new attempts to fix these issues dddddis coming about
+
+- Fields Packets have when arriving at router
+    - switch port
+    - vlan id
+        - really good at doing vlan on switches at local institutions
+        - hard to do on the internet
+            - need like a vpn and tunneling
+
+        - if we know it and can use it we might route differently
+
+    - MAC src
+        - Can blacklist people or route all people in a particular direction
+
+    - MAC dst
+
+    - ethernet type
+
+    - ip source
+
+    - ip destination
+        - what we will be looking at today
+
+    - tcp source port
+
+    - tcp destination port
+
+- Rules
+    - rules are a specific set of fields
+
+    - if we match particular rules
+        - then we take a particular action
+
+        - we can also take statistical measurements for praticular rules
+
+- Open Flow
+    - Network Address Translation
+        - going from one ip address range to another, we change it
+
+    - routers aren't making decisions on their own anymore
+        - the routers feed intormation upstars to the controller
+        - the controller will download rules to the routers and do other things
+
+
+
+
+##############################################################################
+# Chapter 5: Network Layer Control Plane
+##############################################################################
+- we are trying to get routers to stop making decisions on their own and rather
+  send all the information upstream and have the controller make decisions
+
+- Implementation on the internet
+    - there are multiple different algorithms for which to forward packets
+
+    - open flow
+
+    - open nos
+
+- Network-Layer Functions
+    - forwarding
+        - move packets from input to appropriate output
+        - data plane
+
+    - routing
+        - determine the route that is taken
+        - control plane
+
+    - approaches
+        1 - do it in every router
+        2 - do it in cloud with software defined routing
+
+- routing protocols
+    - probably won't change depending on where the control logic is
+
+    - the idea is that based on what we know (who we can see) determine where
+      we should go next
+        - what is the best path?
+            - the one that is the fastest?
+            - the one that costs the least?
+            - the one that will mess up overall traffic the least?
+
+        - we can't divide traffic up across the internet
+            - people just buy huge pipes
+
+- Graph Abstraction of the network
+    - given an abstraction of a network in the form of a graph
+
+    - nomenclature
+        c(x, x') = cost of link(x, x')
+
+    - we figure out the best path and then load this as a routing rule to all
+      the routers
+
+- algorithms for routing
+    - Link State -> dijkstra's algorithm
+        - ran inside of an organization
+
+        - depends on that everyone knows the cost to get to every other node
+
+        - can compute the least cost paths from one node to all other nodes
+
+        - after k iterations, knows the least cost path to k destinations
+
+        - O(n^2)
+
+
+    - Distance Vector
+        - dynamic programming
+        - based on bellman equation
+
+        - significantly less computational model
+
+        - let your neighbor tell you his cost to get somewhere and trust what
+          he says
+            - prone to being lied to and bad route costs injected
+
+        - at the beginning your neighbors may not know the cost somethere
+            - the first people that learn how to get somewhere, are the people
+              that have connections to get there
+
+            - this propogates backwards with each round of the algorithm
+
+            - never have to talk to anyone but your neighbors
+
+        - every now and then a ndoe sends a distance estimate to its neighbors
+            - the neighbor will update its estimate based on this value
+
+

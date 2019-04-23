@@ -1,6 +1,0 @@
-ISA: Instruction Set Architecture
-
-- Thumb is a mixed 32bit 16 bit length instruction set
-    - the only instruction set supported by the M-Profile Architecture
-
-

@@ -1,0 +1,145 @@
+###############################################################################
+#   Section 1
+###############################################################################
+
+- What is FreeRTOS?
+    - a library that provides multi-tasking capabilities that would otherwise
+      be a bare metal application
+
+    - each port will have a demo build that should work out of the box for the
+      ported board
+
+- FreeRTOSConfig.h
+    - use to tailer the os for a specific application
+    - has information such as
+        - the scheduling algorithm
+
+    - located in a directory that is part of the application being built
+
+    - it is recommended to start with the one provided by the port
+
+- Common Files
+    - the FreeRTOS source code is contained in just two C files that are common
+      to all the ports
+        - tasks.c
+        - list.c
+
+        - there is also
+            - queue.c
+                - queues and semaphores
+
+            - timers.c
+                - software timers
+
+            - event_groups.c
+                - event group functionality
+
+            - croutine.c
+                - use for co-routines
+                - not used often anymore
+
+
+    - these can all be found in the Source directory
+
+
+- Files specific to a port
+    - sorted in a directory structure
+        - compiler, then architecture
+
+        - file for port
+            FreeRTOS/Source/portable/[compiler]/[architecture]
+
+    - The heap memory manager needs to be included
+        - there are many schemes in
+            FreeRTOS/Source/portable/MemMang
+
+    - compiler include path
+        - need 3 directories to be included
+
+        - path to the core FreeRTOS header files
+        - path to the source files that are specific to the FreeRTOS port
+        - A path to the FreeRTOSConfig.h header
+
+- Header files
+    - if you use the FreeRTOS API you must include FreeRTOS.h as well as the
+      prototype fo rht API function being used
+
+###############################################################################
+#   Demo Applications
+###############################################################################
+- The demos should work out of the box with no errors
+    - these demos are developed on windows
+        - occasionally there are build errors on linux because of this
+        - this is usually related to the case of letters though
+
+
+###############################################################################
+#   Creating a FreeRTOS Project
+###############################################################################
+- starting from existing demo
+    - open the demo project, ensure that it builds
+    - remove the source files that define the demo tasks
+        - anything within Demo/Common can be removed
+
+    - Delete all function calls from within main except prvSetupHardware() and
+      vTaskStartScheduler()
+    - make sure the project still builds
+
+- from scratch
+    - using you chosen tool chain, create a new project that does not yet
+      include any FreeRTOS source files
+    - ensure that it can be built
+    - add the FreeRTOS source files
+    - copy the RTOS config header
+    - Add the include and portable director
+    - copy the compiler settings from the relevant demo project
+    - install any interrupt handlers that might be necessary
+
+###############################################################################
+#   Data Types and Coding Style
+###############################################################################
+- data types
+    - portmacro.h
+        - definitions for two port specific data types
+            - TickType_t
+                - FreeRTOS configures a periodic interrupt called the tick
+                  interrupt
+
+                - number of tick interrupts that have occurred since the os
+                  started is called the tick count
+
+                - time between two tick interrupts is the tick period
+                    - times are specified as multiples of tick periods
+
+                - TickType_t is the data type used to hold the tick count value
+                    - it can be either an unsigned 16 bit or an unsigned 32 bit
+                    - you have to update the FreeRTOSConfig.h to say which type
+                      you are using with USE_16_BIT_TICKS
+
+            - BaseType_t
+                - defined as the most efficient data type for the architecture
+                    - generall same number of bits equal to the bits in the
+                      architecture
+
+- variables names
+    - variables should be prefixed with their type
+    - ‘c’ for char, ‘s’ for int16_t (short), ‘l’ int32_t (long), and ‘x’
+      for BaseType_t
+
+    - additinally u at the beginning for unsigned
+    - also p if its a pointer
+
+
+- Function Names
+    - functions are prefixed with both the type they return and the type they
+      are defined with
+
+    - vTaskPrioritySet() returns a void and is defined within task.c.
+
+- Formatting
+    - one tab always = 4 spaces
+
+- macros
+    - In all caps but with lower prefix that tells you what file its in
+
+
