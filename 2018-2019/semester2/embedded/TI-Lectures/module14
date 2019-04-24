@@ -1,0 +1,191 @@
+#############################################################################
+#   Lecture 1
+#############################################################################
+
+- Real Time Systems
+    - Task
+        - software event that we execute
+
+        -types
+            - periodic
+                - happens within the same delta T
+
+            - A periodic
+                - input output
+                - if we expect it to happen, and it can be handled with
+                  interrupts (like uart)
+                    - the inptu string is expected but ittecular
+
+            - Sporadic
+                - unexpected
+
+                - Our bump sensor interrupt is an example this
+
+        - evaluate real time nature
+            - latency
+                - time between when the interrupt is triggered, and when we
+                  start handling the interrupt
+
+            - response time
+                - the time between when we start handling and when we finish
+                  handling
+                    - the time it takes us to complete the entire service
+
+
+
+
+    - What are real time systems
+        - Hard Real Time Systems
+            - The event we are trying to solve is so important we wilwl never
+              miss it
+
+            - the response time and latency are guaranteed
+
+                - the latency is always less than some small bound
+                    - this is the nature of a hard reall time system
+            - we do this by triggering the interrupt and having a really high
+              priority
+
+        - Firm Real TIme Systems
+            - not for robots
+
+            - missed deadline means a loss of quality
+
+            = the thing when you miss data is not as good but still has value
+                - video / audio streaming
+
+        - Soft Real Time Systems
+            - delayed response reduces value
+
+            - we want our latency to be small
+
+            - if you delay long enough, it may be like a firm real time an d
+              have no value
+
+            - examples
+                - memory fetches / disk IO
+
+- Robot
+    - some things that the robot does are not real time
+        - LCD would be an example
+            - if you delay this output, it still races around with the same
+              features
+
+        - LED blinking
+            - isn't sysetm critical
+
+        - We put these things into the main program
+
+    - things that do matter
+        - we give them interrupts with priority based on how important they are
+
+- Real Time Behavior
+    - we have to assign priority appropriatley
+
+    - we have to be carful about when we disable interrupts
+        - the time in which interrupts are disabled has to be minimum
+
+    - Interrupts need to be as optimal as possible
+        - if we have queued interrupts, one long interrupt can reduce the
+          latency of the other queued interupts
+
+        - we want no long time delays in the interrupt!
+
+        - we want to avoid loops in the interrupt service routine
+
+#############################################################################
+#   Lecture 2
+#############################################################################
+- Our goal is that if the robot hits the wall we stop the motors
+    - we want to set up edge triggered interrupts
+
+- Interrupt table
+    - We will be using Port1, 2, 3, 4, 5, 6
+        - you can only do edge triggered interrupts for these ports
+
+
+- Interrutps In general
+    - setup requirements?
+        - hardware trigger
+            - this will set the interrupt flag for whatever was triggered
+
+            - this is the IFG bit
+
+        - arm
+            - setup interrupt enable pin, bit 4, or whichever port so that it
+              actuall requests the interrupt
+
+            - THis is the IE bit
+
+        - tell the NVIC that we care about that interrupt
+            - bit 35 enabled
+
+        - ALL interrupts have an enable
+            - I bit in the primask has to be 0
+
+    - What happens
+        - Context switch
+
+        - finishe the current instruction
+        - push all of th ecurrent registers to the stack
+
+        - load the program counter to the interrupt vector
+
+        - there is a register in the processor that sets it to know that it is
+          running the particular interrupt
+
+        - set the LR to a special value
+            - 0xFFFFFFF9
+
+            - this tells the processor that it will need to pop everything off
+              the stack back into registers
+
+- Enabling our bump sensor edge triggered interrupt
+    - 06:14 in the video
+
+    - set it as gpio like normal, enable the pull up resistor, this is for the
+      switch specifically
+
+
+
+    - then we set the IES register for that port and pin to high to be a
+      falling edge event
+        - this reguster is the one that says to use a falling or rising edge..
+        - 0 means rising edge then obviously
+
+    - then you clear the IFG flag for that port / bit
+        - P<num>->IFG
+
+        - this is the thing that is set when the interrupt is set
+            - so we clear it just as a precaution
+
+    - then you arm the Interrupt enable flag for that pin with the IE register
+        - this is arming the interrupt, 1 means armed
+
+    Then set the priority in the NVIC table for that interrupt
+        - (which would be the interrupt for whichever port)
+
+    - then set the enable bit in the NVIC for that interrupt
+        - this does not clear out when you write 0's
+        - it is a special arm register
+
+- so at this point whenever the switch is clicked we hit an edge triggered
+  interrupt
+
+- handler
+    - we have to clear out the intterupt bit, this is the acknoledge step and
+      if we don't we will just get triggered again and again
+
+- if we have multiple pins hooked up to the same port for an edge triggered
+  interrupt, you can figure out which pins were triggered
+    - you can use the IV register for a port to determine which pins were
+      triggered
+
+    - this only gives you the one with the lowest pin number
+
+    - if multiple were triggered at the same time, if you read it again it will
+      give yout the next one
+        - so servie them in sequential order and re read them after any time
+          you service them
+
+

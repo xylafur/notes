@@ -1,0 +1,11 @@
+Average reward for each experiemnt
+    can do this after each iteration, see if it improves the more it learns
+
+iterations made through
+
+visualization through terminal ascii
+
+Possible Experimentation
+    increasing the pick up capacity of the agent
+    change state space
+    run for more steps
