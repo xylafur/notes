@@ -1,0 +1,58 @@
+13:
+    Each of the input cards will have its own copy of the routing table to
+    enable high speed routing.  Additionally each input card will have its own
+    queue
+
+14:
+    Only FIFO will ensure that packets leave in the same order that they
+    arrive.  All of the other queuening techniques will require some sort of
+    ordering (based on weight or giving everyone a time slot)
+
+15:
+    Byte offset 10 which contains the protocol used as an 8 bit value
+
+16:
+    Time to live, byte offset 9.  8 bit value that determines how many more
+    hops this particular packet can make before it should be killed
+
+
+17:
+    
+
+18:
+    Each interface has its own ip address, each ip address is connected to its
+    own lan.  Since there are 8 interfaces, the router will have 8 ip addresses
+
+
+19:
+    202.3.14.25
+
+    0xCA 0x03 0x0E 0x19
+
+    1100 1010 0000 0011 0000 1110 0001 1001
+
+20:
+    a)
+        Input and output interface for each of the routers.  So 2 * number or
+        routers
+
+        8
+
+    b)
+        Only one for each input interface, the routing table tells the router
+        which interface to send the packet out of
+
+        So 4
+
+
+21:
+    We could also have to consider the header / footer of tcp or udp but this
+    is not given so we will ignore it.
+
+    Since 20 bytes is for the ip header, we have 1480 bytes to work with.
+
+    Because of this, the number of datagrams needed is equal to
+        ceil(5000000 / 1480) = ceil(3378.3783783783783) = 3379
+
+
+
