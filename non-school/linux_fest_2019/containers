@@ -1,0 +1,66 @@
+- What is a coontainer?
+    - sandbox for a process
+
+    
+- Chroot
+    - change root directory
+        - not really though, changes apparent root directory
+
+- whitepaper
+    An eveining with berferd In Which a Cracker is Lureeed, Endured and Studied
+
+- Whats a container made of?
+    - Namespaces
+        - limits your ability to see things on the filesystem
+            - you can have a root user in a chroot that is nobody on the main
+              system
+
+        - she says there are 6 linux namespaces
+            - user, ipc, uts, mount, pid, network
+
+            - these containers allow you to have isolated for each of these
+              guys
+                - mount namespace gives you ability to access / use mounts
+
+
+        - namespaces are stored in /var/run
+
+- why are containers used?
+    - just because they're way easier to use and create than some unix jail or
+      chroot env
+
+- lxc
+    - linux containers
+
+    - super charged chroot env,
+        - allows you to isolate an entire os distro
+
+    - 2 types of containers
+        - os containers
+            - more attack vectors than an app container because you have all of
+              the possible attack vectors of the os
+
+        - application containers
+            - only contains the binaries, libraries, etc
+            - only the things neede to run ur app
+
+    - allows you to send kernel system calls down to the containers
+        - this is why you are able to run linux containers on a linux systems 
+            - they share the same system calls, and they send the system calls
+              down to the container
+
+
+- docker
+    - provides an env the gives you everything you need to run, and only that
+
+    - lxc is closer to the hardware, its not generic
+        - docker will run on any system, it is hardware independent
+        - lxc gives you control over which bus to use, which region of ram to
+          use, etc
+
+    - she adocates using both lxc and docker
+        - lxc for development, docker for deployment
+
+
+    - docker hub
+        - share images
