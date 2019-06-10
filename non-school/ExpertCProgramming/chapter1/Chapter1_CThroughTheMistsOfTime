@@ -1,0 +1,54 @@
+- Std IO library and C Preprocessor
+    - since c is so simplistic and minimal, functionality has to be included
+      somewhere else
+
+    - IO was originally not defined in C, it was provided by library routines
+        - calling runtime library code is not done implicitly, it must be done
+          explicitly by the programmer
+            - things like allocating memory must be done by the programmer
+
+            - testing array bounds, overflow are other examples
+
+    - the c preprocessor was added to fufil 3 main purposes
+        - string replacement of the form "change all foo to baz"
+        - source file inclusion
+        - expansion of general code templates
+
+
+    - there are various thigns in the C standard that are ambigious
+        - code will become unportable if you use any constructs that are
+          implementation defined or undpecified
+
+        - code is bad if you do anything that is undefined, or go against some
+          constraint
+            - who knows what that undefined thing will do
+            - constraint violations shouldn't compile
+
+        - good portable code is that that
+            - uses only specified features
+            - doesn't do anything implementation-defined
+            - has nothing that depends on implementation-defined, unspecified
+              or undefined features
+
+    - Const
+        - const does not turn a variable into a constant, it just means that
+          that variable can not be used for assignment
+
+        - so if you have a const pointer, the value pointed to by that pointer
+          cannot be agumented through that variable
+            - the variable can be changed to what it points to though
+
+            - const does not say that the pointer itself if constant, rather
+              the data it points to is constant.
+
+    - Signed and Unsigned
+        - mixxing the two can lead to some issues
+        - because of the way casting works, if you compare a signed and an
+          unsigned number, the signed number will be casted as an unsigned one
+            - thus
+                -1 < (unsigned int)1
+
+                - will NEVER be true
+
+        - the solution is to avoid unsigned unless you actually need them
+            - or if you use them, make sure to cast everything!

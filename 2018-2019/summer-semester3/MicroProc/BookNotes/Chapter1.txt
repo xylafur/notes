@@ -1,0 +1,243 @@
+I have omitted writing alot for this chapter, since its alot of stuff I already know
+
+- 1.1 Intro
+    - Computers are used in 3 broad categories
+        1. Personal Computers
+        2. Servers
+        3. Embedded Computers
+
+    - Factors contributing to Performance of a program
+        1. Algorithm
+            - Determines the number source level instructions needed in your language
+
+        2. Programming Language, compiler and Architecture
+            - Determines the number of computer instructions for each source level
+              statement
+
+        3. Processor and Memory system
+            - how fast can the instructions be executed
+
+        4. I/O System (hardware and OS)
+            - how fast can IO operations be executed
+
+
+- 1.2 Eight Great Ideas in Computer Architecture
+    - Design for Moore's Law
+        - Moore's Law states that IC resources double every 18-24 months
+
+    - Use Abstraction to Simplify Design
+        - hide lower level details when possible to increase productivity
+
+    - Make the Common Case Fast
+        - don't worry about optimizing the rare cases
+
+    - Performance via Parallelism
+        - better performance by doing things in parallel
+
+    - Performance via Pipelining
+        - Split processes up into processes that can be incrementally done in parallel
+
+    - Performance via Prediction
+        - 'it can be better to ask for forgiveness than ask for permission'
+
+        - it is often better to guess and start working towards the guess rather than
+          wait until you know for sure (assuming it isn't super hard to come back from a
+          misprediction)
+
+    - Hierarchy of Memories
+
+    - Dependability via Redundancy
+        - have redundant components since systems can fail
+
+1.3 Below your Program
+    - Two essential system software comonents:
+        - Operating System
+            - interface between user's program and hardware
+            - provides variety of services
+                - handle IO
+                - allocate storage and memory
+                - provide protected sharing of resources (such as memory)
+
+        - Compiler
+            - translate program from high level language into instructions that the
+              hardware can execute
+
+1.4 Under the Covers
+    - 5 Classic components of COmputer
+        1. Input
+        2. Output
+        3. Memory
+        4. Datapath
+        5. Control
+
+    - Through the Looking Glass
+        - LCD
+            - the most common way to display graphics nowadays
+            - There are rod shaped molecules that bend to either allow light to pass
+              through or to not.  The rod straightens out wehn a current is applied, and
+              no longer bend light.
+
+            - the LC material is between two screens polarized at 90 degrees
+                - only allows light though if the rods are bent
+
+            - there is a transistor switch at each rod, this controls each pixel on the
+              screen
+                - there are 3 transistor switches at each point for color monitors, RGB
+
+            - Computer hardware support for graphics consists mainly of a 'raster refresh
+              buffer', or 'frame buffer' to store the bit map which represnts the image
+                - the image is stored in the buffer and then read out to the graphics
+                  display at the refresh rate
+
+    - Touchscreen
+        - often times uses capacitive sensing
+        - an insulator like glass is covered with a transparent conductor.
+            - if another conductor (such as a finger) comes into contact with this then
+              it causes the electro static field of the screen to distort
+
+    - Opening the box
+        - the CPU is made up of the datapath and control
+            - datapath
+                - performs math
+
+            - control
+                - tells the datapath, memory and IO devices what to do
+
+
+        - Instruction Set Architecture
+            - interface between the hardware and the lowest level software
+
+            - includes anything programmers need to know to make a binary machine language
+              program work correctly
+                - instructions
+                - IO devices
+                - etc
+
+    - A safe place for data
+        - persistent storage is called 'secondary memory'
+
+
+    - communicating with other computers
+
+
+1.5 Technologies for Building Processors and Memory
+    - the manufacture of a chip begins with silicon, a substance found in sand
+        - silicon is a semiconductor, it does not conduct electricity well
+
+    - With a special chemical process, it is possible to add materials to silicon that
+      allow tiny areas to transform into one of three devices
+        - excellent conductors (using either microscopic copper or aluminum wire)
+        - excellent insulators (lioke plastic sheathing or glass)
+        - areas that can conduct or insulate under special conditions (as a switch)
+            - transistors
+
+    - procedure
+        - You start with a silicon crystal ingot (which looks like a sausage)
+        - the ingot is sliced finely into wafers, no more than 0.1 inches thick
+        - the wafers go through a series of processing steps
+            - patterns of chemicals are placed on each wafer, creating the transistors,
+              conductors and insulators
+
+        - you can have multiple layers seperated by insulators
+
+    - defects and dies
+        - a single microscopic flaw in the wafer or one of the pattern steps can result
+          in an area of the wafer failing
+
+        - to make up for this, wafers are patterned
+            - chopped up or diced into components
+            - these are called die
+
+        - you check which dies are bad and throw those out
+
+        - the cost of an integrated circuit increases as the size of the die increases
+            - yield decreases
+
+
+1.6 Performance
+    - Performance is complicated because there is no 'fastest' there is 'faster at this
+      particular thing'
+        - for instance the performance of a personal computer and server at datacenter is
+          rated differently
+
+        - Response time
+            - the time between start and completion of a task
+
+            - also known as execution time
+
+            - we will use this as the metric of performance for the first few chapters
+
+            Performance = 1 / Execution time
+
+        - throughput
+            - also called bandwidth
+
+            - the total amount of work done in a given time
+
+    - Measuring Performance
+        - wall clock time, response time, elapsed time
+            - will be refered to as 'system performance'
+
+            - all the same thing that means total time it takes to complete a task
+            - this time includes disk accesses, memory accesses, IO activities, OS
+              overhead
+
+        - Since computers are doing many things at once, we often want to consider when
+          our program is actually running
+
+          - CPU time is the time the CPU spends computing for out task
+            - you can further divide this into cpu time spend doing OS stuff and CPU time
+              doing your actual program
+
+            - will be refered to as 'CPU performance'
+
+            CPU time = CPU clock cycles * clock cycle time
+                     = CPU cycles / Clock Rate
+
+        - instruction performance
+            CPU clock cycles = # Instructions * average # clock cycles per inst.
+
+            - This is an important thing, known as CPI
+
+        CPU time = Inst count * CPI * Clock Cycle Time
+                 = Inst count * CPI / Clock Rate
+
+1.7 The Power Wall
+    - Dynamic energy is what consumes the most power for CMOS tech
+        - Dynamic energy comes from when transistors switch from 0 to 1 or vice versa
+
+        - the reason the power consumption of modern CPUs is going down is because we
+          keep lowering the operating voltage level
+
+        - the problem is that the more we lower the voltage, the more 'leaky' the
+          transistors become
+
+
+1.8 The Sea Change: The switch from Uniprocessors to Multiprocessors
+    - the power limit has forced a high change in mp design
+
+    - microprocessors nowadays have multiple processor cores
+
+    - we now rely on programmers implementing their stuff using parallel programing to
+      increase performance
+        - you have to balance things evenly among the cores to get the pull performance
+          increase, which is very difficult
+
+        - you must reduce communication and synchronization overhead
+
+
+1.10 Fallacies and Pitfals
+    - Amdahl's Law
+        Execution Time after improvement = Execution Time affected by improvement /
+                                           Amount of improvement
+                                           + Execution time uneffected
+
+
+        - Basically if we increase the performance of one thing, we can only increase the
+          overall performance based on how much of the overall time is spent on that
+          thing
+
+
+    - Computers at low utilization use little power (Fallacy)
+        - it is not proportional, the best results for power usage of a computer in 2012
+          was "a computer running at 10% of the load uses 33% of its peak power"

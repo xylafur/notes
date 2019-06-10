@@ -1,0 +1,139 @@
+Libraries, Linking and Loading
+    - The compiler creates an output file containing relocatable objects
+        - these objcts are data and machine instructions
+
+    Where the Lniker Is in the Phases of Compilation
+        - Compilers are not a monolithic program, rather a larger set of programs that
+          are all controlled by a program called a compiler driver
+
+        - smaller programs for the comiler include
+            - Pre processor
+            - the syntatic and semantic checker
+            - the code generator
+            - the assembler
+            - the optimizer
+            - the linker
+
+            - the driver program (wrapper)
+
+        - object files cannot be ran on their own, they have to first be passed to the
+          linker
+            - the linker will find the main routine, bind symbolic regerences to memory
+              address, unites all the object files and then joins them with the libraries
+              to produce an executable
+
+        - Unix / Linux uses dynamic linking
+            - A system will have a big collection of libraries that are useful to many
+              services.
+            - the system looks for these libraries at runtime rather than having to
+              include the library binaries
+
+        - Static vs Dynamic Linking
+            - static link
+                - if a copy of the libraries are physically part of the executable
+
+                - link edited and then loaded to run
+
+                - not everything from the linked in object is brought into the program,
+                  only things that are used
+
+                - known as archives
+                    - this is why they have the .a extention
+                    - this is also why they are created and updated by the ar program
+
+                - they are obsolete, this book says don't use them
+
+            - dynamic link
+                - the loader finds the program's library references at runtime
+
+                - link edited, loaded and the runtime linked
+                    - the runtime the dynamically linked objects are brought into the
+                      process's address space
+
+                - created with the link editor, ld
+                    - conventional file extention is .so
+
+                - the text suggents using the Position Independent Code compiler option
+                  when you use a shared libary
+                    - this makes code accessed through an extra indirection, making it
+                      easy to relocate data simply by changing a single value in the
+                      table of global offsets
+
+                        - without doing this is makes it slower for the shared library
+                          because every global reference has to be fixed up at runtime by
+                          page modification
+
+        - Three Phases of collecting modules together
+            - Linking
+            - Loading
+            - Runtime Linking
+
+    Benefits of Dynamic Linking
+        - smaller executable size
+        - quicker link edit phase
+
+        - ABI
+            - libraries can be implemented as a sort of application binary interface to a
+              program
+
+            - supposed to allow support over successive OS releases
+                - implementations can change, but that won't matter to the program
+
+        - There is a slightly larger start up cost for an executable, but performance is
+          improved in two ways:
+            1. Dynamically linked executables are smaller
+                - saves disk space and virtual memory, libraries are only mapped to a
+                  process when they are needed
+
+            2. All executables dynamically linked to a particular library share a single
+               copy of that library
+                - this allows the kernel to take advantage of this and only have a single
+                  copy of it in memory for multiple processes
+
+
+        - you can have custom dynamically linked libraries for the particular system
+            - maybe you have a particular library that it tuned for speed, the program
+              doesn't need to be recompiled to use this library
+
+        - Dynamic linking is "Just In Time"
+            - programs need to be able to find their library at runtime
+            - because of this you can't really change the location of shared libraries
+              unless it was specified in the linker
+                - if the program can't find the library at runtime, it will fail
+
+    - PIC (position independent code)
+        - the location of the dynamic library will be placed whereever there is room by
+          the dynamic linker
+
+        - all global data accesses (including functions) is done through indirection, so
+          that things can be moved
+            - there is a lookup table that is referenced to acomplish this
+            - updates to the location of objects can be made by simply updating this
+              table
+
+        - PIC code is a little bit slower at runtime because of the indirection
+
+        - he says you should always compile system code to be pic
+
+
+    # GO read the blerb right before this again sometime, kinda didn't understand it
+    Five Special Secrets of Linking with Libraries
+        - Five essential, non-obvious conventions to master
+            - these are essential linking facts of life
+
+        1. Dynamic libraries have the .so extention, static have the .a
+
+        2. You tell the compiler to link special libraries with a special flag
+            - you don't have to give the entire path to the thread library, you can just
+              use the -lthread flag
+                - maybe this is for all dynamically linked libraries? just -l then the
+                  name of the .so file
+
+        3. The compiler expects to find the libraries in certain directories
+            - there are special places the compiler will looks such as /usr/lib
+
+            - you can give the compiler a list of other directories that host the
+              dynamically linked files
+
+    - Interpositioning
+        - you can check for interpositioning by using 'ld -l' on an object

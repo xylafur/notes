@@ -1,0 +1,250 @@
+- There is a distinction between code and data in C
+    - code is typically something translated by the compiler, at compile time
+    - data is generally something that happens or is dealt with at runtime
+
+- a.out
+    - stands for assembler output
+
+    - its not actually assembler output though.. its linker output
+
+    - it is around for historical reasons from a time when there was no linker
+
+
+- Magic numbers
+    - unique identifying label or tag for important data
+
+    - the unix superblock data structure
+        - the magic number is the birthdat of the creator
+
+
+    - a.out has a magic number
+        - the magic number is 0407 at offset 0
+        - this is a jump instruction for the PDP-11 (the computer UNIX was originally
+          made for) to jump past the header information of the a.out file
+
+        - not sure if this is still the case
+            - its not!
+            - he has a note that under SVr4 the executables are marked with the first
+              byte containing 7F and the the letters 'ELF'
+
+            - SVr4 is Unix System 5
+
+        [yelsek@apollo chapter6]$ hexdump -c a.out | head
+        0000000 177   E   L   F 002 001 001  \0  \0  \0  \0  \0  \0  \0  \0  \0
+
+
+- Segments
+    - Object files and executables come in one of several different formats
+        - on most system5 implementations, the format is called ELF (Originally Extensible
+          Linker Format but now "Executable and Linking Format")
+
+        - other systems have COFF (commong onject file format)
+
+        - do man a.out to find out specifics for your particular system
+            - this didn't work on linux..
+
+        - all of these formats have segments in common.
+
+    - what are segments?
+        - areas within a binary file where all the information of a particular type
+          (such as symbol table entries) is kept
+
+        - the term is also widely used, sections are the smallest unit of organization of
+          an ELF file.
+            - a segment typically has several sections
+
+
+        - segments in UNIX vs segments in INTEL x86
+            - segment in unix is a section of related stuff in a binary
+
+            - segment in the intel memory model is the result of a design in which the
+              address space is not uniform, but is divided into 64 KB ranges known as
+              segments
+                - this is the topic of the entire next chapter
+
+            - for the remainder of the book assume segment means unix segment
+
+    - the 'size' command
+        - tells you the size of the three segments known as text, data and bss
+
+        - you can also use nm to see the structure of a output file
+
+
+    - segments
+        - BSS
+            - gets its name from abbreviating "block started by symbol"
+            - this is a pseudo-op from the old IBM 704 assembler
+
+            - people nowadays like to remember it as "better save space"
+
+            - only holds variables that don't have any value yet
+
+            - the size that bss will take up at runtime is stored in the file, but
+              doesn't actually take up any space
+                - it is sort of a reservation
+
+
+
+
+
+- What the OS does with your a.out
+    - The segments map into objects that the runtime linker can load directly
+
+    - the BSS segment, data segment and text segment are all placed in orderly succession
+      in the memory space.
+        - The text section is the bottom one, ending close to the lowerst memory address
+
+        - the stack is on the opposite end and grows from the top towards the BSS segment
+
+            * There is a picture included to show this *
+
+
+    - the contents of the file are loaded into memory using the mmap instruction
+        - The text segment contains the program instructions
+
+        - the data segment contains initialized global and static values
+
+        - the BSS size from the ELF is used to reserve that much area in memory
+            - this is right after the data segment, in a higher addrress, towards the
+              stack
+
+            - this block is zeroed out and put into the address space
+
+        - there is an invalid region at the lowest 10 KB or so where any memory addresses
+          to this region are invalid and cause an error
+
+
+
+- What the C Runtime does with your a.out
+    - there are many runtime data sctrutures
+        - the stack, activation recores, data, heap, etc
+
+    - The stack segment
+        - contains a single data structure, the stack
+
+        - compiler writers like to have a stack where you can add and delete things on
+          the top, but can also change values that are in the middle
+
+        - the runtime maintains a pointer, often to a register, usually called spo
+
+        - 3 major uses
+            1. Provides storage area for local variables declared inside functions
+            2. Stores housekeeping info involved when a function call is made
+                - this info is called a 'stack frame', or a 'procedure activation record'
+
+                - this includes the address from which the function was called, any
+                  parameters that won't fit into registers, and saved values of registers
+
+            3. Works as a scratch-pad area
+                - you can use the `alloca` fucntion to reserve space on the stack
+                    - or just make a variable
+
+        - the stack is only needed because recursion is allowed
+            - if there was no recursion, you could allocate a single copy of each
+              variable
+
+    - What happends when a fucntion gets called: The Procedure Activation Record
+        - the runtime routines for C are remarkably few and lightweight
+            - if a C program wants from service such as dynamic storage allocation, it
+              usually has to ask for it explicitly
+            - this makes the language very efficient
+
+        - the call chain is kept track of automatically
+            - where control will pass back to on the next return statement
+            - the activation record on the stack is what takes care of this
+
+            - there is a procedure activation record for each call statement executed
+
+        - The procedure activation record supports an invocation of a procedure and also
+          records everything needed to get back to where you made the call from
+
+
+        - you can check /usr/include/sys/frame.h to see how the stack frame looks on your
+          system
+
+        I actually found it here, and its in assembly
+        /usr/src/kernels/5.0.10-200.fc29.x86_64/arch/x86/include/asm/frame.h
+
+        - there is usually a register, fp, which indicates the active stack frame
+            - the stack frame nearest to the top of the stack
+
+        - in compiled languages that allow nested functions, an activation record needs
+          to contain a pointer to the activation record of its enclosing cunction
+            - this is called a static link and allows the nested procedure to access the
+              stack frame of the enclosing procedure
+
+                - the static link is called so because it is known at compile time, this
+                  is in contrast to the dynamic link of the activation record
+
+            - this is known as an uplevel reference
+                - a reference to a data item defined in a lexically enclosing scope
+
+        - The prev frame section of the activation record points to the return address of
+          the previous frame
+
+# Stopped making flashcards here
+
+- The auto and static keywords
+    - a dangling pointer is a pointer that points to something that no longer lives
+
+
+    - if you need to return a pointer to something defined in a function, use the static
+      keyword
+        - the lifetime of the variable is the same as the lifetime of the program
+
+        - the value of this variable will be avaliable the next time the function is
+          entered
+
+- A stack frame might not be on the stack
+    - it is often more efficient to just keep the info of the activation record in
+      registers
+
+- Threads of control
+    - Each thread has its own stack
+
+- setjmp and longjmp
+    - implemented by manipulating activation records
+
+    - partially compensate for C's limited branching ability
+
+    - works like this
+        - first you must run `setjmp(jmp_buf j)`
+            - this says use variable j to remember where we are now
+            - returns a value of 0
+
+        - then you can call `longjmp(jmp_buf j, int i)`
+            - this says go back to the place that the j is remembering
+
+            - you return the value of i so you can know you are actually returning
+
+            - the contents of j are then destroyed
+
+    - setjmp stores the current instruction pointer and the top of the stack
+        - longjmp restores these values
+
+    - longjmp differs from goto in that
+        - you can jump outside of the function, even to another file!
+        - you can only longjmp back to somewhere you have already been (where you set the
+          setjmp)
+
+    - the only way to ensure that local variables retain their value is to use the
+      volatile keyword
+
+    - evolved into `catch` and `throw` in C++
+
+
+
+- The stack Segment under UNIX
+    - In unix, since you have virtual memory, the stack space is 'practically infinite'
+      and will grow when you need more
+
+    - when you try to access beyond the space currently allocated for the stack, it
+      generates a hardware interrupt known as a page fault
+        - a page fault is handled different depending on if the request was valid or
+          invalid
+
+    - The kernel generally handles invalid requests by sending the appropriate signal
+      such as seg faulting
+
+
+

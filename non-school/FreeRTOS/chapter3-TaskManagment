@@ -1,0 +1,318 @@
+- Chapter 3, Task Managment
+
+3.2 Task Functions
+    - Implemented as C functions, they must return void and accept a void
+      poitner to their arguments
+
+        void ATaskFunction( void *pvParameters );
+
+        - Each function generally acts as its own miniprogram
+            - you put a loop in it and it will run forever
+
+            - FreeRTOS tasks must not be allowed to return from their
+              implementing function in any way
+                - cannot contain a return statement
+                - cannot be allowed to execute past the end of the function
+
+            - A single task fucntion can create any number of tasks
+                - each task will be its own execuction instance, with its own
+                  stack
+
+            - if for some reason the fucntion breaks out of the loop
+                - you must delete the task before execution exits the end of
+                  the function
+
+                vTaskDelete(NULL);
+                    Null means this task
+
+3.3 Top Level Task States
+    - A task can exist in two states, either running or not running
+        - in reality, the not running state has a number of sub states
+
+        - in a single core system, only one task can be running at a time
+
+        - when a task resumes execution, it does so from where it stopped
+          before
+
+        - the FreeRTOS scheduler is the only entity that can switch a task in
+          and out
+            - switched in means it goes from not running to running
+
+            - switched out means the opposite
+
+3.4 Creating Tasks
+    - xTaskCreate()
+        - The most complex of all the API functions
+
+        BaseType_t xTaskCreate( TaskFunction_t pvTaskCode,
+                                const char * const pcName,
+                                uint16_t usStackDepth,
+                                void* pvParameters,
+                                UBaseType_t uxPriority,
+                                TaskHandle_t *pxCreatedTask );
+
+        - Parameters
+            - pvTaskCode
+                - C function that never exits, just a pointer to a function
+                  that implements a task
+
+            - pcName
+                - descriptive name for the task
+                - just for debugging purposes
+
+            - usStackDepth
+                - Each task has its own unique stack
+                - this tells the kernel how large to make the stack
+                    - specifies how many words the stack can hold
+
+            - pvParameters
+                - void pointer to the parameters for the task
+
+            - uxPriority
+                - The priority of the task, 0 is the lowest priority,
+                  (configMAX_PRIORITIES -1) is the max
+                    - this value is user defined
+
+                - if you pass in some value greater than the max, the max will
+                  be used
+
+            - pxCreatedTask
+                - used to pass out a handle to the task beign created
+                - the handle is used to reference the task in API calls that
+                  want to change the priority or delete the task
+
+                - if you don't need it, just pass in NULL
+
+            - Returned Value for xTaskCreate
+                - two possible return values
+                    1. pdPASS
+                        - indicates the task has been created succesfully
+
+                    2. pdFail
+                        - indicates the task has not been created because there
+                          isn't enough heap space to allocate ram for the task
+
+3.5 Task Priorities
+    - The priority of the function can be changed after the scheduler has been started
+        - use the vTaskPrioritySet() function
+
+    - FreeRTOS scheduler has 2 methods to decide which task will be in the running state
+        - only one of these can be used
+        - the maximum value of configMAX_PRIORITIES is determined by which method
+
+        1. Generic Method
+            - implemented in C and can be used with all the FreeRTOS arch. ports
+
+            - The max value of configMAX_PRIORITIES is not limited by this method
+                - it is advised to keep this value at minimum necessary though
+                    - the higher the value, the more RAM will be consumed and the longer
+                      the worst case execution time will be
+
+            - this method is used if configUSE_PORT_OPTIMISED_TASK_SELECTION is set to 0
+                - this value can also just be left undefined
+
+        2. Architecture Optimized Method
+            - uses a small amount of assembler code, faster than the generic method
+
+            - the configMAX_PRIORITIES setting does not affect the worst case execution
+              time
+
+            - configMAX_PRIORITIES cannot be greater than 32
+
+            - this is not avaliable for all ports
+
+        - the highest priority task that is able to run is the task that is selected to
+          enter the running state
+
+            - if there are multiple valid tasks with the same priority, then the
+              scheduler will switch them in and out
+
+3.6 Time Measurment and Tick Interrupt
+    - tasks of the same priority will get the same time slice
+        - to do this, the scheduler runs at the end of each time slice
+
+        - a tick interrupt is used to acomplish this
+        - the length of the time slice is set by changing the frequency of this tick
+
+            - this is defined by configTICK_RATE_HZ
+
+            - the optimal value for this is application specific, but 100 is typical
+
+
+    - API calls always specify time in multiples of tick periods, often refered to as
+      ticks
+
+        - pdMS_TO_TICKS() macro converts a time specified in milliseconds into a time
+          specified in ticks
+            - the resolution depends on the tick frequency
+
+
+
+3.7 Expanding the 'Not Running' State
+    - event-driven task
+        - has work (processing) to perform only after the occurence of the event that
+          triggers it, is not able to enter the running state before that event has
+          occurred.
+
+
+    - The Blocked State
+        - a task that is wainting for an event is said to be in the 'Blocked' state
+
+        - Tasks can enter the Blocked State to wait for two different types of events
+            1. Temporal (time-related) events
+                - the event is either a delay period expiring, or an absolute time being
+                  reached
+
+            2. Synchronization events
+                - the events originate from another task or interrupt
+                - a task may enter the blocked state to wait for data to arrive on a
+                  queue
+
+                - queues, binary semaphores, counting semaphores, mutexes, recursive
+                  mutexes, event groups and direct to task notifications can all be used
+                  to create synchronization events
+
+                - you can have synchronization events be triggered by more than one
+                  thing, in which case, it will be triggered by whichever happens first
+                    - such as a timeout or a notification from another task
+
+
+    - Suspended State
+        - not avaliable to the scheduler
+        - the only way into the suspended state is through the vTaskSuspend() function
+        - the only way out is vTaskResume() or xTaskResumeFromISR() functions
+
+    - The Ready State
+        - able to run, but are not in the running state
+
+    - Delaying the proper way
+        - use the vTaskDelay() function
+            - this is only avaliable if INCLUDE_vTaskDelay is set to 1
+
+        - sets the calling task into the blcoked state for a fixed number of tick
+          interrupts
+            - does not use any processing time while it is in the blocked state
+
+            - note that this function takes in the number of ticks
+                - you should use the pdMS_TO_TICKS() macro to convert a time specified in
+                  milliseconds into ticks
+
+
+        - vTaskDelayUntil() API Function
+            - with this function you specify the exact tick count value at which the
+              calling task should be moved from the blocked state into the ready state
+
+            void vTaskDelayUntil(TickType_t * pxPrevousWakeTime, TickType_t xTimeIncrement);
+
+            - The functino will automatically update that pxPreviousWakeTime so you don't
+              have to do it manually
+
+
+    - Combining Blocking and Non-Blocking Tasks
+        - If there are two non blocking tasks that are both running at the same priority
+          the kernel will give them each a time slice so that they share equally
+
+        - if there is a periodic task with higher priority than other tasks, it will
+          start running over everything else
+
+3.8 The Idle Task and the Idle Task Hook
+    - there must always be at least one task in the running state
+        - because of this the idle task is automatically created by the scheduler when it
+          is started
+
+        - just sits in a loop and is always able to run
+
+    - The idle task is the lowest priority ( 0 )
+
+    - the idle task is also responsible for cleaning up kernel resources after a task has
+      been deleted
+        - so if you will be deleting tasks make sure not to starve the idle task!
+
+    - idle task hook functions
+        - you can add application specific functionality directly into the idle task
+          through the use of an idle hook or callback feature
+            - this is a function called once per iterations of the idle task loop
+
+        - common use cases for this
+            - executing low priority, background or continuous procesing functionality
+
+            - measuring amount of spare processing capacity
+            - placing the processor into a low power mode, providing an easy and
+              automatic method of power saving
+
+        - limitations
+            - the hook function cannot block or suspend
+
+            - the hook must return within a reasonable time period if you will be
+              deleting tasks
+
+3.9 Changing the Priority of a Task
+    - use `vTaskPrioritySet(TaskHandle_t pxTask, UBaseType_t uxNewPriority);`
+
+    - there is also a get function
+
+    - A task can set and query its own priority by using NULL as the handle
+
+3.10 Deleting a Task
+    - vTaskDelete()
+
+    - a task can delete itself, or any other task
+
+    - deleted tasks no longer exist and cannot enter the running state again
+
+    - the idle task frees up resources from deleted tasks!
+        - the kernel does not handle freeing memory that the task itself allocates! it is
+          up to the task to free that
+
+3.11 Thread Local Storage
+    - NULL
+
+
+3.12 Scheduling Algorithms
+    - recap of task states and events
+        - a task that is actually running is in the running state
+            - on a single core processor only one task can run at a time
+
+        - tasks that are not running, but are not blocked or suspended are ready
+
+        - tasks in the ready state are avaliable to be scheduled by the scheduler
+            - the sechduler always chooses the highest priority task
+
+        - tasks in the blocked state can wait for an event to be automatically moved back
+          to the ready state when the event occurs
+
+    - configuring the scheduling alrorithm
+        - the software routine that decides which ready state task to transition into the
+          running state
+
+        - the schdeuling algorithm can use time slices and preemption
+
+    - Prioritized Pre-emptive scheduling with time slicing
+        - the scheduling algo used by most small RTOS applications
+            configUSE_PREEMPTION=1
+            configUSE_TIME_SLICING=1
+
+
+        - Fixed Priority
+            - do not change the priority assigned to the tasks being scheduled
+            - does not prevent tasks from chanigng their own, or others, priority
+
+        - Pre-emptive
+            - immediately 'pre-empt' the running state task if a task that has a higher
+              priority than the current running becames ready
+
+        - time slicing
+            - share processing time between tasks of equal priority, even when they do
+              not yield
+
+            - the variable
+                configIDLE_SHOULD_YIELD
+                - will allow a tasks to volluntarily hand over control to another task of
+                  equal priority after they have finished an interation of their loop, if
+                  the variable is set to 1
+
+    - Co-operative Scheduling
+        - a context switch will only occur when the running state task enters the blocked
+          state, or the running state task explicitly yields
+            - yielding is explicitly calling a rechedule
+            - can be done with taskYIELD()

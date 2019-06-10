@@ -1,0 +1,31 @@
+- A KB system will work through its KB to determine if something is true or not
+
+- Resolution
+    - We are going to try and prove a query based on our knowledge base
+
+    - we want to show that our knowledge base implies our query
+        KB |= a
+
+        - to do this, we try to show that
+            KB ^ ~a
+
+        - is unsatisfiable
+
+    - we prove via contradition of the whole negation
+        - we do this in CNF
+
+    - if we have two sets of disjointed literals
+        - and one of these from one set of literals is the compliment of one of the
+          literals from the other set
+
+        - we can turn that into a set of disjoints which contains everything from the two
+          sets except the two elements we removed
+
+        - this is the resolution rule
+
+    - we use the resolution rule, and take the result and add it into the knowlege base
+        - we do this until we end up with only the empty case
+
+
+
+

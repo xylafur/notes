@@ -1,0 +1,162 @@
+- Flaws in a language can be considered in 3 possible categories
+    - Sins of Commission
+        - things the language does but shouldn't do
+
+    - Sins of Omission
+        - things the language doesn't do but should
+
+    - Sins of Mission
+        - things that are completley off the wall
+
+
+    - Examples of these in C
+        - sins of commission
+            - switch statements
+                - let you fall down through
+                - also the default case can be in the middle, it doesn't have to be at
+                  the end
+                - you can have labels in switch statements that let you jump
+                    - so if you had
+
+                    switch(i){
+                        case 1:
+                        some_label:
+                    }
+
+                    - that would be valid..
+
+                - you can only use constants in the switch statement, meaning you can't
+                  use variables declared as const (since those aren't really constants)
+
+                - break
+                    - does not break you out of an if statement, breaks you out of the
+                      nearest enclosing iteration or switch statement
+
+            - string concatenation
+                - can fuck u up when you are trying to make an array of string literals
+                  and forget a comma
+
+            - visibility
+                - functions are globally visable by default.
+                    - adding extern before a function return
+
+                - if you want to hide a function just a a particular module, you have to
+                  add in the 'static' keyword.
+
+                - interpositioning
+                    - supplanting a library function by a user written function of the
+                      same name
+
+                    - the book says to make a mental note saying "I should learn more
+                      about interpositioning"
+
+                - visability is either all or nothing, there is no selective visability
+
+        - Sins of Mission
+            - Many keywords and operators are overloaded
+
+                - static
+                    inside a funciton means the variable retains its value, at the functin
+                    level means visable only to this file
+
+                - extern
+                    - applited to a function means it has global scope, applied to a variable
+                      it means it is defined in another file
+
+                - void
+                    - retrun type of a function that doesnt return a value
+                    - pointer declaration, type of generic pointer
+                    - in a parameter list, means take no params
+
+                - *
+                    - multiplication operator
+                    - declaration of a pointer
+                    - means inderection when applied to a pointer
+
+                - &
+                    - bitwise and
+                    - address of operator
+
+                - <= vs <<=
+                    - less than or equal to operator
+                    - compound shift left assignment operator
+
+                - <
+                    - less than operator
+                    - left delimiter in the #include directive
+
+                - ()
+                    - enclose formal parameters in a function definition
+                    - make a function call
+                    - provide expression precedence
+                    - convert a value to a different type
+                    - define a macro with argument
+                    - make a macro call with arguments
+                    - enclosing a type for sizeof
+
+
+            - sizeof is not a function call
+                - if you take the sizeof a type, you need to include parenthesis
+
+        - Precedence of Operators
+            - some operarators seem to have the wrong precedence..
+
+                - the comma has the lowest precedence of all operators
+
+                - moral of the story is use parenth when mixing different types of things
+                  like bit-twidling or boolean stuff
+
+            - right or left associativity
+                - if 2 operators have the same precedence, the order in which they occur
+                  is then based on right or left associativity
+
+                - for example, assignemnt operators have right associativity
+                        int a, b=1, c=2;
+                        a = b = c;
+
+                    - this means that the thing on the right will be evaluated first.  So
+                      b will be assigned with the value of c, then a with the value of b
+
+            - std lib issues
+                - gets()
+                    - does not check that there is ample buffer space, can be used to
+                      smash the stackj
+
+                    - gets() is obsolete though, fgets() should be used because it allows
+                      you to specify the number of characters to read
+
+        - Sins of Omission
+            - Issues with white space
+                - The whole \ newline space thing where \ will ignore whatever teh next
+                  character is.
+                    - usually you want it to ignore a newline, but if you slip a space in
+                      tehre it messes that up
+
+                - maximum munch problem
+                    z = y+++x;
+
+                    - if there is more than one posibility for the next token, then the
+                      compiler will take the largest munch
+
+                        - so the above example would become
+                            z = y++ + x;
+
+                        - but this will cause errors with this
+
+                            z = y+++++x;
+
+                                - it will be interpreted as
+
+                                z = y++ ++ + x
+
+                                - because of the maximum munch
+
+
+- Runtime checking in C
+    - nonexistant except for referencing a null pointer
+    - this is because C assumes that the programmer knows what he or she is doing and is
+      always right
+
+- NUL vs NULL
+    - NUL is the thing at the end of an ascii string
+    - NULL points to nothing

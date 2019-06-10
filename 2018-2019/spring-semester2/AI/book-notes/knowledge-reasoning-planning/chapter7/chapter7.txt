@@ -1,0 +1,270 @@
+Chapter 7 - Logical Agents
+    - design agents that can represent a complex world
+        - have a process of inference to derive new representations about the world
+        - use these new representations to deduce what to do
+
+    - humans have knowledge and reason based on that knowledge
+        - this is called knowledge-based agents
+
+
+7.1 Knowledge Based Agents
+    - based on the knowledge base
+        - a set of sentences
+        - each sentence is expressed in a language called a knowledge representation
+          language
+            - represents some assertion about the world
+
+            - a sentance is called an axiom when it is taken as given, not derived from
+              other sentences
+
+    - operators
+        - tell and ask
+            - both can be based on inference, deriving new sentences from old
+
+        - when the agent program is called, it does 3 things
+            - tells KB what is percives
+            - asks the KB what it should do
+            - Tells the KB which action was chosen
+
+    - functions that implement interface between sensors and actuators
+        - Make-Percept Sentence
+            - constructs a sentence asserting that the agent perceived something at a
+              given time
+
+        - Make-Action-Query
+            - contructs a sentence that asks what action should be done at the current time
+
+        - make action sentence
+            - constructs a sentence asserting that the chosen action was executed
+
+    - declarative approach to system building
+        - tell sentences one by one to the agent until it knows how to operate in its
+          enviornment
+
+    - procedural approach
+        - encodes desired behaviors directly as program code
+
+7.2 The Wumpus World
+    - Cave consisting of rooms connected by passageways
+        - lurking in the cave somewhere is a terrible wumpus
+        - the wumpus can be shot by an agent, but the agent only has one arrow
+        - some rooms have holes in which anyone who walks into the room will fall into
+
+        - there is treasure somewhere in the world
+
+        - sensors
+            - the agent has 5 sensors
+                - it knows if it is right next to a wumpus square because of a stench
+                - it knows if there is a pit in an adjacent square because of a breeze
+                - can tell if there is gold in the next square
+                - knows if it walks into a wall
+                - knows when the wumpus is killed from anywhere in the cave
+
+    - overcoming ignorance of the world requires logical reasoning
+        - the inference is guaranteed to be correct if all of the information that lead
+          to the inference was correct
+
+7.3 Logic
+    - A logic consists of sentences expressed in a syntax
+    - the logic must be able to define semantics for the sentences
+        - the semantics defines truth of sentences with respect to the world
+
+        - every sentence must be either true or false in each possible world
+
+        - if sentence a is true in world (or model) m, we say
+            m is a model of a
+                or
+            m satisfies a
+
+    - logical reasoning
+        - involves the relation of logical entailment between sentences
+        - the idea that a sentence follows logically from another sentence
+
+            a |= b
+
+
+            this is true iff in every model in which a is true, b is true
+
+        - entailment can be applied to derive conclusions, carry out logical inference
+            - the inference algorithm is called model checking
+            - we enumerate all possible models that are true based on our knowledge base
+                - we have an assumption, and if that assumption is true in all of those
+                  worlds then we can deduce that it is a true assumption
+
+        - an inference algorithm that derives only entailed sentences is called sound or
+          truth preserving
+
+
+        - an inference algorithm is complete if it can derive any sentence that can be
+          entailed
+
+        - grounding
+            - connection between logical reasoning processes and the real enviornment
+            - how do we know KB is true in the real world?
+
+7.4 Propositional Logic: A Very Simple Logic
+    - entailment
+        - the relationship between a sentence and the sentence that follows it
+
+    - we all of the variables, and we look at all possible worlds that contain all
+      possible sets of these variabels
+        - to determine if a variable can be infered based on the knowledge we currently
+          posses
+        - we check if all of the worlds that share the symbols that we know, have the the
+          same conclusion for a particular variable we are looking for
+
+7.5 Propositional Thorem Proving
+    - so far we have done entailment by model checking (checking all of the models one by
+      one and showing that it holds for all of these models)
+
+    - theorem proving
+        - applying rules of inference directly to the sentences in our knowledge base to
+          construct a proof of the desired sentence without consulting models
+
+    - logical equivalence
+        - two sentences a and b are logically equivalent if they are true in the same set
+          of models
+
+            - A ^ B is logically equivalent to B ^ A
+
+            - the symbol for logical equivalence is the tripple equal sign
+
+        - two sentences are equivalent only if each of them entails the other
+
+            a==b iff a|=b ^ b|=a
+
+    - validity
+        - a sentence is valid if it is true for all models
+
+        - known as tautologies
+
+        - can be used to derive the deduction theorem
+
+            for sentences a and b, a|=b iff a->b
+
+    - satisfiability
+        - a sentence is satisfiable if it is true in some model
+
+
+
+    - Modus Ponens
+        - latin for "mode that affirms"
+
+    - Inference and Proofs
+
+
+    7.5.2 Proof By Resolution
+        -  so far our inference strategies were not complete, if the inference rules we
+           have are inadiquite, then there is no way to derive our goal
+
+        - we will use resolution to yield a complete inference algorithm when coupled
+          with any complete search algorithm
+
+        - essentially we have a set of things that we know, and a set of things that we
+          know can't be true, we combine those to get what we definitely know is true
+
+            - Full Resolution Rule
+
+            l1 v ... v lk, m1 v ... v mn
+                :infers:
+            l1 v ... l(i-1) v l(i+1) v m1 v ... v m(j-1) v m(j+1) v ... mn
+
+
+            - mi and li are complimentary literals, oposites and will cancel
+
+            - basically it says that if we have this combination of two clauses that
+              produces a new clause containing all the literals of the two original
+              clauses, except the two complimentary ones
+
+        - Conjunctive Normal form
+            - can only use resolution for clauses (disjunctions of literals)
+                - every sentance in prep logic is logically eq to a conjuntion of clauses
+
+                - a sentence expressed in this way is said to be in "conjunctive normal form"
+
+            - howto
+                1. replace a <=> b with (a=>b) ^ (b=>a)
+
+                2. Eliminate =>, replace a=> b with ~a=>b
+
+                3. move ~inwards
+
+                4. Distribute v over ^ whenever possible
+
+        - Resolution Algorithm
+            - based on the priniple of proof by contridiction
+            - to show KB |= a, we show KB ^ ~a is unsatisfiable
+
+
+            - algo
+                - first KB ^ ~a is converted into CNF
+                    - then resolution is applied to the resulting clauses
+
+                    - each pair that contains complementary literals is resolved to
+                      produce a new clause, which is added to the set if it is not
+                      already present, this continues until either
+                        - there are no new clauses that can be added, in which case KB
+                          does not entail a
+                            - or
+                        - two clauses resolve to yield the empty clause, which case KB
+                          entails a
+
+            - the empty clause is equivalent to false
+                - arises only from resolving two complementary unit clauses such as P and ~P
+
+        - Completeness of Resolution
+            - we introduce "resolution closure"
+                - RC(S) of a set of clauses S, which is the set of all clauses derivable
+                  by repeated application of the resolution rule to clauses in S or their
+                  derivatives
+                    - this is what is computed by our PL resolution algorithm for the
+                      final value of the variable clauses
+
+                - ground resolution theorem
+                    If a set of clauses is unsatisfiable, then the resolution closure of
+                    those clauses contains the empty clause
+
+    - 7.5.3 Horn Clauses and Definite Clauses
+        - Though resolution is useful because it is complete, in many real world
+          situations the full power is not needed
+            - some real world knowledge bases satisfy vertain restrictions of the form of
+              sentences which they contain
+            - this allows us to use a more efficnent inference algorithm
+
+        - definite clause
+            - disjunction of literals of which exactly one is positivejo
+
+        - horn clause
+            - disjunction of literals of which at most one is positive
+            - so all definite clauses are horn clauses, as are clauses with no positive
+              lterals
+
+            - clauses with no positive literals are called goal clauses
+
+            - horn clauses are closed under resolution, if you resolve two horn clauses,
+              you get back a horn clause
+
+
+        - knowledge bases containing only definite clauses is interesting for 3 reasons
+            1. Every definite clause can be written as an implication whose premis is a
+            vonjunction of positive literals and whose conclusion is a single positive
+            literal
+                - (~L(1, 1) v ~Breeze v B(1, 1)) == (L(1, 1) ^ Breeze) => B(1, 1)
+
+            2. Inference with horn clauses can be done through forward and backward
+            chaining algorithms
+
+            3. Deciding entailment with Horn clauses can be done in time that is linear
+
+    - 7.5.4 Forward and backward chaining
+        - Forward Chaining
+            - determines if a single proposition symbol q is entailed by a knowledge base
+              of definite clauses
+
+            - begins from known facts (positive literals) in the KB
+
+            - if all premises of an implication are known, then its conclusion is added
+              to the set of known facts
+
+            - both complete and sound
+

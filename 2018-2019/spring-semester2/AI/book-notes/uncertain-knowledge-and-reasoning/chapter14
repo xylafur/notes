@@ -1,0 +1,89 @@
+14.1 Representing Knowledge in an Uncertain Domain
+    - Bayesian Network
+        - also called belief network, probabilistic network
+
+        - represented dependencies among variables
+        - can represent essentially any full joint probability distribution
+
+        - directed graph in which each node is annoted with quantitative probability info
+            - Each node coresponds to a random variable, which may be discrete or
+              continuous
+            - a set of directed links or arrows connects pairs of nodes
+                - if there is an arrow from y to x, y is said to be the parent of x
+                - has no directed cycles, directed acyclic graph
+
+            - Each node has a condistional probability distribution P(x|parents(x)), this
+              quantifies the effect of the parents on the ndoe
+
+
+        - generally if a node is a parent of another node, it has some influence over
+          that node
+
+            - then a conditional probability distribution is given for each variable
+              based on its parents
+
+    - COnditional Probability Table
+        - holds conditional distributions of particular events based on other events
+
+        - has the conditional probability of each node value for the conditioning case
+
+            - conditioning case
+                - possible combination of values for the parent nodes
+                - a miniature possible world
+
+        - the table for a node with k parents has 2**k entries
+
+
+14.2 Semantics of Bayesian Networks
+    - the network can either be viewed as a representation of the joint probability
+      distribution or as an encoding of a collection of conditional independence
+      statements
+
+    - representing the full joint distribution
+        - helpful in understanding how to contrust networks
+
+        - probability of a particular node
+            P(x1, ..., xn) = P(x1|parents(x1)) ... P(xn|parents(xn))
+
+            equation 14.2
+
+        - constructing Bayesian Networks
+            - first rewrite the entries in the joint distribution (equation 14.2) in
+              terms of conditional probability using the product rule
+
+                P(x1, ... xn) = P(xn | x(n-1), ..., x1)P(x(n-1), ..., x1)
+
+            - repeat this process, reducing each conjunctive probability to a conditional
+              probability and a smaller conjunction
+                - you end up with one big product
+                    P(x1 | x(1-1), ..., x1) * ... * P(xn | x(n-1), ..., x1)
+
+                - this is called the chain rule
+                    P(Xi|X(i-1), ..., X1) = P(Xi | Parents(Xi))
+                        (equation 14.3)
+
+                    - this says that the bayesian network is a correct representation of
+                      the domain only if each node is conditionall independent of its
+                      other predessesors in the node ordering, given its parents
+
+
+
+    - representing as collection of conditional indepencene statements
+        - helpful in designing inference procedures
+
+
+
+- D seperation
+    - blocked path
+        - a path between two verticies is blocked if it passes through a vertex v such
+          that either
+            the arrows are head-to-tail or tail-to-tail and v is in C
+
+            the arrows are head-to-head and v is not in C and none of the descendents of
+            v are in C
+
+    - A and B are d-seperated by C if all paths from a vertex of A to a vertex of B are
+      blocked with respect to C
+
+    - If A and B are d-seperated by C, then A and B are conditionally independent with
+      repect to C

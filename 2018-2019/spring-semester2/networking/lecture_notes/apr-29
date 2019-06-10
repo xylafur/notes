@@ -1,0 +1,5 @@
+- Amplification Attack
+    - you send a request such that the response will be much larger than the request
+        - then you direct this response at a particular person
+
+

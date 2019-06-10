@@ -1,0 +1,140 @@
+- Mobie IP
+    - what is mobility?
+        - mobile user who passes through multiple access points while maintainging
+          ongoing connections
+
+    - idea of a home netowkr
+        - have a piece of software running on a router called a home agent
+
+        - people continue to send packets to where they think you are
+            - this router will intercept all of these packets
+
+            - then when you get to your new location, the router will just forward all of
+              your packets to your new location
+
+    - important conceept: how can I move around without having to update everyone
+        - this hides the fact that you moved
+
+- Digital Transmission Fundamentals
+    - we want to turns things into 1's and 0's, but those aren't our only options
+        - we can instead incode things as words
+
+        - we can send things in blocks, or streams
+
+    - digitization of analog signal
+        - we may just make an approximation
+            - there is an international standard to rate an audio feed
+
+
+        - bit rate of digitized signal
+            - you can't send more bits than the bandwidth can handle
+
+        - using digital allows us to regenerate a pristine copy of the sent signal
+            - with analog, noise will be amplified
+
+
+        - Digital Binary Signal
+            - the signals need to be sharing their clock, but the clock will drift apart
+              over time
+
+            - pulse transmission rate
+                - We want to send things in pulses so the receiver can actuall see when
+                  things are supposed to be either 1's or 0's
+
+                - the more narrow the pulse, the better
+
+                - attinuation is dependent on frequency
+
+            - multilevel pulse transmission
+                - like QLC flash it seems, the magnitude of the pulse can take one of
+                  many values
+
+            - signal to Noise Ratio
+                - the lower the signal strengh, the more noise will be able to influence
+                  the result on the other side
+
+            - Shannon Channel Capacity
+                - based on the signal to noise ratio, you need to mitigate bandwidth on
+                  the wire downward the larget the ratio is
+
+                - you can take the average time the signal is above or below the line
+                  over a period of time
+                    - the longer the period of time the better our valid acceptance rate
+                      will be
+
+- Line COding
+    - want to take serier of binary bits and encode them
+
+    - there are different methods of encoding
+        - we can make 0's be represented as negativ
+        - 0's can be represented as 0
+
+        - 1's can be positive going edges and 0's can be negative going edges
+
+        - you can use modulation and such
+            - 1's and 0's map to osscilating values
+
+- Network Security
+    - what does it mean to say network security?
+        - confidentiality
+            - only the sender and reveriver can read their message
+
+        - authentication
+            - sender and receiver are able to confirm the identity of each other
+
+        - message integrity
+            - receiver can ensure that it wasn't altered
+
+        - access and avalibility
+            - services must be accessible and avalible to users
+
+
+
+    - Replay attack
+        - listen to all packets going back and forth, then repeat what someone did when
+          we started watching
+
+        - can make the receiver do something twice
+            - this is why we started with random sequence numbers
+            - this would make the acks not have the right sequence number
+
+    - What can a bad guy do?
+        - impersonate
+        - deny service
+        - eavesdrop
+
+        - and much much more!
+
+    - Cryptograpgy
+        - eliminated the requirement for two methods of communication
+            - message and password
+
+            - there used to be one time passwords for a day
+                - this was given on a piece of paper
+                - this is the other method of communication
+
+        - Then in 1979 there was a paper published by 3 guys from MIT that created RSA
+            - the world changed
+
+        - RSA
+            - uses a pair of keys
+                - each person has a public and a private key
+
+                - you use your private key to encrypt a message
+                    - then that message can only be unencrypted with the public key
+
+                    - this allows us to guarantee that a particular message came from a
+                      particular person
+
+                - you can encrypt something with a public key
+                    - then only someone with the private key can unencrypt it
+
+                    - this allows us to hide the true contents of a message
+
+                - if you use both of these approaches we get what we were after!
+                    - we can verify the receiver
+                    - and we can ensure that noone can eavesdrop
+
+        - DES
+            - lots of rounds running data through an application
+                - each round uses a very large encryption key

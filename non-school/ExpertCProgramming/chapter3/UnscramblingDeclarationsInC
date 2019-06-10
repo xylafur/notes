@@ -1,0 +1,181 @@
+- C is significantly and needlessly complicated because of the awkward manner of
+  combining types
+    - "type models" were not well defined when C originated
+
+    - declaration resembles use
+        int * p[3]
+        *p[i]
+
+        - have to rmember special rules
+            - is int *p[3] an array of pointers to int or a pointer to an array of ints?
+
+
+    - anything can mimic declaration, but might look funny to the programmer
+
+        char (*j)[20]; //pointer to an array of 20 chars
+        j = (char (*)[20])malloc(20);
+
+            - this is not valid without the parenthesis around the *
+
+    - const can be put in many locations
+        - makes the int immutable
+            const int * grape;
+            int const * grape;
+
+        - makes the pointer itself immutable
+            int * const grape;
+
+        - makes both immutable
+            const int * const grape;
+            int const * const grape;
+
+- How a Declaration is Formed
+    - declarator is the identifier and any pointers, function brackets or array
+      indications that go along with it
+
+- A word about structs
+    - just a bunch of data items grouped together
+
+    - struct can be used with any other data declarations, arrays, other structs, etc
+        - you can declare variables with a particular struct type
+
+            struct {stuff ... } plum, pomegranate, pear;
+
+        - can also add a signature tag to refer to the struct later
+
+            struct fruit_tag {stuff .. } plum, pomegranate, pear;
+
+            // struct fruit_tag is now shorthand for the struct
+
+    - general form
+        struct optional_tag {
+            type_1 identifier_1;
+            ....
+            type_n identifier n;
+        } optional_variable_definitions;
+
+        - can also have unnamed fields, bit fields and word aligned fields
+
+            struct pid_tag {
+                unsigned int inactive :1;
+                unsigned int          :1;   /* 1 bit of padding */
+                unsiend int refcount  :6;
+                unsigned int          :0;  /* pad to next word boundary */
+            }
+
+            - bit fields must have type of int, unsigned int or signed int
+
+    - C passes things into functions by moving them into registers for the most part
+        - a struct is typically passed in on the stack
+
+        - you can wrap an array in a struct and then pass it around like a first class
+          type
+            - if you use it as a function parameter it will automatically be passed in by
+              value
+
+            - if you return it, it can automatically be returned by value
+                - you can also assign it to something else and it will copy if for you
+
+- A word about unions
+    - all members in the union have an offset of zero, rather than starting at the end of
+      the previous element as is the case with a struct
+
+    - unions have the same general appearace as structs, just with the word struct
+      repalced by union
+
+    - can either be used to save data storage
+        - if you have two variables in a struct, but will only actually be using one, you
+          can just slap them both in a union
+
+    - or you can use them to have multiple references to the same thing
+
+- A word about enums:
+    - way of associating a series of names with a series of integer values
+
+    - genral form simmilar to that of a struct
+        enum optional_tag {stuff .. } optional_variable_definitions;
+
+        - the stuff in this case is a list of iderntifiers, possibly with integer
+          values assigned to them
+
+
+        - the integer values start at 0 by default
+            - the next value is always one greater than the previous value, unless you
+              explicitly define it a value
+
+    - the advantage of enums over defines is that the enum names usually persist though
+      to the debugger
+        - define names are discrded during debugging
+
+- The Precedence Rule
+    - The Precedence Rule for understanding Declarations
+        A: Declarations are read by starting with the name and then reading in precedence order
+        B: The precedence, from high to low, is:
+            B.1: Parentheses grouping together parts of a declaration
+            B.2: The postfix operators
+                () indicating a function
+                [] indicating an array
+            B.3: The prefix operator: asterisk denoting "pointer to"
+        C: if a const and or volatile keyword is next to a type specifier (int, long) it
+           applies to the type specifier.  Otherwise the const and/or volatile keyword
+           applies to the pointer asterisk on its immediate left
+
+- Typedef can be your friend
+    - they intruduce a new name for a type rather than reserving space for a variable
+
+    - typedef looks exactly like a variable declaration
+        - ht is read exactly like one as well
+        - rather than saying "this variable is", you say: "this name is a synonym for the stated type"
+
+    typedef void (*ptr_to_func) (int);
+    //ptr_to_func is a pointer to a function, taking in an int arg and returning void
+    ptr_to_func signal(int, ptr_to_func);
+    //signal is a function taking in an int and ptr_to_func as params and returns a ptr_to_func
+
+    - difference between typedef and define
+        - typedef is a complete encapsulated type, you can't add to it after you have
+          declared it
+            - you can't make a typedef varaible and then add unsigned to the beginning
+
+        - typedef also provides the type for every declarator in a declaration
+            char_ptr Bentley, Rolls_Royce;
+
+
+    - what "typedef struct foo{ .. foo; } foo;" means
+
+        - namespaces in C
+            - label names
+            - tags (one namespace for all structs, enums and unions)
+            - member names (each struct or union has its own namespace)
+            - everything else
+
+        - since all of the foo's are in different namespaces, the code is valid
+
+        - actually is like this
+            typedef struct my_tag {int i;} my_type;
+
+            - my_type can now be used as shorthand for the struct
+
+        - note
+            typedef struct fruit {int weight, price_per_lb } fruit;
+            struct veg {int weight, price_per_lb} veg;
+
+            - are two VERY different things
+                - the veg one is making a variable veg
+                - the fruit one is making a tag
+
+    - the book says to not use typedef for structs, the struct tag shouldn't really be
+      hidden
+        - use typedefs for
+            - types that combine arrays, structs, pointers or functions
+            - can use it to ensure the right size for variables beteween differnt
+              platforms
+                - then you just have to change the typedef, not all the declarations /
+                  varliables
+                - I think this is what uint8_t and all that does
+
+- The piece of code that understandieth all parsing
+
+
+
+

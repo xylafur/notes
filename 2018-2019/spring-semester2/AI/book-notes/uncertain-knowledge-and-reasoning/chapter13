@@ -1,0 +1,63 @@
+Equation 13.3
+    P(a|b) = P(a ^ b) / P(b)
+
+13.3 Inference Using Full Joint Distributions
+    - probabilistic inference
+        - the computation of posterior probabilities for query propositions given
+          observed evidence
+
+        - full joint distribution is used as the knowledge base from which answers can be
+          derived
+
+            - a joint distribution is a table that lists all of the probabilities of a
+              system
+                - all of the values in the table should sum up to 1, because they are all
+                  probabiltiies for the same outcome
+
+            - marginilization
+                - also called summing out
+                - add up all of the values fora  particular thing
+                    - such as adding up all of the probabilities of the outcome being
+                      true
+
+                gg
+
+
+13.5 Bayes' Rule and its use
+    - Product Rule
+        P(a ^ b) = P(a|b)P(b) = P(b|a)P(a)
+
+        => P(b|a) = P(a|b)P(b) / P(a)
+
+        - this is bayes' rule
+
+
+    - Application
+        P(cause|effect) = P(effect|cause)P(cause) / P(effect)
+
+        - there are many cases where we know P(effect|cause), P(cause), and
+          P(effect)
+
+        - Casual direction
+            P(effect|cause)
+
+        - Diagnostic Direction
+            P(cause|effect)
+
+    - Bayes rule with 2 or more conditions
+        P(toothache ^ catch | cavity) = P(toothache | cavity) P(catch | cavity)
+            - this only works if the two things are independent
+            - as long as catch does not depend on toothache, and the other way
+              around, then this formula is valid
+
+        - general rule for conditional independance
+            P(X, Y | Z) = P(X|Z)P(Y|Z)
+
+    - The independance is a really good thing, it allows us to break large
+      probabilistic domains into weakly connected subsets.
+
+    - Naive Bayes Model
+        - assume the efects are independent
+            - even when soemtimes they aren't, this is why its called naive
+
+        P(Cause, effect1, ..., effect-n) = P(cause) P(effect1, Cause) ... P(effect-n, cause)

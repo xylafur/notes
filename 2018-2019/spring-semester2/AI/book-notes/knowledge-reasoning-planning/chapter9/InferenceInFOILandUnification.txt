@@ -1,0 +1,36 @@
+- We need a knowledge base in FOPL
+    - we can then query this
+
+- Based on a given proposition in FOPL, we can infer
+    Vx King(x) ^ Greedy(x) => Evil(x)
+
+    - If we know John is a King, and he is Greedy, we can conclude he is evil
+        - if we know his father is a king, and his father is greedy, we can know his
+          father is also evil
+
+    - we don't ahve algorithms to solve with the V and ], so we have to come up with this
+
+
+- For universal instantiation, we substitute all symbols
+    - we generate a set of predicates that we can use based on things from our knowledge
+      base, then we remove the universal quantifier
+
+    - then you add the new sentences to the knowledge base, and you can remove the old
+      FOPL statement
+
+- for existential
+    - we just substitute on symbol, and then remove the existential
+
+- if we find values such that these values fit all of the varaibles in our preposition,
+  then we can substitute them into our conclusion
+
+- Unification
+    - you unify two prep. clauses, the unification returns a substitution
+
+    - we find a substitution to make the two clauses the same
+        - for
+            UNIFY(Knows(John, x), Knows(y, Bill))
+
+            {y/John, x/Bill} is our substitution
+
+        

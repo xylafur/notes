@@ -1,0 +1,93 @@
+- There is a context in which pointer and array definitions are equivalent
+    - if you define an array in one file, you can't extern it in another file as a
+      pointer
+
+- What's a declaration? What's a definition?
+    - In C, objects can have multiple external declarations, but can only be defined once
+        - in this context, object just means some 'thing' known to the linker
+
+
+    - a definition is a special kind of declarration that creates an object
+        - reserves storage for an object
+
+    - a declaration indicates a name that allows you to refer to an object created here
+      or elsewhere
+        - just describes an object, is used to refer to objects that are defined
+          elsewhere
+
+- How Arrays and Pointers are Accessed
+    - address y
+    - contents of address y
+
+    - l value
+        - this is known as the locator value
+        - value on the left hand side of assignment
+
+        - this is allocated for each variable by the compiler
+            - this address is known at compile time, this is where the varaible will be
+              kept at runtime
+
+    - r-value
+        - right hand side of assignment
+        - the value stored in a variable at runtime
+            - this value is not known until runtime
+
+    - the address of a symbol is known at compile time.
+        - if the compiler needs to do something with an address (like calculating an
+          offset) it can do that directly and does not need to plant code to retrieve the
+          address first
+
+    - the current value of a pointer must be retrieved at runtime before it can be
+      dereferenced
+
+    - because of this indexing based on compile time knowledge, you can either include or
+      not include the size of an array when it is included from an external file
+
+    - using pointers requires an extra fetch instruction
+        - when you have a variable that is a pointer, this pointer is a 4 byte object
+        - to get what is located at where this pointer is pointing, we first have to load
+          in the value of the pointer, and then read the value from where the pointer is
+          pointing
+
+        - pointers are more flexable, but at the cost of an extra fetch
+
+- What happens when you "Define as Pointer/Reference as Array"
+
+    - if we incorrectly extern an external array as a pointer, then this is messed up
+      because the compiler things that there is that indirect addressing, but in reality
+      the array uses direct addressing
+
+    - this can either cause a core dump if you're lucky, or a memory corruption down the
+      line if you're not
+
+- Other Differences Between Arrays and Pointers
+    Pointer                             |   Array
+    ------------------------------------|----------------------------------------------
+    Holds the address of data           |   holds Data
+                                        |
+    Data is accessd indirectly, so you  |   Data is accessed directly, so for a[i] you
+    first retrieve the contents of the  |   simply retrieve the contents of location i
+    pointer, then load that address,    |   units past a.
+    then retrieve its contents          |
+                                        |
+    Commonly used for dynamic data      |   Used for holding fixed number of elements
+    strutures                           |   of the same type of data
+                                        |
+    Commonly used with malloc, free     |   Implicitly allocated and deallocated
+                                        |
+    Typically points to anonumous data  |   is a named variable in its own right
+
+    - string literals can be assigned by both pointers and arrays
+        - are both valid
+            char * p = "some string";
+            char p [] = "some string";
+
+        - this can only be done with pointers for string literals though, this will not
+          work with float literals
+
+        - when string literals are created with poitners though, they are considered
+          immutable.
+            - where they are stored is implementation defined
+
+
+

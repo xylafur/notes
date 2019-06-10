@@ -1,0 +1,299 @@
+Chapter 4 - The Network Layer: Data Plane
+
+    - the network layer can be broken into two parts, the control plane and the data
+      plane
+
+    4.1 Overview of the Network Layer
+        - the data plane roll of each router is to forward datagrams from its input links
+          to its output links
+        - the primary role of the control plane of each router is to get those packets to
+          their destination, end to end
+
+        4.1.1 Forwarding and Routing: The Data and Control Planes
+            - the goal is to move things from origin to destination
+
+            - forwarding
+                - when a packet arrives at a router's input link, it must go ut of the
+                  correct output link
+                    - additionally the packet mught just be blocked
+
+                - very very fast, implemented in hardware
+
+                - forwarding table
+                    - uses header info of a packet to index a table and this tells the
+                      router which output interface to use
+
+            - routing
+                - the network layer must determine the route or path taken by packets as
+                  they flow
+
+            - control plane: the traditional approache
+                - routers talk to eachother to figure out who can get to a particular
+                  destination
+
+            - control plane: the SDN approach
+                - SDN == Software Defined Networking
+
+                - there is some remote controller that computes and distributes the
+                  forwarding tables to be used
+
+                - the routing device only does forwarding in this case, routing is
+                  offloaded.
+
+        4.1.2 Network Service Model:
+            - NSM defines characteristics of end-to-end delivery of packets
+
+            - possible services include
+                - guaranteed delivery
+                - guaranteed delivery with bounded delay
+                - in order packet delivery
+                - guaranteed minimal bandwidth
+                - security
+
+            - the internet network layer only actually provides one service
+                - best effort service
+                    - none of the things we just listed that the network layer could do
+
+4.2 What's Inside a Router?
+    - A router has
+        - input ports
+            - physical layer function of terminating an incoming physical link at a
+              router
+
+            - performs link layer functinos needed to interperate witht he link layer at
+              the other side of the incoming link
+
+            - a lookup function is performed
+                - forwarding table is consulted
+
+                - control packets are forwarded to the routing processor
+
+        - switching fabric
+            - connects input ports to output ports
+            - completley contained within the router
+
+        - output ports
+            - stores packets received from the switching fabric and transmits them onto
+              the outgoing links by performing link and physical layer functions
+
+        - Routing Processor
+            - performs control plane functions
+
+            - either does routing algorithm or talks to the remote controller and
+              installs entries
+
+        - all of this is implemented in hardware
+
+    - types of forwarding
+        - destination based forwarding
+            - get pointed towards the final destination
+
+        - generalized forwarding
+            - forwarded absed on some other factors within the packet
+
+    4.2.1 Input Port Processing and Destination Based Forwarding
+        - Forwarding Tables
+            - Implemented by assigninging a Particular sequential range of ip addresses
+              to a particular output port
+
+            - if the destination address matches more than one entry, the longest one is
+              chosen
+
+        - After the output port has been decided, the packet is sent to a particular
+          output port
+            - in some designs if the switching fabric is busy, packets cannot be sent
+              through
+
+        - particular fields in the packet must be updated
+            - time to live
+            - version number
+            - checksum
+
+    4.2.2 Switching
+        - The fabric is what does all of the switching (forwarding) for a router
+
+        - switching via memory
+            - how they did it originally
+            - routing signal triggered an interrupt in the processor
+                - packet was then vopied form the input port into memory
+                - then the processor extracted the destiation address, and looked this up
+                  in the table
+                - then it wrote the packet to the correct output port
+
+            - there are still some swiches around that do it shi way today
+
+        - swithching via a bus
+            - an input port transfers a packet directly to the output port over a shared
+              bus
+
+            - since buses can only pass one thing at a time, this can only handle
+              switching one packet at a time
+
+            - fast enough for most small applications
+
+        - switching via an interconnection network
+            - a crossbar switch is an interconnection network consisting of 2N buses that
+              connct N input ports to N output ports
+
+            - each vertical bus intersects each horizontal bus at a crosspoint
+                - basically you can open and close connections
+
+            - have to wait for the same output port
+
+    4.2.3 Output Port Processing
+        - takes packets that have been stored in the output port's memory and transmits
+          them over the output link
+
+    4.2.4 Where Does Queueing Occur?
+        - Input Queueing
+            - switch fabric is not fast enough (relative to input speeds) to transfer all
+              arriving packets through the fabric without delay
+
+        - Output QUeueing
+            - if everybody wants to go out the same port then the queue will start to
+              stack up no matter how fast your switching fabric is
+
+
+            - we can decide to either drop the arriving packet or one or more of the
+              already queued packets
+            - there are a number of proactive packet-dropping and marking policies known
+              as "Active Queue Managment"
+                - one of the most widley used it "Random Early Detection"
+
+    4.2.5 Packet Scheduling
+        - First in First out
+            - selects packets for link transmission in the same order in which they
+              arrived
+
+        - Priority Queueing
+            - Packets arriving at the output link are classified into priority classes
+              upon arrival at the queue
+
+            - packets are served based on this priority class.  The higher the priority
+              the sooner they are handled
+                - if there are multiple packets of the same priority, then they are
+                  handled in a FIFO fashion
+
+
+        - Round Robin and Weighted Fair Queueing (WFQ)
+            - packets are divided into classes, then a packet is handled from each of
+              those classes fairly
+
+            - work conserving queueing discipline will never allow the link to remain
+              idle whenever there are packets of any class queued for transmission
+
+            - weighted fair queuing discipline
+                - arriving packets are classified and queued in the appropriate per class
+                  waiting area
+
+                - serves classes in a circular manner
+                    - if one of the classes is empty, it moves on to the next
+
+                - each class can be given a weight
+                    - the higher the weight, the more overall time that class will be
+                      given for transmission
+
+                    - there is a guaranteed throughput then of
+
+                        R * wi / W
+
+                        - where
+                            R is the transmission rate
+                            wi is the weight of a particular class
+                            W is the sum of all weights
+
+
+4.3 The Internet Protocol: IPv4 Addressing and more
+    - 4.3.1 IPv4 Datagram Format
+        - network layer packet is called a datagram
+
+        - IPV4 packet
+            - version number
+            - header length
+            - type of service
+                - what is using this ip datagram?
+                - can program to behave differently if its for something like
+                  live voice or a video game
+
+            - identifier, flags, fragmentation offset
+                - ip fragmentation
+
+            - datagram length
+                - total length of the ip datagram plus the header size, in bytes
+
+            - identifier, flags and fragmentation offset
+
+            - time to live
+                - ensure datagrams do not circulte forever
+
+            - protocol
+                - used when the datagram reaches its final destination.
+                  Indicates the specific TL progocol that data portion of the
+                  datagram should be passed to
+
+                - similar to the port number of a layer 2 transport segment
+
+            - header checksum
+                - checksum is only over the header of the ip datagram
+
+            - source and destination ip addresses
+
+            - options
+                - allow the ip header to be extended
+
+            - data
+
+    - 4.3.2 IPv4 Datagram Fragmentation
+        - not all link layer procols carry data of the same size
+
+        - if (as a router) you have to send a datagram to an outgoing link that
+          has a smaller MTU (maximum transmission unit) you will have to break
+          it up into chunks
+
+        - fragments can be reassembled before they reach the transport layer of
+          the destination
+            - fragments are reassembled at end systems, NOT network routers
+
+        - fragments keep track of their identification, number in the fragment
+          and so forth
+
+        - the last fragment has a flag bit set to 0, all other fragments have
+          it set to a 1
+            - this is because ip is unreliable data transfer
+
+
+    - 4.3.3 IPv4 addressing
+
+    - 4.3.4 Network Address Translation
+        - every ip capable device needs an ip address
+            - to avoid needing an internet ip for each device, network address
+              translation
+
+        - the ip addreses we use in our local networks will not be
+          understandable to other people
+
+        - a NAT enabled router does not look like a router to the outside world
+            - it looks like a single device with a single ip address
+
+            - the router gets its ip address via dhcp
+                - the ISPs dhcp
+
+        - NAT translation table
+            - the NAT router has a table that includes the port numbers as well
+              as ip addresses
+
+            - when a user requests something beyond the nat router, it keeps
+              track of the destination / source port as well as destination /
+              source ip of the request.
+                - it uses an arbitrary outgoing port to connect to the end
+                  system
+
+                - all of this is the NAT table to help the router find who owns
+                  the packet that just got delivered back
+
+        - downfalls of nat
+            - port addresses are meant to be used for addresing processes, not
+              for addresing hosts
+                - this can cause problems for servers running on the home
+                  netowrk
+            - architectural purist argumrnts

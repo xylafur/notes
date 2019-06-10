@@ -1,0 +1,60 @@
+9.1 Propositional vs First Order Inference
+    - First order inference can be done by converting the KB to propositional logic and
+      using propositional inference
+
+    9.1.1 Inference rules for quantifiers
+        - Rule of Universal Instantiation
+            - we can infer any sentence obtained by substituting a ground term (term
+              without variables) for the variable
+
+            - we use the notion of substitutions to write it formally
+
+                SUBST(B, a)
+
+                Vv a / SUBST({v/g}, a)
+
+
+        - Existential Instantiation
+            - variable is replaced by a single new constant symbol
+            - for any sentance with a varaible and constant that does not exist in the KB,
+
+                ]v a / SUBST({v/k}, a)
+
+                - can replace objects with a Skolem constant
+                    - the skolem constant is a variable, or in this case a name, that
+                      does not exist elsewhere in the knowledge base
+
+                    - this is a special case of skolemization
+
+            - can be applied once, and then the existentially quantified sentance can be
+              discarded
+
+                - we don't need ]xKill(x, Victim) after we have added Kill(Murderer, Victim)
+
+    9.1.2 Reduction to propositional inference
+        - once we can get non quantified from quantified, we can reduce rist order
+          inference to propositional inference
+
+        - to apply Universal Instantiation to a KB, you take all things from the
+          knowledge base that fit and then make those substitutions
+            - you will end up with a few cases theno
+
+            - this is called propositionalization
+
+
+
+9.2 Unification and Lifting
+    - propositionalization is rather inefficient
+        - our sentences with the existential/universal operators is obvious to a human,
+          we will show how to make it obvious to a computer
+
+    9.2.1 A first order inference rule
+        - It seems as though we can take the variables in our premiss, search for a
+          particular object that fits those premis and then infer the conslusion
+            - the objects that we use have to be in the knowledge base, so we can only
+              assume based on things that we know
+
+        - this is called, Generalized Modus Ponens
+
+
+
