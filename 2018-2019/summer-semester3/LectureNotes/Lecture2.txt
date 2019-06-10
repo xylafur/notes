@@ -1,0 +1,104 @@
+- Response Time and Throughput
+    - Response time
+        - How long it takes to do a task
+
+    - Throughput
+        - Total work done per unit time
+
+- Relative Performance
+    - Performance vs Execution Time
+        Performance = 1 / Execution Time
+        Performance_x / Performance_y = Execution_time_y / execution_time_x = n
+
+
+- Measuring Execution Time
+    - Elapsed time
+        - Total reponse time, including
+            -  processing
+                - time the cpu actually spends running the instructions
+
+            - IO
+                - anything that comes from outside, would include sensors
+                - the slowest component
+
+            - OS Overhead
+                - managment and scheduling
+
+            - idle time
+                - time spend waiting.  Time waiting to be scheduled
+            
+
+    - CPU Time
+        - This is what we will be focusing on today
+        - Time spent processing a given job
+
+- CPU Clocking
+    - every clock period, data is transfered or processed
+
+- CPU Time
+    CPU Time = CPU Clock Cycles * Clock Cycle Time
+             = CPU Clock Cycles / Clock Rate
+
+    - performance can either be improved by reducing the number of clock cycles
+      or by increasing the clock rate
+
+- Example
+    We are given computer A with clock rate 2 GHz and CPU Time of 10s.  We want
+    to design a Computer 2 such that the CPU time is 6s.  When we increase the
+    clock, the number of instructions is 1.2 times greater.  What should the
+    clock freq of the new cpu be?
+
+    - First we need to figure out the number of instructions that CPU A runs
+        Clock Cycles = CPU Time * Clock Rate
+                     = 10 * 2 * 10 ** 9
+                     = 20 * 10 ** 9 cycles
+
+    - Then we need to determine the Clock rate of the Computer B
+        Clock Rate = Clock Cycles * 1.2 / CPU Time
+                   = 20 * 10**9 * 1.2  / 6
+                   = 4.0 * 10**9
+
+- Instruction Count and CPI    
+    Clock Cycles = Instruction Count * Cycles per Instruction
+
+    CPU Time = Instruction Count * CPI * Clock Cycle Time
+
+    - The instruction count is influenced by the
+        - Program, ISA and compiler
+
+    - Average Cycles per Instruction
+        - determined by the CPU hardware
+        - if different instructions have a different CPI
+
+- Example
+    - Computer A: Cycle Time = 250 ps, CPI = 2.0
+    - Computer B: Cycle Time = 500ps, CPI = 1.2
+
+    - They have the same ISA
+
+    CPU Time A = IC * 2.0 * 250 ps
+    CPU Time B = IC * 1.2 * 500 ps
+
+    A is faster, by how much?
+
+    CPU Time B / CPU Time A = 600 / 500 = 1.2 Time Faster
+
+- CPI in more detail
+    Clock Cycles = Sum over all instruction classes(CPI for this class *
+                                                    Instruciton Count for this class)
+
+CPU Time = Instructions / Program * Clock Cycles / Instruction * Seconds / Clock Cycles
+
+
+
+
+
+
+
+
+Homework 1 will be posted today, it will be due next week.  Submit in class.
+
+We also have another quiz next week since we are starting chapter 2.
+
+
+
