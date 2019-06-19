@@ -1,0 +1,112 @@
+- Our first test is next week on June 25th.  SO it is on tuesday.  We will have a review
+  next class
+
+- We have one final group of instructions
+    - procedures
+
+
+- Register Usage
+    - $a0 - $a3
+        - argument registers
+        - they are registers 4-7
+
+    - $v0, $v1
+        - result values
+        - registers 2 and 3
+
+    - $t0 - $t9
+        - can be overwritten by callee
+
+    - $s0 - $s7
+        - must be saved / restored by callee
+
+    - $sp
+        - stack pointer
+        - register 29
+
+
+    - $ra
+        - return address
+        - register 31
+
+    - $fp
+        - frame pointer
+        - register 30
+
+    - $gp
+        - global pointer
+        - register 28
+
+
+- Procedure call instructions
+    - Procedure Call
+        - Jump and link
+            `jal ProcedureLabel`
+
+        - jumps to a given label, when the program reaches the end, it jumps back to the
+          caller
+
+
+        - there is a different program counter when we jump into some other routine
+            - we may call some procedure when our program couter is at 3
+            - when we start that other procedure, the program counter is 1 again
+
+            - we need to save this original program counter
+                - This original PC is our return address!
+
+                - when we return, we know we should start executing at RA + 1
+
+        - place the parameters for the procedure in the argument register
+
+        - the result of the procedure will be placed into the result registers
+            - the result should be placed in $v0
+
+    - Procedure Return
+        - jump register
+            `jr $ra`
+
+
+- Example
+    ```
+        int leaf_proc(int a, int b, int c, int d)
+        {
+            int f;
+            f = (a + b) - (c + d);
+            return f;
+        }
+    ```
+
+    - We were told that f should be in s0, so we store it there before we move it to the
+      result register
+    - it looks like the stack grows down
+    ```
+        LEAF_PROC:      addi $sp, $sp, -4
+                        sw   $s0, 0($sp)
+                        add  $t0, $a0, $a1
+                        add  $t1, $a3, $a4
+                        sub  $s0, $t0, $t1
+                        add  $v0, $s0, $zero
+                        lw   $s0, 0($sp)
+                        addi $sp, $sp, 4
+                        jr   $ra
+    ```
+
+- Branch Addressing
+    - Branch Instructions use the I format
+
+        -----------------------------------------------------------------
+        |   op      |   rs      |   rt      |   constant or address     |
+        |-----------|-----------|-----------|---------------------------|
+        | 6 bits    | 5 bits    | 5 bits    |   15 bits                 |
+        -----------------------------------------------------------------
+
+    - we can branch forward or backwards
+        - the branching address in the last part of the instruction is realative
+
+
+    - jump instructions are not relative, they use absolute addressing
+        - the address given to the jump instruction is multiplied by 4 internally by the
+          CPU.  This is just because eerything is 4 byte alligned
+
+
+
