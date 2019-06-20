@@ -1,0 +1,156 @@
+Instructions: Language of the Computer
+
+2.1 Intruduction:
+    - we want an instruction set, as well as a cpu, that is simple and straight forward
+
+2.2 Operations of the Computer Hardware
+    - mips add
+        add a, b, c
+            - add b and c and put the sum in a
+
+    - each mips arithmatec perfroms only one operation and must have exactly three
+      variables
+        - this is to keep the hardware simple
+
+        - simplicity favors regularity
+
+    - # symbol is for comments
+
+2.3 Operands of the computer hardware
+    - Operands of arithmetic instructions are restricted to only registers
+
+        - the size of the register determines the word size of the computer? or the other
+          way around?
+
+    - there are only a few number of registers because 'smaller is faster'
+        - though this is not an absolute
+
+    - in mips registers are represented using the $ notation
+        add $s0, $s1, $s1
+
+
+    - Memory Operands
+        - how does a computer represent and access more complex things like arrays?
+            - arrays and structures are kept in memory
+
+            - thus we have to be able to transfer thigns between memory and registers
+
+        - load
+            - copying data from memory into a register
+
+            - this will load offset number 8 from the array with base address of s3 into
+              t0
+                lw $t0,8($s3)
+
+        - store
+            - put stuff into memory
+
+    - Big Endian
+        - left most (biggest) byte first
+
+        - MIPS
+
+    - Little Endian
+        - right most (smallest) byte first
+
+
+    - Constant or Immediate Operands
+        - with what we know so far, constants would have to be loaded from memory
+
+        - the alternative is to use arithmetic instructions in which one operand is a
+          constant
+            - such as the addi instruction
+
+            addi    $s3,$s4,4       # $s3 = $s3 + 4
+
+        - actually the register $zero contains the value 0
+            - it is because move instructions are really just adding 0 and the thing to
+              move
+
+            add     $s0,$s1,$zero       # s0 = s1
+
+2.4 Signed and Unsigned Numbers
+
+2.5 Representing Instructions in the Computer
+    - all mips instructions are 32 bits long
+
+    - Fields
+
+        op          rs          rt          rd          shamt       funct
+        6 bits      5 bits      5 bits      5 bits      5 bits      5 bits
+
+
+        op: Basic operation of the inscutrion
+            - traditionally called the 'opcode'
+
+        rs:
+            - the first register source
+
+        rt:
+            - the second register source operand
+
+        rd:
+            the register destination operand
+
+        shamt:
+            shift amount
+
+        funct:
+            function.  This field is often called the fucntion code, selects the specific
+            variant of the operation in the op field
+
+
+    - The third Design Principle
+        Good design demands good compromises
+
+    - I type instruction fields
+
+        op          rs          rt          constant or address
+        6 bits      5 bits      5 bits      16 bits
+
+
+        op: Basic operation of the inscutrion
+            - traditionally called the 'opcode'
+
+        rs:
+            - the base register
+
+        rt:
+            - the second register source operand
+
+
+    - For the load instruction, the rt field specifies the destination register
+
+
+2.6 Logical Operations
+    - Shifting
+        - Shift logical left
+            sll $t2,$s0,4
+
+        - shift logical right
+            srl $t2,$s0,4
+
+    - AND
+        and $t0,$t1,$t2
+
+
+    - OR
+        or  $t0,$t1,$t2
+
+
+    - there is no NOT instruction, only a NOR!
+        nor $t0,$t1,$t2
+
+        - to do a regular not, just do a nor with one of the operands as a 0
+
+
+    - there is an immediate version of AND and OR but not for NOR!
+
+
+
+
+
+
+
+
+
