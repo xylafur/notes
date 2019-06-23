@@ -1,0 +1,141 @@
+- Shift Operations:
+    |   op      |   rs      |   rt      |   rd      |   shamt   |   funct   |
+    |-----------|-----------|-----------|-----------|-----------|-----------|
+    |   6 bits  |   5 bits  |   5 bits  |   5 bits  |   5 bits  |   6 bits  |
+
+    - remember we have that 'shamt' section
+        - this is the shift amonut, how much we want to shift by
+
+    - shift left logical
+        - shift left and fille with bits of value '0'
+
+        - Same as as a shift left in C
+            - such as: (5<<1)
+
+    
+        - remember that every shift left once is the same as multiplying by 2
+
+            - shifting a number to the left i bits is the same as multiplying
+              it by '2**i'
+
+
+    - shift right logical
+        - the opposite of the shift left, dividing by 2 instead of multiplying
+
+        - the slides say that this is only for unsigned
+            - i suppose that because if you had a negative number, it would
+              become positive if you shifted right (since it is filled by 0's)
+
+
+- Logical Operations
+    - AND
+        `and $t0, $t1, $t2`
+
+        t0 = t1 & t2;
+
+        - professor says you can't 'and' numbers of two different bit lengths
+
+        - obviouly R type instruction
+
+
+    - OR
+        `or $t0, $t1, $t2`
+
+        t0 = t1 | t2;
+
+        - obviouly R type instruction
+
+
+    - NOT
+        - There is no not in MIPS, this is because their processor is designed
+          to have instructions that each use 3 values
+
+        - you use NOR for not operations
+
+        - so to not, you do something lke this:
+
+            `nor $t0, $t1, $zero`
+
+
+- Conditional Operations
+    - branch to a labeled inscutrion is condition is true
+        - otherwise you just continue sequentially
+
+
+    `beq rs, rt, L1`
+
+        - if (rs == rt), then branch to the instruction labeld L1
+
+
+    `bne rs, rt, L1`
+        - if (rs != rt), then branch to the instruction labeld L1
+
+
+    `j L1`
+        - jump to instruction labeled L1
+        - jump without condition
+        - if (rs == rt), then branch to the instruction labeld L1
+
+- Compiling if statements
+
+    ```
+        if(i == j) {
+            f = g + h;
+        } else {
+            f = g - h;
+        }
+    ```
+
+    - f, g , in $s0, $s1, ...
+
+
+
+    ```
+                    beq $$3, $s4, GOTBONUS
+                    sub $s0, $s1, $s2
+                    j EXIT
+        GOTBONUS:   add $s0, $1, $s2
+        EXIT:
+    ```
+
+    - You can have a label even if you never use it
+        - it will act as a sort of comment, telling the reader what a
+          particular section is meant to do
+
+
+- Basic Blocks
+    - a block is a sequenc of instructions with 
+        - no embedded branches (except an end)
+        - no branch targets
+
+    
+    - a compiler identifies bsic blocks for optimization
+
+    - an advanced processor can accelerate execution of basic blocks
+
+
+- More contitional operations
+    - set if true
+        - set the result to 1 if a condition is true
+
+        `slt rd, rs, rt`
+            - set less than
+            - set fd = 1 if rs is less than rt, otherwise set it to 0
+
+
+    - set true if immediate 
+        `slti rd, rs, constant`
+
+
+    - signed vs unsigned
+        - there are different instructions for comparing signed and unsigned
+          numbers
+
+        - signed comparison
+            - slt, slti
+
+        - unsigned comparison
+            - sltu, sltui
+
+
+

@@ -1,0 +1,116 @@
+###############################################################################
+#   Review
+###############################################################################
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$   We can bring a formulat sheet and out mips sheet!
+$       TODO: Create a formula
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Chapter 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+- Classes of computers
+    - desktop, server and embedded system
+
+- how are program translated into the machine language
+
+- what effects the program performance
+    - CPI / Clock speed / Ime per cycle?
+
+- what is parallel processing?
+
+- Understanding performance
+    - Algorithm
+
+    - Programming Language, compiler, architecture
+
+    - Processor and memory system
+
+- Levels of Program Code
+    - High Level Language
+    - Assembly Language
+    - Hardware Representation
+
+- Response Time and Throughpu
+    - response time
+        - how long it takes to do a task
+
+    - throughput
+        - total work done per unit time
+
+
+- Relative Performance
+    - Performance = 1 / Execution Time
+
+- CPU clocking
+    - frequency vs period
+
+- CPU Time
+    - given the number  of instructions, and the number of cycles taken for
+      each instruction, we need to determine the CPU time
+
+    CPU Time = cpu clock cycles * cpu clock time
+
+
+- Instruction count and CPI
+    CPU Time = Instruction Count * CPI * Clock Cycle Time
+
+    - Instruction count is determined by program, ISA and compiler!
+        - ISA can effect for reason such as, how many inputs can you have at a
+          given time??
+            - in mips you can only have 2 inputs, which would make for more
+              instructoins to add multiple values together
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Chapter 2 - The MIPS Instruction Set
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+- We will be manualy compiling c code into MIPS assembly
+    - we will be asked about
+        - arithmetic
+        - memory fetch and store
+            - make sure to multiply array index offsets by 8!
+
+        - branching
+        - procedures
+
+
+- REgisters vs Memory
+    - Registers vs memory
+
+    - Immediate options
+
+    - why do we have the $zero register?
+
+    - explain design principle 3
+        - "Make the common case fast"
+        - the common case is the one that will be occuring most frequently, so
+          make it the fastest
+
+- 2s compliment
+
+- we have to be able to convert from Assembly into maching code
+    - he want's the result in hex
+
+    - he says put both on the paper, he will look at our hex first
+        - if our hex is right he moves on, if our hex is wrong then he will
+          check out binary
+
+    - he recommends the 'bit box' approach
+        - go through it step by step
+
+    - remember about the relative and absolute addressing
+        - remember that for absolute its in increments of 4 bytes, not a single
+          byte!
+
+        - for relative remember that negative means up and positive means down!
+
+
+

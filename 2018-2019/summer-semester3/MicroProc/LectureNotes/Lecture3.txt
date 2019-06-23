@@ -1,0 +1,108 @@
+June 10 2019
+
+Chapter 2: Instruction Set
+
+- Instruction Set
+    - vocabulary of commands understood by a given architecture
+
+    - different comuters have different IS
+        - the 'words' of a computer's 'language' are called instructions
+
+
+- MIPS
+    - Similar to ARM
+
+    - Big Endian
+        - most significant byte on least address
+
+        - not sure if it is byte big endian or bit big endian.. need to look
+          into this.
+            - he is suggesting that it is bit big endian, so the numbers are
+              just stored reversed
+
+    - Design Principle 1
+        - simplicity favors regulatiry
+        - simplicity enables higher performance at lower cost
+
+    - Design Principle 2
+        - smaller is faster
+
+        - we only have 32 registers
+
+
+
+- Arithmetic Operations
+    - Add/Subtract
+        - two sources and one destination
+
+        # This is fake mips, not using actual variable names
+        add a, b, c                     # a = b + c
+
+                                        # f = (g + h) - (i + j)
+        add t0,g,h                      # temp0 = g + h
+        add t1,i,j                      # temp1 = i + j
+        sub f,t0,t1                     # f = temp0 - temp1
+
+        - all arithmetic operations have the form above
+
+        # real mips, using actual register names
+                                        # f = (g + h) - (i + j)
+                                        #f = s0, g = s1, ..., j = s4
+        add t0,$s1,$s2                  # temp0 = g + h
+        add t1,$s3,$s4                  # temp1 = i + j
+        sub $0,t0,t1                    # f = temp0 - temp1
+
+
+- Register Operands
+    - Can only do operations on registers
+
+    - MIPS has 32, 32 bit registers
+        - start labeling from 0 as we should
+
+        - 32 bits is our wordsize
+
+    - want to use registers for frequently accessed data
+        - speed of registers >>> speed of memory
+
+   
+    - temp variables for
+        - $t0, $t1, .., $t9
+
+    - saved variables
+        - $s0, $s1, ..., $s7
+
+
+
+- Memory Operands
+    - Main memory is used for composite data
+        - things like arrays, structs, dynamic data
+
+        - things like this need alot of space to store it
+
+    
+    - We have to bring things from memory into registers
+        - the instruction for this is 'load'
+
+    - we need to take things from registers and put them in memory
+        - the instruction for this is 'store'
+
+
+    - Memory is byte addressed
+
+
+
+                                # g = h + A[8]
+                                # g is in $s1, h is in $s2
+                                # Base address of A is in $s3
+    lw  $t0, 32($s3)            # temp0 = A[8], remember byte addressing! 32 = 8 * 4
+    add $s1, $s2, $t0
+    sw  $t0, 32($s3)            # store the result back into memory, notice the
+                                # destination is the last argument
+
+
+
+
+
+
+
+

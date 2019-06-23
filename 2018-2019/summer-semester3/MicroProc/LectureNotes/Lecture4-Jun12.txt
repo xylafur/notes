@@ -1,0 +1,65 @@
+June 11 2019
+
+Chapter 2: Instruction Set
+
+-- Registers vs Memory
+    - we can only do math on things in registers
+
+    - operating on memory requires us to load things into registers
+
+    - the compiler tries to use registers for variables as much as possible
+
+
+- Immediate Operands
+    - Can directly use constant data as specified by an instruction
+
+
+    addi    $s3, $s3, 4
+
+    - Why would you do this?
+        - good for for loops.  Continually increment our counter
+
+    - There is no subtract immediate instruction
+        - just use negative numbers in the 'addi' instruction
+
+        addi $s2, $s1, -1
+
+    - Design Principle Number 3:
+        - Make the common case fast
+            - small constants are common
+
+            - avoids a load instruction
+
+- Three principles
+    - Simple
+    - Fast
+    - Common Case
+
+- The Constant Zero
+    - MIPS register 0 ($zero) is the constant 0
+        - it cannot be overwritten
+        - get an error if you try to write it
+
+    - this is useful for common operations
+        - copying things from one register to another
+
+        add $t2, $s1, $zero
+
+- Sign extention
+    - Preserve the numeric value
+
+    - in MIPS instruciton set
+        - addi: extend immediate value
+            addi $s2,$s1,4
+
+
+        - lb, lh: extend loaded byte/halfword
+
+        - beq, bne: extend the displacment
+
+    - This happens implicitly whenever we don't specify the entire 32 bits for
+      a value?  For instance if we use a load halfword with a positive value,
+      we have to make sure to populate the front with 0's
+
+
+

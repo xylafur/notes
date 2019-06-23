@@ -1,0 +1,89 @@
+- The goal of today is defining the machine language for MIPS arch and
+  converting from assembly to the machine language
+
+
+- Mips machine instructions
+    - all of them are 32 bits
+
+    - Registers
+        - since we have 32 registers, we need 5 bits to express a given register
+
+        - register numbers
+            - $t0 - $t7
+                - registers 8 through 15
+
+            - $t8 - $t9
+                - registers 24 and 25
+
+            - $s0 - $s7
+                - registers 16 through 23
+
+            - obviously there are more, but we won't cover them today.
+                - probably things like the status register, stack pointer, etc
+
+- MIPS R-format instructions
+    
+    |   op      |   rs      |   rt      |   rd      |   shamt   |   funct   |
+    |-----------|-----------|-----------|-----------|-----------|-----------|
+    |   6 bits  |   5 bits  |   5 bits  |   5 bits  |   5 bits  |   6 bits  |
+
+    - op:
+        - opcode, the operation
+
+    - rs:
+        - first source register number
+
+    - rt:
+        - second source register number
+
+    - rd:
+        - destination register number
+
+    - shamt:
+        - shift amount
+
+    - funct:
+        - function code (extends the opcode)
+
+
+        add             $s1,        $t1,        $t2
+        op / funct      rd          rs          rt
+
+
+        - There is a green sheet at the beginning of the textbook that has all
+          of the MIPS instructions as well as all of the op codes
+
+        add $t0, $s1, $s2
+    |   op      |   rs      |   rt      |   rd      |   shamt   |   funct   |
+    |-----------|-----------|-----------|-----------|-----------|-----------|
+    |   special |   $s1     |   $s2     |   $t0     |   0       |   add     |
+    |   0       |   17      |   18      |   8       |   0       |   32      |
+    |   000000  |   10001   |   10010   |   01000   |   00000   |   100000  |
+
+    Machine instruction = 00000010001100100100000000100000 = 0x02324020
+
+
+
+- MIPS I-Format Instruction
+    |   op      |   rs      |   rt      |   Constant or address             |
+    |-----------|-----------|-----------|-----------------------------------|
+    |   6 bits  |   5 bits  |   5 bits  |   16 bits                         |
+
+
+
+    - op:
+        - opcode, the operation
+
+    - rs:
+        - first source register number
+
+    - rt:
+        - destination register
+
+    - constant or address:
+        - self explanitory
+
+
+
+
+
