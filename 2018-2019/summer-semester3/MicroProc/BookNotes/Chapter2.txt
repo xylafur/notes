@@ -148,9 +148,316 @@ Instructions: Language of the Computer
 
 
 
+2.7 Instructions for making Decisions
+    - beq register1, register2, L1
+        - go to the statement labeled L1 if the value in register1 == value in register2
+
+    - bne register1, register2, L1
+        - go to the statement labeled L1 if the value in register1 != value in register2
+
+
+    - Loops
+        - basic block
+            - sequence of instructions without branches, except possibly at the end, and
+              without branch targets or branch labels, except possibly at the beginning
+
+            - one of the first phases of compiling is breaking the program down into
+              basic blocks
+
+    - set on
+        - slt
+            - set on less than
+            - set the value of $t0 to 1 if $s3 is < $s4
+
+            slt $t0, $s3, $s4   # $t0 = 1 if $s3 < $s4
+
+
+        - can be done with immediate values too
+            slti $t0, $s2, 10
+
+        - these two instructions are be default for signed numbers!
+            - `sltu` and `sltiu` are for unsigned
+
+
+    - there is no branch less than instruction in MIPS because they heeded Von Neumann's
+      warning
+
+
+    - Case / Switch Statement
+        - often a 'jump table' is used.
+            - an array of words containing addressses that corespond to labels in code
+
+2.8 Supporting Procedures in Computer Hardware
+    - Procedures must follow these 6 steps
+        1. Put parameters in a place where the procedure can access them
+        2. Transfer control to the procedure
+        3. Acquire the storage resources needed for the procedure
+        4. Perform the desired task
+        5. Put the result value in a place where the calling program can access it
+        6. Return control to the point of origin
+
+    - registers for procedures
+        $a0 - $a3
+            - four argument registers for parameters
+
+        $v0-$v1
+            - two value registers in which to return values
+
+        $ra
+            - one return address register to return to the point of origin
+
+    - jump and link
+        - jumps to an address and also saves the return address to $ra
+
+        `jal ProcedureAddress`
+
+        - the return address that is saved is the Program Counter from where the function
+          was called from
+
+    - jump register
+        - we use this to jump back to the caller, it takes in a register that contains an
+          address and jumps to that address
+
+        jr $ra
+
+
+    - the stack
+        - the stack frows from high to low
+        - you push to the stack by subtracting from the stack pointer
+
+    - the values in the $s* registers must be preserved!
 
 
 
+    - Nested Procedures
+        - leaf procedures
+            - procedures that do not call other procedures
+
+        - solutions
+            - the caller can push all variables it needs to the stack before making a
+              call to a nested proceudre
+            - we have to manually grow the stack (decrement by 4 for each value pushed)
+              when we add elements to it
+
+                - also have to remember to decrement the stack when you are done using
+                  the things you pushed on!
 
 
+
+    - the global pointer
+        - the global pointer is used to point to static variables
+
+
+    - Allocating Space for New Data on the Stack
+        - the stack is also used to store variables that are local to the procedure but
+          do not fit in registers, such as local arrays and structures
+
+        - the segment of the stack containing a procedure's saved registers and local
+          variables is called a "procedure frame" or "activation record"
+
+        - frame pointer
+            - points to the first word of the frame of a proceudre
+
+            - the stack pointer might change during the procedure, and so references to a
+              local variable in memory might have different offsets
+
+    - Allocating Space for New Data on the Heap
+        - the lowest address is reserved
+
+        - above that is the text segment, which contains all of the mips code
+
+        - above that is the 'static data segment' (data)
+            - holds constants and other static variables
+
+        - A space for dynamic data is above that
+            - the stack and the heap grow towards eachother
+
+
+                                 _______________
+            $sp ->  7fff fffc   | Stack
+                                |       |
+                                |       v
+                                |
+                                |       ^
+                                |       |
+                                | Dynamic Data
+            $gp ->  1000 8000   |_______________
+                                | Static Data
+                    1000 0000   |_______________
+                                | Text
+            $pc ->  0040 0000   |_______________
+                                | Reserved
+                    0           |_______________
+
+
+2.9 Communicating With People
+    - obviously we use ascii
+    - the load byte / store byte instructions exist for characters
+        - load byte stores a byte in the right most 8 bits of a register
+        - vice versa for store byte
+
+
+    - three possibilities for representing strings
+        1. The first position of the string holds the length of the string
+        2. there is another variable that has the length of the string (part of a
+           cohesive structure)
+        3. THe string has a nul byte at the end
+
+    - characters and strings in java
+        - java uses unicode by default
+        - unicode uses 16 bits per character
+
+        - halfwords are used for unicode
+
+
+2.10 MIPS addressing for 32 bit Immediates and Addresses
+    - 32 bit immediate operands
+        - load upper immediate
+            - is used to set the upper 16 bits for a 32 bit constant
+
+    - Addressing in Branches and Jumps
+        - relative addressing
+            - the relative address is actually calculated with respect to PC+4!
+            - the distance is in units of 4 bytes, since all mips instructions are 4 byte
+              alligned
+
+
+    - MIPS Addressing Mode Summary
+        - multiple forms of addressing are called 'addressing modes'
+
+        - MIPS addressing modes
+            1. Immediate addressing, the operand is a constant within the instruciton
+               itself
+            2. Register Addressing, the operand is a register
+            3. Base or displacement addressing, the operand is at the memory location
+               whose address is the sum of a register and a constant in the instruction
+            4. PC-relative addressing, the branch address is the sum of the PC and a
+               constant in the instruction
+            5. Pseudo direct addressing, the jump address is the 26 bits of the
+               instruction concatenated with the upper bits of the PC
+
+
+2.11 Parallelism and Instructions: Synchronization
+    - Parallel execution is easier when tasks are independent, but they often need to
+      cooperate
+
+    - atomic operations
+        - atomic exchange / atomic swap
+            - interchanging a value in a register for value in memory
+
+        - hardware guarantees that two operations at the same time are ordered, and do
+          not actually occur at the same time
+            - this way one person will always aquire a lock before the other
+
+        - hardware can either be really complex, or do an 'atomic hack'
+            - for a lock, we need to both read and write if we are aquiring it.
+            - complex hardware can be build to do this read/write in a single atomic
+              action
+
+            - or we can have two seperate instructions that tell the user if they were
+              actually executed atomically as a pair
+
+
+            - MIPS has a special pair of instructions, a special load and special store
+                - these two instructions are to be used in sequence
+
+                - load linked and store conditional
+                    - if the memory location specified by the load linked are changed
+                      before the store conditional to the same address occurs
+                        - the store conditional will fail
+
+
+                        - store conditional
+                            - store the value of a register in memory
+                            - change the value of the register
+                                - 1 if it succeeds
+                                - 0 if it fails
+
+
+                            # Keep tring to aquire the lock until we are successful
+                            again:  addi $t0,$zero,1
+                                    ll $t1,0($s1)
+                                    sc $t0,0($s1)
+                                    beq $t0,$zero,again
+                                    add $s4,$zero,$t1
+
+
+
+2.12 Translating and Starting a Program
+    - Compiler
+        - C code is transfored into assembly language
+
+    - Assembler
+        - pseudoinstrcutions exist at this level
+
+        - turns assembly language file into an object file
+            - a combination of machine language instructions, data and info needed to
+              place instructions in memory
+
+        - symbol table
+            - contains pairs of symbols and addresses
+
+
+        - UNIX object file usually has 6 distinct pieces
+            1. Header
+                - describes the size and position of the other pieces of the object file
+
+            2. Text Segment
+                - contains the code
+
+            3. Static Data Segment
+                - contains data allocated for life of program
+
+            4. Relocation Information
+                - identifies instructions and data words that depend on absolute
+                  addresses when program is loaded into memory
+
+            5. Symbol Table
+                - contains the remaining labels that are not defined, such as external
+                  references
+
+            6. Debugging information
+                - concise description of how the moduels were compiled
+                - allows debugger to associate machine instruction with C source files
+                  and make data structures readable
+
+
+    - Linker
+        - all procedures can be compiled independently, only procedures that change need
+          to be recompiled
+
+        - the linker stiches all of these independently compiled units together
+
+        - There are three steps for the linker
+            1. Place Code and data modules symbolically in memory
+            2. Determine the addresses of data and instruction labels
+            3. Patch both the internal and external references
+
+        - it is much faster to patch code than it is to recompile and reassemble
+
+
+        - produces an executable file
+            - an executable file typically has the same structure of an object file
+            - there are no unresolved references in an executable though
+
+    - Loader
+        - the operating system will read the executable file from disk into memory
+
+        - the loader follws these steps on UNIX systems
+            1. Reads the executable file header to determine size of the text and data
+               segments
+
+            2. Creates an address space large enough for the text and data
+
+            3. Copies the instructinos and data from the executable file into memory
+
+            4. Copies the parameters (if any) to the main program onto the stack
+
+            5. Initializes the machine registers and sets the stack pointer to the first
+               free location
+
+            6. Jumps to a start-up routine that copies the parameters into the argument
+               registers and calls the main routine
+                - when the main routine returns, the start up routine terminates the
+                  program with an exit system call
 

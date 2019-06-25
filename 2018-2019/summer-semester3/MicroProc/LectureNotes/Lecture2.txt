@@ -26,7 +26,7 @@
 
             - idle time
                 - time spend waiting.  Time waiting to be scheduled
-            
+
 
     - CPU Time
         - This is what we will be focusing on today
@@ -58,7 +58,7 @@
                    = 20 * 10**9 * 1.2  / 6
                    = 4.0 * 10**9
 
-- Instruction Count and CPI    
+- Instruction Count and CPI
     Clock Cycles = Instruction Count * Cycles per Instruction
 
     CPU Time = Instruction Count * CPI * Clock Cycle Time

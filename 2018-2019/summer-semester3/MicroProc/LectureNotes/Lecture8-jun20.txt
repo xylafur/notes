@@ -4,8 +4,8 @@
 
 
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-$   We can bring a formulat sheet and out mips sheet!
-$       TODO: Create a formula
+$   We can bring a formula sheet and out mips sheet!
+$       TODO: Create a formula sheet
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
@@ -20,7 +20,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 - how are program translated into the machine language
 
 - what effects the program performance
-    - CPI / Clock speed / Ime per cycle?
+    - CPI / Clock speed / Time per cycle
 
 - what is parallel processing?
 
@@ -36,13 +36,12 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     - Assembly Language
     - Hardware Representation
 
-- Response Time and Throughpu
+- Response Time and Throughput
     - response time
         - how long it takes to do a task
 
     - throughput
         - total work done per unit time
-
 
 - Relative Performance
     - Performance = 1 / Execution Time
@@ -67,22 +66,20 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
               instructoins to add multiple values together
 
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Chapter 2 - The MIPS Instruction Set
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-- We will be manualy compiling c code into MIPS assembly
+- We will be manually compiling c code into MIPS assembly
     - we will be asked about
         - arithmetic
         - memory fetch and store
-            - make sure to multiply array index offsets by 8!
+            - make sure to multiply array index offsets by 4!
 
         - branching
         - procedures
 
 
-- REgisters vs Memory
+- Registers vs Memory
     - Registers vs memory
 
     - Immediate options
@@ -96,7 +93,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 - 2s compliment
 
-- we have to be able to convert from Assembly into maching code
+- we have to be able to convert from Assembly into machine code
     - he want's the result in hex
 
     - he says put both on the paper, he will look at our hex first
@@ -111,6 +108,3 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
           byte!
 
         - for relative remember that negative means up and positive means down!
-
-
-

@@ -22,7 +22,7 @@
                 - probably things like the status register, stack pointer, etc
 
 - MIPS R-format instructions
-    
+
     |   op      |   rs      |   rt      |   rd      |   shamt   |   funct   |
     |-----------|-----------|-----------|-----------|-----------|-----------|
     |   6 bits  |   5 bits  |   5 bits  |   5 bits  |   5 bits  |   6 bits  |
@@ -82,8 +82,3 @@
 
     - constant or address:
         - self explanitory
-
-
-
-
-

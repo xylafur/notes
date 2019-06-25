@@ -64,7 +64,7 @@ Chapter 2: Instruction Set
     - want to use registers for frequently accessed data
         - speed of registers >>> speed of memory
 
-   
+
     - temp variables for
         - $t0, $t1, .., $t9
 
@@ -79,7 +79,7 @@ Chapter 2: Instruction Set
 
         - things like this need alot of space to store it
 
-    
+
     - We have to bring things from memory into registers
         - the instruction for this is 'load'
 

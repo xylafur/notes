@@ -12,7 +12,7 @@
         - Same as as a shift left in C
             - such as: (5<<1)
 
-    
+
         - remember that every shift left once is the same as multiplying by 2
 
             - shifting a number to the left i bits is the same as multiplying
@@ -104,11 +104,11 @@
 
 
 - Basic Blocks
-    - a block is a sequenc of instructions with 
+    - a block is a sequenc of instructions with
         - no embedded branches (except an end)
         - no branch targets
 
-    
+
     - a compiler identifies bsic blocks for optimization
 
     - an advanced processor can accelerate execution of basic blocks
@@ -123,7 +123,7 @@
             - set fd = 1 if rs is less than rt, otherwise set it to 0
 
 
-    - set true if immediate 
+    - set true if immediate
         `slti rd, rs, constant`
 
 
@@ -136,6 +136,3 @@
 
         - unsigned comparison
             - sltu, sltui
-
-
-
