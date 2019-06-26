@@ -1,0 +1,111 @@
+###############################################################################
+#   Chapter 4: The Processor
+###############################################################################
+
+- High level overview of processing through processor
+    - Instruction Memory
+        - the instruction memory holds the next instructions to execute
+
+        - There is only room for 4 instructions at a time
+
+
+        - the instruciton memory is simply a 'waiting area', actual execution has to take
+          place in later components
+            - We move the instruciton that we are executing, to the registers for processing
+
+    - Moving From Instruction Memory to Registers
+        - This process is called 'IF'
+            - instruction fetch
+
+    - Registers
+        - once things are in the registers they get moved into the ALU for processing
+
+
+    - Moving from Registers to ALU
+        - This is called 'ID'
+            - Instruction Decoding
+
+    - ALU
+        - processes the actual instruction
+            - this is called 'EXE'
+                - execution
+
+        - The ALU then takes the results of the instruciton, and puts it back into registers
+
+    - Moving results from ALU back to registersk
+        - this is called 'WB'
+            - write back
+
+
+    - After this, the program couter is incremented and then teh next instruction is brought
+      in
+
+- Introduction
+    - CPU Performance factors
+        - instruction count is #1
+            - this depends on the architecture and compiler
+
+        - CPI and Cycle Time
+            - Determined by the CPU hardware
+
+
+    - Two MIPS implementation
+        - we will go through two different implementations
+            - a simplified version
+                - everything is done by one entity, during the process only one
+                  instruction is processed at a time
+
+            - and a more realistic piplined version
+                - do all of the different ocmponents in parallel
+                - after an instruction has finished doing one component, it moves onto
+                  the next component and another instruction begins being executed by the
+                  first component
+
+                - the more differnet comopnents you have, the more things you can do in
+                  parallel
+
+
+    - WIll be working with a simple subset of instructions
+        - memory reference
+            - lw, sw
+
+        - arithmetic / logical
+            - add, sub, and , or , slt
+
+        - control
+            - j, beq
+
+
+- Instruction Execution
+    - it all starts with the PC
+        - the program couter points to the instruction that we will be executing
+
+        - fetch the instruciton from instruction memory
+
+    - Register Numbers
+        - move the instructions into tregisters
+
+    - Depengin on the instruction class
+        - use the ALU to calculate
+            - You get an arithmetic result
+                - if it is something like add or sub
+
+            - get the memory address for load / store
+                - if the instruciton class is load or store
+
+            - branch target address
+                - if our instruction is a branch kind
+
+        - Then you access data for the load / store
+
+        - Program counter is changed to the target address or the PC is just incremented
+
+
+
+- Register Component
+    - The registers to use is taken from the instruction and passed into the register
+      component
+
+    - The register component will look up the value from the given registers, and pass
+      that data into the ALU
+
