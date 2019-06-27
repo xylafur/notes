@@ -461,3 +461,106 @@ Instructions: Language of the Computer
                 - when the main routine returns, the start up routine terminates the
                   program with an exit system call
 
+
+2.13 A C Sort Eample to Put it All Together
+
+2.14 Arrays vs Pointers
+    - with pointers we have a reference to where the thing exitsts in memory
+        - all we have to do is incrmenet the poiner
+
+    - with an array, we have to calculate the offset within the array and then look at
+      the array using that index
+
+
+2.16 ARMv7 (32 bit) instructions
+    - ARM has fewer registers than MIPS
+
+    - Addressing Modes
+        - arm does not reserve a register to contain 0
+
+        - ARM has 9 different addressing modes
+            - remember that MIPS only has 3 (I, R, J)
+
+    - Compare and Conditional Branch
+        - arm uses 4 condition code bits for condition code
+            - they can be set on any arithmetic or logical instruction
+            - this is optional on each instruction
+
+        - `cmp` s ubtracts one operand from the other and the difference sets the
+          condition codes
+
+        - every instruction has the option of executing conditionally, depending on
+          condition codes
+            - this is captured in a 4 bit conditional execition field at the beginning of
+              the instruction
+
+    - Unique features of ARM
+        - 12 bit immediate field
+            - the 8 least significant bits are zero extended to a 32 bit value, then
+              rotated right the number of bits specified in the first four bits of the
+              field multiplied by 2
+
+        - operand shifting
+            - the second registr of all arithmetic and logical processing operations has
+              the option of being shifted before being operated on
+
+
+2.17 x86 Instructions
+    - x86 registers and data addressing Modes
+        - has only 8 general purpose registers!
+
+        - 80386 extended all 16 bit registers (excpet the segment) to 32 bits
+
+        - with arithmetic operations, one of the registers must be both a source and a
+          destination
+            - additionally one of the operands can be in memory!
+
+
+    - x86 Integer Operations
+        - the number of bits used from a register fora  given operation depends on the
+          current mode the CPU is ino
+
+
+
+    - x86 Instruction Encoding
+        - not all instructions are the same size
+        - Instructions can vary from 1 byte to 15 bytes
+
+2.18 ARMv8 (64 bit) instrucitons
+    - they actually made significant changes, they didn't just make all the registers 64
+      bits
+
+    - Dropped alot of the weird features with v8
+        - there is no conditional execution field
+        - the immediate field is simply a 12 bit constant
+        - dropped the load multiple, store multiple
+        - PC is no longer one of the registers
+
+    - it also added some missing features
+        - has 32 general purpose registers
+            - one register is hardwired to 0
+
+        - addressing modes work for all word sizes
+
+        - it has a division instruction
+            - there is no division instruction in v7
+
+        - adds the equivalent of the MIPS beq and bne
+
+
+2.19 Fallacies and Pitfalls
+    - Fallacies:
+        - More powerful instructions mean higher performance
+
+        - Write in assembly language to obtain the highest performance
+
+        - The importance of commercial binary compatability means successful
+          instruction sets don't change
+
+    - Pitfall
+        - forgetting that sequential word addresses in machines with byte addressing do
+          not differ by one
+            - remember the word size is not one byte!
+
+        - using a pointer to an automatic variable outside a defining procedure
+            - same as in C

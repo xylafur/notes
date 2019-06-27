@@ -1,0 +1,152 @@
+- The Potrzebie System of Weights and Measures
+    - OCT 31 == DEC 25
+    - lolz
+
+- Types Chamed while You Wait
+    - character literals are automatically parsed as ints
+
+    - this is known as type promotion
+        - when it happens to integers it is called 'intergral promotion' though
+
+        - the type promotion doesn't have to be done if the compiler can guarantee the
+          same result occurs without it
+
+        - arguments are promoted!
+            - this is why "%d" works for chars, shorts, and anything smaller than int
+
+    - things are autmoatically promoted when you use them with the larger type
+        - float * double automatically gets promoted to double
+
+
+- Prototype Painfulness
+    - exist as an attempt to reduce a common class of errors
+        - mainly a mismatch between formal and actual parameters
+
+    - this is talking about differences in prototypes between K&R C and ANSI-C
+        - before in KR C you didn't specify the parameters in the prototype, this is why
+          there was the type promotion existed
+
+        - If you define the types of arguments in your parameters then they will actually
+          be passed in as that, there will be no argument promotion!
+
+        - because of this though you can't have a KR Prototype with a ANSI definition or
+          vice versa, it will either expect the variables to be promoted and they aren't
+          or the other way around
+
+    - the compiler will only detect a mismatch if the prototype and definition are in the
+      same file
+        - I believe I've seen cases where this is not true, so it might be a relic of the
+          past
+
+
+- Getting a char without a carriage return
+    - the easy way is to get stty to get what you want
+        ```
+        #include <stdio.h>
+        int main(){
+            int c;
+            // put the system into character-at-a-time mode
+            system("stty raw");
+            c = getchar();
+            // put back into line mode
+            system("stty cooked");
+        }
+        ```
+
+
+    - the terminal characteristics persist after the end of the program, thats why we
+      need to reset at the endo
+
+      - raw IO is blocking if there is no character avaliable
+      - you can use ioctl() for a non blocking system call
+
+
+        ```
+        #include <stdio.h>
+        #include <sys/filio.h>
+
+        int kbhit()
+        {
+            int i;
+            ioctl(0, FIONREAD, &i);
+            // return the number of chars avaliable to read
+            return i;
+        }
+
+        int main()
+        {
+            int i = 0;
+            int c = '';
+
+            system ("stty raw -echo?");
+            printf("enter 'q' to quit \n");
+            for( ; c != 'q' ; i++){
+                if(kbhit()){
+                    c = getchar();
+                    printf("\ngot %c, on iteration %d", c, i);
+                }
+            }
+            system ("stty cooked echo");
+        }
+        ```
+
+- Check errno after library calls
+    - if a library or system call encounters problems, it will set errno to indicate the
+      cause of the problem
+
+    - the calue of errno is only valid if there was a problem though
+
+- Implementing a Finite State Machine in C
+    - generally implemented based on an array of pointers to functions
+
+    ```
+        void ( *state[MAX_STATS] )();
+
+        //if we know the names of all the functions, we can init the machine like so
+        extern int a(), b(), c(), d();
+        int (*state[])() = {a, b, c, d};
+
+        //not sure why he has both void and int...
+    ```
+
+    - again with function pointers we see the 'declaration looks like use' philosophy
+        - we can call one of the functions of state in any of these ways, they are all
+          valid
+
+        ```
+        (*state[i])();
+        state[i]();
+        (********state[i])();
+        ```
+
+
+    - you could also use a switch statement as a "poor man's state machine"
+
+
+- Software is Harder than Hardware
+    - because of this, he suggests that when you program, you code for debuggability
+        - you want to provide debugging hooks
+
+- How and Why to Cast
+    - cast can mean both "type conversion" and "type disambiguation"
+
+    - type conversion
+        `(float) 3`
+
+        - actual bits change
+
+    - type disambiguation
+        `(float) 3.0`
+
+        - the compiler just plants the correct bits in the first place
+
+    - three step process for any cast
+        1. Look at the declaration of the object to which you wish to assign the casted
+           result
+
+        2. Remove the identifier (and any storage class specifiers like extern), and
+           enclose what remains in parenthesis
+
+        3. Write the resulting text immediately to the left of the object you wish to
+           cast
+
