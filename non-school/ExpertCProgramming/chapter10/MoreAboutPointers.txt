@@ -1,0 +1,151 @@
+- The layout of multidimensional arrays
+    - actall layed out linuearly in memory
+
+
+
+         pea[1][2]-\
+                    |
+                    v
+    0 1 2 3 4 5 0 1 2 3 4 5 0 1 2 3 4 5 0 1 2 3 4 5
+    pea[0]      pea[1]      pea[2]      pea[3]
+
+
+
+    - pea[i][j] is resolved by the compiler as
+        *(*(pea + i) + j)
+
+
+- An array of pointers is an "Iliffe vector"
+    - 'Iliffe vector', 'display' or 'dope vector'
+        - all mean an array of pointers that implements support for a multidimensional
+          array
+
+    - remember that from the declaration chapter we learned about presedence
+        - the [] operator has higher precedence than *
+        - so
+        ```
+            // this is an array of char pointers!
+            char * turnip[23];
+
+            // look at it like this:
+            (char *) turnip [23];
+        ```
+
+    - allocating the whole '2d array' at once is often better, then you just assign
+      pointers to the start of individual arrays inside it
+
+        ```
+        c = malloc(row_size * column_size * sizeof(datatype))
+        a1 = c[0], a2 = c[row_size];
+        ```
+
+
+    - there is quite a difference between having an array of pointers and a 2d array
+        - with a 2d array, the lookup is just completley an offset in memory
+            - base_address + (row_size * i) + (element_size * j)
+
+                a[i][j]
+
+        - with an array of pointers, you have to actually dereference those pointers to
+          get whats in that 'second dimension'
+            *(*(base_address + row_size * i) + j)
+
+            p[i][j]
+
+
+    - Iliffe vectors are good for saving memory!
+        - specifically in the case where the elements in the arrays are of different
+          lengths
+
+        - if we have an array of strings that vary in length from 2 to 256, you can
+          either have an array that contains pointers to all of those strings or a big
+          whopping '2d' allocation based on the largest string
+
+
+        - pointer arrays with elements of different lengths are often called "ragged
+          arrays"
+
+
+        - based on the nature of Iliffe vectors, arrays could be located on different
+          pages
+            - this may violate locality of reference and cause alot of paging
+
+
+
+
+
+- Passing a one dimensional array to a function
+    - one dimensional arrays of any type when passed into a function as an argument in C
+      is are rewritten as a "pointer to the first element"
+        - you need some sort of convention for indicating the size of the array,
+          there are two general ways
+            1.  Send an additional parameter that gives the number of elements
+            2. Give the last element of the array a special value to indicate the end of
+               data
+                - this special value can't occurr anywhere else in the data
+
+        - because of the nature of 2d arrays, you need two of these types of values
+            - have to indicate the end of individual rows as well as the end of all rows
+
+
+
+- Using pointers to pass a multidimensional array to a function
+    - there is another problem lurking in multidimensional arrays in C.
+        - there is no way to express the concept "the bounds of this array can vary from
+          call to call"
+
+        - the C compiler insists on knowing the bounds in order to generate the correct
+          code for indexing
+            - it is feasable to handle this at runtime, but it is against the C
+              philosophy
+
+        - the text suggests that the best work around to this is to have an array that
+          contains pointers to other arrays.
+            - the null pointer can be used to signify the last of the arrays in the
+              original
+
+
+    - There is no way in C to pass a general multidimensional array to a function
+        - this is because we need to know the size of each dimension
+
+
+    - Basically if there is more than two dimensions for an array as a parameter, you
+      must pass in an array with the same number of dimensions and the same size for each
+      of the dimensions
+
+        - You can work around this with Iliffe vectors
+            - the only problem with this is that you have to first convert a 2d array
+              into an array of pointers to vectors
+
+            - you have the null byte at the end of each array so the size of each can be
+              dynamic
+                - like an array of strings
+
+        - Could also just give up on multidimensionality and allocate a single large
+          array and do your own indexing to make it seem like a multidimenstional array
+            - he does not suggest this is a good idea
+
+            - why use a compiler at all if you have to do all this by hand?
+
+
+
+    - in summary, if your 2D arrays are of fixed size, you will not encounter any
+      problems
+
+        - if  you want to make it generic though you have to find a a workaround of sorts
+          (1d array hack, Iliffe vectors, break it down into a series of lesser
+           dimensional arrays)
+
+    - the lasck of support for multidimensional arrays as parameters is an inherit
+      limitation of the C language
+        - it makes it much harder to write particular types of programs
+
+
+- Using Pointers to return an array from a function
+    - You can dynamically allocate memory for the array and return a pointer to the
+      beginning of the array
+
+
+    - you could always just make a custom struct
+
+

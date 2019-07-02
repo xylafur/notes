@@ -1,0 +1,126 @@
+4.1 Intro
+    - Basic MIPS Implementation
+        - for every instruction, the first 2 steps are identical
+            1. Send PC to memory to fetch code at that address
+            2. Read the registers specified by our instruction
+
+        - the steps after these 2 are instruction dependent
+        - many things, such as input data, can come from many sources and need to be fed
+          into a mux
+            - output from the ALU/output from memory
+            - input to alu from memory or register
+            - branch or increment pc by 4
+
+
+4.2 Logic Design Conventions
+    - Data path elements consist of combinational and Sequential ("state") elements
+
+    - clocking methodology
+        - we can't have things like reads and writes happening at the same time
+            - we need some sort of clocking methodology to handle this
+
+        - we will assume edge triggered clocking
+            - sequential elements updated on clock edge
+
+        - inputs were written in previous clock cycle, outputs written on next clock
+          cycle
+
+        - generally sequential elements also have an "enable" or "control" signal
+
+        - we use 'asserted' and 'deasserted' to avoid confusion w/ regular and negative
+          logic
+
+        - we can read and write in the same clock cycle as long as they happen on
+          different edges
+
+
+4.3 Building a datapath
+    - start by thinking of all the components you need for all of your instructions
+        - we start at the top and work down through abstraction
+            - instruction memory
+            - program counter
+            - adder
+
+    - to execute, we first fetch instruction from memory
+        - then to prepare for the next instruction, we increment program counter
+
+    - the 32 registers are stored in a "register file"
+        - which is just a collection of read / write registers
+
+        - we have to be able to tell which of these 32 to use
+
+
+4.4 A simple implementatino scheme
+    - we will be looking at the simplest possible implementation of MIPS subset
+
+    - ALU control
+        - The ALU expects a control inptu that will tell it which operation to preform
+            - there is a ALU control unit that takes in the 'func' component of the
+              instruction and then generates the selection of operation for ALU
+
+        - we use several small control units, which each do some level of decoding, to
+          reduce the size of the main control unit
+
+            - this can also potentiall increase the size of the control unit
+
+        - for the regular ALU operations (add, sub, AND, OR, etc) we need the func field
+            - for all ofhter instructions, the ALU operation depends on the instruction
+              itself!
+                - for `load word` / `store word` we will always `add`
+                - for `beq` we will always sub for the `cmp` operation
+
+
+            - for those instructions where the ALU operation does not rely on the func,
+              we can mark those on a truth table we construct
+
+    - Desigining the Main Control Unit
+        - the destination register can be in two different places, such as for load and R
+          type instruction
+            - additional things such as using the last 16 bits as a constant for I type
+              instructions
+
+            - these lead to us needing those muxes to choose between different inputs
+              depending on the instruction type
+
+
+        - Control Signals
+            - additionally there is the ALU op set of bits
+             ___________________________________________________________________
+            | Signal    |   When Asserted           |   When Deasserted         |
+            |-----------|---------------------------|---------------------------|
+            | RegDst    |Register destination number|register destinaion comes  |
+            |           |for the write register     |from the rt field          |
+            |           |comes from the rd field    |                           |
+            |-----------|---------------------------|---------------------------|
+            |RegWrite   |The register on the Write  | None                      |
+            |           |register input is written  |                           |
+            |           |with the value of the write|                           |
+            |           |date input                 |                           |
+            |-----------|---------------------------|---------------------------|
+            |ALUSrc     |The second ALU operand is  |the second ALU operand comes
+            |           |the sign extende, lower 16 |from the second register file
+            |           |bits of the instruction    |output (read data 2)
+            |-----------|---------------------------|---------------------------|
+            |PCSrc      |The PC is replaced by the  |The PC is replaced by the  |
+            |           |output of the adder that   |adder that computes the    |
+            |           |computes the branch target |PC + 4                     |
+            |-----------|---------------------------|---------------------------|
+            |MemRead    |Data memory contents desig-|   None                    |
+            |           |nated by the address input |                           |
+            |           |are put on the Read data   |                           |
+            |           |output                     |                           |
+            |-----------|---------------------------|---------------------------|
+            |MemWrite   |Data memory contents       |   None                    |
+            |           |designated by the address  |                           |
+            |           |input are replaced by the  |                           |
+            |           |value on the write data inp|                           |
+            |-----------|---------------------------|---------------------------|
+            |MemtoReg   |The value fed to the       |The value fed to the reg.  |
+            |           |register write data input  |write data input comes     |
+            |           |comes from the data mem    |from the ALU               |
+            |___________|___________________________|___________________________|
+
+
+
+        - Operation of the Datapath
+            - 

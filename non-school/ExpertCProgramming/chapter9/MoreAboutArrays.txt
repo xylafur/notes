@@ -1,0 +1,142 @@
+- When an array IS a pointer
+    - Declaracions can be split into three cases
+        - declaration of an external array
+        - definition of an array
+            - remember just a declaration that also defines values
+        - declaration of a function parameter
+
+
+    - all array names that are function parameters are always converted into pointers
+      by the compiler
+
+    - the declaration of a pointer and array are not the same!
+        - when you declare a pointer, it is a pointer
+        - when you declare an array, it is an array
+
+        - arrays and pointers can be USED interchangably though
+
+            - even with that said though, the compiler might generate different code
+              depending on how you use it (as an array or a pointer)
+
+    - Rules for when arrays are pointers, given by the C standard
+        1. An array name in an expression (in contrast with a declaration) is treated by
+           the compiler as a pointer to the first element of the array.
+
+        2. A subscript is always equivalent to an offset from a pointer
+            - accessing data through pointer offsets and array subscripts are no faster
+              than the other
+                - behind the scenes C will treat array subscripts in the same way as
+                  pointer offsets
+
+            - this is because thats how they are treated by the underlying hardware
+
+        3. An array name in the declaration of a function parameter is treated by the
+           compiler as a pointer to the first element of the array
+
+
+            - Parameter
+                - A variable defined in a function definition or a function prorotype
+                  declaration
+                - aka "Formal Parameter"
+
+                ```
+                    // base and n are parameters
+                    int power(int base, int n);
+                ```
+
+            - Argument
+                - a value used in a particular call to a functin
+                - aka "actual parameter"
+
+                ```
+                    // 10 and j are arguments
+                    i = power(10, j);
+                ```
+
+
+            - the standard stipultes that a declaration of a parameter as
+                "array of type"
+                    will be adjusted to
+                "pointer to type"
+
+- Why C Treats Array Parameters as pointers
+    - efficiency
+
+    - all non array data arguments in C are passed by value
+
+    - similarily the return value of a function can never be an array or function, only a
+      pointer to an array or function
+
+- How an array parameter is referenced
+    - Always accessed like a pointer, has that indirect reference
+        - the pointer l value is stored in the activation record
+        - the r value of the pointer is looked up (the base addr of the array)
+        - whatever offset (subscript, a[i]) into the array is added to the base addr
+        - then this is looked up in memory
+
+
+
+        -  This is true no matter if you pass it into the function as
+            `int * a`
+                or
+            `int a[]`
+
+
+    - you can't change what an array points to
+        - the edge case for this is in a function when the array is passed in as a
+          parameter (since it is actually a pointer, not array)
+
+            ```
+                int a1[100];
+                int main(){
+                    int a2 [100];
+                    a1 = a2;    // this fails!
+                }
+            ```
+
+
+- C has Multidimensional Arrays
+    - In C they are simply Arrays of Arrays, but they are called multidimensinoal arrays
+
+    - be wary of  when you have a pointer to an array of arrays!
+        - if you increment the pointer via a ++ or something, it will get the next array
+
+        - really though this is the same behavior as indexing
+
+        ```
+            int A[10][3];
+            A[0] = {1,2,3};
+            *(A+1) = {4,5,6};
+        ```
+
+
+
+- How Arrays are Laid out in Memory
+    - The rightmost subscript varies fastest, a convention known as "row major addressing"
+
+        Lowest Address                                  Highest Address
+
+        a[0][0]         a[0][1]         a[1][0]         a[1][1]
+
+
+- How to initialize arrays
+
+    ```
+    int a [5]= {0, 1, 2, 3, 4};
+
+    // you can leave out the size and it will create the size automativally
+    //the size of the array will be fixed to however many elements you put though!
+    int b [] = {1, 2, 3};
+
+
+    //multidimensional arrays are just nested
+    int c [2][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+    };
+
+    //you can include or ommit the comma
+    int d [][3] = {{1, 2, 3}, {4, 5, 6}};
+    ```
+
+
