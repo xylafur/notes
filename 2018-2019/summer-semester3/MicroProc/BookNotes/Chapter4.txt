@@ -123,4 +123,35 @@
 
 
         - Operation of the Datapath
-            - 
+            - Different instructions will use the datapath differently
+                - for each of these examples, everything occurs in one clock cycle
+
+            - arithmetic
+                1. Instruction is fetched, PC is incremented
+                2. Two registers are read from the register file
+                    - the main control unit computes the setting of the control lines
+
+                3. The ALU operates on the data read from the register file
+                    - The CLU function is generated using the function (funct) code
+
+                4. The result from the ALU is written into the register file
+
+            - Load Word
+                1. Instruction is fetched from IC, PC is incremented
+                2. Register is read from the register file
+                3. The ALU computes the sum of the value frad from the register file and
+                   the sign extended, lower 16 bits of the instruction (offset)
+                4. The sum from the ALU is used as the address for the data memory
+                5. The data from the memory unit is written to the register file
+                    - the register destination comes from the instruction
+
+
+            - Branch Equal Instruction
+                1. Instruction is feteched from IC, PC is incremented
+                2. Two registers are read from the register file
+                3. ALU performs a suntract on the data values read from the register file
+                    - the value of PC + 4 is added to the sign extended lower 16 bits of
+                      the instruction, shifted left by 2
+                    - the result is the branch target address
+                4. The Zero result from the ALU is used to decide which adder result to
+                   store in the PC
