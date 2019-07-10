@@ -1,0 +1,210 @@
+- There are 3 components to the PID controller
+    - The Proportional
+    - Integral
+    - Derivative
+
+- the plant
+    - our result, what happens based on our values
+    - has an observable error
+
+- PID
+    - the most simple feedback controller
+
+- Gain
+    - This is the constant in front of our terms
+
+- Using just P
+    - we can end up with a steady state error
+        - we end up in a state where nothing is changing, but there is still an
+          error based on the way our gain is set up
+
+    - we can overcome this by adding in past information
+
+- The integeral
+    - keeps track of the past
+    - if we end up in a steady state error position from the point of view of
+      our proportional component, the I term will cause that to increase
+
+    - the proportional and the integral will work together to get the actual
+      error to 0
+        - the integral term will be non zero until the system has been at zero
+          error for some time
+
+    - because the integral is over time, we can overshoot the goal based on
+      past information
+
+- Future (derivative)
+    - this is how we can keep from overshooting the future
+
+    - if the error is quickly decreasing then this component will have a
+      negative value
+        - this can keep us from overshooting our goal
+
+- As the designer, we decide how much we want to weight each of the terms
+
+##############################################################################
+# Integeral part in general
+##############################################################################
+- Splitting the PLant into components
+    - two seperate systems
+        - actuator
+            - thing generating the force to change the system
+
+            - not linear systems
+                - there is backlast, rate constraints and 
+
+        - process
+            - what the actuator is pushing against or trying to effect
+
+
+- Path error takes
+
+    - the error is fed into the controller (integral)
+    - this generates some actuator command
+    - this actuator command is then fed into the actuator
+    - we measure the actuator response
+
+    - actuator saturation
+        - the actuator is not able to follow the command it is given
+        - if there is some contrinuous non 0 error, our integral will contrinue
+          to increase over time
+            - eventually our wheels or whatever won't be able to increase any
+              more
+
+            - all real actuators can only increase so much
+
+        - if we get to such a point that the integral is commanding something
+          over the satuartion limit
+            - the problem is removing the excess error from the integral
+
+            - by the time the error is zero, or even negative, the integral
+              will not be 0
+
+                - this will cause the system to overshoot its goal
+                  significantly
+
+            - this is called INTEGRAL WINDUP
+
+            - we want to keep things from saturating
+                - or at the very least when something does saturate, we make it
+                  go back to what should be, or recover, quickly
+
+            - we need some sort of integral anti windup
+
+                - the goal is to keep the integrated value from increasing past
+                  some specified limit
+
+        - Clamping
+            - turning the integrator off when it gets to big
+
+            - we can limit the output of the controller with its own saturation
+              check
+                - this will hopefully keep us from saturating the actuator
+
+            - clamping method checks
+                - compare output of PID controller before and after the
+                  saturation check
+                    - if they are not equal, then saturation is taking place
+                      and this component will output 1
+                    - otherwise it will output 0
+
+                - the sign of the output and error is also compared
+                    - if the signs are the same, we know we are still adding to
+                      the error and this component will output 1
+                    - it will output 0 otherwise
+
+                - if both of these are 1, then we will decide to clamp
+                    - we then will shut down 0
+
+                    - when the result of these modules are no longer both 1,
+                      then we will restore the status of the integrator
+
+    - Saturation limit
+        - we want the clamping saturation limit to be less than that of the
+          actuator saturation limit
+
+        - if they are the samel, or way to close
+            - the physical actuator may become limited at some point
+
+##############################################################################
+#   Expanding Beyond a simple derivative
+##############################################################################
+- device that is sensing the error for our system, can instruduce noise into
+  our feedback loop
+
+- When dealing with sensors, noise is unavoidable
+    - white noise
+        - equal noise at all frequencies
+
+    - otherwise, noise can be speicifc to a particular frequency, or set of
+      frequencies
+
+    - how can quiet noise cause problems?
+        - if that actual signal is smooth, the sensor reading will be jagged to
+          some extent
+
+    - for some control laws, low amplitude noise will not affect the system
+      much
+        - this is not the case for PID
+        - this is because PID uses the pure derivative
+
+        - derivatives amplify high frequency signals
+            - it can amplify small wiggles into huge problems
+
+        - if we lower the amplitude of noise, then we can reduce the derivative
+
+    - we want a filter that will be a value such that it will block frequencies
+      from above a particular frequency
+        - this is something as the designer that we get to choose
+
+        - to keep the signal, but remove the noise
+            - high requency generally has low amplitude, but low frequency
+              noise has higher amplitude
+
+                - low frequency noise doesn't impact our derivative as much
+                  though
+
+                - so generally we can just block out (or attinuate) the high
+                  frequencies noise
+                    - we do this with a "First Order Low Pass Filter"
+
+        - First Order Low Pass Filter
+            - filter that allows low frequencies to pass through mostly
+              unchanged
+
+            - attinuates frequencies above the cutoff point though
+                - it doesn't completley remove it though
+                - just dampens it significantly
+
+            - Uses Laplace Transforms
+                - The First Order Low Pass Filter can be represented as
+
+                    N/(S + N)
+                        - where the cutoff for this filter is N rad/s
+
+                - also represented as
+                    1 / ((1/N)S + 1) = 1 / (T*S + 1)
+
+                    - Here t is the time constant
+                        - 1 / frequency = time
+
+            - Using the Low Pass and derivative
+                - the combination of these two becomes the product of the two
+                  equations
+
+                S*N / (S + N)
+
+            - alternative
+                - we can have, rather than the low pass and derivative in
+                  series, an integral (1/S) feeding back into N
+                    - N in the forward path
+                    - the integral, 1 / S, in the backwards path
+
+                - this is exactly the same
+
+
+
+
+
+
+
