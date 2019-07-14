@@ -1,0 +1,83 @@
+- Instruction types
+    - Arithmetic
+
+
+
+    - Load / Store
+        - read register operands
+        - Calculate address using 16 bit offset
+            - use the ALU, but sign extend the offset
+
+        - Read memory and update registers
+            - Load
+
+        - Read from register and update memory
+            - Store / Save
+
+    - Branch Instructions
+        - Read the register operands
+
+        - compare operands
+            - use ALU to subtract register1 val from register2 val
+            - check for zero output
+
+        - calculate the target address
+            - had to make sure that the offset was the same bit width as the
+              address to add them together
+
+            - we also multiply the offset by 4, since the offset is in word
+              units
+
+            - so we have to sign extent the displacment value
+                - convert from 16 bit to 32 bit
+
+
+- Composing the Elements
+    - First-cut data path does an instruciton in one clock cycle
+        - each datapath element (IM, Reg, ALU, DM)
+            - can only do one function at a time
+
+        - we need seperate
+            - instruction and data memories
+
+        - where alternate data sources are used for different instructions
+            - use multiplexers to decide who gets to use a component
+
+
+- Performance Issues
+    - the longest delay determines the clock period
+        - critical path:
+            - the load instruction
+                - this is the slowest instruction
+
+            
+            - instruction memory -> register file -> ALU -> data memory -> register file
+
+
+
+    - we will improve performance by pipelining
+
+
+- Pipelining
+    - does not change latency, just increases throughput
+
+- MIPS Pipelining
+    - 5 Stages, one step per stage
+        1. Instruction Fetch
+            - IF
+        2. Instruction Decode
+            - ID
+        3. Execute operate or calculate address (ALU)
+            - EX
+        4. Access Memory
+            - MEM
+        5. Write result back to register
+            - WB
+
+
+    - Hazard
+        - when two instructions try to use the same datapath element at the
+          same time
+
+        - there are other hazards as well, such as having to wait for the write
+          back before we can use a value

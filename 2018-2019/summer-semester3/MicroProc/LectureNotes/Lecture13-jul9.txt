@@ -1,0 +1,159 @@
+###############################################################################
+#   Important Dates!
+###############################################################################
+July 16 - Test 2 (Chapter 4)
+July 17 - No Class
+July 23 - Project Presentation
+July 24 - Final Exam
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$ Chapter 5
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+- The idea of chapter 5 is "Large and Fast"
+    - the Memory Hierarchy!
+
+    - You can have alot of memory, aslong as it is organized well!
+
+
+
+    - THe stack
+
+        Slowest |   External
+                |   RAM
+                |   Cache
+        Fastest |   Processor
+
+
+    - Memory managment is important!
+        - you have to intelligently move things into faster memory, since it is
+          smaller
+
+
+    - Temporal Locality
+        - Items accessed recently, are likeley to be accessed again soon
+        - Store things locally based on time access!
+
+    - Spatial Locality
+        - Things that are close to eachother are likely to be accessed together
+
+
+- Memory Heirarchy Levels
+    - Cache Types
+        - Direct Mapped Cache
+            - You use modulous to store things from memory into cache
+            - if you have 8 slots in cachce, then the things from memory move
+              to a particular cache location based on %8
+
+
+            - names for the bits in address
+                - the bottom few bits (those significant to modo) are called
+                  index
+                - the upper bits are called the tag
+
+
+            - Tags and Vlid bits
+                - Valid Bit (V)
+                    - If the data in cache for this location is valid, the bit
+                      is set to 1
+
+                - Tag:
+                    - First two bits, allows you to determine which thing from
+                      memory this actually is
+
+                - Offset:
+                    - the data section of cache can hold multiple bytes
+                    - those individual bytes are indexed with the offset
+
+                - The bottom N bites are used as the offset
+                - the next M bits are used for the Index
+                - The rest of the bits are used for the Tag
+
+- Address Subdivision
+    - say we have a 32 bit address
+        - our cache has valid, tag and data sections
+            - the data section is 32 bits wide
+            - there are 1024 blocks (the index is)
+                - so our index is 10 bits
+
+            - 20 bits are used for out tag
+
+
+        - there is a significant amount of overhead in this example!
+            - there is 20 bits of overhead for tag for each data entry
+
+
+- Example
+    - We have a cache with 64 blocks, 16 bytes / block
+
+    - what is the tag, index and offset of address 1200?
+
+    1200 = 00000000000000000000010010110000
+
+    # bits for offset == number of bits needed for 16 values
+    # bits in index == # bits needed to for 64 values
+    # bits for tag == 32 - # bits for index - # bits for offset
+
+     ___________________________________________________
+    |   tag                     |   index   |   offset  |
+    |   (22 bits)               | (6 bits)  | (4 bits)  |
+    |---------------------------|-----------|-----------|
+    |   0000000000000000000001  |   001011  |   0000    |
+    |___________________________|___________|___________|
+
+
+- Cache Misses
+    - We've been figuring out how to locate things from memory in cache
+    - There are many cache misses, the things we are checking for in Cache
+      aren't present at that location
+
+        - if there is no cache miss, the CPU proceeds normally
+        
+        - If there is a cache miss, the CPU pipeline is stalled
+            - the block is fetched from the next level of hierarchy
+
+            - instruction cache miss
+                - instruction cache is a type of cache specifically for holding
+                  instructions, rather than data
+
+                - instruction cache miss is simply when the instruction we are
+                  looking for is not in cache.  We have to go to main memory to
+                  get it
+
+
+                - this is called a 'Restart Instruction Fetch'
+
+        - Why do we have seperate data and instruction cache?
+            - allows for pipelining
+            - can bring instructions and data into the CPU at the same time
+
+
+            - We also have seperate data and instruction memories!
+
+            - data cache misses are called
+                - "Complete data access"
+
+
+
+- Example: Intrinsity FastMATH
+    - Embedded MIPS Processor
+        - 12 stage pipeline
+
+        - Can do instruction and data access on each cycle
+
+    - Split Cache
+        - seperate instruction and data cache
+
+        - dach cache has 256 Blocks and 16 words per block
+
+    - SPEC2000 miss rates
+        - SPEC2000 is a program for quality assurance
+
+        - I cache has a miss rate of 0.4%
+        - D Cache has miss rate of 11.4%
+
+            - this is very common actually
+            - there is alot of data
+                - instructions are much more likely to be sequential, and less
+                  in size
+
+        - Weighted average miss rate is 3.2%

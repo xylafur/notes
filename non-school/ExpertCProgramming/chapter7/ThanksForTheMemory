@@ -1,0 +1,38 @@
+- Virtual Memory
+    - Cache
+        - depending on the architecture, either physical or virtual addresses
+          might be cached
+            - if virtual addresses are cached then they must be flushed out when a
+              context switch happens
+
+        - remember that there the cache hit/miss thing!
+            - we search cache first, if we find it we use it, if we don't we
+              have to go look into memory which takes longer
+
+        - types of cache writes
+            - write-through
+                - initiates a write to main memory at the same time it writes
+                  to cache
+
+            - write-back
+                - writes only to cache on the first instance, the data is
+                  transfered to main memory when the cache line is about to be
+                  written again and a save hasn't taken place
+
+                - also transfered to memory on a context switch
+
+            - in both cases we don't wait for the write to memory, we write to
+              cache and then move on with our lives
+
+        - there may be a seperate cache for the I/O bus if the processor uses
+          memory-mapped I/O
+            - there is often caches for both instructions and data
+
+
+    - Caching
+        - UNIX (probably linux too), Inodes are cahced in memory
+            - this means that if you power off the system without flushing
+              cache it can result in corruptions!
+
+            - the `sync` command flushes this cache to disk
+            

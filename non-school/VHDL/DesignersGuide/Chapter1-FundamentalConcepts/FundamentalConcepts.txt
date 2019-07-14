@@ -1,0 +1,285 @@
+1.1 Modeling Digital Systems
+    - There are multiple different models for systems
+
+1.4 VHDL Modeling Concepts
+    - modules are known as entities
+    - inputs and output are known as ports
+
+    - entity declaration
+        ```
+        entity reg4 is
+            port ( d0, d1, d2, d3, en, clk: in bit;
+                   q0, q1, q2, q3: out bit);
+        end entity reg4;
+        ```
+
+    - 1.4.1 Elements of Behavior
+        - a description of the internal implementation of an entity is known as
+          the architecture
+            - there may be a number of different architecture bodies of the
+              interface for one entity
+
+            - you can write a 'behavioral' architecture of an entity
+                - describes the function in an abstract way
+
+                - includes only 'process statements'
+                    - collections of actions to be executed in dequence
+                    - contains sequential statementss
+                        - in sequential statements you do things you do in most
+                          conventional programming languages
+
+                    - there is a sequential statement unique to hardware
+                      modeling languages
+                        - signal assignment statement
+                            - similar to a variable assignment, causes the
+                              value on a signal to be update at some future
+                              time
+
+
+        ```
+        architecture behav of reg4 is
+        begin
+            storage: process is
+                variable stored_d0, stored_d1, stored_d2, stored_d3: bit;
+            begin
+                wait unti clk;
+                if en then
+                    stored_d0 := d0;
+                    stored_d1 := d1;
+                    stored_d2 := d2;
+                    stored_d3 := d3;
+                end if;
+
+                q0 <= stored_d0 after 5 ns;
+                q1 <= stored_d1 after 5 ns;
+                q2 <= stored_d2 after 5 ns;
+                q3 <= stored_d3 after 5 ns;
+            end process storage;
+        end architecture behav;
+        ```
+
+        - THe process statement defines a sequence of actions that are to take
+          place when the system is simulated
+            - these actions control how the values on the entities ports change
+              over time
+
+            - the process can modify the values of the entity's ports using
+              signal assignment statements
+
+        - When simulation is started, the signal values are set to 0 and the
+          process is activated
+            - the processes's variables (listd after the keyword 'variable')
+              are initialized to '0'
+            - statements are then executed in order
+
+            - the wait statemnt causes the process to suspend
+                - is stays suspended until one of the signals to which it is
+                  'sensitive' changes value
+                    - in this case the process is only sensitive to 'clk'
+
+                - when the signal changes value, the process is resumed and
+                  continues executing statements
+
+        - The final assignments are all 'signal' assignments that wait 5ns to
+          assignm the values to the signals
+
+    - 1.4.2 Elements of Structure
+        - an alternativce way of describing the implementation of an entity is
+          to specify how it is composed of subsystemskgg
+
+
+        - other entities can be used in the architecture of another
+
+
+        ```
+        entity d_ff is
+            port (d, clk: in bit; q: out bit);
+        end d_ff;
+
+        architecture basic of d_ff is
+        begin
+            ff_behavior: process is
+            begin
+                wait until clk;
+                q <= d after 2 ns;
+            end process ff_behavior
+
+        end architecture basic;
+
+
+        entity and2 is
+            port (a, b: in bit; y: out bit );
+        end and2'
+
+        architecture basic of and2 is
+        begin
+            and2_behavior: process is
+            begin
+                y <= a and b after 2 ns;
+                wait on a, b;
+            end process and2_behavior;
+        end architecture basic;
+
+
+        # WOrk in this context is the 'working library'
+        # so its stuff that we have created
+
+        # port map just specifies how things are connected to the instances of
+        the entities we create
+        architecture struct of reg4 is
+            signal int_clk: bit;
+        begin
+            bit0 : entity work.d_ff(basic)
+                port map (d0, int_clk, q0);
+            bit1 : entity work.d_ff(basic)
+                port map (d1, int_clk, q1);
+            bit2 : entity work.d_ff(basic)
+                port map (d2, int_clk, q2);
+            bit3 : entity work.d_ff(basic)
+                port map (d3, int_clk, q3);
+            gate : entity work.and2(basic)
+                port map(en, clk, int_clk);
+        end architecture;
+        ```
+
+
+    - 1.4.3 Mixed Structural and Bhavioral Models
+
+        - models do not need to be purely structural or purely behavioral
+        - Hybrid models can be created by including both component instance and
+          process statements
+            - these statemtns are collectively called concurrent statemtns
+              since the processes all execute concurrently when the model is
+              simulated
+
+    - 1.4.4 Test Benches
+        - basically we have our design and we know the outputs for given
+          inputs, so we want to verify them
+
+        - no need for port listing, the test bench is self contained
+
+        
+    - 1.4.5 Analysis, Elaboration and Execution
+        - there are 3 stages to simulation of a model
+
+        - analysis
+            - syntax and semantics are checked
+            - the chdl description is examined and syntactic and static
+              semantic errors are located
+                - analysis takes place on 'design units' rather than the entire
+                  project at one time
+                    - if there are no errors in a design unit then the entity
+                      is converted into an intermediate representation and
+                      stored in a library
+
+        - elaboration
+            - the act of working through the design hierarchy and creating all
+              of the objects defined in declarations
+
+            - instances of processes are created, all of their variables are
+              given values
+
+        - execution
+            - the passage of time is simulated in discrete steps
+                - 'discrete event simulation'
+
+            - at some simulation time, a value to which the model is sensitive
+              may change
+                - this results in 'scheduling a transaction' on that signal
+                    - new values gien to signals at some later simulated time
+
+            - simulation starts with an initialization phase
+            - the repetitive execution of the simulation cycle
+                - during the simulation cycle, simulation time is first
+                  advanced to the next time at which a transaction on a signal
+                  has been scheduled
+                - second all scheduled transactions are performed
+                - third ll processes sensitive to those events are resumed and
+                  allowed to continue
+
+
+1.5 Learning a New Language: Lexical Elements and Syntax
+    - You can use the full ISO 8859 Latin-1 8 bit character set
+        - this includes characters with accents
+
+    - 1.5.1 Lexical Elements
+        - Comments
+            - single line comment uses '--'
+            - multiline comment is C style
+
+        - Identifiers
+            - can only contains alphabetic characters, numbers, and underline
+            - has to start with an alphabetic character
+            - cannot ent with underline
+            - cannot have two successive underline characters
+
+            - case of letters is not significant
+
+        - Reserved words
+            - there are alot, I will not write them here
+            - there are the normal ones from C, then additional ones
+
+        - Special Symbols
+            - the normal singal character symbols as well as many two character
+              symbols that do not exist in C
+
+        - Numbers
+            - two forms of numbers that can be written in VHDL
+                - integer literals
+                    - whole number that consists of digits with no decimal
+                      point
+
+                    - there are no negative integers, just the negative
+                      operator applie to integers
+
+                - real literals
+                    - always include a decimal point
+
+                - both intergar and real literals can use exponential notation
+                  with an E
+                    - though for integers the exponent must be positive
+
+
+            - number bases
+                - any integer number base between 2 and 16 can be used
+
+                - it is written like this
+                ```
+                2#11110111#
+                16#FD#
+                8#0375#
+                ```
+
+        - Characters
+            - use single quotation marks
+            - any standard characters including space
+
+        - Strings
+            - double quotation marks
+            - strings must fit entierly on one line
+
+            - to include double quotes in yur string, you put two together
+                "this is my ""string""."
+
+            - the & operator is used for concatenation multi line strings
+                "hello this is my multiline "
+                & "string"
+
+        - Bit Strings
+            - values that represent bnits, that can be either 0 or 1
+            - enclosed by double quotes, begins with a character that specifies
+              the base of the strings
+
+            B"00110"
+            b"1100011"
+
+            - You can include underscore character to seperate groupings of
+              digits
+
+            b"0011_0100_1111"
+
+
+        - You canspecify the number of bits at the beginning as well
+            10b"0110"
+
+            - this will pad the beginning with 0's so that it is 10 bits long
