@@ -155,3 +155,455 @@
                     - the result is the branch target address
                 4. The Zero result from the ALU is used to decide which adder result to
                    store in the PC
+
+4.5 An Overview of Pipelining
+    - Pipelining allows multiple instructions to be overlapped in execution
+
+    - If the stages are perfectly balanced, then the time between instructions
+      on the pipelined processor (assuming ideal conditions) is equal to
+
+        Time Between Instructions (pipelined) = Time between Instructions (not pipelined)
+                                                / Number of Pipe stages
+
+
+        - Under ideal conditions, with a large number of instructions, the
+          speed up from pipelining is equal to the number of pipeline stages
+
+
+        - in real life though the stages are imperfectly balanced and there is
+          overhead for pipelining
+            - this makes the actual higher than the minimum
+
+
+    - Designing Instruction Sets for Pipelining
+        - MIPS was designed for pipelining
+
+        - all mips instructions are the same length
+            - this makes it wasier to fetch instructions int he first pipeline
+              stage and decode them in the second stage
+
+        - the source register fields is in the same location for all formats
+            - this symetry means that the second stage can begin reading the
+              register file at the same time that the hardware determines the
+              type of instruction
+
+        - memory operations only appear in lw and sw
+            - in x86 you can directly modify and store things in a memory
+              location, this means that the instruction needs to be broken down
+              into multiple steps
+
+    - Pipeline Hazards
+        - there are situations in pipelining when the next instruction cannot
+          execute in the next clock cycle
+
+        - Hazards
+            - Structural Hazard
+                - hardware cannot support the combination of instructions that
+                  we want to execute in the same clock cycle
+
+                - there is a resource block of some sort, someone else is using
+                  the thing you need
+
+            - Data Hazards
+                - occur when the pipeline must be stalled because one step must
+                  wait for another to complete
+
+                - these hazards arise from the dependence of a later
+                  instruction needing data that was altered by an instruction
+                  ahead of it
+
+                    - we don't have to wait for the previous instruction to
+                      complete, we just have to wait for it to generate the
+                      value we needed through the ALU
+
+                        - this is called "forwarding" or "bypassing"
+
+                        - this doesn't always work though, if for instance we
+                          have to wait for the result of a memory read
+                            - the stage in which memory is actually read out is
+                              two stages ahead of the execute stage of the next
+                              instruction
+
+                            - this means that we will have to stall for at
+                              least one stage while the output of the load is
+                              computed
+
+                            - this is called a "pipeline stall"
+
+            - Control Hazards
+                - arises from the need to make a decision based on the results
+                  of one instruction, while others are executing
+
+                - one solution is to execute one instruction one by one and
+                  based on the output adjust the behavior of the next
+                    - this is slow obviously
+
+
+                - another solution is to predict what the next instruction will
+                  be
+                    - this does not cause any slowdowns if you are correct
+                    - if you are wrong though, you have to go back and redo the
+                      things
+
+
+                - you can predict that all branches will not be taken,
+                    - this is a simple schema that will be right 50% of the
+                      time
+
+                - a more sophisticated branch prediction has some predicted as
+                  taken, and some predicted as untaken
+
+                    - you may always predict that branches that jump to an
+                      earlier address will be taken
+                        - this would be if they are a loop that loops back to
+                          earlier code
+
+
+                    - there are also dynamic algorithms that adjust the
+                      predictions over time
+
+
+4.6 Pipelined Datapath and Control
+    - The datapath is split into 5 pieces
+        1. IF: Instruction Fetch
+        2. ID: Instruction Decode and register file read
+        3. EX: Execution of address calculation
+        4. MEM: Data memory access
+        5. WB: Write Back
+
+
+        - the stages are written down from left to right
+            - things get more organized as you move to the right
+            - nothing ever moves backwards
+
+            - there are two exceptions to data moving left to right though
+                - The write back stage, where the result is placed back into
+                  the register file in the middle of the datapath
+                    - can lead to data hazards
+
+                - the selection of the next value of the PC, choosing between
+                  the incremented PC and the branch address from the MEM stage
+                    - can lead to control hazards
+
+
+        - there exist registers between each of the stages to hold intermittent
+          values
+            - these registers are named for a combination of the two stages
+              they are between
+                - IF/ID, ID/EX, EX/MEM, MEM/WB
+
+            - the PC can be thought of as one of these registers, one that
+              holds the value to be put into the IF stage
+
+        - The lw instruction through the datapath
+            - IF
+                - the instruction is fetched from memory
+                - the instruction is placed in the IF/ID register
+                - PC is incremented by 4
+                - the incremented PC is saved in the IF/ID register as well in case
+                  it is needed by a future instruction
+
+            - ID
+                - all of the values are unpacked, the immediate value is sign
+                  extended and all of this is stored in to the ID/EX register along
+                  with the PC
+
+            - EX
+                - the result from the ALU is placed in the EX/MEM pipeline
+
+            - MEM
+                - the address is read from the EX/MEM register, and the data at
+                  that register is placed in the MEM/WB register
+
+            - WB
+                - the data is read from the MEM/WB register and written back to the
+                  register file
+
+                - ovbiously we need to know which register to write to, so the
+                  register file needs to be forwarded through the entire pipeline
+
+
+
+
+        - any information needed at any point in the pipeline must be passed
+          through the entire pipeline!
+
+    - Graphically Representing Pipelines
+        - there are two basic stypes of pipeline figures
+            - multiple clock cycle pipeline diagrams
+                - simpler, but do not contain all of the details
+
+            - single clock cycle pipeline diagrams
+
+    - Pipelined Control
+        - we borrow as many of the  control lines from the simple single cycle
+          implementation as we can
+            - in particular the ALU logic, branch logic, destination register
+              numer multiplexor and control lines
+
+        - there is no seperate write control for PC or pipeline registers
+
+        - the control signals are specific to each of the stages of the
+          pipeline, so we will have 5 groups of control logic
+            1. IF
+                - control signals to read instruction memory and to write PS
+                  are always asserted
+                - nothin special for this stage
+
+            2. ID
+                - same as IF
+                - nothing special
+
+            3. EX
+                - signals set are RegDst, ALUOp, ALUSrc
+                - signals select the result register, the ALU operatoin and
+                  either read data 2 or sign extended immediate to be used for
+                  ALU
+
+            4. MEM
+                - signals are branch, MemRead and MemWrite
+
+                - the branch equal, load and store instruction set these signal
+                  respectively
+
+            5. WB
+                - two control lines:
+                    - MemtoReg
+                        - decides between sending the ALU result or memory
+                          value to register file
+
+                    - RegWrite
+                        - writes the chosen value
+
+        - the meaning of all the control lines remains the same
+            - this means though that we have to set the 9 control lines for
+              each stage for each each instruction
+                - the easiest wat to do this is to extend teh pipeline
+                  registers to include them
+
+4.7 Data Hazards: Forwarding vs Stalling
+    - lets look at a sequence of instructions
+
+        sub $2, $1, $3
+        and $12, $2, $5
+        or $13, $6, $2
+        add $14, $2, $2
+        add $15, 100($2)
+
+        - the last 4 instructions are all dependent on the result in register 2
+          from the first instruction
+
+        - the value in register 2 won't be updated until cycle 5
+            - when we draw the graph, we can show 'dependence lines' for
+              instructions that depend on the results from previous instructions
+
+            - if any of these dependence lines go back in time, we have a
+              problem!
+
+        - the data in $2 is not needed by the and/or instructions until their
+          EX stage, when the  will actually be using it
+            - because of this, we can 'forward' the result of $2 from the sub
+              command
+
+        - naming notation for pipeline registers
+            <name of pipeline register>.<name of the field in that register>
+
+            - examples are
+
+            EX/MEM.RegisterRd
+
+            - with this convention there are two pairs of hazard conditions
+                1a. EX/MEM.RegisterRd = ID/EX.RegisterRs
+                    - this is the one that we just saw in the above example
+
+                1b. EX/MEM.RegisterRd = ID/EX.RegisterRt
+                2a. MEM/WB.RegisterRd = ID/EX.RegisterRs
+                2b. MEM/WB.RegisterRd = ID/EX.RegisterRt
+
+
+        - this policy is inaccurate because not all instructions write
+          registers
+            - this means that sometimes we would forward when we shouldn't
+
+            - to account for this, we can simply check for the RegWrite signal
+              to be active when we see one of the registerpairs above is the
+              same
+
+
+            - there is also the case where the programer writes to $zero
+                - for this case we also need to check that MEM/WB.RegisterRd /= 0
+
+
+        - at this point we can detect Hazards, but we still need a way to
+          forward data to avoid them
+
+        - if we have the ability to take the inputs to the ALU from any
+          pipeline register, rather than just ID/EX, then we can forward proper
+          data
+            - we add multiplexors to the inputs of the ALU
+
+
+            - The forwarding control for this will be found in the EX stage
+                - we pass the operand register numbers from the ID stage via
+                  the ID/EX pipeline register to determine whether to forwards
+                  values
+
+
+    - Conditions for detecting hazards and control signals
+        1. EX hazard
+            ```
+            if (EX/MEM.RegWrite
+                and (EX/MEM.RegisterRd ≠ 0)
+                and (EX/MEM.RegisterRd = ID/EX.RegisterRs))
+            then
+                ForwardA = 10
+
+
+            if (EX/MEM.RegWrite
+                and (EX/MEM.RegisterRd ≠ 0)
+                and (EX/MEM.RegisterRd = ID/EX.RegisterRt))
+            then
+                ForwardB = 10
+            ```
+
+        2. Mem Hazard
+            ```
+            if (MEM/WB.RegWrite
+                and (MEM/WB.RegisterRd ≠ 0)
+                and (MEM/WB.RegisterRd = ID/EX.RegisterRs))
+            then
+                ForwardA = 01
+
+
+            if (MEM/WB.RegWrite
+                and (MEM/WB.RegisterRd ≠ 0)
+                and (MEM/WB.RegisterRd = ID/EX.RegisterRt))
+            then
+                ForwardB = 01
+            ```
+
+        - Explanation
+            - '10' means that ALU input is forwarded from the prior ALU result
+            - '01' means that ALU operand is forwarded from data memory
+            - '00' means that the operand comes from the register file
+
+    ***************************************************************************
+    *   WE ASSUME THAT THE REGISTER FILE SUPPLIES THE CORRECT RESULT IF THE
+    *   INSTRUCTION IN THE ID STAGE READS THE SAME REGISTER WRITTEN BY THE
+    *   INSTRUCTION IN THE WB STAGE!
+    *       - So this means you won't have data hazards between registers in
+    *         the WB stage and ID stage, the stages where the register is
+    *         updated and the stage where the register is first read
+    *       - we write and read on the same clock cycle, we write before we
+    *         read though!
+    ***************************************************************************
+
+
+    - there is a compliucation of potential data hazards between the result of
+      the instruction in the WB stage, the result of the instruction in the MEM
+      stage and the source operand of the instruction in the ALU stage
+
+
+    - Data Hazards and Stalls
+        - one case where forwarding cannot save the day is when an instruction
+          tries to read a register following a load instruction that writes the
+          same register
+            - the data is still being read from memory in clock cycle 4 while
+              the ALU is performing the operation for the following instruction
+
+        - in addition to the forwarding unit, we need a hazard detection unit
+            ```
+            if (ID/EX.MemRead and
+                ((ID/EX.RegisterRt = IF/ID.RegisterRs) or
+                 (ID/EX.RegisterRt = IF/ID.RegisterRt)))
+            then
+                stall the pipeline
+            ```
+
+            - the only instruction that reads data memory is a load
+                ID/EX.MemRead
+            - then we check to see if the destination register of the
+              load in the EX stage matches either srouce in the ID stage
+
+            - if both of these are true, we stall for 1 clock cycle, then we
+              can use forwarding
+
+                - we must stall both the ID and the IF stages, since we don't
+                  want the IF to go and overwrite all of out info in the ID
+
+
+                - to achieve the stall those stages just perform NOPS
+                    - deassert all of the control lines in the EX, MEM and WB
+                      stages to 'do nothing'
+
+
+
+
+
+4.9 Exceptions
+    - One of the hardest parts of implementing the control is exceptions and
+      intrerrrups
+        - they can change the normal flow of instruction execution
+
+
+    - many texts do not distinguish the difference between interrupts and
+      exceptions, but this text uses the MIPS approach
+
+        - exceptions
+            - any unexpected change in control flow
+                - no distringuish between if its cause was internal or external
+
+        - interrupt
+            - the event was externally caused
+
+    - How Exceptions are handled in the MIPS archiecture
+
+        - there are two exceptions that can be generated in our current implementation
+            - execution of an undefined instruction
+            - arithmetic overflow
+
+
+        - what does the processor do when the exception occurs?
+            - save the address of the offending instruction in the exception
+              program counter
+
+            - transfer control to the operating systemm at some specified
+              address
+
+            - the OS then takes the correct action
+
+            - the OS must know the reason for the excecption, as well as the
+              instruction that caused it
+                - two main methods used to communiocate this
+
+                1. status register
+                    - this holds the fields that indicates the reason for the
+                      exception
+
+                    - this is what MIPS does
+
+                2. vectored intrerrups
+                    - the address to which control is transferred is determined
+                      by the cause of the exception
+
+                - with status register you only need a single entry point for
+                  interrupts / exceptions
+
+                - for this though, two more registers need to be added
+                    - EPC
+                        - 32 bit register used to hold the address of the
+                          affected instruction
+
+                        - this is needed even with vectored intrerrupts
+
+                    - Cause
+                        - a register used to record the cause of the exception
+
+                        - this one is only needed for the 'status register'
+                          implementation
+
+
+    - Exceptions in a Pipelined Implementation
+        - Exceptions are treated as another form of control hazard
+
+        - have to flush out all of the existing data in the pipeline
