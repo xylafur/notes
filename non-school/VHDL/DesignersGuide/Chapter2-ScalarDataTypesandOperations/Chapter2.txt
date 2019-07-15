@@ -1,0 +1,493 @@
+2.1 Constants and Variables:
+    - objects
+        - a named item in a VHDL model that has a value of a specified type
+
+        - there are 4 classes of objects
+            1. constants
+            2. variables
+            3. signals
+            4. files
+
+
+    2.1.1 Constant and Variable Declarations
+        - Constants and vairbles need to be declared before they can by used in
+          a model
+
+        - declarations introduce name, define type and can give an initil value
+
+            - constant declaration
+                constant <identifier> [, <identifier>, ...]: <subtype_indication> [:= <expression>]
+
+                - this subdtype indication is for all of the elements, if many
+                  are declared
+
+            - variable declaration
+                variable <identifier> [, <identifier>, ...]: <subtype_indication> [:= <expression>]
+
+            ```
+                entity ent is
+                end entity ent;
+                architecture sample of ent is
+                    constant pi : real := 3.14159;
+                begin
+                    process is
+                        variable counter : integer;
+                    begin
+                        -- ...
+                        -- statements using pi and counter
+                    end process;
+                end architecture sample;
+            ```
+
+    2.1.2 Variable Assignment
+        - once a variable has been declared, its calue can be modified by an
+          assignment statement
+
+        variable assigment statement
+
+            [label :] name := expression;
+
+
+        - labels are a means of identifying the assigment statment.
+            - this is discussed in a later chapter
+
+        - variable assigments happen immedietly
+            - this is in contrast to signal assigments where the update is
+              scheduled at a later time
+
+            - this is why the assignment operators between signals and
+              variables is so different
+
+
+2.2 Scalar Types
+    - VHDL is a strongly typed language, every object may only assume values of
+      its nominated type
+
+    - A scalar type is one whose values are indivisible
+        - basically not arrays or a grouping
+
+
+
+    2.2.1 Type Declarations
+        - a way to introduce new types into VHDL
+
+        - type declaration
+            type <identifier> is <type definition>;
+
+        - types that have different names but are comprised of the same are
+          distinct and incompatible types
+
+            ```
+            type apples is range 0 to 100;
+            type oranges is range 0 to 100;
+            ```
+
+            - these are distinct types
+
+        - to use types in an entity we need to wrap them in a package
+            ```
+            package int_types is
+                type small_int is range 0 to 255;
+            end package int_types;
+            ```
+
+            - packages are discussed in a later chapter
+
+
+            - you can then use types from a package with the `use` clause
+
+            ```
+            use work.int_types.all;
+
+            entity small_adder is
+                port (a, b: in small_int; s: small_int );
+            end entity small_adder;
+            ```
+
+    2.2.2 Integer Types
+        - integers are at least of the range
+            -2^31 + 1 to 2^32 - 1
+
+            - specific implementations may extend this even further though
+
+
+
+        integer type definition
+            range <simple_expression> (to | downto) <simple_expression>
+
+        - this defines a set of integers between (and including) the specified
+          values
+            - values used in the range definition expressions must be locally
+              static
+                - they must be known at compile time
+
+
+
+        - Operators
+            +
+            -
+            *
+            /
+            mod: Modulo
+            rem: Remainder
+            abs: Absolute Value
+            **: Exponent
+
+
+            - the two operands used by an operator must be of the same type
+
+
+            - division truncates
+
+
+        - we are given maximum and minimum statments
+
+            ```
+                greater := maximum(A, B);
+                lesser := minimum(A, B);
+            ```
+
+
+        - when an integer is declared of integer type, its default initial
+          value is the leftmost value
+            ```
+            type set_index_range is range 21 downto 11;
+            type mode_pos_range is range 5 to 7;
+            variable set_index : set_index_range;
+            variable mode_pos : mode_pos_range;
+            ```
+
+    2.2.3 Floating-Point Types
+        - Conforms to IEEE standard 754 or 854
+
+
+        - represented using at least 64 bits
+
+
+        - floating type definition
+            range <simple expression> (to|downto) <simple_expression>
+
+
+        ```
+        type input_level is range -10.0 to +10.0;
+        type probability is range 0.0 to 1.0;
+        ```
+
+
+    2.2.4 Physical Types
+        - used to represent real world physical quantities such as length,
+          mass, time and current
+
+            - definition includes the 'primary unit' of measure and may also
+              include one or more 'secondary units'
+
+
+            - physical type definition
+                range <simple expression> (to|downto) <simple_expression>
+                    units
+                        <identifier>;
+                        {<identifier> = <physical literal> ;}
+                    end units [identifier]
+
+            - physical literal
+                [decimal listeral | based literal] <unit_name>;
+
+
+        ```
+        type resistance is range 0 to 1E9
+            units
+                ohm;
+            end units resistance;
+        ```
+        ```
+        type resistance is range 0 to 1E9
+            units
+                ohm;
+                kohm = 1000 ohm;
+                Mohm = 1000 kohm;
+            end units resistance;
+        ```
+
+        - We could then express ohms in terms of a float like so
+            `5.5 kohm`
+
+
+
+        - physical types can be multiplied by an integer or a real
+            - multiplication of two physical types is not allowed, since that
+              wouldn't make since in a real world sense
+
+
+        - Time
+            - Time is a predefined type
+            - it is used extensively to specify delays
+
+
+            ```
+            type time is range implementation defined
+                units
+                    fs;
+                    ps = 1000 fs;
+                    ns = 1000 ps;
+                    us = 1000 ns;
+                    ms = 1000 us;
+                    sec = 1000 ms;
+                    min = 60 sec;
+                    hr = 60 min;
+                end units;
+            ```
+
+
+    2.2.5 Enumeration Types
+        ```
+        type alu_function is
+            (disable, pass, add, subtract, multiply, divide);
+        ```
+
+        - enumeration type definition
+            (idenfitier|character literal){, ...}
+
+            - there must be at least one value in the type
+            - each value must be either an identifier or a character literal
+
+
+
+        - Characters
+
+        - Booleans
+            type boolean is (false, true);
+
+            - equality and inequality symbols are different than regular
+              programming languages
+
+                equality:   =
+                inequality: /=
+
+
+            - logical operators
+                - and, or, nand, nor, xor, xnor and not
+
+                - all take in boolean values and produce boolean results
+
+
+        - Bits
+            type bit is ('0', '1');
+
+            - logical operators can also be applied to data of type bit, and
+              will produce data of type bit
+
+
+
+        - Standard Logic
+
+            type std_ulogic is (
+                'U',    -- Uninitialized
+                'X',    -- Forcing Unknown
+                '0',    -- Forcing zero
+                '1',    -- Forcing one
+                'Z',    -- High Impedance
+                'W',    -- Weak Unknown
+                'L',    -- Weak zero
+                'H',    -- Weak one
+                '-'     -- Don't care
+            );
+
+            - not actually built into the VHDL language, we can write models as
+              though they were though (as long as we include the package they
+              are part of)
+
+                library ieee; use ieee.std_logic_1164.all;
+
+            - logical operations can also be used on this type
+                - they will return either 'U', 'X', '0' or '1'
+
+
+            - comparison operators are a bit weird with this type
+                - we would think that this would be true
+                    '0' = 'L'
+                - but its not because it compares the enumerated value, not
+                  what that value represents
+                - we should instead use the "matching operators"
+                    ?=
+                    ?/=
+
+                - so this would be true
+                    '1' ?= 'H'
+
+                - both of the matching operators yield 'X' when either of the
+                  operands is 'X', 'Z' or 'W'
+                    - if either operand is 'U' though, the result is 'U'
+
+
+                - there are other matching operators as well
+                    ?<, ?<=, ?>, ?>=
+
+
+
+        - Conditional Conversion
+            bit and std_ulogic values are automatically converted to boolean
+            when they occur as conditions
+
+            - '1' or 'H' are considered true, all others false
+
+
+            - with wait statments
+                - using the wait statement, if the thing we are waiting on is a
+                  std_ulogic, then we will wait until it goes to '1' or 'H'
+
+                - such as in
+                    wait until clk;
+
+
+            - conversion
+                - VHDL does conversion by implicitly applying the '??' operator
+
+                - the ?? operator takes a bit or std_ulogic value and yields a
+                  boolean result
+
+
+                - this conversion is applied to the result of the entier
+                  logical chain, so we can't mix bit and std_ulogic
+
+
+
+2.3 Type Classification
+    - Scalar types are all those composed of individual values that are ordered
+
+    2.3.1 Subtypes
+        - often a model contains objects that should only take on a restricted
+          range of the complete set of values
+
+            - a subtype can be used to craft such a restricted range of
+              subtypes
+
+            - the condition that determines which values are in the subtype is
+              called a constraint
+
+        - subtype declaration
+            subtype <identifier> is <subtype indication>;
+
+        - subtype indication
+            <type_mark> [ range <simple expression> (to | downto) <simple expression>]
+
+
+        - example
+            subtype small_int is integer range -128 to 127;
+
+        - you can mix a subtype and basetype values with addition
+
+
+
+        - if a type and a subtype are defined with ranges in different
+          directions, then it is the subtype range which actually counts
+
+
+    2.3.2 Type Qualification
+        - we can use the ' operator to make it more obvious which type we are
+          using
+
+        - for instance if we have the following types
+
+            type logic_level is (unknown, low, undriven, high);
+            type system_state is (unknown, ready, busy);
+
+
+        - when we make assignments, we can do something like this to make if
+          obvious if we are talking about logic_level or system_state
+
+            logic_level'(unknown)
+            system_state'(unknown)
+
+
+        - you can also do the same to make it obvious if we are talking about a
+          type or its subtype
+
+
+    2.3.3 Type Conversion
+
+        - the same as python, its like a function call looiking thing
+            integer(3.6)
+            read(123)
+
+
+        - converting from float to integer ROUNDS
+
+        - you can convert between 'closely related types'
+            - whatever that means
+
+
+
+2.4 Attributes of Scalar Types
+    - a type defintes a set of values and a set of applicable operations
+        - there are also predefined attributes that are used to give
+          information about values in a type
+
+    - Attributes are written by following the name with the ' operator and the
+      attribute name
+
+    - attributes applicable to all scalar types
+        T'left          leftmost value of T
+        T'right         rightmost value of T
+        T'low           least value of T
+        T'high          greateset value of T
+        T'ascending     true if T is an ascending range, false otherwise
+        T'image(x)      a string representing the value of x
+        T'value(s)      the value in T that is represented by s
+
+    - attributes applicable to just discrete and physical types
+        T'pos(x)        position number of x in T
+        T'val(n)        value in T at position n
+        T'succ(x)       value in T at position one greater than that of x
+        T'pred(x)       value in T at position one less than that of x
+        T'leftof(x)     value in T at position one to the left of x
+        T'rightof(x)    value in T at position one to the right of x
+
+        - for integers, the value os T'pos(x) is the same as the number, but it
+          is of type 'universal integer'
+            - it is the integer number of base units for the given type
+
+
+        - this causes an error
+            T'succ(T'high)
+            T'pred(T'low)
+            T'rightof(T'right)
+            T'leftof(T'left)
+
+2.5 Expressions and Predefined Operations
+    - There are quite a few built in operators
+        - all of the logical
+        - all of the regular math ones
+        - comparison operators
+        - matching operators
+        - shifts and rotates
+
+    - function operations
+        - maximum() and minimum()
+
+        - to_string()
+            - for floating point, you can give the second number as the number
+              of digits after the decimal to include in the string
+
+                to_string(456.78, 4) = "456.7800"
+
+            - you can also use the printf format
+                to_string(456.78, "%-12.3E") = "4.568E+02   "
+
+            - you can also use it to display something in terms of a subtype
+                to_string(29500 ns, us) = "29.5 us"
+
+
+        - rising_edge() and falling_edge()
+            - can be applied to signals of type boolean, bit or std_ulogic
+
+            ```
+            signal clk, d, q : bit;
+            ...
+            dff : process is
+            begin
+                if rising_edge(clk) then
+                    q <= d;
+                end if;
+                wait on clk;
+            end process dff;
+            ```

@@ -1,0 +1,211 @@
+- We can manipulate data within processes using sequential statements
+    - expressions and control structures are both examples of sequential
+      statemetns
+
+3.1 If Statements
+    - if statment
+        if <condition> then
+            {<sequential statment>}
+        {elseif <condition> then
+            {<sequential statment>}}
+        [else
+            {<sequential statment>}]
+        end if [if <label>];
+
+
+    ```
+    if en then
+        stored_value := data_in;
+    end if;
+    ```
+
+
+    ```
+    entity thermostat is
+        port (  desired_temp, actual_temp : in integer;
+                heater_on : out boolean );
+    end entity thermostat;
+    --------------------------------------------------
+    architecture example of thermostat is
+    begin
+        controller : process (desired_temp, actual_temp) is
+        begin
+            if actual_temp < desired_temp - 2 then
+                heater_on <= true;
+            elsif actual_temp > desired_temp + 2 then
+                heater_on <= false;
+            end if;
+        end process controller;
+    end architecture example;
+    ```
+        - the process statement includes a "sensitivity list" after the
+          'process' keyword
+            - this is a list of signals to which the process is sensitive
+            - when any of these values change it executes the code in the
+              process
+            - after executing the last statement it suspends again
+
+
+
+    3.1.1 Conditional Variable Assignments
+        - conditional variable assignment
+            [<label>:]
+            name := <expression> when <condition>
+                    {else <expression> when <condition>}
+                    [else <expression>];
+
+3.2 Case Statements
+    - case_statement
+        [case_<label>:]
+        case <expression> is
+            (when <choices> => {sequential statement})
+            {...}
+        end case [<case_label>];
+
+    - choices:
+        (simple expression | discrete range | others){ | <choices>}
+
+
+    ```
+    case opcode is
+        when add to load =>
+            operand := memory_operand;
+        when branch downto store =>
+            operand := address_operand;
+        when others =>
+            operand := 0;
+    end case;
+    ```
+
+    - all of the values in the expressions must be locally static, they can't
+      change through the course of the program and must be known at compile
+      time
+        - so you can use constants, but not variables
+
+
+    - all possible values in the selector expression must be present!
+        - they can only be present once
+        - we can use the 'others' as a blanket catch for everything else
+
+
+    3.2.1 Selected Variable Assignments
+        - there is a shorthand case statment for assignment
+
+        - selected variable assignment
+            [<label>:]
+            with <expression> select
+                <name> := {<expression> when <choices>, }
+                        <expression> when <choices>;
+
+            ```
+            with func select
+                result :=   operand1                when pass1,
+                            operand2                when pass2,
+                            operand1 + operand2     when add,
+                            operand1 - operand2     when subtract;
+
+
+3.3 Null Statements
+    - essentially a nop
+
+    - null statement
+        [<label>:] null;
+
+    - can be used in any place where a sequential statment is required
+
+
+3.4 Loop Statements
+    - infinite loop
+        [loop <label>:]
+        loop
+            {sequential statment}
+        end loop [<loop  label>];
+
+
+    3.4.1 Exit Statements
+        - basically a break
+
+        exit_statement
+            [<label>:] exit [<loop_label>][when <condition>]
+
+
+        - we can use labels to break out of a nexted loop
+
+            ```
+            loop_name : loop
+                ...
+                exit loop_name;
+                ...
+            end loop loop_name;
+            ```
+
+
+    3.4.2 Next Statements
+        - basically a 'continue'
+
+        - next_statement
+            [<label>:] next [<loop_label>] [when <condition>]
+
+
+    3.4.3 While Loops
+        - loop_statment
+            [<loop_label>:]
+            while <condition> loop
+                {sequential statement}
+            end loop [<loop_label>];
+
+        - I will only write things differnt than from a traditional programming
+          language
+
+
+    3.4.4 For Loops
+        - loop_statment
+            [<loop_label>:]
+            for <idenfitier> in <discrete range> loop
+                {sequential statement}
+            end loop [<loop label>];
+
+        - remember that discrete range can be something like (0 upto 5) or
+          something like an enumerated type
+
+
+
+
+3.5 Assertion and Report Statements
+    - assertion
+        - assertion statment
+            [<label>:] assert <condition>
+                    [report <expression>][severity <expression>];
+
+        - in simulation, the simulator is notified when an assertion is false
+        - in synthesis, the synthesizer assumes it to be true
+
+    - report
+        - we use report to know which assertion was violated, by sending a
+          message
+
+        ```
+        assert initial_value <= max_value
+            report "initial value too large";
+        ```
+
+        - we are given a special variable called input_string
+            assert current_character >= '0' and current_character <= '9'
+                report "Input number " & input_string & " contains a non-digit";
+
+
+        - you can also use the report statment on its own as print during
+          simulation
+            - to do newline though you have to use LF
+                report "Hello World!" & LF
+
+
+    - severity
+        - we can also specify the severity
+
+    - defaults
+        - the default report is "Assertion violation" and the default severity
+          is "error"
+
+
+

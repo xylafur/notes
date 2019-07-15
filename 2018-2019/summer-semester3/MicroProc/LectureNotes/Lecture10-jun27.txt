@@ -1,8 +1,6 @@
 - Instruction types
     - Arithmetic
 
-
-
     - Load / Store
         - read register operands
         - Calculate address using 16 bit offset

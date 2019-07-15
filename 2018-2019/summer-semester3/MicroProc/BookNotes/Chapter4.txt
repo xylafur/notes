@@ -537,7 +537,76 @@
                       stages to 'do nothing'
 
 
+4.8 Control Hazards
+    - Control Hazard: Delay in determining the proper instruction fetch
 
+    - simpler than data hazards and occur much less frequently
+        - nothing as effective as forwarding for avoiding control hazards
+
+    - There are two different simple schemes
+
+    - Assume Branch not Taken
+        - we can predict that the branch will not be taken at all times
+        - if the branch is taken then we have to discard all of the
+          instructions we predicted
+
+        - to discard instructions we simply change the control values to 0s
+            - we have to be able to flush instructions in the IF, ID and EX
+              stages though
+
+    - Reducing the Delay of Branches
+        - we can improve branch performance by reducing the cost of the taken
+          branch
+
+        - we can move the determination of the need for branching earlier than
+          the MEM stage
+
+            - we have to move the address computation earlier
+                - this is easy to change, we just move the branch adder from
+                  the EX stage to the ID stage
+
+
+            - the harder part is the branch decision
+                - we can check equality by xoring both of the inputs and then
+                  or'ing the resulting bits together
+                    - we have to use forwarding for this though, because what
+                      if our thing we are comparing is yet to be updated by a
+                      previous isntruction
+
+                    - there are two complicating factors
+                        1. During ID we ahve to decide whether a bypass to the
+                           equality unit is needed
+                            - the bypased source operands of a branch can come
+                              either from ALU/MEM or MEM/WB
+
+                        2. it is possible that a data hazard can occur and a
+                           stall is needed
+
+            - implementing this will reduce the stall to one cycle
+                - we add a IF.Flush control line to flush out the IF/ID
+                  pipeline register if there is a need
+
+
+    - Dynamic Branch Prediction
+        - with deeper pipelines the performance impact from missed branches is
+          worse
+
+        - with dynamic branch prediction, we look at if the branch was taken
+          last time
+
+        - branch prediction buffer, or branch history table
+            - implementation of dynamic branch prediction
+
+            - there is small memory indexed by the lower portion of the address
+              of the branch instruction
+                - the memory contains a bit that says wether or not it was
+                  taken last time
+
+            - we then fetch based on this prediction
+
+            - often a 2 bit scheme is used, the prediction must be wrong twice
+              before the table is updated
+                - it is represented as a DFA with 4 states
 
 
 4.9 Exceptions
