@@ -1,0 +1,119 @@
+slides are at slides.unsupported.io/perms101
+
+
+- FACLs
+    - file access control lists
+
+- Permissions basics
+    - the first thing tells you device / file type
+    - this will be an 'l' for a link, 'c' for character device
+
+    - The last thing tells us there are extra attributes
+        - such as the file being immutable, has FACLs attached
+
+        - . or + or ' '
+
+        - the Plus, '+'
+            - means there are facls attached
+
+
+- chown / chmod
+    - chmod
+        - you can use symbolic representation
+
+            - add read/write/execute to the user bits
+                chmod u+rwx
+
+            - remove read/write/execute to the group bits
+                chmod g-rwx
+
+            - set read/write for other bits
+                chmod o=rw
+
+            - capital vs lowercase symbolic character
+                - capital means that you will only add that permission if its
+                  already there, meaning some other thing has that permission
+                  (user, group or other)
+
+
+- SUID/SGID/Sticky Bit
+    - set of special permissions,
+
+    - SUID (set UID bit) / SGID (set GID bit)
+        - configure a command, so that when a command is run, it is run as the
+          owner of that file
+
+        - the passwd command uses this, when you run passwd, it runs as the
+          root user
+
+    - sticky bit
+        - only the owner can delete the file
+
+
+    - setting the SUID/SGID bits
+        - adding SUID bit
+            chmod o+s file
+
+            - you see the execute bit of the user permissions as an 's'
+                - /usr/bin/passwd is an example of this
+
+            - you see a lower case s if you have execute permissions, an
+              upercase S if there are execute permissions
+          
+        - SGID
+            - if you have this set, when a file is created in that dir,
+              regardless of who creates it, the group owner of that file will
+              be the group of the parent directory
+
+              chmod u+g file
+
+        - adding the stick bit
+            chmod +t file
+
+            - only the owner of that file can remove that file.
+                - you see that this is the case with the 't' at the end of the
+                  permissions list
+
+                - obviously root can still remove it
+
+            - /tmp has a sticky bit
+
+            - this is a directly level permission, meaning that its not applied
+              to individual files, rather all files in the directory
+                - so if you add the sticky bit to a dir, this won't change any
+                  of the permissions of any of the files, but other users won't
+                  be able to remove any of those files
+
+
+
+
+- umask and /etc/skel
+    -umask
+        - gives us a mask for default file creation
+            - if we have the mask 000 then when we create a file everyone will have
+              all permissions (not execute)
+
+        - has a value of 022 by default (read write execute for creator, read
+                                         for everyone else)
+
+        - you can do `umask -S` to see the default permissions in a symbolic
+          format
+
+    - /etc/skel
+        - a series of files that get added on for new user
+        - this is used to create directories when a new user is created
+          (.screenrc, .bashrc, etc)
+
+- FACLs
+    -  file access control lists
+        - additioal permissions for files beyond user, group, other
+
+        - if you want to give permissions to one additional person beyond the
+          user who created it
+
+    - you use `setfacl`
+
+
+        - umask is 
+        
+

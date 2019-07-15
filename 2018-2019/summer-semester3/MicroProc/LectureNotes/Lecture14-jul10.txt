@@ -1,0 +1,183 @@
+- Today we will finish chapter 5!
+- Our test on Tuesday is chapter 4
+- Our final will only be chapter 5 and 6
+
+
+
+- Assume we are running a program on our embedded MIPS processor
+    - its the one that we were talking about at the end of class last time
+
+    - 12 stage pipeline, instructoin and data access on each cycle
+    - seperate I-Cache and D-Cache
+        - each 16KB, 256 blocks, 16 words per block
+            - offset = 6 bits
+            - index = 8 bits
+
+
+    - SPEC2000 miss rates
+        - I-Cache = 0.4%
+        - D-Cache = 11.4%
+
+
+    - Say we have a program of 10000 lines
+        - How much time does it take to run this program?
+            - You can determine the number of cycles directly from CPI
+
+            - Then from the number of cycles you can directly determine the CPU time
+              based on clock speed
+                - this assumes that everything is already where you need it though!
+                    - the ideal case
+
+                - we know that there is a miss rate!
+
+
+
+- Measuring Cache Performance
+    - Components of CPU time
+        - Program Execution Cycles
+            - this includes the cache hit time
+
+        - Memory Stall Cycles
+            - mainly from cache misses
+
+
+        Total Cycles = Cycles to execute instructions + cycles to get things from ram
+
+        Cycles to get things from ram = cycles to get data from ram
+                                        + cycles to get instructions from ram
+
+
+
+    Memory Stall Cycles = (Memory Access / Program) * Miss Rate * Miss Penalty
+                        = (Instructions / Program) * (Misses / Instruction) * Miss Penalty
+
+
+        - The access time between cache and memory is something like 25 times slower than
+          the access time between CPU and cache
+
+
+        - this stall cycles is imply included in the cycle count just to execute all of
+          the instructions in the ideal case
+
+
+        - We can use this formula for both instruction and data misses
+
+
+    - You only ever even go to cache when you mess with memory
+        - when things are in registers, we don't ever even need to go to memory
+
+        - we might need to fetch the instruction itself from memory, but the data will be
+          in registers!
+
+        - so when doing performance calculations, we only need Dcache for lw/sw
+          instructions
+
+
+
+- Cache Performance Example
+    - Given
+        - I cache miss rate = 2%
+        - D Cache Miss rate = 4%
+        - Miss Penalty = 100 cycles
+        - Base CPI = 2
+        - Load and Stores are 36% of instructions
+
+    - Miss Cycles per Instruction
+        - say we have 100 instructions
+
+        Miss Penalty for Instruction = 100 * 0.02 * 100 = 200 cycles
+
+
+        - generically, instead of using a particular number of cycles
+            I * 2 cycles
+
+
+    - Miss cycles for Data
+        I * 0.36 * 0.04 * 100 = 1.44 * I cycles
+
+
+    Total Number of Cycles = (I * CPI) + (I * 2) + (I * 1.44)
+                           = I * (3.44 + CPI)
+
+
+- Average Access Time
+    - if there is no misses, access time is the base
+        - the the base CPI
+
+    - Average Memory Access Time (AMAT)
+        AMAT = Hit Time + Miss Rate * Miss Penalty
+
+        - in the ideal case, our AMAT would just be hit time
+
+- Performance Summary
+    - When the CPU performance is increased
+        - miss penalty becomes more significant
+
+    - Virtual Memory
+        - Use main  memory as a cahce for secondary storage
+
+
+        - this is managed jointly by CPU hardware and OS
+
+        - all of the programs share main memory
+            - each program gets a private virtual addres space, holding its frequently
+              used code and data
+
+            - provides memory protection as well
+
+        - CPU and OS translate virtual addresses into physical addresses
+            - VM "Block" is called a "page"
+
+
+            - VM translation Misses are called page faults
+
+
+        - Page Fault Penalty
+            - somewhere aroud millions of clock cycles
+
+
+            - we try to minimize page fault rate
+                - fully associative placement
+
+                - smart replacement algorithms
+
+
+
+        - Block placement
+            - Direct Mapped (1 way associative)
+                - one choice for placement
+
+            - n-way set associative
+                - n choices within a set
+
+                - you know that you only have to seach n rooms for a particular data
+                  element
+
+            - fully associative
+                - any location
+
+                - you will have to seach every location in cache for an entry
+
+
+        - Replacement Algorithms
+            - Least Recently Used
+
+            - Random
+
+        - Virtual Memory
+            - LRU aproximation with hardware support
+
+
+- At each level in the memory heirarchy
+    - Block replacement
+
+    - write policy
+        - write through
+            - update both upper and lower levels at the same time
+
+            - simplifies replacement but requires a write buffer
+
+        - write back
+            - this is used for virtual memory, since the disk write latency is so high
+
+            - write to the slower storage at a particular time rather than immedietley

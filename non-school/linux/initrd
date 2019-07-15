@@ -1,0 +1,21 @@
+- initrd (Initial RAM disk) is an initial root file system, mounted prior to when the
+  real file system is avaliable
+    - bound and loaded as part of kernel boot procedure
+    - then mounted by the kernel
+        - part of 2 stage boot process
+        - modules needed to make the real file systems avaliable are loaded during this
+          boot procedure
+
+    - contains only minimal things needed to acomplish its goals
+
+- anatomy
+    - contains the executables and  ystem files needed to support the second state boot
+      of linux filesystem
+
+    - supposedly it can be found in /boot/initrd-*.img
+        - it is a gzipped img file
+        - you can use cpio to make directories and files from the img file
+
+    - contains things like a basic shell intrpreter, insmod and lvm
+
+    - also has the basic linux fs structure
