@@ -1,4 +1,4 @@
-2.1 Constants and Variables:
+21 Constants and Variables:
     - objects
         - a named item in a VHDL model that has a value of a specified type
 

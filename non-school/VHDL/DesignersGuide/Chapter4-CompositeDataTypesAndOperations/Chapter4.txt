@@ -1,0 +1,373 @@
+- Composite data types exist as either an array or a record
+
+4.1 Arrays
+    - collection of values, all of which are the same type
+
+    - array type definition
+        array (<discrete range> {, ...}) of <element_subtype_indication>;
+
+    - discrete range
+        <discrete_subtype_indicatino> | <simple_expression> (to | downto) <simple_expression>
+
+    subtype indication
+        <type mark> [range <simple expression> (to | downto) <simple_expression>]
+
+
+
+    ```
+    -- more appropriate for big endian systems
+    type word is array (0 to 31) of bit;
+
+    -- better for little endian systems, doesn't elaborate as to why
+    type word is array (31 downto 0) of bit;
+
+    -- indexes do not have to be numeric
+    type controller_state is (initial, idle, active, error);
+    -- this is the same as
+    type state_counts is array (idle to error) of natural;
+
+    -- assuming that the type of idle and error made since in the context
+    -- you could manually specify the type
+    type state_counts is array (controller_state range idle to error) of natural;
+
+
+
+
+    -- you can also create an array for every value of an index type
+    subtype coeff_ram_address is integer range 0 to 63;
+    type coeff_array is array (coeff_ram_address) of real;
+    ```
+
+    - indexing
+        - index using '(' and ')' instead of '[' and ']'
+
+    4.1.1 Multidimesnsional Arrays
+        - the index ranges for different dimensions do not have to be of the
+          same type, you declare the multidimensional array with a comma rather
+          than an array of array
+
+        - you access elements with the comma seperated value as well
+
+          ```
+          type symbol is ('a', 't', 'd', 'h', digit, cr, error);
+          type state is range 0 to 6;
+          type transition_matrix is array (state, symbol) of state;
+
+          variable transition_table : transition_matrix;
+          transition_table(5, 'd');
+          ```
+
+
+    4.1.2 Array Aggregates
+
+        - aggregate
+            ([<choices> =>] <expression) {,...}
+        - you can pre populate arrays with values
+
+
+        ```
+        type point is array (1 to 3) of real;
+        constant origin : point := (0.0, 0.0, 0.0);
+        variable view_point : point := (10.0, 20.0, 0.0);
+        ```
+
+
+        - you can use the choises thing to assign values to particular indexes
+
+        cohices
+            (<simple expression> | <discrete range> | others) {|...}
+
+            ```
+            variable view_point : point := (1 => 10.0, 2 => 20.0, 3 => 0.0);
+            ```
+
+        - its good for when you have a big array but you only want to give the
+          values of a few of the elements
+            - if you use 'others', it has to be the last thing in the aggregate
+
+        ```
+        variable coeff : coeff_array := (0 | 2 => 1.6, 1 => 2.3, others => 0.0);
+        ```
+
+        - the left most value is the first index, the last value if the last
+          index
+
+        - you can use aggregates to make a thing like a struct
+
+        ```
+        type byte is array (7 downto 0) of bit;
+        variable d_reg : byte;
+        variable a, b : bit;
+        -- could write
+        d_reg := (a, "1001", b, "00");
+        -- or
+        d_reg := (7 => a, 6 downto 3 => "1001",
+                  2 => b, 1 downto 0 => "00");
+        ```
+
+
+        - with signal assignments, you can do something like tuple expansion in
+          python
+
+            ```
+            ( z_flag, n_flag, v_flag, c_flag ) <= flag_reg  ;
+
+            signal status_reg : bit_vector(7 downto 0);
+            signal int_priority, cpu_priority : bit_vector(2 downto 0);
+            signal int_enable, cpu_mode : bit;
+
+            (2 downto 0 => int_priority,
+             6 downto 4 => cpu_priority,
+             3 => int_en, 7 => cpu_mode) <= status_reg;
+            ```
+
+    4.1.3 Array Attributes
+        A'left(N)               Left bound of index range of dimension N of A
+        A'right(N)              Right bound of index range of dimension N of A
+        A'low(N)                Lower bound of index range of dimension N of A
+        A'high(N)               Upper bound of index range of dimension N of A
+        A'range(N)              Index range of dimension N of A
+        A'reverse_range(N)      Reverse of index range of dimension N of A
+        A'length(N)             Length of index range of dimension N of A
+        A'ascending(N)          true if index range of dimension N of A is an
+                                ascending range, false otherwise
+        A'element               The element subtype of A
+
+
+4.2 Unconstrained Array Types
+    - so far we have seen only 'constrained' arrays, since the type constrains
+      the index value to be within a specific range
+
+    - for unconstrained arrays, you just indicate the type of the index without
+      specifying bounds
+
+    array_type_definition
+        array ( (<type mark> range <> ) {,...} ) of <element subtype indication>)
+
+        - "<>" is often called "box"
+            - it is a placeholder for the index range, it is filled in later
+
+    ```
+    type sample is array (natural range <>) of integer;
+
+    -- we have to give the constraint when the an object is created though
+    variable short_sample_buf : sample(0 to 63);
+
+    -- you can also create a subtype which is a constained version of an
+    -- unconstrained type
+    subtype long_sample is sample(0 to 255);
+    variable new_sample_buf, old_sample_buf : long_sample;
+
+
+    4.2.1 Predefined Array Types
+        - strings
+            - declared as
+                type string is array (positive range <>) of character;
+
+        - Boolean Vectors, Integer Vectors, Real Vectors and Time Vectors
+            type boolean_vector is array (natural range <>) of boolean;
+            type integer_vector is array (natural range <>) of integer;
+            type real_vector is array (natural range <>) of real;
+            type time_vector is array (natural range <>) of time;
+
+
+        - Bit Vectors
+            type bit_vector is array (natural range <>) of bit;
+
+            -- example for little endian
+            subtype byte is bit_vector(7 downto 0);
+
+            variable channel_busy_register : bit_vector(1 to 4);
+
+        - Standard Logic Arrays
+            - the package "std_logic_1164" provides an unconstrained array type
+              for vectors of standard logic values
+
+            type std_ulogic_vector is array ( natural range <> ) of std_ulogic;
+
+            - like bit vectors, but provides more detail in representing the
+              electrical levels used in a design
+
+        - String and Bit String LIterals
+
+            - basically you can give a predefined set of values in quotes for
+              strings and bit vectors instead of doing the => array aggregate
+              notation
+
+            - a string literal can be used in the place of an array aggregate
+              for value type of string
+
+            constant ready_message : string := "Ready      ";
+
+
+            variable current_test : std_ulogic_vector(0 to 13)
+                                    := "ZZZZZZZZZZ----";
+
+
+            - base
+                - you can specify the base of the bit string
+
+                constant all_ones : std_ulogic_vector(15 downto 0) := X"FFFF";
+
+
+    4.2.2 Unconstrained Array Elemment Types
+        - arrays can have elements of array types, which are constrained or
+          unconstrained
+
+        - you can have partially constrained arrays if a constained array
+          contains unconstrained arrays, or the other way around
+
+            - if you have a partially constained type, you have to specify the
+              constraints for the unconstained dimensions when you create an
+              object
+
+                ```
+                type sample is array (natural range <>) of integer;
+                type dozen_samples is array (1 to 12) of sample;
+                type sample_set is array (positive range <>) of sample;
+
+                -- when both inner and outer are unconstrained
+                variable main_sample_set : sample_set(1 to 100)(1 to 20);
+
+                -- when the inner is unconstained but the outer is constrained
+                variable bakers_samples : dozen_samples(open)(0 to 9);
+                ```
+
+            - when you have arrays of arrays, its like in C where you have two
+              sets of () (well in C its [], but same idea)
+
+            - when you only use a single size indicator for the creation of an
+              array object, that refers to the top level
+                - if the top level is constrained and the bottom level is not,
+                  to say you are talking about the inner type and not the outer
+                  you can write the size of the outer as 'open' as seen in the
+                  above example
+
+
+    4.2.3 Unconstrained Array Ports
+        - an important used of an unconstrained array type is to specify the
+          type of an array port
+            - allowing us to write an entity interface in a general way
+
+        - when you have a process sensitive to an array, if any of the elemnts
+          are updated the process is triggered
+
+
+        - basically if you use unconstained arrays as ports and then use things
+          like A'range inside processes you can have really reusable entities
+
+
+4.3 Array Operations and Referencing
+    - this section is about operators that can be applied to entire arrays
+
+    4.3.1 Logical Operators
+        - and, or, nand, nor, xor and xnor can be applied to one dimensional
+          arrays of bit or Boolean elements
+
+            - can also be applied to two arrays of std_ulogic_vector
+
+            - the operands must be of same length and type
+
+            - these operators can be applied in either biary or unary format
+
+
+    4.3.2 Shift Operators
+        - can be used with one-dimensional arrays of bit or boolean vlaues
+
+        - the non logical ones can also be applied to std_ulogic_vector type
+
+    4.3.3 Relational Operators
+        - can be applied to one dimensional arrays.
+            - the array elements can be of any discrete type
+            - the lengths of the arrays don't have to be the same
+
+        - relation operators compare the same indexes from each of the two
+          arrays one at a time
+            - if they are the same it continues, otherwise it returns a value
+              based on which operator if they are different
+
+            - the lengths are also considered
+
+                - this is true for example
+
+                    B"001000" < B"10"
+
+        - for ulogic_vectors using the ?= operator, the inputs must be the same
+          length
+
+
+        - Maximum and Minimum Operands
+            - the 'maximum(a, b)' and 'minimum(a, b)' operations are defined in
+              terms of the '<' operator
+
+            - these operators can be called on just an array as well
+
+            maximum(string'("WXYZ")) = 'Z'
+
+    4.3.4 Concatenation Operator "&"
+        - joins two array values end to end
+
+
+
+    4.3.5 To_String Operations
+        - can be applied to 1d arrays that only contain character elements
+            - apparently it can also be applied to other array types
+
+            - to_ostring and to_hstring exist
+                - they will convert a bit_vector into octal and hex form
+
+
+    4.3.6 Array Slices
+        - with slice notation you specifyy the left and right index values of
+          part of an array
+
+        ```
+        type array1 is array (1 to 100) of integer;
+        type array2 is array (100 downto 1) of integer;
+        variable a1 : array1;
+        variable a2 : array2;
+
+        a1(11 to 20)
+
+
+    4.3.7 Array Type Conversions
+        - a value of an array type can be converted to another value of array
+          type if they are closely related
+
+            - they are closley related if they have the same number of
+              dimensions and their array elements are closley related
+
+
+    4.3.8 Arrays in Case Statements
+        - for one dimensional character arrays, like bit_vector,
+          std_ulogic_vector
+
+        - the expression must be the same length as the case statements
+
+        - the value for the case statment must be locally static
+
+
+    4.3.9 Matching Case Statements
+        - we can add in '-' don't care elements to indicate we don't care about
+          that particular element
+            - we have to use the "Matching Case Statement" for this though
+
+
+        ```
+            case? <expression> is
+            end case?;
+
+        ```
+
+        - the expression itself cannot contain any '-' elements, just the
+          choice values
+
+
+
+4.4 Records
+    - seems to be like a dict type
+
+
+
+
+          
