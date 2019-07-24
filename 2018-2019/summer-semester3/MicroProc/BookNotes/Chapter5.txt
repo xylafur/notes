@@ -1,0 +1,233 @@
+###############################################################################
+#   Large and Fast: Exploiting Memory Hierarchy
+###############################################################################
+
+5.1 Introduction
+    - Principle of Locality
+        - underlies how programs operate
+            - programs access a relatively small portion of their address space at
+              any instant of time
+
+        - Temporal Locality (locality in time):
+            - If something is referenced, it tends to be referenced again soon
+
+        - Spatial Locality (locality in space):
+            - If something is referenced, items whose addresses are close tend to
+              be referenced soon
+
+        - Programs are often written in such a way that locality is utilized
+            - with loops, we see temporal locality in reference to the code inside
+              the loop
+
+            - we see that the instructions in a program have sequential locality
+              since the instructions are accessed one after another
+
+        - The memory heirarchy takes advantage of locality
+
+        - Memory Heirarchy
+            - data is only copied between two adjacent levels at a time
+
+            - the minimum level of information that can be present, is called
+              either a "block" or a "line"
+
+                - if the processor finds a block it was looking for in a high level
+                  of the memory heirarchy, this is called a hit
+                    - if it doesn't find it, and has to request it from the lower
+                      level, this is called a miss
+
+                - Hit time is the time needed to access something in the upper
+                  level
+
+                - Miss Penalty is how much time is spent getting that data from a
+                  lower level when there is a miss
+
+5.2 Memory Technologies
+    - There are 4 primary technologies used today in memory heirarchies
+        - SRAM (Cache)
+            - Memory arrays that usually have a single R/W access port
+            - typically used 6-8 transistors per bit to prevent disturbing data
+              when read
+
+        - DRAM (Main Memory)
+            - Value is kept in cells by a capacitor
+            - a single transistor either reads the value stored in the
+              capacitor or overwrites it
+                - because they only use this single transistor per bit, they
+                  are cheaper and denser than SRAM
+
+            - must be periodically refreshed by reading the value and writing
+              it back
+                - There are rows of data that can be refreshed at a time
+
+                - these rows are buffered in a SRAM chip for better access
+                  times
+
+            - THey are hooked up to the system clock that removes the need for
+              the CPU and DRAM to have to synchronize
+                - THis is called SDRAM (synchronous dynamic RAM)
+
+            - There is also DDR SDRAM
+                - Double Data Rate SDRAM
+
+                - data transfers happen on both the rising and falling edge of
+                  the clocks
+
+            - Servers typically use DIMMs
+                - Dual inline memory modules
+                - typically contain 4-16 DRAMs and are organized to be 8 bytes
+                  wide for servers
+
+                - Since not all DRAM chips are used on the same access, the
+                  term 'memory rank' is used to refer to subsets of chips in a
+                  DIMM
+
+
+        - Flash Memory (non volatile secondary memory)
+
+        - Magnetic Disk (secondary memory)
+            - Collection of platters that rotate on a spindle at 5400 - 15000
+              revolutions per minute
+                - the platters have magnetic recording material on either side
+
+                - a small arm with an electromagnetic coil called the
+                  "read-write" head is located just above the surface
+
+            - Each disk is broken down into concentric cicles called tracks
+                - there are typically tens of thousands of tracks on a given
+                  platter
+
+                - Tracks are divided into "sectors" that contain information
+                    - each track may have thousands of sectors
+
+                    - sectors are usually 512 to 4096 bytes in size
+
+
+            - The disk heads for each surface are connected together and move
+              together
+                - the term "cylinder" is used to refer to all the tracks under
+                  the heads at a given point
+
+            - There is a 3 stage process for the disk to acccess data
+                1. Move the head over the proper track
+                    - this is called seek time
+
+                2. Wait for the desired sector to move under the head
+                    - this is called rotational latency
+
+                3. Transfer
+                    - influenced by the seek time of the drive
+
+
+
+5.3 The basics of Caches
+    - Cache is the first level of memory, closest to the processor, after
+      registers
+
+    - Direct Mapped Cache
+        - the simplest type of cache
+        - the location of a particular piece of data in cache is obtained from
+          the modulo of its address
+
+          (Block address) modulo (Number of blocks in the cache)
+
+        - how do you know if the data in that location in cache coresponds to
+          the piece of data you are looking for?
+            - we add a set of "tags" to the cache, which has the upper bits of
+              the address
+
+        - there is a valid bit added as well
+
+
+    - Cache Misses
+        - when a cache miss happens, the pipeline is stalled
+            - more sophisticated designs can keep processing while the data is
+              fetched, but we assume a simplistic model
+
+        - when we hace a miss, this is the process
+            1. send the original PC value to the memory
+            2. Instruct main memory to perform a read and wait for the memory
+               to complete its access
+            3. Write the cace entry
+            4. Restart the instruction execution at the first step, this
+               fetches the instruction and the data is found in cache
+
+    - Cache Writes
+        - data in cache coresponds to data in memory,
+            - if we update data in cache, we need to update it in memory as
+              well in some way
+
+        - Write Through
+            - Always write data into both memory and cache
+
+            - this is very inefficient because we have to wait for a MM write
+
+        - Write Back
+            - when a write occurs, the new value is written only to the block
+              in the cache
+            - when the block is replaced, it is written back to main memory
+              with the new value
+
+        - there are write misses as well
+            - if we try to write to something that is not in cache, we have to
+              move it into cache, write it and then write it back to memory
+
+5.4 Measuring and Improving Cache Performance
+    CPU Time is influenced by both time executing instructions and time
+    fetching data
+        CPU time = (CPU execution clock cycles + Memory-stall clock cycles) * Clock cycle time
+
+        Memory-stall clock cycles = (Read-stall cycles + Write-stall cycles)
+
+        Read-stall cycles = Reads /Program * Read miss rate * Read miss pen nalty
+
+        Write-stall cycles = (writes / program * write miss rate * write miss penalty)
+                             + write buffer stalls
+
+
+    - Both cache hits and cache misses affect data access time
+        - AMAT (Average memory access time) is used to include both
+
+        AMAT = Time for a hit + Miss rate * Miss penalty
+
+
+    - Reducing Cache Misses by More Flexible Placement of Blocks
+        - Fully Associative Cache
+            - a block in memory may be associated with any entry in cache
+
+            - you have to search through all cache entries to find the
+              particular block
+
+            - the search can be done in parallel with a comparator associated
+              with each cache entry
+
+        - Set associative
+            - Somewhere between fully associative and direct mapped
+
+            - there is a fixed number of locations where a given block could be
+              placed
+
+            - a set associative cache with N locations is called an N-way set
+              associative cache
+                - each block maps to a unique set
+                - then you search through that set for the block
+
+            - Direct mapped is basically a 1 way SAC
+            - FAC is basically a M-way SAC (where M is the size of cache in
+              blocks)
+
+        - Inceasing the amount of associativity reduces miss rate, but leads to
+          higher hit times
+
+
+
+
+    - Locating a Block in Cache
+        - Address Tag give the Block address
+            - every tag within a given set is checked to see if it is correct
+
+        - The index value is used to select the set
+
+    - Choosing WHich Block to replace
+        - The most commonly use scheme is LRU (least recently used)
+            - the block replaced is the one unused for the longest time
+

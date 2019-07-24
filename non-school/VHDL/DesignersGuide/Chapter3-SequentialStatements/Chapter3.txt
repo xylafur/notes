@@ -148,7 +148,7 @@
 
 
     3.4.3 While Loops
-        - loop_statment
+        - loop_statment;
             [<loop_label>:]
             while <condition> loop
                 {sequential statement}

@@ -1,0 +1,151 @@
+- Digital systems modules can be divided into both an internal and exteral viwe
+    - in VHDL we can seperate the description of a model into entity
+      declaration
+    - we can seperate the implementation of a model into architecture bodies
+
+5.1 Entity Declarations and Architecture Bodies
+
+    - Syntax
+        - entity declaration
+            entity <identifier> is
+                [port ( <port interface list> ); ]
+                {<entity declarative item>}
+            end [entity] [<identifier>];
+
+        - interface list
+            (<identifier {, ...} : [ <mode> ] <subtype indication> [ := <expression) {;...}
+
+        - mode
+            in | out | buffer | inout
+
+    - ports are basically the same as pins on a circuit
+        - each port has a type, specifies kind of info communicated
+
+        - each port has a mode
+            - how information flows into or out of it
+
+            - buffer is for a port that provides data to external connections
+              and is also used internally
+
+    - we can specify default values
+        - if the ports are left unconnected that default value is what they
+          will be
+        - if the port is unused, the default value is unused
+
+    - you don't need to have ports
+        - the top level entity might not have ports, but what other modules
+          would not recieve input or give output?
+
+
+    - architecture
+        - can either be comprosed of processes, or a collection of components
+          representing sub-circuits
+
+
+        - signals can be used for intermediate values
+            - these signals are analogous to the internal wires of a module
+
+        - syntax
+            - architecture_body
+                architecture <ident> of <entity name> is
+                    { <block declarative item> }
+                begin
+                    { <concurrent statement> }
+                end [architecture] [ <identifier> ];
+
+        - the block declarative items section can ibnclude things like
+          constants, tpyes, signals and more
+
+
+    - 5.1.1 Concurrent Statements
+        - describe the architecture body
+            - a process is a type of concurrent statement
+
+    - 5.1.2 Signal Declarations
+        - when you need internal signals to an architecture body, you use
+          signal declarations
+
+            - syntax
+                signal <identifier> {, ...}: <subtype indication> [ := <expression> ]:
+
+        - you can have signals that are only internal to the architecture and
+          not asscessable outside
+
+
+5.2 Behavrioal Descriptions
+    - processes are executed in reponse to changes of values of signals, and
+      uses the present values of signals to determine new values for other
+      signals
+
+    - signals are updated when a process pauses;
+
+    - 5.2.1 Signal Assignment
+        - syntax
+            - signal assignment statement
+                [ <label> : ] <name> <= [ <delay mechanism> ] <waveform>;
+
+            - waveform
+                ( <value expression> [ after <time expression> ]) {, ...} | unaffected
+
+        ```
+        y <= not or_a_b after 5 ns;
+        ```
+
+
+        - a signal defines a driver for a signal only if there is at least one
+          signal assignment for that signal
+            - a driver is a source for a signal
+            - for normal signals there can only be once source
+                - if we want to model things as muses or wired-or signals, we
+                  need to use the resolved signal
+
+        - unaffected
+            - representes no change in the value of the assigned signal
+
+
+        - conditional signal assignments
+            - conditional signal assignment
+                [ <label> :]
+                <name> <= [<delay mechanism>]
+                          <waveform> when <condition>
+                          {else <waveform> when <condition>}
+                          [else <waveform>]
+
+
+                ```
+                reg : process (clk) is
+                begin
+                    if rising_edge(clk) then
+                        q <= (others => '0') when reset else d;
+                    end if;
+                end process reg;
+                ```
+
+
+    - 5.2.2 Signal Attributes
+        S'delayed(T)            A signal that takes on the same values as S
+                                but is delayed by time T .
+
+        S'stable(T)             A Boolean signal that is true if there has
+                                been no event on S in the time interval T up
+                                to the current time, otherwise false.
+
+        S'quiet(T)              A Boolean signal that is true if there has
+                                been no transaction on S in the time interval
+                                T up to the current time, otherwise false.
+
+        S'transaction           A signal of type bit that changes value from
+                                ‘0’ to ‘1’ or vice versa each time there is a
+                                transaction on S .
+
+        S'event                 True if there is an event on S in the current
+                                simulation cycle, false otherwise.
+
+        S'active                True if there is a transaction on S in the
+                                current simulation cycle, false otherwise.
+
+        S'last_event            The time interval since the last event on S .
+
+        S'last_active           The time interval since the last transaction on S .
+
+        S'last_value            The value of S just before the last event on S .
