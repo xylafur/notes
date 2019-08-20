@@ -1,0 +1,35 @@
+- Harddrive
+    - SATA and SCSI put sectors in order on the same track on a hard drive
+        - he didn't elaborate a whole lot
+
+
+    - disk performance issues
+        - seek time
+            - locality and OS scheduling lead to smaller seek time
+
+        - smart disk controllers allocate physical sectors on disk
+            - present logical sector interface to host
+
+            - scsi, ata, sata
+
+
+        - disk drives have cache
+            - they prefetch sectors in anticipation of access
+
+            - helps to avoid seek and rotational delay
+
+
+- Measuring IO performance
+    - depends on
+        - hardware
+            - cpu
+            - memory
+            - controllers
+            - buses
+
+        - software
+            - operating system
+            - database managment system
+
+        - workload
+            - request rates and patterns

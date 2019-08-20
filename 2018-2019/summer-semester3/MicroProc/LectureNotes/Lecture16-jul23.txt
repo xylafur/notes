@@ -1,0 +1,107 @@
+##############################################################################
+#   Finishing Chapter 6
+##############################################################################
+
+- Workload
+    - how much we can bring from one place to another
+
+    - determined by the hardware and the OS
+        - 64K and 4096 are the standard
+
+    - The OS makes sure that we properly assemble everything
+
+- Time required getting data form Hard Disk
+    - The IO rate we calculated was 3,3333 IOPs
+
+
+    - IO Rate for Disks
+        - We have disks that have
+            - 15000 rpm
+            - 2.9 ms average seek time
+            - 112 MB / sec transfer rate
+
+        - Remember for disk, influencing components
+            1. Queue
+            2. Seek
+            3. RPM
+            4. Transfer Rate
+            5. Control Overhead
+
+
+        - Calculating time for random reads:
+                - if no information is given, assume 0 s
+
+            1. Queue:               0 s
+            2. Seek:                2.9 ms
+            3. RPM:                 Max: 4 ms, Avg: 2 ms
+            4. Transfer Rate:       0.558 ms per 64K IO
+            5. Control Overhead:    0 s
+
+
+            Total transfer time per IO = 5.458 ms
+
+
+            How many IO transfers per second?
+                183
+
+            - The solution to this is multiple disks!
+                - RAID!
+                
+                If we had 20 Disks in raid 0, we would have 3620 IOPs
+           
+        - Sequential Reads
+            - Seek Time on everything except the first IO is 0s
+            - Rotational Delay no every OP except the first is 0s
+            - The transfer is still 0.6ms per OP
+
+            - For 20 Ops, 16.079 ms
+
+        
+
+##############################################################################
+#   QUICK REVIEW
+##############################################################################
+
+- Chapters 5 and 6
+
+@@@@@@@@@@@@@
+@   Chapter 5
+@@@@@@@@@@@@@
+- Cache
+    - Direct mapped cache
+        - make sure you know all the components
+
+    - N Mapped cache
+
+    - Fully associative
+
+    - Given Hit rate / miss rate
+        - calculate performacnce, number of cycles, things like that
+        
+        - remember D cache only applies to load and store instructions
+            - we can only have a data miss when we are moving things in and out
+              of memory
+
+- AMAT
+
+- Replacement policy
+    - Random
+    - LRU
+
+- Write Policy
+    - Write Through
+    - Write Back
+
+@@@@@@@@@@@@@
+@   Chapter 6
+@@@@@@@@@@@@@
+- Disk Access
+    - Sectors, different types of delay
+
+- Disk to CPU
+
+##############################################################################
+#   Things we can bring
+##############################################################################
+WE CAN BRING ALL FORMULAS TO CLASS
+    CANNOT BRING ACTUAL EXAMPLES, BUT ANY OF THE FORMULAS
