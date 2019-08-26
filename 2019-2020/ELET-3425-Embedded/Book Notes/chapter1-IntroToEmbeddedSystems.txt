@@ -1,0 +1,213 @@
+1.1 Computer Architecture
+    1.1.1 Computers, microprocessors, memory and microcontrollers
+        - Von Neumann architecture
+            - Instructions are fetched from ROM on the same bus as data fetched
+              from RAM
+
+        - Microcontroller
+            - Microcomputer that has all of the components on a single chip
+
+
+        - Interface
+            - the collection of the IO Port, external electronics, physical
+              devices and the software which allow the computer to communicate
+              with the external world
+
+        - Memory Mapped IO
+            - the IO Ports are connected to the processor in a manner similar
+              to memory
+
+            - IO Ports are assigned addresses and software accesses IO using
+              reads and writes to the specific addresses
+
+            - Bus
+                - a bus is the collection of signals, which are grouped for a
+                  common purpose
+
+                - There are 3 ttype of signals for the bus
+                    - address
+                    - data
+                    - control
+
+                - The ARM Cortex-M has 5 busses
+                    - ICode bus: Used to fetch instructinos from flash ROM
+                        - all fetches are 32 bits
+
+                    - DCode bus: Used to fetch data or debug info from flash
+                      ROM
+
+                    - System Bus: Read write data from RAM or IO Ports
+
+                    - Private Peripheral Bus: Access some common peripherals
+                      like the input controller
+
+                    - Advanced High Performance Bus
+                        - Improces performance when communicating with high
+                          speed IO devices like USB
+
+
+                - Having multiple busses allows for simultaneous bus activity
+
+
+                - ARM COrtex is Harvard architecture (not von Neumann) because
+                  instructions are fetched on the ICode bus and data is
+                  accessed on the system bus
+
+
+
+                - Bus Transfer:
+                    - Complete data transfer
+
+                - Two Types of Bus Cycles
+                    - Read Cycle
+                        - Address is driven by the processor
+                        - Data is driven by Ram, ROM or input
+                        - The transfer occurs as data copied to the processor
+
+
+                        - Data is transfered into the processor.  THe processor
+                          first places the address on the address signals and
+                          then the processor issues a read command on the
+                          control signals
+
+                            - The Slave module (RAM, ROM, or IO) will respond
+                              by placing the contents at that address on the
+                              data signals
+
+                            - Lastly the processor accespts the data and
+                              disables the read command
+
+                    - Write Cycle
+                        - Address is driven by the processor
+                        - Data is driven by the processor
+                        - The transfer occurs as data is copied to output or RAM
+
+
+                        - The processor uses a write cycle to store data into
+                          memory or IO
+                            - The processor begins by placing the address on
+                              the address signals
+
+                            - Then the processor places the info it wishes to
+                              store on the data signals, then the procesor
+                              issues a write command on the control signals
+
+                            - the memory or IO will respond by storing the
+                              information into the proper place
+
+                            - after the processor is sure the data has been
+                              captured, it will disable the command
+
+
+            - DMA:
+                - Direct Memory Access
+
+                - Data is transfered directly from input to RAM or RAM to
+                  output
+
+
+
+    1.1.2 Cortex M Processor
+        - major components
+            - Bus Interface Units (BIU)
+                - 4 of these.  Icode, dcode, system, ppb, advanced high
+                  performance (thats 5 tho?)
+                - read data from the bus during a read cycle and write data
+                  during write cycle
+
+            - Effective Address Register (EAR)
+                - contains the memory address used to fetch the data needed for
+                  the current instruction
+
+            - Control Unit (CU)
+                - orchestrates sequence of operations in processor
+
+            - Instruction Register (IR)
+                - contains the op code for the current instruction
+
+            - Program Counter (PC)
+                - register R15
+
+                - In an embedded system, the PC usually points into a non
+                  volatile area, like flash
+
+            - Stack Pointer (SP)
+                - points into RAM
+                - top of the stack
+
+                - Register R13
+
+            - Program Status Register (PSR)
+                - status of the previous operation
+                - also contains operating mode flags like the interrupt enable
+                  bit
+
+            - Arithmetic Logic Unit (ALU)
+
+
+        - Phases of Execution
+            1. Fetch
+                - read instruction pointed to by PC
+
+            2. Decode
+                - the PC is also incremented to the next instruction
+
+            3. EXE
+                - the function of the instruction is performed
+
+            4. Store
+                - Written back to memory
+
+
+            - Each of these phases may take more than one cycle to execute
+
+        - RISC
+            - small number of instruction
+            - fixed length instructions
+            - instructions execute in 1 to 2 bus cycles
+            - only a few instructions can read / write memory
+            - no instructino can both read and write memory
+
+1.2 Embedded Systems
+    - AN electronic system that includes one or more microcontrollers that is
+      configured to perform a specific dedicated application.
+
+    - Embedded systems typically perform a single function and solve a limited
+      range of problems
+
+    - Embedded systems are unique because of the microcontroller's IO ports to
+      which the external world are interfaced
+
+
+    - Embedded systems are tightly constrianed
+        - battery life, control accuracy, etc
+
+    - Embedded systems must operate in real time
+        - we can get an upper bound on the time required to perform the
+          input-calculation-output sequence in real time systems
+
+        - real time systems guarantee worst case upper bound
+
+        - often there is an execution of periodic tasks
+
+    - Embedded systems have small memory requirements
+
+
+1.3 The Design Process
+    1.3.1 Requirements Document
+        - States what the system will do, not how the system will do it
+
+    1.3.2 Modeling
+        - Need to understand the behavior of the physical system
+
+    1.3.3 Top down design
+
+
+###############################################################################
+#   I did not read this section.  Would probably be good to come back to this
+#   before the final project
+###############################################################################
+
+
+1.4 Digital Logic and Open Collector
+

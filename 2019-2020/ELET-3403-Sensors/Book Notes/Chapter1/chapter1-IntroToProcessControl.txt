@@ -1,0 +1,222 @@
+1.1 Introduction
+    - Control: Force parameters in the enviornment. to have specific values
+
+        - all of the elements necessary to accomplish the control objective are
+          described by the term control system
+
+1.2 Control Systems
+    1.2.1 Process COntrol Principles
+        - In process control, the basic objective is to regulate the value of
+          some quantity
+
+        - to regulate means to maintain that quantity at some desired value,
+          regardless of external influences
+            - the desired value is called the reference value or setpoint
+
+        - The Process
+            - Self Regulation
+                - for some input, the state of the system will change until it
+                  reaches a steady state and the output will become constant
+
+                - if the input is changed then this will not be true
+
+                - The example used in the book is a tank of water that has an
+                  input rate and an output rate.  The output rate is directly
+                  proportional to the amount of water in the tank.  At some
+                  point the water will get high enough such that the input and
+                  output rates will be the same
+
+            - If you want something that can handle a different input value,
+              then you need something more than self-regulation
+
+            - Human Aided Control
+                - If a human can see into the tank, and has an aparatus to
+                  control the height of the water, then we can maintain a
+                  constant height
+
+                - The output flow is called the manipulated variable or
+                  controlling variable
+
+            - Automatic Control
+                - machines, electronics or computers replace the operations of
+                  the human
+
+                - a sensor is added that is able to measure the value of the
+                  level and convert it into a proportional signal s
+                    - s is provided as the input to a machine, electric cicruit
+                      or computer called the "controller"
+
+                - The controller performs the function of the human evaluating
+                  the measurement and providing the output signal, u, to change
+                  the value of the output via an "actuator"
+
+
+    1.2.2 Servomechanisms
+        - THe objective of a Servomechanism is to force some parameter to vary
+          in a specific manner
+            - this may be valled a tracking control system
+
+        - The controlled variable is forced to follow a variation of the
+          reference value
+
+
+    1.2.3 Discrete-State Control Systems
+        - a type of control system that controls a sequence of events rather
+          than regulation or variation of individual variables
+
+        - Some task may have many variables that need to be kept track of
+
+        - There is also a sequence of events that must occur
+
+        - THe sequence is described in terms of events that are timed to be
+          started and stopped at a specific schedule
+
+        - THe starting and stopping of events is a discrete based system
+          because the event is either true of false (started or stopped, open
+          or closed, on or off)
+
+        - this type of control system can be made automatic and is perfect for
+          computer-based controllers
+
+1.3 Process Control Block Diagram
+    1.3.1 Identification of Elements
+        - Process
+            - Complex assembly of phenomena that relate to some manufacturing
+              sequence
+            - there may be many variables in a processz
+            - there are single variable processes and multiariable processes
+                - this referes to how many different variables need to be
+                  controlled
+
+
+        - Measurement
+            - We measure a variable to have an idea of how we should regulate
+              it
+
+                - a sensor is a device that performs the initial measurement
+                  and energy transformation into digital, electrical or
+                  pnematic information
+
+                - signal conditioning may also be required
+
+            - A sensor is also called a transducer
+                - transducer is just a device that converts any signal from one
+                  form to another
+
+                - all sensors are transducers, but not all transducers are
+                  sensors
+
+
+        - Error Detector
+            - has magnitude and polarity
+
+            - I think this is how far we are off form the goal, not what the
+              sensor says vs what it really is
+
+            - error determination must be made before any control action is
+              taken
+
+
+        - Controller
+            - Examine the error and determine the action that should be taken
+
+            - This has many names like compensator or filter, but controller is
+              most common
+
+
+        - Control Element
+            - The device that exerts a direct influence on the process,
+              provides the required changes in the controlled variable
+
+            - There is often an intermediate operation in between the control
+              element and the output, this is the actuator
+
+                - an actuator translates the small energy signal of the
+                  controller into a larger energy action
+
+
+    - 1.3.2 Block Diagram
+        - Controlled Variable of the process is denoted "c"
+
+        - The measured representation of the controlled variable is "b"
+
+        - The controlled variable setpoint is labeled "r"
+
+        - The output signal is "p"
+            - this is the input to the control element
+
+        - The controlling process variable is "u"
+            - this is how the control element operates, it modifies this value
+
+
+        - The error detector does "e = r - b"
+
+
+        - See figure 1.5 for the diagram
+
+
+        - The Loop
+            - The process control loop.
+                - it is a feedback loop
+
+            - How everything ties together, in a loop format
+            - every element in the block diagram feeds into the next guy
+
+
+            - With the loop, we aim to regulate some process variable
+                - we ask, how well are we doing this?
+                    - Not an easy question to answer
+
+            - Error is used to determine the performance of a control system
+                `e(t) = r - c(t)`
+
+1.4 Control System Evaluation
+    - The error is what is used to measure performance of the control system
+        - the error varies in time
+
+    - Control System Objective
+        - The objective of a control system is to make the error equation
+          zero
+
+
+        - There are 3 primary requirements of a control system
+            1. The system should be stable
+            2. The system should provide the best possible steady state
+               regulation
+            3. The sytsem should provide the best possible transient
+               regulation
+
+
+    1.4.1 Stability
+        - The more tightly the variable is controlled, the greater possibility
+          of instability
+
+    1.4.2 Steady State Regulation
+        - the objective of Steady State Regulation is that the steady state
+          error should be minimum
+
+        - There is generally some allowable deviation around the setpoint
+          (delta c)
+
+    1.4.3 Transient Regulation
+        - Transient regulation specifies how the control system reacts to bring
+          the controlled variable to a new setpoint
+
+        - Other process variables might influence the control variable and
+          change very quickly.
+            - the control system aims to minimize this effect, valled the
+              transient response
+
+    1.4.4 Evaluation Criteria
+        - How well a control system is acting can be answered by
+            1. Ensuring stability
+            2. Evaluating Steady State Response
+            3. Evaluating the reponse to setpoint changes and transient effects
+
+
+        - The Term `Tuning` is used to indicate how a process control loop is
+          adjusted to provide the best control
+
+
+        - Damped Response
+            - 
