@@ -1,0 +1,37 @@
+- What is software?
+    - set of instructions
+        - collectveley these are called a program, they execute on hardware
+
+- Wear vs deterioration
+
+- Legacy Software
+    - 
+
+- Web apps
+    - Much more than hypertext and images
+
+    - moden webapps augmented with tools, technologies, interactive computing capability
+
+
+####################
+#   Missed everything inbetween these two
+####################
+
+- Cloud Computing
+    - Tries to provies things as services, to make them more maintainable
+        - rather than the user having to maintain things like application, platform,
+          infastructure, you just pick and choose and focus on the things for your
+          business
+
+
+- Software ENgineering
+    - realilties
+        - you need to understand the problem before a software solution is developed
+        - software must exhibit high quality
+        - software should be maintainable
+
+    - definition
+        - Seminal: software must be reliable and work efficient
+
+
+

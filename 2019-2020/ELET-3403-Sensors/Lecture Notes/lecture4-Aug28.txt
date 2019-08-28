@@ -1,0 +1,53 @@
+- ARM Cortex M3
+    - Harvard Architecture
+        - data and instructions have seperate buses
+
+    - Registers
+        - 3 general purpose registers
+        - 2 stack pointers
+
+        - a link register
+        - a PC
+
+        - a number of special registers including a program status register
+            - status register
+                - there are many of these
+
+                - Applicatoin Program Status Register (APSR)
+
+                - Interrupt Program Status Register (IPSR)
+
+                - EPSR (EPSR)
+
+                - Program status register (PSR)
+                    - this holds things about the result of an operation (overflow /
+                      negative and all of that)
+
+    - Memory Map
+        - Flash Rom
+            - size (256k)
+
+            - starts at 0x0000.0000
+            - ends at   0x0003.FFFF
+
+        - RAM
+            - size (64k)
+
+            - starts at 0x2000.0000
+            - ends at   0x2000.FFFF
+
+        - Bit banded alias of RAM
+            - starts at 0x2200.0000
+            - ends at   0x221F.FFFF
+
+        - Bit Banded alias of IO Ports
+            - starts at 0x4200.0000
+            - ends at   0x43FF.FFFF
+
+        - I/O sppace
+            - Begins at 0x4000.0000
+            - Ends at   0x5FFF.FFFF
+
+        - Internal I/O'
+            - Begins at 0xE000.0000
+            - Ends at   0xE00F.FFFF

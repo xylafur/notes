@@ -1,0 +1,186 @@
+- Sofware Development Life Cycle (SDLC)
+    - 
+
+- Software Process Model
+    - structured set of activities required to develop software system
+        - models to help software developers
+
+    - provides a plan, and a structure to help control different aspects of software
+      development
+        - agile is one of these
+
+
+- Process Patterns
+    - when we develop software, we run into problems
+        - sometimes you see the same problem occuring again and again, at this point it
+          is a pattern
+
+#########################
+#   Missed this right here, slides 8 - 9
+#########################
+
+- Sofware development models
+    - two different models
+        - prescriptive models
+            - been in use for a long time
+
+            - in recent years there has been alot of inovations in software
+
+            - how effectively do these traditional models deal with these changes in the
+              industry?
+                - they don't, they don't fit with some of the changes
+
+
+            - traditional models
+                - waterfall model
+                    - sequential model of software development life cycle
+                        - have to have the previous step finished before the next
+
+                    - does not work well if things change in between
+
+                    - problems
+                        - projects rarely follow this sequential flow that the model
+                          proposes
+
+                        - requirements are not always clear at the beggining of the
+                          project
+
+                        - requirements can't be changed in the middle
+
+                        - user's don't get a working version of the system until really
+                          late in the process
+
+                - Evolutionary Development
+                    - you can do some of the processes in parallel
+
+                    - if requirements change while you're in development, you can go back
+                      to the specification and make a change or get some clairity
+
+                    - characteristics
+                        - model faces the fact that things change
+
+                        - not ideal for large systems, though works good for small ones
+                            - If you are working on a bigger software system, you might
+                              get into situations where the change is huge (requirements
+                              were completley wrong or something)
+
+                - Incremental Development
+                    - break down delivery into different phases and break down
+                      requirements into different pieces
+
+                    - work on high priority items first, then work on to the next
+
+                    - once development on an increment has started, the requirements
+                      are frozen
+
+                    - advantages
+                        - customer value can be delivered at each increment
+
+                        - lower risk of overall project failure
+
+                        - highest priority system services tend to receive the most
+                          testing
+
+
+                    - disadvantages
+                        - lack of visibility
+
+                        - systems are often poorly structured
+
+                        - not ideal for large systems
+
+
+                - Spiral
+                    - at the end of each stage you do risk assessment
+
+
+                - Rapid Application Development
+                    - Similar to prototyping
+
+                    - just quickly develop a prototype, then show that to the customer
+                      and be like "yo is this what you wanted"
+                        - then they give you more details and you go back to work
+
+            - Agile Development
+                - Project Failure
+                    - projects fail because of changes, increased costs
+
+
+                - What is agility
+                    - give more control to the development team to allow for rapid
+                      development of software
+
+                - an agile process
+                    - driven by customer requirements
+
+                    - plans are short lived
+                        - plan each iteration, focus on this particular iteration, how
+                          can we do better during this iteration
+
+                    - project is delivered in multiple increments
+
+                    - methods are considered lightweight
+                    - several agile methods
+
+                        - extreme programming
+                            - phases are carried out in extremley small (continuous)
+                            - first you write the test case
+                            - then you start coding, complete only if all tests pass
+                            - design an architecutre, emerge out of refactoring
+                            - an incomplete but functional system is deployed or
+                              demonstrated
+
+                        - test driven development
+                            - very short development cycle
+
+                            - write automated tests first
+                            - write minimum ammount of code to pass the test
+                            - re factor the code to acceptable standards
+
+                    - scrum
+                        - scrum team
+                            - product owner
+                                - person who come up with requirements
+                                - decides if requirements are met
+
+                            - scrum master
+                                - facilitate with communication / collaboration
+                                - act as mediator between busineess and engineering
+
+                        - product backlog
+                            - all the things that need to be done
+
+                        - sprint backlog
+                            - list of thigns that need to be done during sprint
+
+                        - daily meeting
+                            - each team member provides an update
+
+
+                        - review
+                            - review of team's activities during sprint
+
+                        - retrospective
+                            - reflwction on what went well and what didn't
+
+
+- Human aspects of software engineering
+    - sense of individual responsibility
+    - aware of team members and stakeholders
+    - brutaly honest about design flaws and offer (and take) constructive criticism
+    - resilient uder pressure
+    - heightended sense of fairness
+    - attention to detail
+    - pragmatic
+
+
+- Software engineering Team
+    - avoid team toxicity
+
+
+- Factors Affecting Team Structure
+    - The difficulty of the problem to be solved
+
+    - the size of the resultant program(s) in lines of code
+
+    - the time the team will stay together (team lifetime)

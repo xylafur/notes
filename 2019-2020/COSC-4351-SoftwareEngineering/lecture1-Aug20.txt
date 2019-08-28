@@ -1,0 +1,50 @@
+###############################################################################
+#   Class Website
+###############################################################################
+    www2.cs.uh.edu/~rsingh
+
+- We need to read the checklist
+
+- Need to join the google group, make sure that its the one for the tuesday/thursday
+  classes
+    - go to class website and click on link for this class
+
+- Use `Zoom` for lectures
+
+- All assignments and projects will be done in groups of 3
+
+- exams are individual
+
+
+###############################################################################
+#   Assignments
+###############################################################################
+- Assignments all build upon eachother
+
+- we will be using svn for version control
+    - thats how we turn it in too
+
+
+###############################################################################
+#   Exams
+###############################################################################
+- We have two midterms, no final
+
+- they are all multiple choice / short answer
+
+- exams are in class
+
+
+###############################################################################
+#   Project
+###############################################################################
+- We have a demo that we will have to present
+
+
+###############################################################################
+#   SVN
+###############################################################################
+- The account will be created for us after our teams have been established
+
+
+
