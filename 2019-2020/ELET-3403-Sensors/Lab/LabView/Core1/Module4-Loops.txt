@@ -1,0 +1,63 @@
+- Two types of loops
+    - while loops
+        - says its similar to a do-while loops
+
+        - to create
+            - select the loop from the palet
+            - select the components that you wish to loop over
+            - then a 'while loop boundary encloses this section'
+            - a while loop always executes at least once
+
+            - you choose the boolean value that is checked in the while loop, it is
+              in the bottom right corner of the loop construct
+
+            - there are tunnels that lead into and out of the while loop
+                - apear as a solid block on the side of the loop box
+
+
+    - for loops
+        - to create
+            - select the loop from the palet
+            - select the components that you wish to loop over
+
+            - the top left corner is the number of times we should loop
+
+
+            - bottom left is the current loop count
+
+            - there is a shift register that holds the value between iterations
+
+- tunnels
+    - transfer data into and out of loops
+
+    - when a loop terminates, it leaves out of the output tunnel
+
+
+- timing
+    - you can use a wait function inside of a loop
+
+    - elapsed time vi can keep track of how much time has passed
+
+
+- shift register
+    - basically a temp variable that can be used within a loop construct
+
+    - shift registers can be given an initial value, this time each time the
+      construct starts the shift register takes that value
+
+
+    - loops can have more than one shift registers
+        - shift register input / output need to be directly across from
+          eachother
+
+
+    - stacked shift registers
+        - acts like a queue, but you can access more than just the last element
+
+
+- Plotting Data
+    - you can use the waveform chart to plit data
+
+    - select the chart properties by right clicking and chosing properties
+
+    - you can configure how the chart updates

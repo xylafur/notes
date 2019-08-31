@@ -1,0 +1,87 @@
+- Data flow module
+    - output and input between nodes
+
+    - a node executes only when data is avaliable at all of its required input
+      terminals
+
+    - the flow of data determines the execution order of block diagram nodes
+
+    - When designing a block diagram, you should design it such taht data flows
+      from left to right to make it much easier to understand
+
+- Data types
+    - boolean
+        - you can have mechanical actions:
+            - asynchronous, always polled
+
+            - types
+                - switch
+                    - changes value when an event occurs
+
+
+                - latch
+                    - changes value when an event occurs and holds it until the
+                      value is read by labview
+
+                - the two of these have:
+                    - when released
+                    - when pressed
+                    - until released
+
+
+    - Numeric
+        - need to choose the appropriate type of numeric type
+            - integers, float, long, unsigned, fixed point, and complex
+
+        - floating point types
+            - single precision
+            - double precision
+            - extended precision
+                - 128 bit
+
+
+        - you can wire one numeric type to another numeric data type
+            - this will result in essentially cast
+
+            - the casting rules seem similar to C
+
+            - you can explicitly use numeric conversion functions to cast a
+              value to whatever you want
+
+
+- User Interface
+    - lab view tries to make programming easier and more efficient
+
+    - use the tools palet to choose a particular tool
+
+    - wiring tips
+        - if you delete a wired object, but the wire won't
+            - the wire will display as a broken wire
+
+            - push crtl+b to remove broken wires
+
+
+        - try to reduce wire bends and routing
+            - to have auto rerouting, select a portion of the block diagram and
+              then choose the cleanup diagram option
+
+
+    - While programming you can use labels as comments
+
+
+- Programming Methodology
+    - three main tasks
+        - aquire data
+            - lab view provides integration with thousands of instruments
+            - if you are using a third party instrument you have to find the
+              driver
+
+
+        - analyze aquired data
+            - lab view provides signal processing and math libraries
+            - can integrate algorithms in text math syntax
+
+        - present the result
+            - write to measurement file
+            - build text to display on front pannel or instrument
+            - can also use indicators

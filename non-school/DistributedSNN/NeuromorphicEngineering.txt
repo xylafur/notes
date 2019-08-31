@@ -1,0 +1,13 @@
+- Concept in which VLSI systems contain analog cirtuits to minic
+  neuro-biological architectures present in the nervous system
+
+
+- This could be implemented using a "Memristor"
+    - a hypothetical passive two terminal electrical component
+    - it relates electric charge and magnetic flux linkage
+
+    - It hypothetically operates in this way:
+        - The electrical resistance is not constant, but depends on the history
+          of current that has previously flowed through the device
+
+- Essentially it is the design of artificial neural systems

@@ -1,0 +1,69 @@
+- It is thought that Dendrites require independent subunits to perform most of
+  their computations
+
+- Dendrites form an arborization, a tree like structure
+    - this can be represented as an impedance based tree graph
+        - the topology of this grap reveals subunits
+
+- Cooperativity between synapses decreases slowly with increasing electrical
+  seperation
+
+- balanced inputs and shunting inhibition can modify the topology
+    - this can increase the number or size of subunits in a context-dependent way
+
+    - this dynamic recomparmentalization can enable branch specific learning of
+      stimulus features
+
+- Introduction
+    - Electrical pulses in individual neurons transform into action potential
+      output
+
+    - this starts at the dendrite, where inputs are collected
+        - this proceeds to the axion initial sement
+            - AP are generated here before being transmitted to downstream
+              neurons through the axon
+
+    - The way in which the dendrites take in and combine input is called
+      "Dendritic computation"
+
+        - dendrites are cartmentalized into independent subunits, where these
+          compartments can integrate inputs independently from other regions
+
+
+        - these subunits allow for regenerative spikes of various chemicals
+
+            - somehow this leads to a strengthening of the computational power
+              of neurons
+
+            - this enables local decodeing of bursts of inputs leading to the
+              clustering of correlated synaptic inputs
+
+
+
+    - Independent local chemical spikes allow neurons to behave in two-layer
+      neural letworks
+        - this should enable neurons to learn linearly nonseperable functinos
+          and implement translational invariance
+
+    - independent sub units are thought to dramatically increase memory
+      capacity, allof for stable storage of feature associations and represent
+      a powerful mechanism for coincedence detection and support the back
+      propogation algorithm
+
+
+    - though voltage decays sharply towards the branchpoints
+        - remaining depolatization can cause cooperative dynamics
+
+        - this can limit the number of comparments that coexist on dendritic
+          trees
+
+
+    - The defree of cooperativity between synapses can be summarized by a
+      single measurable number
+        - this is termed the impeadance-based independence index
+
+    - Compartmentalization is not a static concept, but can be regulated
+      dynamically
+        - balanced inputs or shunting inhibition can modify the topology
+
+

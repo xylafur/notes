@@ -1,0 +1,50 @@
+- if the run button is broken then there are errors in the VI
+    - Broken or unwired components are the common causeos
+
+
+    - There is an error list that displays all errors
+        - There is a show error button in the error list that will show you
+          where the error is in the block diagram
+
+
+- Debugging
+    - you can control the pace of execution as well has have the program
+      execute one step at a time
+
+    - probe tool
+        - you can check the values on a wire as a VI runs
+
+    - breakpoints
+        - you can pause execution at a point on a wire
+
+
+    - retain wire values
+        - have wires hold their previous values
+
+- Error Handling
+    - lab view will by default pause execution, and have a pop up that is
+      displayed to the user
+        - this is called automatic error handling
+
+    - you can add manual error handling
+        - you connect error wires to the manual error handling square
+        - an error is passed along an error wire until it gets to an error
+          handling VI
+
+    - you can disable automatic error handdling for all VIs by default in the
+      block diagram options
+
+    - Error Clusters
+        - Errors either happen as errpr codes or error clusters
+            - error clusters have error inputs and error outputs
+
+
+        - there is an "explain error" dialog box that you can open
+
+
+    - Merge errors
+        - can merge errors from different wires and propogate them forwared.
+        - if there was no error, then the merge error will propogate the first
+          warning
+
+        - comprised of status, code and source

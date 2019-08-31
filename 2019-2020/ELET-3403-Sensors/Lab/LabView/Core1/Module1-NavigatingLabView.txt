@@ -1,0 +1,43 @@
+- lab view is a graphical programming enviornment that aids in combining
+  hardware and software
+    - it is a super IDE to allow for creation of systems
+
+
+- Lab view programs are called virtual instruments (VI)
+    - they emulate physical instruments
+
+    - every VI has a front pannel (gui that displays output) and a block
+      diagram back end
+
+- Folder types
+    - auto populated folder
+        - creates a folder within the project and on disk
+
+    - virtual folder
+        - creates a folder only within the project, not an actual folder on
+          disk
+
+- Components of a block diagram
+    - Front pannels can have controls and indicators
+        - on the block diagram we will see those reflected as terminals
+        - terminals are the IO ports in the block diagram
+
+
+    - Nodes are objects on the block diagram that have inputs and outputs and
+      perform operations
+        - have pale yellow icons
+
+    - sub vis
+        - vis that run within another vi
+        - any vi can be used as a sub vi
+
+        - if you double click on the sub vi then you can view its front pannel
+          and block diagram
+
+        - express vi
+            - type of sub vi configured with dialoge boxes
+
+    - wires transfer data between block diagram elements
+        - cannot run a vi with a broken wire
+
+        - different wire colors represent different wire types

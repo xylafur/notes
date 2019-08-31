@@ -1,0 +1,175 @@
+2.1 Cortex-M Architecture
+    - Harvard architecture, seperate data and instruction buses
+
+    - The instruction set combines the high performance of a 32 bit processor
+      with high code density typical of 8-bit and 16-bit microcontrollers
+
+
+        - instructions are fetched using the ICode Bus
+        - Data is exchanged with memory and IO via the system bus iterfance
+
+        - there is a second bus for high speed devices like USB
+
+        - Nested Vector Interrupt Controller (NVIC)
+            - manages interrupts (hardware triggered software functinos)
+
+        - Internal peripherals like the NVIC communicate with the processor
+          using the Private Peripheral Bus (PPB)
+            - this thight integration of the processor and interrupt controller
+              allows for fast execution of interrupt service routines (ISR)
+
+
+    2.1.1 Registers
+        - R0 - R12 are general purpose registers
+        - R13 = Stack Pointer
+            - there are two stack pointers
+                - Main Stack Pointer (MSP)
+                - Process Stack Pointer (PSP)
+
+            - ONly one is active at a time
+
+            - PSP can be for user software while MSP for operating system
+              software
+                - this allows for teh user software to crash but the kernel
+                  could  keep running
+
+        - R14 = Link Register
+            - stores the return location for functions
+
+        - R15 = PC
+
+
+
+        - ARM Architecture Procedure Call Standard (AAPCS)
+            - Part of ARM Application Binary Interface (ABI)
+
+            - Uses registers R0-R3 to pass input parameters into a C function
+            - REturn parameter is placed in R0
+
+
+        - Three status registers
+            1. Application Program Status Register (APSR)
+            2. Interrupt Program Status Register (IPSR)
+            3. Execution Program Status REgister (EPSR)
+
+
+            - can be accessed individually or in combination as the Pogram
+              Status Register (PSR)
+
+
+################################################################################
+#
+#                    31 30 29 28 27 26  25 24          15     10          8    0
+#            APSR    N  Z  C  V  Q  Reserved
+#            IPSR    Reserved                                             ISR #
+#            EPSR    Reserved       ICI/IT T  Reserved ICI/IT    Reserved
+#            PSR     N  Z  C  V  Q  ICI/IT T  Reserved ICI/IT    Reserved ISR #
+#
+#
+#            PSR     N  Z  C  V  Q  ICI/IT T  Reserved ICI/IT    Reserved ISR #
+#
+################################################################################
+
+
+
+            - N, Z, V, C and Q bits give info about the result of pevious ALU
+              operation
+                N: Result was negative
+                Z: Result was zero
+                V: Signed overflow happened
+                C: Carry, or unsigned overflow, happened
+                Q: Stick saturation flag, indicating that saturation has
+                   occurred
+                    - this is set by the SSAT and USAT instructions
+
+
+            - There is A T bit that represents if the CPU is executing Thumb
+              instructions
+
+            - ICI/IT bits are used by interrupts and by the IF-Then
+              instructions
+
+            - ISR_Number is the interrupt (if any) the processor is handling
+                - Bit 0 of the PRIMASK register is the interrupt mask bit
+                    - if this bit is 1 most interrupts and acceptions are not
+                      allowed
+
+                    - If it is 0, all interrupts are allowed
+
+                - Bit 0 of the FAULTMASK register is the fault mask bit
+                    - if this bit is 1, all interrupts and faults are not
+                      allowed
+
+                    - If this is 0, then faults and interrupts are allowed
+
+                - Nonmaskable interrupt NMI is not affected by these mask bits
+
+
+                - BASEPRI register defines the priority of the executing
+                  software, prevents interrupts with lower or equal priority
+                  but allows higher priority interrupts
+
+
+    2.1.2 Memory
+        - All Cortex-M microcontrollers have similar memory maps
+
+        - These things can all occurr in parallel:
+            ICode Bus:  Fetch opcode from ROM
+            DCode Bus:  Read constant data from ROM
+            System Bus: Read / write data from RAM or IO, fetch opcode from RAM
+            PPB:        Read / write data from internal peripherals like the NVIC
+            AHB:        Read / write data from high speed IO and parallel ports
+
+
+        - The ARM Cortex - M uses bit-banding to allow read / write access to
+          individual bits in RAM and IO space
+            - The address and the bit you wish to write define bit banding
+
+            - if you want to read / write from `0x2000.0000+n` where b is from 0
+              to 7, the aliased address for this bit will be
+                `0x2200.000 + 32 * n + 4 * b`
+
+
+            - reading that address will return either a 0 or a 1, and writing
+              to it will perform an atomic read-modify-write operation
+
+    2.1.3 Stack
+        - The stack always operates on 32 bit data
+
+        - The stack grows downwards in memory
+            - so the item at the top of the stack actually has the lowest
+              address!
+
+        - storing stuff on the stack
+            - the sp is first decremented by 4
+            - then the data is placed into memory at the location of the sp
+
+        - retrieving
+            - oposite of storing
+            - get the data at the location of the sp
+            - then increase the stack pointer by 4
+
+        - data is stored in little endian on the stack
+
+
+        - 5 rules for proper use of the stack
+            1. Functions should have an equal number of pushes and pops
+            2. Stack accesses (push or pop) should not be performed outside
+               the allocated area
+            3. Stack reads and writes should not be performed within the free
+               area
+            4. Stack push should first decrement sp, then store the data
+            5. Stack pop should first read the data, and then increment the sp
+
+
+            - rules 4 and 5 are followed automatically by the PUSH and POP
+              instructions
+
+        - Stack overflow
+            - the processor generates a `bus fault` when the software tries to
+              read from or write to an address that doesn't exist
+
+        - Executing an interrupt service routine will automatically push info
+          on the stack
+            - violations of rules 3, 4 and 5 will cause erratic behavior when
+              operating with interrupts

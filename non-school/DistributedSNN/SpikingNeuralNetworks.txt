@@ -1,0 +1,51 @@
+- Artificial Neural network that aims to more closely minic natural neural
+  networks
+
+- Time, neuron state and synaptic state are important components of the model
+
+- Neurons do not fire at every propogation cycle, rather only when a membrane
+  potential reaches a particular value
+
+- When a neuron fires, it traves to other neurons which.
+    - this has an effect on their membrane potential
+
+
+- The current activation level is the neuron's state
+    - this is modeled as a differential equation
+
+- There is an outgoing "spike train" that is interpreted as a real number
+    - An input pulse causes the state calue of a neuron to rise sharply, and
+      then gradually lower over time
+
+
+    - Encoding schemes for the pulse output use both pulse frequency and pulse
+      interval
+        - the better the timing percision, the more computing power of the
+          network
+
+
+- Training
+    - Pulse traning is not differentiable, so then back propogation cannot be
+      used
+
+    - There is no existing supervised training method for SNN that results in
+      better performance than second generation networks
+
+
+    - existing unsupervised training methods
+        - Hebbian Theory
+            - "Cells that fire together wire together"
+
+        - Spike Timing Dependent Placticity
+            - adjusts the strength of connections between neurons in the brain
+
+            - connection strengths are adjusted baed on the relative timing of
+              a particular neuron's output and input ation potentials
+
+
+            - If an input spike to a neuron tends on average to occcur
+              immediately before that neuron's output spike, then that
+              particular input is made somewhat stronger
+
+
+

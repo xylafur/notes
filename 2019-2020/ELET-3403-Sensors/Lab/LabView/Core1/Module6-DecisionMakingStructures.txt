@@ -1,0 +1,41 @@
+- Case statement
+    - choose which or two more diagrams to execute based on the input
+
+    - there is a box at the top that you choose each possible input and then
+      change the block diagram inside based on which one is selected
+
+
+    - there is a default case
+
+
+
+- Event Structreus
+    - Can use this to implement event driven programing
+        - code waits for an event, and then the event handler is triggered
+
+
+    - you can have an event handler triggered whenever the user does something
+      on the front panel
+
+
+    - you use an event structure, and you choose which events it should handle
+
+
+    - its like a case statement in the way that you select the event that
+      triggers it at the top and then the block contains what should execute in
+      that case
+
+
+    - two different types of events
+        - polling
+            - polling structures can poll the front pannel to check for changes
+            - slower to responsd and can fail to detect changes
+            - cpu intensive
+
+        - event
+            - no events are missed
+            - guarantees reponse
+
+
+
+

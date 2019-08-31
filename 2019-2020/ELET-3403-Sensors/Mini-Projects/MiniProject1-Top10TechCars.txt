@@ -1,0 +1,81 @@
+Identify and describe two sensor applications that interested you the most with less than 200 words. Including at least one reference for each. What's the one difference between top tech cars described in these two years special report. Use one sentence to describe it. Share your findings by creating a Wiki page and link it in the Top Tech Cars Master page. 
+
+
+
+https://elearning.uh.edu/bbcswebdav/pid-5726526-dt-content-rid-43760868_1/courses/H_20193_ELET_3403_18646/Module%200%20Course%20Overview/ieee-style-guide.pdf
+
+
+Citations:
+The IEEE style is a numeric style,where citationsare numbered [1] in the order of appearance.  Once a source has been cited, the same number is re-used for all subsequent citations to the same source. 
+
+References:
+In IEEE style your reference list should be formatted in the following way:
+ Align references left
+ Single-space each entry, double-space between every new entry
+ Place number of entry at left margin, enclose in square brackets
+ Indent text of entries
+
+Websites:
+Note: Include as much of the key information as you can find for a given website. If a web page has no personal author, you can use a corporate author. Failing that, you can use either Anon. (for anonymous) or it is permissible to use the title of the site.
+
+[Ref number]    Author’s initials. Authors Surname.(Year, Month. Day). Title of web page[Online]. Available: URL
+
+[13] BBC News.(2013, Nov. 11). Microwave signals turned into electrical power [Online]. Available: http://www.bbc.co.uk/news/technology-24897584
+
+[14]M. Holland.(2002). Guide to citing internet sources [Online]. Available: http://www.bournemouth.ac.uk/library/using/guide_to_citing_internet_sourc.html 
+
+
+
+2018:
+ Author:  Lawrence Ulrich
+ Publication Date: 30 Mar 2018
+ Web Page Title: 2018’s Top 10 Tech Cars
+ URL: https://spectrum.ieee.org/transportation/advanced-cars/2018s-top-10-tech-cars
+
+
+EV only make up .5 % of new car sales
+
+"two-thirds of buyers are choosing an SUV, pickup, or other light truck"
+
+Tesla Model 3:
+ Innovative Interfaces, self-driving tech, charging infastructure
+ Model 3 price range $36200 - $60000
+ 220 miles on a single 55-kWh lithium-ion battery, 75kWh 310 mile battern for $9000 more
+
+ 38-centimeter (15-inch) touch screen positioned in the center of the dash, between the driver and passenger, that controls virtually all vehicle functions—speedometer, other gauges, and media.
+
+McLaren 720S
+ But the company seems proudest of its new strategy for controlling the body, called Optimal Control Theory. Its algorithms now react to vehicle parameters—such as a sudden change in direction—within 2 milliseconds, using data from 12 more sensors than the old 650S had.
+ Using a fingertip slider on a digital screen, he sets the precise angle of drift the car will allow before electronic nannies step in to prevent a full-on spin;
+
+
+
+
+
+2019
+ Author: Lawrence Ulrich
+ Publication Date: 29 Mar 2019
+ Web Page Title: 2019’s Top 10 Tech Cars
+ URL: https://spectrum.ieee.org/transportation/advanced-cars/2019s-top-10-tech-cars
+
+
+almost every new car on the road, sometimes in ways that aren’t immediately apparent to owners
+
+
+
+Lamborghini Aventador SVJ 
+ Aero vectoring is the final trick: Turn right, for example, at speeds above 71 km/h (44 mph)—any slower and there’s no meaningful air pressure—and the right-hand deck-lid flap closes while the left flap pivots open. Now you’ve got downforce on the inside rear wheel but lower pressure on the outside, which helps the Lambo pivot through the corner. It’s all controlled in real time by the Lamborghini’s big brain and inertial sensors, which can adjust ALA flaps in less than half a second—far faster than any motorized wing, and without added weight or complexity.
+
+
+
+
+Automobiles have come a long way since the Ford Model T of the early 20th century.  Cars were at one time a completely human controlled mode of transportation, but are now becoming more and more controlled through computer systems with the help of many sensors outfitted all throughout the vehicles.
+
+Though autonomous driving is often the first thought that pops into someone's head when sensors and vehicles are thought of together, this is by no means the only application.  Sensors can be used to enhance the performance of vehicles, allowing for better handling or better performance.  A prime example of this is noted in the 2018's Top 10 Tech Cars article by Lawrence Ulrich.  The McLaren 720S uses 12 more sensors than the previous model as inputs to the Optimal Control system which reacts to sudden changes in direction within 2 milliseconds.  This leads to amazing control of the vehicle.  
+
+In the 2019 article, the author talks about how sensors improve performance of the Lamborghini Aventador SVJ  [2].  This car uses sensors to detect air pressure changes which cause flaps on either side of the vehicle to either open or close.  This leads to better handling as aerobraking can be used on sharp turns to cause the car to move more in the direction that the driver wants it too.
+
+Overall though, the main difference between the vehicles mentioned in the two articles is the use of Autonomy in the 2019 vehicles.  As the author says in [2]: "almost every new car on the road, sometimes in ways that aren’t immediately apparent to owner."  Safety features that use sensors have become so common that many of us hardly even notice them.
+
+[1] L. Ulrich (2018, Mar 30). 2018’s Top 10 Tech Cars [online].  Avaliable: https://spectrum.ieee.org/transportation/advanced-cars/2018s-top-10-tech-cars
+[2] L. Ulrich (2019, Mar 29). 2019’s Top 10 Tech Cars [online].  Avaliable: https://spectrum.ieee.org/transportation/advanced-cars/2019s-top-10-tech-cars

@@ -1,0 +1,59 @@
+- Arrays
+    - can only group data of same type
+
+    - can be built with "almost" any data type
+
+    - can have multidimensional arrays
+        - first index is row, second is column
+
+        - does not allow arrays of arrays
+
+
+    - using arrays
+        - creating
+            - Place an "array shell"
+            - put something like numeric control inside of the array shell
+            - you then manually resize the array by dragging it
+
+            - there is an "index display" on the left of the array, this
+              changes what the left most element of the array is
+
+        - uninitialized arrays
+            - the elements are greyed out
+
+
+        - array function
+            - within the array palet, there are a bunch of functions that you
+              can do on arrays
+
+            - there are things like
+                {"size": give size
+                 "subarray": create sub array from index and size,
+                 "build array": concatenate two arrays can use to concatentae
+                                or create 2d arrays,
+                 "index array": returns value at an index,
+                 ...
+                 ...
+                }
+
+
+    - polymorphism
+        - some functions accept more than just one data type
+        - they will accept both an integer as well as an integer array
+
+    - with loops
+        - you can use basically enhanced for loop by plugging in an auto
+          incrementing input tunnel
+
+- Clusters
+    - good for data of mixed types
+
+    - like a record or a struct
+
+    - on the front pannel you can create a cluster box and just drag elements
+      into it
+
+    - clusters are ordered, the order is how they show up in the cluster
+      display
+
+    - you can make a type def and then use that particlar type def in other VIs

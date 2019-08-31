@@ -1,0 +1,51 @@
+- Cell Membrane
+    - Seperates the interior of cells from the exterior
+
+- Membrane Potential
+    - The difference between electric potential of interior and exterior of
+      cells
+
+    - Neurons generally have a relatively stable membrane potential
+        - this is typically -70 to -80 mV
+
+        - There are ion channels that are opened and closed which can change
+          the potential
+            - Ions flow through and this can change the potential
+
+        - The change from stable Membrane potential can either lead to
+          depolarization or hyperpolarization
+
+            - in the case of depolarization, if it is significant enough, this
+              can result in an action potential
+
+- Ion channels are controlled by Membrane potential
+    - this can lead to feedback loops that alow complex temporal dynamics to
+      arise
+        - this can include oscillations and regenerative events such as action
+          potentials
+
+- Action Potential
+    - Membrane potential changes rapidly and significantly for a short time
+      (order of milli seconds), and will often reverse its polarity
+
+
+- Axon
+    - Long slender projection of a neuron that conducts electrical impulses
+      away from the nerve cell body
+
+    - The Axon transmits information to other neurons
+
+    - No neuron ever has more than one axon
+
+    - Axons make contact with other cells at juntions called synapses
+        - in some cases the Axon of a Neuron can form a synapse with the
+          dendrites of the same neuron, forming a "Autapse"
+
+    - The end branches of an Axon are called telodendria
+        - it seems that an axon may have many such branches
+
+- Axon Terminal
+    - The terminations of telodendria
+
+
+

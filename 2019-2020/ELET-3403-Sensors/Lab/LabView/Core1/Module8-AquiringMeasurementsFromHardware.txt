@@ -1,0 +1,31 @@
+- We have sensors, attached to DAQ devices, attached to a computer to actually
+  do the measurement
+    - connecting to a daq device
+        - there are 3 differnt options for connecting to one of these devices
+          with labview
+            - MAX
+                - create channels, tasks, scales
+
+                - can easily view devices and stuff, allows for easy
+                  configuration of hardware
+
+
+            - DAQ mx VIs
+                - give you alot of control, allow you to have things globally
+                  accessible
+
+                - Parts of a DAQmx Data Aquisition Application
+                    - Create Task
+                    - Configure Task
+                    - Start Task
+                    - Acquire or Generate Data
+                    - Clear Task
+                    - Check for Errors
+
+
+        - You might have to install a NI-DAQmx Driver to use if with ur
+          computer
+
+
+
+
