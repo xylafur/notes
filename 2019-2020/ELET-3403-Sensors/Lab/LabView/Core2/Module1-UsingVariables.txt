@@ -1,0 +1,52 @@
+- Local and Global Variables
+    - genrally wires are used to direct data
+
+    - When wires won't work, we can use variables
+
+
+    - Variables are block diagram elements that you can use from different
+      parts of the block diagram
+
+
+    - local variables
+        - limited to within a VI
+        - to create within a block diagram
+            - right clock, create, variable
+
+    - global variables
+        - can access and pass data between several VIs
+        - Can be one or more data types
+
+- Using Variables Appropriately
+    - Allow you to circumvent normal data flow
+        - they are useful in parallel architectures, but can cause race
+          conditions
+
+    - Drawback
+        - cannot use a boolean control with a latch mechanical action
+            - has to be switch
+
+
+        - Only transfer the most recent data!
+            - kind of like signals for VHDL
+
+        - If you need to transmit a bunch of data, variables are not what you
+          want
+            - you will only get some of the data if data is written faster than
+              the data is read
+
+            - you also can recieve duplicate data if you read faster than you
+              write
+
+
+- Avoiding Race Conditions
+    - when you don't specify, tasks can be scheduled in any order
+
+    - the module suggests
+        - minimizing the number of writers to a variable
+
+        - specify the execution order with wires or sequences
+
+
+        - use subvis, connector panes and wires to transfer data whenever
+          possible

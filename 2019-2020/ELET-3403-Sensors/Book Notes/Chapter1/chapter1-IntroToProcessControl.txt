@@ -219,4 +219,158 @@
 
 
         - Damped Response
-            - 
+            - This is like an asymptote, where it just approaches the set point
+              gradually and doesn't overshoot
+                - the error is always either positive or netagive
+
+
+            - quality
+                - duration of the excursion
+                    - usually defined as the time taken for the controlled
+                      variable to go from 10% to 90% of the set value
+                - the maximum error
+
+
+                - these values are effected by the tuning!
+
+
+        - Cyclic Response
+            - the controlled variable oscillates about the setpoint but
+              asymptotically approaches the setpoint
+
+            - parameters of interest
+                - max error
+                - duration (esettling time)
+                    - time when the allowable error is first exceeded to the
+                      time when it falls wihin the allowable error
+
+            - standard cyclic tuning criteria (some different tuning methods
+              commonly used)
+                - minimum area
+                    - the area net area under the error time curve is a minimum
+
+                    `A = integral( |e(t)| dt) = minimum`
+
+                - quarter amplitude
+                    - The aplitude of each next peak must be only a quarter of
+                      the previous peak
+
+
+
+
+1.5 Analog and Digital Processing
+    - analog used to be used
+        - data was processed as voltages of differing amplitude
+
+    - nowadays everything is pretty much digital
+
+
+    1.5.1 Data Representation
+        - how the magnitude of some physical variable is represented in the
+          control loop
+
+        - Analog Data
+            - There is a smooth and continuous variation between a
+              representation of a variable value and the value itself
+
+            - if the real value changes by some small amount, the measured
+              value will also change by some small amount
+
+        - Digital Data
+            - numbers are represented in terms of bits
+
+                - because of this we have limited resolution!
+
+            - if the real value changes by less than the resolution, this will
+              not be reflected in the measured value
+
+
+        - Data Conversions
+            - ADCs convert analog to digital
+            - DACs do the opposite
+
+    1.5.2 On/Off Control
+        - This is a very old, very crude and simple, digiral processing
+            - has been used long before computers were around
+
+        - The final control element only has two states
+            - thus the controller output need have only these two states
+
+
+
+        `Ve = K(Vref - V)`
+            - this is the error voltage
+            - Vref is the reference
+
+
+        - Deadband
+            - range in recorded values where no action will occur
+
+        - Hysteresis
+            - the behavior of the system is different at the same recoreded value
+                - depending on if the value is increasing or devreasing
+
+
+    1.5.3 Analog Control
+        - Exists when all variable in the system are analog representations of
+          another variable
+
+
+    1.5.4 Digital Control
+        - There are two approaches to using computes for control
+
+        - Supervisory Control
+            - when computers were first being used, they suffered from
+              reliability problems
+
+            - A single computer monitors many control loops and uses software
+              to optimize the setpoints for the best overal plant operation
+
+            - if the computer fails, analog backup sytsems keep the process
+              running at the last setpoints
+
+            - TLDR:
+                A computer sets the Vref Value.
+                If the computer fails, the Vref value is still set and the
+                system keeps operating
+
+
+        - Direct Digital Control:
+            - the analog processing loop is discarded
+
+            - input feeds intp a ADC that feeds into computer
+
+            - output from the computer feeds into a DAC which feeds into the
+              system
+
+                ->Thing -> Sensor -> ADC -> Computer -> DAC -> Thing --
+               /                                                        \
+               |________________________________________________________|
+
+
+            - Smart Sensor
+                - direct integration of microprocessor based controller
+                  computer directly into sensors
+                    - signal conditioning
+                    - ADC
+                    - computer controller
+
+                    - all in the sensor housing
+
+
+
+            - Networked Control Systems
+                - All of the smart sensors are placed on LAN
+
+                - there are standards that try to allow for plug and play
+                  behavior
+
+    - 1.5.5 Programmable Logic Controllers
+        - Basically a bunch of switches you program to open and close based on
+          particular input
+
+
+
+1.6 Units, Standards and Definitions
+    1.6.1 Units
+        - 

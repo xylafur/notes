@@ -1,0 +1,116 @@
+- Continental Drift
+    - Continents as pieces of a jigsaw puzzle
+    - map makers in the 1600s began to realize that the continents kinda fit together
+
+
+
+    - there are mountain reidges against the west sides of africa and europe as
+      well as the east side of america
+
+    - Alfred Wegener
+        - proposed his continental drive throughy in 1915
+
+        - no one believed him though
+            - the hypothesis lacked a viable mechanism
+
+
+        - more evidence eventually came out to support this
+            - fossils from the same animals and plants on different continents
+            - geologic matches on the areas that were assumed to have fit
+              together
+
+            - ancient climate
+                - glaciers
+                    - when ice flows over bedrock, the bedrock is broken into
+                      smaller pieces and gets sucked up into the ice
+
+                    - eventually these sediments are deposited
+                        - these are in particular places and we can now see that
+                          the glaciers were at this place at one time
+
+                    - we find glacial deposits in places that are now deserts
+
+                    - there are groves that are carved, these grooves can tell us
+                      the direction of the glacer flow
+
+                - Ancient rocks and fossils that do not match the cliamate of
+                  their current locations
+
+                - paleomagnetism
+                    - study of magnetic properties of ancient rocks
+
+                    - two components of magnetization
+                        - declination:
+                            - horizontal swing
+
+                            - the rotational position of the compass needle
+
+                            - points tot he magnetic north pole
+
+                        - inclination
+                            - tilt of magnetism
+
+                            - the horizonal tilt of the compass needle, like a
+                              seesaw
+
+                            - the angle that the compass needle makes with the
+                              earth's surface
+                                - this is a function of latitude
+
+                                - this is parallel at the equator
+
+
+                    - particular sedimentary rocks can aquire magnitization
+                        - these become aligned with earth's magnetic field
+                        - so this records the direction of earth's magnetic
+                          field at the time the rock was created
+
+
+                        - This can also happen with lavea:!
+                            - magnetic materials in volcanic rocks record the
+                              direction of Earth's magnetic field atht the time
+                              the lava crystallized
+
+
+
+    - Seafloor Spreading
+        - after WW2 we had sonar technology to map the sea floor
+            - what we saw provided even more evidence of continental drift
+
+        - Nowadays we use satellite altimetrey to measure the sea floor height
+
+        - the seafloor has complex bathymetry
+            - deep trenches
+            - immense fracture zones
+            - huge underwater mountain ranges call mid-ocean ridges
+
+
+        - Mid ocean ridges
+            - they extend the length of entire ocean basis
+
+            - sites of submarine seismic erruptions (volcanicly active)
+
+            - heated seawater is discharged from these ridges
+                - these are called black smokers because the heated sea water
+                  looks like black smoke
+
+
+        - Oceanic Lithosphere (from bottom to top)
+            - Mantle
+                - Peridotites
+
+            - Dividing line called Moho
+
+            - Oceanic Crust
+                - Gabbros
+                    - layerd rocks from the crystallisation in the magma
+                      chamber
+
+                - Sheeted Dikes
+                    - these come to a head with "pillow lavas"
+
+                - Pillow Basalts
+                    - basicallty a bunch of rounded tops of these rocks
+
+            - Ocean Sediments
+                - deep sea sediments
