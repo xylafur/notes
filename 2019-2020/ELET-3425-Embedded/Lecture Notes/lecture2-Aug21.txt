@@ -1,0 +1,70 @@
+This is basically a review of Micro P
+
+The powerpoints are on blackboard
+
+###############################################################################
+#   Chapter 1 - Intro to Embedded Systems
+###############################################################################
+- Objectives
+    - Review computer architecture
+    - Introduce E.S.
+    - The design process
+
+
+- Computer Architecture
+    - A microprocessor
+        - The thing that executes the software
+
+    - A Microcomputer
+        - Processor + Memory and other periperials
+
+        - Like a desktop PC
+
+    - Microcontroller
+        - Essentially a microcomputer all in a single chip
+
+        - We will be using TI in out class, LM3S1968
+
+    - SH / HW Interface
+        - may need extrnal electronics, such as ADC or amplifier
+
+
+    - 4 IO ceategories of IO Interfaces
+        1. Parallel
+        2. Serial
+        3. Analog
+            - Sometimes microcontrollers have "analog pins" that internally
+              connect to an ADC before going to the processor
+        4. Time
+            - Clocks?
+
+    - Memory Mapped IO
+        - Assigned addresses
+        - Access IO like you are accessing memory
+
+    - IO Mapped IO
+        - Has seperate address space
+        - Has seperate instructions for IO
+
+
+    - Bus
+        - We have multiple busses:
+            - control
+            - data
+            - address
+
+        - ARM Cortex M3 Buses
+            - ICode Bus
+                - fetch instructions from Flash
+
+            - Decode Bus
+                - fetch data or debug information from Flash
+
+            - System Bus
+                - Read/write data from RAM or IO Ports
+
+            - Private Peripheral Bus
+                - Accesses common peripherials
+                    - Interrupt controller
+
+

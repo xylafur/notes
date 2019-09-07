@@ -1,0 +1,19 @@
+- Introduction to Process Control
+
+- Evaluation Critera of a Control System
+    - Stability
+    - Static Performance
+        - when it goes through transitions (after something changes and the
+          system responds)
+
+        - In the steady state, do we reach the desired value or only aproximate
+          it?
+            - how close do we get to the desired value
+
+    - Dynamic Performance
+        - Do we get to the desired value withing a particular timeframe
+
+
+- Terms
+    - Hysteresis
+        - can have one input value and two output values

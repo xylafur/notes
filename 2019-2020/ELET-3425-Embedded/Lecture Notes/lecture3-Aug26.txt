@@ -1,0 +1,31 @@
+- Introduction to Embedded Systems
+    - Cortex M3 Processor
+        - Instruction Phases
+            1. Instruction fetch
+            2. Data Read
+            3. Operation
+            4. Data Store
+
+    - What is an embedded system
+        - anything that has one or more microcontrollers is an embedded system
+
+        - system is programmed into flash rom
+
+
+    - Embedded Systems Have 4 characteristics
+        1. Perform a single function
+
+        2. Are tightly constrained
+            - can be constrained within time, power, memory, physical space
+
+        3. Operate in Real Time
+            - need sensors and need to be able to react
+
+        4. Space
+
+
+    - Trends within microcontroller field
+        - smaller, cheaper, lower power
+        - larger ram / rom, faster processing
+
+

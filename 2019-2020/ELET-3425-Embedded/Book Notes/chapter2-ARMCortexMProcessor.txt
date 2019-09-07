@@ -173,3 +173,360 @@
           on the stack
             - violations of rules 3, 4 and 5 will cause erratic behavior when
               operating with interrupts
+
+    2.1.4 Operating Modes
+        - Has Two privilage levels called privileged and unprivileged
+        - Bit 0 of the CONTROL register is the "thread mode privilege level (TPL)"
+            - if it is set to 1 then the processor level is running in
+              privileged mode
+
+            - Running in unprilileged presents access to various features:
+                - system timer
+                - interrupt controller
+
+        - Bit 1 of the CONTROL register is the "active stack pointer selection (ASPSEL)"
+            - if set to 1 then the processor uses PSP as the stack point
+            - if 0 MSP is used
+
+
+        - The processor knows if it is running in the foreground (main program)
+          or in the background (interrupt service routine)
+
+            - The foregound is defined as "thread mode"
+
+            - The background mode is known as "handler mdoe"
+
+            - The processor switches from foreground mode to background mode
+              when an interrupt is triggered
+
+                - the processor starts in thread mode with the ISR_NUMBER=0
+
+                - interrupt service routines use the MSP
+
+
+    2.1.5 Reset
+        - reset occurs immediately after power is applied and can also happen
+          by pushing the reset button
+
+        - after the reset the processor is in thread mode, runing a privileged
+          level using the MSP stack pointer
+
+
+        - the value of flash ROM at location 0 is loaded into the SP
+
+        - The value of flash ROM at location 4 is loaded into the PC
+            - this is called the reset vector
+
+        - all instrutions are halfword aligned, so the least significant bit of
+          the PC must be 0
+            - the assembler will set the least significant bit in the reset
+              vector, so the processor will properly initialize the thumb bit
+              in the PSR
+
+        - LR is initialized to 0xFFFF.FFFF
+
+
+
+2.2 Texas Instruments LM3S and TM4C IO Pins
+    - The regular function of a pin is to perform parallel IO.
+        - most pins have alternative functions though
+
+    - Joint Test Action Group (JTAG)
+        - Standard test access port used to program and debug the
+          microcontroller board
+
+        - Each microcontroller uses 4 or 5 pins as JTAG interface
+
+
+    - Port types
+        - UART
+            - asynchronous serial communication that allows for simultaneous
+              communication in both directions
+
+        - SSI
+            - AKA Serial Peripherial Interface (SPI)
+            - used to interface with medium speed IO devices
+
+        - I2C
+            - simple IO bus used to interface with low speed peripheral devices
+
+        - I2S
+            - used to communicate sound information
+
+        - PWM
+            - apply variable power to motor interfaces
+            - can be used to create a DAC
+
+        - ADC
+            - Used to measure the amplitude of analog signals
+            - takes two analog inputs and produces a digital output
+
+        - QEI
+            - Used to interface with a brishless DC motor
+
+        - USB
+            - Hich speed serial communication channel
+
+        - Ethernet
+            - Used to bridge microcontroller to the internet or LAN
+
+        - CAN
+            - creates a high speed communication channel between
+              microcontrollers
+            - Commonly found in automotive and other distributed control
+              applications
+
+
+
+    2.2.1 Texas Instruments LM3S811 IO Pins
+        - Most pins have two names, port pin (PA0) and the alternative function name (U0Rx)
+
+        - Most IO ports are connected to the system bus interface so the
+          microcontroller can perform IO bus cycles simultaneous with
+          instruction fetches from flash ROM
+
+        - 32 digital IO lines, 4 ADC inputs
+
+            - ADC has 10 bits of precision and can sample up to 500k times per
+              second
+
+
+        - SysTick and the timers can generate periodic interrupts which are
+          useful for executing periodicc software tasks
+            - Each timer module has 2 pins, which can be input capture or
+              output compare
+
+            - three timer modules provide six timer pins
+
+        - Each UART has two pins, one transmitter and one reciever
+
+
+
+
+2.3 ARM Cortex-M Assembly Language
+    - Focuses on Cortex-M microcontrollers which execute Thumb instruction with
+      Thumb-2 technology
+
+
+
+    2.3.1 Syntax
+        - Each instruction has 4 fields seperated by spaces or tabs
+            1. Label (optional)
+                - identifies the position in memory of the current instruction
+
+                - each label must have a unique name
+
+            2. Opcode field
+                - specifies the processor command to execute
+
+            3. Operand Field
+                - specifies whre to find data to execute the instructino
+                - thum instructions have 0, 1, 2, 3 or 4 operands seperated by
+                  commas
+
+            4. Comment field (optional)
+                - ignored by the assembler
+
+
+        - When describing assembly instructions we will use the following list of
+          symbols
+            Ra Rd Rm Rn Rt Rt2
+                represent registers
+            #imm12
+                represents a 12-bit constant, 0 to 4095
+            #imm16
+                represents a 16-bit constant, 0 to 65535
+            operand2
+                represents the flexible second operand as described in Section 2.2.2
+            {cond}
+                represents an optional logical condition as listed in Table 2.9
+            {type}
+                encloses an optional data type as listed in Table 2.10
+            {S}
+                is an optional specification that this instruction sets the
+                condition code bits
+            Rm {, shift}
+                specifies an optional shift on Rm as described in Section 2.2.2
+            Rn {, #offset}
+                specifies an optional offset to Rn as described in Section 2.2.2
+
+
+
+        - There are multiple suffixes that add special meaning to instructions
+          to allow optional execution
+            - things like GT, EQ, LS, HI, etc
+
+
+    2.3.2 Addressing modes and operands
+        - Addressing mode
+            - format the instruction uses to specify the memory location to
+              read or write data
+
+            - some instructions do not need to get anything from memory (alu
+              stuff)
+
+            - immediate addressing
+                - If the data is found in the instruction itself
+
+            - indexed addressing
+                - uses a register pointer to access memory
+
+
+            - PC-relative addressing
+                - uses the PC as the pointer to memory (plus an offset)
+
+                - this is used for branching and calling funcitions
+
+
+        - Load instruction example
+            LDR R1,=Count       ;   figures out the address of the variable Count
+                                ;   relative to the PC, and stores it in R1
+
+            LDR R0,[R1]         ;   Takes the contents of the address pointed
+                                ;   to by R1 and loads that value into R0
+
+        - We can include a shift to the second operand in an instruction
+            ADD R0,R1,LSL #4 ; R0 = R0 + R1*16 (R1 unchanged)
+            ADD R0,R1,ASR #4 ; signed R0 = R0 + R1/16 (R1 unchanged)
+
+
+        - Unaligned data accesses
+            - almost all instructions have to access data at aligned addresses
+
+            - here is the list of instructions that can access at non aligned
+                LDR , LDRT              Load 32-bit word
+                LDRH , LDRHT            Load 16-bit unsigned halfword
+                LDRSH , LDRSHT          Load 16-bit signed half
+                STR , STRT              Store 32-bit word
+                STRH , STRHT            Store 16-bit word
+                
+               
+            - all other read and write operations generate a usage fault
+              exception if they perform an unaligned access
+
+
+        - Not all addressing modes are avaliable for all instructions!
+
+
+    2.3.3 Memory Access Instructions
+        - Code Space
+            - Actual code, like instructions
+            - Usually in ROM, but can be in RAM
+
+        - Data Space
+            - where variables are placed
+
+        - There are 4 types of memory objects, and usually a specific register
+          is used to access them
+
+
+                Memory Object Type              Register        Example
+            1.  Constants in code space         PC              =Constant
+            2.  Local Variables on the Stack    SP              [SP,#0x04]
+            3.  Global variables in RAM         R0-R12          [R0]
+            4.  I/O Ports                       R0-R12          [R0]
+
+
+
+        - ADR and PC-relative addressing can be used to establish a pointer to
+          a constant in ROM or to an address within the program
+
+
+            - General form for ADR
+                ADR{cond} Rd,label
+
+                - {cond} is an optinal condition
+                - Rd is the destination register
+                - label is a label within the code space (-4095, +4095 relative to PC)
+                    - the assembler will generate an ADD f SUB instruction to
+                      calculate the desired constant
+
+
+                - ADR usage example
+                    Access  ADR R5,Pi       ;   R5=&Pi
+                            LDR R6,[R5]     ;   R6=314159
+                            ...
+                            BX LR
+
+
+
+
+        - LDR loads data from memory into a register
+            - there is a pseudo instructino that allows you to load a constant
+              or address into a register
+
+
+        - STR stores data from a register into RAM
+
+
+
+    2.3.4 Logical Operations
+
+
+
+2.4 Parallel I/O Ports
+    2.4.1 Basic concepts of input and output ports
+        - the parallel port is the simplest IO port on a microcontroller
+            - its a mechanism that allows software to interact with external
+              devices
+
+            - multiple signals can be accessed all at once
+
+        - Input port
+            - allows the software to read external digital signals
+            - read only
+
+
+                - usually writes do nothing
+        
+            - Tristate driver allows input signals to be driven onto the data bus
+              during a read cycle from the port address
+
+            - Read
+                - the digital values on the input pins are copied into the
+                  microtcontroller when the software executes a read from the port
+                  address
+
+
+        - Output Port
+            - can participate in both the read and write cycles, like regular
+              memory
+
+            - this is called readabe output port
+
+            - a write cycle to the port addres will affect the values on the
+              output pins
+
+            - the microcontroller places information on the data bus
+            - that information is clocked into the D FFs
+
+
+            - a read to the port returns the current value on the port pins
+
+
+        - Most ports can be software specified to be either inputs or outputs
+            - A `direction register` is used to determine direction
+                - if the bit is 0, the port is an input
+                - if the bit is 1, the port is an output
+
+
+            - each port pin has a direction bit
+
+
+    2.4.2 I/O Programming and the direction register
+        - ports are usually memory mapped on embedded microcontrollers
+
+
+        - Initializing a LMS3 I/O port has 4 steps
+            1. Activte the clock for the port
+                - then a small delay of about 5 bus cycles
+
+            2. set the port's destination register
+            3. Clear bits in the alternate function register
+            4. Enable the digital port
+
+            - Use the PUR register to activate an internal pull-up resistor
+            - Use PDR register to activate an internal pull-down resistor
+
+
+
