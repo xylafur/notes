@@ -1,0 +1,418 @@
+- Matter and Minerals (Video 1)
+    - What is a mineral?
+        - has to be naturally occuring
+        - solid within temperature
+        - form orderly crystaline structure
+        - well defined chemical composition
+        - generally inorganic (even though they may contain carbon)
+
+    - Atom
+        - smallest unit of an element that retains the physical and chemical
+          properties of that element
+
+        - electrically neutral
+            - # electrons == # protons
+
+
+        - atomic #
+            - number of protons
+
+        - Atomic Mass
+            - sum of the masses of all protons and neutrons
+
+        - ordered in increasing atomic order in the periodic table
+
+
+        - electron shells
+            - electrons occur in an "electron cloud" or "electron shells"
+                - different shells have different energy levels
+                - valence electrons are those that occur in the outer most
+                  shell
+
+            - The shells can hold this many electrons
+                - the periodic table is set out in the way it does because the
+                  first column has 1 electron in the outer most shell, and the
+                  rith most is full for the outer most shell
+                    - the number of columns in a given row shows you the max
+                      number of electrons in the outer most shell
+
+                1. 2
+                2. 8
+                3. 8
+                4. It starts getting complicated
+
+
+            - dot diagrams
+                - the number of dots around the element symbol is the number of
+                  valence electrons in the outer most shell
+
+            - isotopes
+                - have the same number of protons, but different in the number
+                  of neutrons
+
+            - ions
+                - when an atom loses, or gains a proton or an electron and is
+                  no longer electrically neutral
+
+
+                - when an atom is positively charged, it is called a cation
+                    - some elements can lose more than just 1 electron, such as
+                      magnesium
+                        - it can lose two
+
+
+                - when an element gains an electron and is negatively charged,
+                  it is called an anion
+                    - chlorine and bromine can become anions
+
+                    - oxygen can aquire 2 more electrons
+                        - it has 6 in its outer shell
+
+        - Chemical Reactions and bonds
+            - elements can combine with other elements to form compounds
+
+
+            - in chemical reactions, only the valence electrons in the
+              outermost shells interact
+                - elements form chemical bonds in order to fill their outer
+                  most shells with electrons
+                    - types of bonds
+                        - ionic bonds
+                            - one element loses an electron, another aquires an
+                              electron
+
+                            - an example is sodum kicking out its extra
+                              electron and chlorine aquiring its electron
+                                - these guys form an ionic bond and create
+                                  table salt
+
+                        - covalent bonds
+                            - the electron shells of elements overlap with
+                              adjacent elements
+
+                            - electrons are shared
+
+                            - carbon does this alot.
+                                - carbon atoms share two electrons with
+                                  adjacent carbon atoms
+
+                        - metallic bonds
+                            - electrons pack together as cations
+                            - the electrons are mobile and move around freely
+
+
+    - Minerals
+        - A mineral constitutes an orderly arrangment of atoms
+        - minerals can have different orderly arangment (crystal structures)
+
+        - in a diamond, each carbon atom shares electrons with four adjacent
+          atoms
+
+            - the arangment of carbon is graphite is much different, so it
+              makes it much different than diamonds
+            - the bonds are much weaker, which makes it a very weak mineral
+
+
+        - Halite (sodium chloride) (table salt)
+            - each soduim atom is bonded to six chlorine atoms, and each
+              chlorine atom is bonded to six sodium atoms
+
+            - this arrangment results in the atomic structure of a cube
+                - the angles are 90 degree
+
+
+        - Calcite (CaCO3)
+            - three oxygens bond to a carbon atom
+            - A calcium ion is at the corners, connecting laters of cubes
+
+
+        - Atoms occur in different sizes, which can affect the type of crystal
+          structure formed when they bond together
+
+
+        - Crystals of minerals
+            - different minerals have different crystal forms due to
+              differences in the internal arrangment of atoms
+
+            - we cannot see the atomic arrangment of a mineral directly, but we
+              can see the overall shape
+
+
+        - Crystal faces and angles
+            - quartz
+                - flat surfaces are called crystal faces
+
+                - the intersection of crystal faces are always intersecting at
+                  angles of about 120 degrees
+
+
+        - Polymorphs
+            - Two minerals that have the same chemical composition but differ
+              in crystal structure
+
+
+
+            - Examples
+                - graphite / diamond
+                - calcite / aragonite
+                - (low temp) quartz / (high temp) cristobalite
+
+
+- Minerals continued (video 2)
+    - Mineral Classes
+        - Silicates
+            - largest category of minerals
+            - minerals comprised of silicon ions and surrounded by four oxygen
+              ions
+                - represented by formula: (SiO4)^4-
+
+            - There are many different cations
+
+            - the basic building block is the Silicon - Oxygen TEtrahedron
+                - ther is a lone silicon atom in the middle surrounded by
+                  oxygen atoms
+
+                - looks like a triiangular pyramid with oxygen at the corners
+                  and silicon in the middle
+
+            - Silicate Structures
+                - There is a single type where the oxygens do not bind together
+                    - the tetrahedrons to not intersect, they are all isolated
+
+                - this minerals in this group are called Olivine
+
+                - the cations are magnesium and iron
+                    - this are the ones that link the individual tetrahedrons
+
+                - Olivine is the primary metal in mantle peridotite!
+
+                - the tetrahedons can bind in a weird way where they make a
+                  bunch of funky structures
+
+
+
+
+            - Single and Double Chains of Tetrahedra (different groups of
+              minerals that are different because of the way these silicate
+              trtrahedra bind together)
+                - Pyroxene Group
+                    - single chain of tetrahedra
+                    - there are only 3 oxygens because they bond with a
+                      negiiboring tetrahedra to form a chain
+
+                - Amphibole group
+                    - Double Chain
+
+                    - each of the tetrahedra only have 2 oxygens, so they bond
+                      in a hexagonal formation
+
+
+            - Sheets
+                - tetrahedra can also combine to form sheets
+
+                - These are called Micas
+                    - two subcategories
+                        1. Biotite
+                        2. Muscovite
+
+                - You can peel these apart as sheets of mineral
+
+
+            - 3D Networks of Tetrahedra
+                - each tetrahedra is sharing all 4 of its oxygen atoms
+
+
+                - Good examples of this class of silicate tetrahedra
+                    - Feldspars
+                        - Potassium Feldspar
+                            - rich in potasium
+                            - pinkish
+                        - Plagioclase
+                            - rich in calcium
+                            - more white color
+
+                    - Quartz
+                        - do not have any cleavage!
+                            - because of the way they bind, there is no weak direction
+
+
+            - Silicates are the most common minerals in earths crust!
+
+        - Non silicates are simply minerals without silicon
+            - really easy to determine if something is a silicate or not based
+              on the formula (is silicon a part of it?)
+
+
+        - Carbonites
+            - non silicate
+
+            - are all comprised of the carbonite unit (CO3)^2-
+
+            - many different carbonate minerals, depending on which cation is
+              attached to the carbonate complex
+
+
+            - You can identify calcite by dropping weak hydrochloric acid on it
+                - it will fizz
+
+
+        - Oxides
+            - Minerals where a cation is bounded to oxygen
+
+            - two important types
+                - Hematite
+                    Fe2O3
+                - Megnetite
+                    Fe3O4
+
+                - these bond differently because of the oxydation state of iron
+
+
+        - Sulfates
+            - Sulfur is present as the sulfate ion
+
+            - Two important sulfates
+                - Anhydrite
+                    CaSO4
+
+                - Gypsum
+                    CaSO4 * 2*H20)
+
+
+        - Sulfides
+            - non silicates where cations are bonded to sullfur ion
+
+            - two important types
+                - pyrite
+                    FeS2
+
+                - galena
+                    PbS
+
+
+            - Cubic Crystals
+
+
+        - Halides
+            - Anion is in the second to last column of periodic table
+
+            - generally form ionic bonds
+
+            - Imporant types
+                - Halite (table salt)
+                - Sylvite
+                - Flourite
+
+        - Native Element Minerals
+            - composed of only one element
+
+            - Examples
+                - Graphite (C), Diamond (C), Copper (Cu), Gold, Sulfur
+
+
+    - The Physical Properties of Minerals
+        - unique physical and chemical characteristics to identify minerals
+
+
+        - Physical Properites
+            - Color:
+                - color can sometimes be used to identify a mineral
+                - color is not usefult in all cases
+
+            - Streak
+                - the color left behind when scratching a mineral on a tile of
+                  unglazed porcelain
+
+
+                - most silicates leave behind a colorless streak
+
+            - Hardness
+                - the ease by which the surface of a mineral can be scratched
+
+                - we use the Mohs (moes) scale.
+                    - Ranges from Talc (softest, 1) to Diamond (Hardest, 10)
+
+                - Minerals below 5.5 will not scratch glass
+
+            - Tenacity
+                - toughness ro resistance to cracking / breaking
+
+                - many different tenacity things
+                    - Brittleness
+                    - Malleability
+                    - Flexibility
+
+            - Cleavage
+                - the tendency of a crystal to break along flat planar surfaces
+
+                - covalent bonds are generally strong and have poor cleavage
+                - ionic bonds are relatively weak and yield good cleavage
+
+                - cleavage directions
+                    - cleavage in one direction
+                        - you can peel it apart, Muscovite is an example
+                        - Micas
+                            - peels off in layers
+                            - there are weak bonds in between the sheets of
+                              tetrahedra
+
+                    - Cleavage in 2 angles at 90 degress
+                    - Cleavage in two directions not at 90 degrees
+                    - Cleavage in 3 directions bo
+                    - basically cleavage in every possible way
+                        - cleavage in 4 directions! Like a d4 shape
+
+                - cleavage planes are always flat!!!
+
+                - cleavage planes do not always coincide with the crystal faces
+
+            - Fracture
+                - tendency of a mineral to break along irregular surfaces
+
+            - Specific Gravity
+                - heavier minerals have higher specific gravity
+
+                - measure of the mass of a mineral, divided by the mass of an
+                  equal volume of water
+
+                - So has to do with how dense it is?
+
+
+            - Luster
+                - the way a mineral reflects light
+
+                - types
+                    - metallic
+                        - strong reflection but opaque
+                    - Vitreous
+                        - reflects like glass
+                    - Dull
+                    - Greasy
+                        - looks like its coated in oil
+
+                    - Adamantine
+                        - brilliant luster of diamond
+
+
+
+            - Form or Habit
+                - the shape in which the crystal grows
+
+            - Magnetism
+
+            - Feel
+                - feels greasy or something
+
+            - Taste
+
+
+    - Cleavage Plane
+        - where the rock wants to break at
+
+        - if you tried to break it, where it would probably break from
+
+        - the cleavage angle can be used to identify different minerals
+
+
+
+

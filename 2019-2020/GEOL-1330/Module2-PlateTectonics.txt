@@ -116,13 +116,20 @@
                 - deep sea sediments
 
 - video 2
+    - Iceland is right on top of a mid ocean ridge
+        - or rather the ridge comes up on land
+
+        - all of the rocks are bssalt rocks
+            - these are a volcanic rock
+
+
     - okay so continental drift is a thing, but why?
         - this guy in the 60's took on this idea of some earlier guy about
           convection motion inside of the mantle
 
             - basically the mantle is circulating and that is causing crust on
               top of it to move
-            
+
             - convection cells causing litosperic plates to move
 
 
@@ -134,6 +141,30 @@
 
             - This causes new oceanic crust to be formed along the mid ocean
               ridges
+
+        - Even though continental drift was accepted in the 1930s, we didn't knowS
+          why it was happening
+            - in the 60s it was sugested that there are convective flows in the
+              mantle
+
+            - There is a circulating mantle that is parting at a upwelling and
+              causing the crust on top of them to move
+
+
+            - Mantle convection cells rise beneath mid ocean rideges
+                - from this they spread apart
+
+
+            - there is a magma chamber right below the mid ocean rideges
+                - this creates new oceanic crust
+
+                - the crust right over the ridge is much higher because the heated
+                  material is much less dense and more boyant1
+                    - as you go farther away from the upwelling it is lower and
+                      lower because it has hardened and is more dense
+
+                    - so the farther from a mid ocean ridge, the lower the ocean
+                      floor
 
 
     - Transform fault boundaries
@@ -174,8 +205,6 @@
           accumulated on top of the ocean crust
 
 
-    
-
 
 - Seafloor Magnetic Anomaly Patterns
     - discussing megnetic polarity reversals
@@ -186,17 +215,20 @@
         - if we look at cooled lava from ~800000 years ago, the lava flow
           indicates that the magnetic field was on the other side of the planet
 
-
-
-- Formation of an Ocean Basin
+- Formation of an Ocean Basin (this is called the Wilson Cycle)
     - We have a continental crust of one continuous plate
 
     - underneath there is an upwelling of hot mantle material
-        - as this continues, a rift valley is created
+        - this results in warping above on the continent or whatever
+
+        - as this continues, a rift valley is created across the continent
+            - this is called the continental rift
 
     - the continents seperate evenyuall as the mantle plume continues
+        - this forms a linear sea
 
     - oceanic crust begins to form above the mantle plume
+        - there is a spreading mid ocean ridge and a rift valley
 
 
     - there is a continental shelf that leads in further to the ocean
@@ -204,7 +236,219 @@
           continental crust disappears and the oceanic crust is the only thing
           left
 
+    - There is continental crust on either side, and oceanic crust in the
+      middle
+        - passive continental margins do not occur along plate boundaries
+            - these are not plate boundaries, they are passive
+
+            - it is just a drop off of continental crust
+                (see figure 2.1)
+
+        - there is a continental shelf against the deeper water depths
+
+            - this is a very quick drop off point
+
+        - farther on there is a dramatic change in height, called the shelf
+          break
+            - there is sediment here that has been acumulating over many yearsr
+
+
+        - then further down, we see a very gradual sinking of crust height,
+          this is called the continental slope
+            - this is still continental crust!
+
+        - Then we have a very level, low part called the continental rise
+            - this is the transition to oceanic crust
+
+
+        - Deep- sea fans
+            - contintal crust sediment that has been carried
+
+
+
+- Seafloor flattens out at the continental rise
+    - there is a distinct boundary between the continental and oceanic crust
+
+    - there is a continental shelf on which the continent (and ocean next to
+      the continent) sits
+
+
+- East African (Afar) Triple Junction
+    - Upwelling mantle plume in Africa
+
+    - this causes the lithosphere splin into three arms
+
+
+    - this has created two Modern Day Linear Sea (linear sea) s
+        - The Red Sea
+            - divergent plate boundary
+            - becomes a transform plate boundary more north
+                - this is why there are alot of earthquakes in the bible
+
+        - The gulf of Aden
+
+    - the third arm is a failed rift, known as the east african rift system
+
+- Video 3
+    - East africa tripple junction is a good plac3e to see the wilson cycle
+        - we have an upwelling mantle plume here against the base of the
+          lithosphere
+
+        - this is plitting the lithosphere into 3 arms
+
+            - 2 of these arms form the aden gulf and red sea
+                - in the northern part of the red sea there is a transform
+                  boundary
+                    - the rest of the red sea is a divergent boundary
+
+            - there is also a failed rift called the african rift system
+                - it is volcanically active, even though it is not a sea yet
+                - mount kenya, mount kellamenjaro (kilimanjero)
 
 
 
 
+    - Types of plate boundaries
+        - divergent (constructive)
+            - mainly mid ocean ridges
+
+        - convergent (destructive)
+            - two plates collide with one possibly subducting beneath the other
+
+        - Transform (lithosphere is conserved)
+            - Two plates slide laterally past eachother
+
+
+        - volcanoes and earthquakes mostly happen along plate boundaries
+            - most volcanoes are along convergent plate boundaries
+
+    - Parts of the subduction zone
+        - Trench, Accretionary Wedge, and Forearc Basinn
+            - almost all convergent boundaries have these
+
+        - Trench
+            - deep depression on the sea floor whree oceanic plate bends down
+
+            - sediments and pices scapre off and accumulate as an accretionaryt
+              wedge
+
+            - when the subducting plate reaches a particular depth in the
+              mantle it generates magma that then rises towards the surface
+
+              (figure 2.2)
+
+        - Forearc Basin
+
+
+
+    - Thress types of convergent plate boundaries
+        - Ocean-Ocean
+            - this can create volcanic island arcs
+            - the volcanoes all appear as individual volcanoes
+
+            - Example
+                - Aleutian Islands between russia and Alaska
+
+                - the north american plate is the one on top
+
+        - Ocean-continent
+            - oceanic goes under continental crust
+                - still have the 3 parts:
+                    - trench, forearc basin, acretiancy prism (the ridge thing)
+
+            - There are continental volcanic arcs
+                - these create volcanoes and mountains on top of teh magma
+                  chambers
+
+            - Other examples
+                - Andes mountains of south america
+                    - uplift of continental crust and volcanoes
+
+                - along the juan de fuca plate
+                    - along washington and oregon
+
+                    - The sawtooth image along the juan de fuca plate is how a
+                      convergent plate is represented (Figure 2.3)
+                        - the teeth point in the direction of the subducting
+                          plate
+
+                        - there is a mendocino fault right next to the juan de
+                          fuca plate, causing the juan de fuca plate to do this
+
+
+                        - the volcanoes formed by this are the cascades (mount
+                          saint hellens is an example)
+
+        - Continent-Continent
+            - Collision between india and Asia
+                - causes earthquake in china
+
+                - india used to be its own continent and eventually collided
+                  with asia
+
+                - this formed the himalayas
+                    - contientnal crust
+
+                - this turned tibet into a plateau
+
+
+    - Collage Tectonics
+        - assemblage of micro continents, arcs and other crustal fragments
+          accreted along the edge of a continenta adjacent to a subduction zone
+            - basically a bunch of micro contrinents keep dog piling eachother
+            - (Figure 2.4)
+
+            - this happens along the edge of a continent
+                - there is subducting oceanic lithosphere going uinder the
+                  continent
+                    - this causes an encroching microcontinent or island change
+                      to impact with the islands and just stack on it
+
+                  - this forms a new subduction zone, then it can happen again
+                    and again
+
+
+        - Example
+            - Mt. McKinley Alaska
+
+            - Chulitna Terrane, Alaska
+                - alaska is 100% acreted terraigns
+
+
+            - appalacia
+
+
+    - What drives plate tectonics?
+        - Other thean mantle convection
+        - these are all just ideas (well I guess so is mantle convection)
+
+        - mantle drag
+            - enhances plate motion when the velocity of the athenosphere
+              exceeds that of the plate
+
+        - Slab Pull
+            - cooling lithosphere thickens and is very dense / heavy
+            - this pulls down cold sinking lithosphere further into the mantle
+            - this can be impeaded by mantle drag
+
+        - ridge push
+            - gravity driven force
+            - gravity pulls down new oceanic plate down the side of a mid ocean
+              ridge (this is why its lower farther away, or because of)
+
+        - whole mantle convection
+            - the whole mantle is undergoing convection
+            - there are rising plumes from the core that casuse all ofthe
+              mantle convection
+
+            - subducting oceanic lithosphere sinks all the way into the core of
+              the planet crust
+                - this melts and turns into a hot plume that then goes back to
+                  the surface
+
+        - layer cake convection model
+            - the lower and upper mantle are isolated, it is the upper mantle
+              that does all of the convection / mantle plumes and stuff
+
+
+            - sinking crust pieces go only to the bottom of the upper mantle

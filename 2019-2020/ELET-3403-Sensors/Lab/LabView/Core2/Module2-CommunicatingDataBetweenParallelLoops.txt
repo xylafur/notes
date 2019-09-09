@@ -1,0 +1,47 @@
+- Parallel Loops
+    - when you need to execute tasks simultaniously or at different rates
+
+    - Local variables aren't good for when you want to transfer every piece of
+      data from a loops
+        - either missed data or duplicates
+
+
+        - local variables are only good when you need to transfer the latest
+          data
+
+- Queues
+    - Can be used to transfer every piece of data between parallel loops
+
+    - use stuff from the "Queue Operations" section to use queue stuff
+
+    - you can transfer stuff between two VIs with a queue
+
+    - obtain queue function
+        - creates the queue before loops begin
+        - constructor or somethin i guess
+
+    - enqueue element
+        - add data to the queue
+
+    - dequeue element
+        - get the latest (or oldest I guess) from the queue
+
+    - get queue status
+        - returns things like "How many elements are in the queue"
+
+- Notifiers
+    - can pass data between parallel loops
+
+    - can broadcast the latest data to multiple loops that are waiting on a
+      notification
+
+    - Do not buffer data
+
+    - they do broadcast data (and queues to not)
+
+
+    - only get the latest notification
+        - so if the loop is running and then two new notificatinos come in, it
+          will only process the most recent one when it finishes
+
+
