@@ -1,0 +1,66 @@
+TODO:
+    For the assignment add that a looser framework like agile would allow for the
+    requirements to change and the burden on the developers is minimal
+
+
+
+
+- Software Engineering Principles
+    - software engineering is just a framework of best practices
+        - processes that are helped by tools and technologies that are avaliable to build
+          effective software applications
+
+
+    - guiding principles
+        - be agile
+            - be flexible to changes
+            - allows for requirement changes
+
+        - Focus on the quality of your code
+
+        - the team must be effective
+            - must be self organizing and have mutual trust and respect
+
+        - You have to have effective communication to be an effective team
+
+        - effectively manage change
+
+    - communication principles
+        - listen
+        - prepare
+        - stay focused
+        - take notes on all important points
+        - strive for collaboration
+
+        - move on
+            - once you argree on something, move on
+            - if you can't agree on something, move on
+
+
+    - Planning Principles
+        - Understand the scope
+            - only agree to things if you understand what you will be doing
+            - you must know how much effort something is going to take before you start
+              something
+
+        - Involve the customer
+            - they define the priorites and establish the constraints
+
+        - Changes are inevitable
+
+        - Estimate baseed on what you know
+            - you have to know what you are being asked, if you have done this before,
+              how long did it take?
+
+            - have you considered testing?
+            - have you considered bugs and design changes?
+                - gotta consider that in your estimate
+
+
+                - undercommiting and overdelivering is always great, not the other way
+                  around
+
+        - be realistic
+            - what are you actually going to be able to finish?
+
+        - Track and adjust everything as required

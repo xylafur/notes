@@ -1,0 +1,48 @@
+- Arm Cortex M3
+    - Initializing an IO Port
+
+    - IO Programming
+        - IO ports are memory mapped
+
+        - using symbolic definitions
+            - things are named in an obvious way, there is meaninf for the programmer
+
+            GPIO_PORTD_DIR_R
+                - gpio in port d, direction register
+
+        - by default all pins are regular port pins (GPIO)
+            - none of the alternative functions are activated
+
+    - Initializing an IO port
+        1. Activate the clock for the port
+            - Use the SYSCTL_RCGC2_R register
+            - set the mask for whichever ports that you want activated
+
+        2. Set the direction register
+            - use the GPIO_PORTx_DIR_R register for this port
+
+            - there is a register for each port, and a bit for each of the pins in the
+              port
+                - 0 is input, 1 is output
+
+        3. Clear bits in the alternate function register
+            - make sure that the pin is set to GPIO mode
+
+            - use the GPIO_PORTx_AFSEL_R register
+                - Alternate Fuction Select Register
+
+            - there is a sel bit for each of the pins in each of the ports
+                - set them to 1 for the alternative functions, make it 0 for GPIO
+
+        4. Enable the digital port
+            - disable pins you aint using
+            - enable the pin you need to use
+
+            - Use the GPIO_PORTx_DEN_R
+                - digital enable register
+
+
+        - Then we can read or write with the GPIO_PORTx_DATA_R register
+
+
+
