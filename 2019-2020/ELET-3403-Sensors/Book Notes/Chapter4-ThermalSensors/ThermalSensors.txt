@@ -1,0 +1,239 @@
+- Summary
+    1. The class of sensors that do measurmenets consists mostly of 3 types
+        1) Resistance Temperature Detector (RTD)
+        2) Thermistor
+        3) Thermocouple
+
+    2. Temperature is contained in a body's thermal energy as average thermal
+       energy per moledule
+
+       There are 2 different scales where 0 is absolute 0
+        1) Kelvin
+        2) Rankine
+
+
+        T(K) = 5/9 * T(R)
+
+    3. There are 2 reactive (absolute 0 energy is not 0 in the scale) temperature scales
+        1. Celsuis
+            T(C) = T(K) = 273.15
+
+        2. Fahrenheit
+            T(F) = T(R) - 459.6
+
+    4. The RTD is a sensor that depends on increase in resistance with
+       temperature.
+
+       The increase is very nearly linear.  Resistance vs temperature is
+       expressed as either a linear or quadratic equation
+
+       R(T) = R(To)[1 + alpha0 * delta(T)]
+
+       R(T) = R(To)[1 + alpha1 * delta(T) + alpha2 * delta(T)^2]
+
+
+       When greater accuracy is needed, tables are used instead.
+
+       Usually used with Bridge Circuit or High Gain null Detector
+
+    5. Thermistor is based on a decrease of semiconductor resistance with
+       temperature.
+
+       Highly NON LINEAR to temp vs resistance
+
+       Usually used with Bridge Circuit or Op-Amp
+
+    6. Thermocouple is a junction of dissimilar metal wires, usually joined to
+       a third metal wire through 2 reference junctions.
+        - a voltage is developed across the common metal wires
+        - the voltage is nearly linearly proportional to the difference in temp
+          between measurement and reference junctions
+
+       Voltage must be measured at high impeadance.
+
+       SIgnal is conditioned with potentiometric, op amps, or other
+
+
+    7. Bimetal strip can be used to convert temperature into physical motion
+
+    8. Gas and vapor pressure temperature sensors convery temp into gas
+    pressure, which is then converted into eleectrical signal or used directly
+    by pneumatic systems
+
+
+1. Introduction
+
+2. Definition of Temperature
+    2.1 Thermal Energy
+        - thermal energy is determined by the vibrations of molecules.
+        - if the molecules are not moving at all, the things is said to have 0
+          thermal energy
+
+    2.2 Temperature
+        - Joules are how we measure energy in a system (SI unit)
+            - The amount of joules in a system would have to do with the size
+              of the thing though...
+
+            - consider two cups of water at the same temperature
+                - the larger cup would contain more total energy obviously
+
+            - we consider average thermal energy per molecule, expressed in
+              joules
+
+        - Temperature scales
+            - you need a 'calibration point' to base measurement scales at
+                - such as the freezing / melting of oxygen, water, etc
+
+
+        - Relation to thermal energy
+            - temperature can be related to thermal energy using Boltzmann's COnstant
+                - not true in call cases, but a good aproximation
+
+                Thermal Energy = W_th = 3/2 * k * T
+
+                    k = 1.38 * 10 ^ -23 J/K
+
+            - From this you can determine the average thermal speed of a gas
+              molecule
+
+
+                1/2 * m * v_th^2 = W_th = 3/2 * k * T
+
+                => v_th = sqrt(3 * k * T / m)
+
+
+3. Metal Resistance Vs Temperature Devices
+    3.1 Metal Resistance vs Temperature
+        - The chief characteristic of metal is that each atom gives up its
+          valence electron
+            - this electron can move reely throughout the material
+            - this is called a conduction electron
+
+        - In metals there is overlap in the energy between conduction and valence bands
+
+        - The warmer a material is, the more its atoms vibrate
+            - this means that electrons which move through it colide more
+              often, this impeades their motion
+
+        - The resistance of a particular metal can be determined with
+            R = p * l / A (T = constant)
+
+                R = sample resistance (ohm)
+                l = length (m)
+                A = cross-sectional area (m^2)
+                p = resistivity (ohm * meter)
+                    - often given as a function of temperature
+
+    3.2 Resistance vs temperature approximations
+        - Linear Aproximation
+            - if you have the mid point and know that the temperature equation
+              over a range of temperatures is linear, you can use this equation
+
+            R(T) = R(T0)[1 + alpha0 * delta(T)]
+
+                Over the range T1 < T < T2
+                T0 is the midpoint temperature
+                alpha0 = fractional change in resistance per degree of temperature at T0
+
+
+
+
+    3.3 Resistance-Temperature Detectors
+        - sensor that uses resistance to approximate temperature
+
+        - sensitivity
+            - can be noted from aplha0
+
+        - response time
+            - RTD has a response time of 0.5 to 5 seconds
+
+        - Signal conditioning
+            - RTD is generally used in a bridge circuit
+
+            [ See figure 3.1 ]
+
+
+        - Dissipation Constant
+            - There is an (I^2 * R) power dissipated by the device itself
+                - this produces a small heating effect
+
+            - this means the current through the RTD must be kept very low and
+              constant!
+
+            delta(T) = P / P_D
+                delta(T) = rise in temperature because of self-heating
+                P = power dissipated in the RTD from the circuit in W
+                P_D = dissipation constant of the RTD
+
+
+
+
+4 Thermistors
+    - Uses resistance like an RTD, but is a semiconductor
+
+
+    4.1 Semiconductor Resistance vs Temperature
+        - In semiconductors, electrons are bound to each molecule with
+          sufficient strength that no conduction electrons are contributed from
+          the valence band to the conduction band
+
+            - this is called a gap of energy `delta(W_g)` between conduction
+              and valence electrons
+
+            - this behaves as an insulator because no conduction band electrons
+              are avaliable to carry charge
+
+        - As temperature is increased, the molecules vibrate
+            - the vibration provides more energy to the valence electrons
+
+            - when this energy is greater than delta(W_g) then some of these
+              electrons become free of their molecules
+
+            - as the temperature increases, more and more electrons gain energy
+              to enter the conduction band
+
+
+            - this only works because the gap is small compared to conductors
+
+        - Semiconductors become better conductors as temperature increases!
+            - the resistance decreases with increasing temperature
+
+        - the relation ship between temp and resistance is highly non-linear
+          though!
+
+
+    4.2 Thermistor Characteristics
+        - Sensitivity
+            - Very high sensitivity
+            - changes in resistance of 10% per degree celcius is not uncommon
+
+        - Range
+            - depends on the materials used
+
+            - Three general range limitation effects
+                1. Melting or deterioration of the semiconductor
+                2. Deterioration of encapsulation material
+                3. Insensitivity at higher temperatures
+
+
+            - semiconductor material may melt or deteriorate as the temperature
+              is raised
+
+                - generally limits the upper temp to less than 300 C
+
+
+            - When temp is very low, the resistance will be VERY high (mega ohms)
+
+            - at higher temperatures the curve flattens out
+
+
+        - Response time
+            - dependent on the quantity of material present and the environment
+            - it can vary from .5s to 10s or more
+
+        - Signal Conditioning
+            - there are many applications, but often a bridge circuit is used
+
+            - Dissipation Constants are quoted as the power required to raise
+              the thermistors temp by 1 degree C
+                - vary from 1-10 mV/degree C

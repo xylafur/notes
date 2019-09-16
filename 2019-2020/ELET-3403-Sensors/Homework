@@ -1,0 +1,47 @@
+###############################################################################
+#   Homework 2, Chapter 4
+#       5, 7, 10, 11, 15, 17, 18, 20, 21
+###############################################################################
+
+Problem 5:
+    A sample of hydrogen gas has a temperature of 500°C . Calculate the average mo-
+    lecular speed in m/s. Express this also in ft/s. Note: Gaseous hydrogen exists as the
+    molecule H 2 with a mass of 3.3 * 10 -27 kg .
+
+Problem 7:
+    An RTD has alpha(20°C) = 0.004/°C . If R = 106 (ohm) at 20°C , find the resistance at 25°C .
+
+problem 10:
+    Suppose the RTD of Problem 7 has a dissipation constant of 25 mW /°C and is
+    used in a circuit that puts 8 mA through the sensor. If the RTD is placed in a bath at
+    100°C , what resistance will the RTD have? What then is the indicated temperature?
+
+Problem 11:
+    In Problem 8, the RTD is replaced by a thermistor with R(20°C) = 100 ⍀ and an
+    R versus T of -10%/°C near 20°C . Calculate the voltage resolution of the detector
+    needed to resolve a 1.0°C change in temperature.
+
+Problem 15
+    A type S thermocouple with a 21°C reference measures 12.120 mV. What is the junc-
+    tion temperature?
+
+Problem 17
+    A type K thermocouple with a 0°C reference will monitor an oven temperature at
+    about 300°C .
+        a. What voltage would be expected?
+        b. Extension wires of 1000-ft length and 0.01 ⍀兾ft will be used to connect to the
+           measurement site. Determine the minimum voltage measurement input
+           impedance if the error is to be within 0.2%.
+
+Problem 18
+    We need to get 1.5 V from a candle flame at about 700°C . How many type K ther-
+    mocouples will be required in series if the reference is assumed to be nominal room
+    temperature, 70°F ?
+
+Problem 20
+    A gas thermometer has a pressure of 125 kPa at 0°C and 215 kPa at some unknown
+    temperature. Determine the temperature in °C .
+
+Problem 21
+    A methyl chloride vapor-pressure thermometer will be used between 70°F and
+    200°F . What pressure range corresponds to this temperature range?
