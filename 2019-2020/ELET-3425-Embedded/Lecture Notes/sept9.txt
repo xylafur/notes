@@ -1,0 +1,6 @@
+- Designing a System
+    - You want to list specifications and Constraints
+        - Specifications can be the things you have to do, the components you
+          get, the kind of power supply you have to use
+
+        - Constaints can be limiting factors that you have to abide by

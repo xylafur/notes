@@ -1,0 +1,8 @@
+- We have a test on Wednesday
+    - we have to understand the characteristics of thermal sensors
+        - transfer functions
+        - electrical properties
+
+        - all first order dynamic behavior
+
+

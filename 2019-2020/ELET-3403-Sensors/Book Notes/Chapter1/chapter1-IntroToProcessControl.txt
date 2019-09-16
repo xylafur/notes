@@ -374,3 +374,281 @@
 1.6 Units, Standards and Definitions
     1.6.1 Units
         - 
+
+    1.6.2 Analog Data Representation
+        - For whatever is being measured, a range over that thing must be
+          specified
+
+        - Current Signal
+            - Current is used instead of voltage because the system is then
+              less dependent on load
+                - if the resistance of the line changes, then so will the
+                  voltage
+                - current is not suseptible to resistance changes in this way
+
+        - Pneumatic Signals
+            - generally 3-15 psi
+
+
+    1.6.3 Definitions
+        - Error:
+            - used to describe the results of a measurement
+            - difference between the actual value and the measured value
+                - the actual value is the set value, the desired value
+
+        - Block Definitions;
+            - Has an input variable x(t) and an output variable y(t)
+
+        - Transfer Function
+            - T(x, y, t)
+                - describes the relationship between the input and output for
+                  the block
+
+            - Two Parts
+                - Static Part
+                    - describes the input/output relationship when the input is
+                      not changing in time
+                - Dynamic Part
+                    - describes the input/output relationship when there is
+                      time variation on the input
+
+
+            - Can be represented in many different ways, equations, table,
+              graphs
+
+
+        - Accuracy
+            - the maximum overall error to be expected from a device
+
+            - usually expressed as "inaccuracy"
+
+            - forms
+                1. Measured variable
+                    - If there is uncertainty in what was measured
+
+                2. Percentage of the instrument full-scale reading
+                    - inaccuracy the full scale?
+
+                3. Percentage of instrument span
+                    - the percentage of the range of instruemnt measurement
+                      capability
+
+                4. Percentage of the actual reading
+
+
+            - For digital systems we are most worried with the digital
+              representation of analog values and the accuracy of this
+
+                - A/D converter will be specified as volts per bit +- some
+                  threshold
+
+        - System Accuracy
+            - the overall accuracy of many elements in a process-control loop
+
+            - Express the accuracy of each element in terms of the transfer
+              functions
+
+
+            - BAsically you have the product of the transfer functions and
+              their uncertainties multiplied by the dynamic variable
+
+                V +- ^V = (K +- ^K)(G +- ^G)C
+                    V   : output voltage
+                    K, G: nominal transfer functions
+                    C   : Dynamic variable
+
+
+            - Statistics tells us that it is best to use the root mean square
+              for overall uncertainty
+
+                [^V/V]rms = +- sqrt((^K/K)^2 + (^G/G)^2)
+
+
+
+        - Sensitivity
+            - Measure of the change in output of an instrument for a change in
+              input
+
+            - generally high sensitivity is desirable
+
+            - Other evaluation parameters:
+                - linearity or output to input
+                - range
+                - accuracy
+
+            - The value of sensitivity is generally given by the transfer
+              function
+
+
+        - Hysteresis and Reproducibility
+            - Often an instrument does not have the se output for the same
+              input given repeated trials
+
+                - This is due to inherent uncertainties that imply a limit on
+                  the reproducibility of the device
+
+            - hysteresis
+                - get different readings for inputs depending on if you came
+                  from above or below
+
+
+                - generally specified as a percentage of full scale maximum
+                  deviation between two curves
+
+        - Resolution
+            - minimum measurable value for a particular device
+
+            - in digital it is determined by how much 1 bit represents, in
+              analog it is determined by the minimal measurable value
+
+        - Linearity
+            - linear relationship between input and output is highly desirable
+
+
+            - one output specification of sensor output is the degree to which
+              it is linear with the measured variable and the span over which
+              it occurs
+                - a common specification of linearity is the maximum deviation
+                  from a strainght line
+
+            - for example if a sensor outputs voltage as a function of pressure
+              from 0 to 100 psi with linearity of 5% FS. 
+                - at some point on the curve of voltage vs pressure, the
+                  deviation between actual pressure and linearly indicated
+                  pressure for a given voltage deviates by 5%
+
+    1.6.4 Process-Control Drawings
+        - Essential Elemenets
+            - The P&ID Diagram depicts the entire plant and associated control
+              systems
+            
+                - there are symbols for  flow lines, computers, PLCs, sensors,
+                  etc..
+
+
+            - Cascade Control System
+                - the setpoint of one loop is the controller output of another
+                  loop
+
+        - Instrument Lines Symbols
+            - 4 to 20mA current signal
+                - represented using a dashed line
+
+            - pneumatic signal
+                - line with cross hatches
+
+            - digital feed into computer
+                - solid line with bubbles
+
+        - Other Symbols
+            - control valves are often labeled by what they control
+
+1.7 Sensor Time Response
+    - static transfer function of a process-control loop
+        - specifies how the output is related to the input if the input is
+          constant
+
+        - there is a lag between when the measured value changes and the output
+          of the sensor changes to this value
+
+    - dynamic transfer function
+        - time dependence of an element
+
+        - specifies how the output changes in time when the input is changing
+          in time
+
+        - independent from the static transfer function
+
+        - often called time response
+
+        - important for sensors because they are the primary element for
+          providing knowledge of the controlled variable
+
+    
+
+    1.7.1 First-Order Response
+        - first order because for all sensors of this type, the time response
+          if determined by the solution of a first-order difeq
+
+        b(t) = bi + (bf - bi)[1 - e ^ (-t / T)]
+
+        - the sensor is in error as it transitions from bi to bf
+
+        - Time Constant
+            - represents the time at which the output value has changed by ~
+              63% of the total change
+
+            - the output has reached ~ the actual value after 5 time constants
+
+        - the output of the sensor must vary linearly with the input!
+
+        - Real Time Effects
+            - exponential time response and time constant is based on the
+              assumption that there is a sudden discontinuous change in the
+              input value
+                - this isn't reality
+
+
+    1.7.2 Second Order Response
+        - in some sensors, a step change int he input causes the output to
+          oscillate for a short period of time before settling to the value
+          that coresponds to the new value
+
+        - described by a second order diffeq
+
+        - not possible to make a universal solution
+            - we can describe the general nature of the response
+
+        R(t) is proportional to R0 * e ^ (-a * t) * sin(2 * pi * fn * t)
+
+            R(t): the transducer output
+            a   : output damping constant
+            fn  : natural frequency of the oscillation
+            R0  : amplitude
+
+        - Such a transducer can be said to track the input when the input
+          changes in a time that is greater than the period represented by the
+          natural frequency
+
+        - The damping constant defines the time one must wait for the
+          transducer output to be a true indication of the transducer input
+
+
+1.8 Significance and Statistics
+    - we will look at another feature of measurment that may be misleading
+      about the actual value of a variable
+
+    - We also look at a method to help interpret the significance of
+      measurements
+
+
+    1.8.1 Significant Figures
+        - significant figures are important!
+        - You can't gain any significant figures, you can only have as much
+          significance as you start with
+
+        - Significance in Measurement
+            - significance is limited by
+                analog: readability
+                digital: number of digits
+
+            - not the same as accuracy!!
+
+        - Significance in Calculations
+            - can't obtain a measurement with more significance thant the
+              numbers employed in the calculation
+
+        - Significance in Design
+            - Use the sigfigs specified in the design sheet
+
+    1.8.2 Statistics
+        - we can determine the confidence in the value of a variable
+
+        - for instance you may want to take measurements in 10 locations and
+          calculate the average of those for consideration
+
+        - Standard Deviation
+            - Tells you how spread out the values in the set are from the
+              average
+
+

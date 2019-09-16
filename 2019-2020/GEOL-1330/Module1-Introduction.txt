@@ -11,7 +11,7 @@
             - how will drilling for this oil effect the enviornment?
             - storing Nuclear waste
 
-    - THe nature of scientific Inquiry
+    - The nature of scientific Inquiry
         - sience (and therefore geology) assumes that the natural world is consistent and predicable
 
         - goal of science is to discover patterns in nature
@@ -64,8 +64,8 @@
           metamorphic rocks
 
 
-- The ROck Cycle
-    - generation of Magma from prexisting ROck
+- The Rock Cycle
+    - generation of Magma from prexisting Rock
         - rocks are melted at very high temperatures into rocks
         - this produces igneous rock
 
@@ -98,8 +98,7 @@
               center
 
 
-
-        - Composition of the SOlar Nebula
+        - Composition of the Solar Nebula
             - mainly hydrogen and helium
 
             - also some particles of rocks and iron, methane and other gases

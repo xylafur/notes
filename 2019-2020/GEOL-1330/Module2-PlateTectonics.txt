@@ -8,7 +8,7 @@
       well as the east side of america
 
     - Alfred Wegener
-        - proposed his continental drive throughy in 1915
+        - proposed his continental drift theory in 1915
 
         - no one believed him though
             - the hypothesis lacked a viable mechanism
@@ -66,7 +66,7 @@
                           field at the time the rock was created
 
 
-                        - This can also happen with lavea:!
+                        - This can also happen with lava!
                             - magnetic materials in volcanic rocks record the
                               direction of Earth's magnetic field atht the time
                               the lava crystallized
@@ -86,7 +86,7 @@
 
 
         - Mid ocean ridges
-            - they extend the length of entire ocean basis
+            - they extend the length of entire ocean basin
 
             - sites of submarine seismic erruptions (volcanicly active)
 
@@ -138,7 +138,6 @@
 
             - so plates are moving away from mid ocean ridges
 
-
             - This causes new oceanic crust to be formed along the mid ocean
               ridges
 
@@ -159,7 +158,7 @@
                 - this creates new oceanic crust
 
                 - the crust right over the ridge is much higher because the heated
-                  material is much less dense and more boyant1
+                  material is much less dense and more boyant
                     - as you go farther away from the upwelling it is lower and
                       lower because it has hardened and is more dense
 
@@ -174,18 +173,19 @@
         - the mid-ocean ridge can be split into multiple sections
 
             - there are many transform faults along mid ocean ridges because of
-              offsets in the f
+              offsets in the faults
 
+            - so two plates are pulling appart but there are transform
+              boundaires all withing this divergent boundary
 
     - Mantle Plumes
         - long lived structures
 
         - originate at te core-mantle boundary
 
-        - hot plums are boyant and float up to the crust
+        - hot plumes are boyant and float up to the crust
 
         - this is a hot spot and can form volcanoes on the surface
-
 
         - this can cause a chain of volcanic islands as the crust on top moves
           past the plume
@@ -203,7 +203,6 @@
     - Sediment
         - the farther you get from the ridge, the more sediment that has
           accumulated on top of the ocean crust
-
 
 
 - Seafloor Magnetic Anomaly Patterns
@@ -250,7 +249,7 @@
 
         - farther on there is a dramatic change in height, called the shelf
           break
-            - there is sediment here that has been acumulating over many yearsr
+            - there is sediment here that has been acumulating over many years
 
 
         - then further down, we see a very gradual sinking of crust height,
@@ -290,7 +289,7 @@
     - the third arm is a failed rift, known as the east african rift system
 
 - Video 3
-    - East africa tripple junction is a good plac3e to see the wilson cycle
+    - East africa tripple junction is a good place to see the wilson cycle
         - we have an upwelling mantle plume here against the base of the
           lithosphere
 
@@ -304,8 +303,6 @@
             - there is also a failed rift called the african rift system
                 - it is volcanically active, even though it is not a sea yet
                 - mount kenya, mount kellamenjaro (kilimanjero)
-
-
 
 
     - Types of plate boundaries
