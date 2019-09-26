@@ -1,0 +1,64 @@
+- Quality Programming
+
+    - Two Performance Criteria
+        - Quantitative Criteria
+            - Dynamic efficiency
+                - bandwidth
+                    - calculations performed per se ond
+                    - data transfered per second
+
+
+                - Latency or response time
+                    - real time means bounded latency
+
+
+                - anything to do with processing of data
+
+            - Static Efficiency
+                - Space!  How much of it
+                - How many bytes of memory are required
+
+
+            - Accuracy results
+
+        - You can measure all of these!
+            - so if someone were to "grade" this, if should always be the same no
+              matter the grader
+
+        - Qualitative Criteria
+            - Ease of software maintenance
+            - ease of understanding
+            - easy to debug, verify
+
+
+
+- Software Abstraction
+    - He gave an interesting explanation, the level of abstraction of something
+      can be measured in the ease of learning it
+        - something that is far enough abstracted is easy enough to pick up
+
+
+
+    - Finite State Machine
+        - three advantages of this abstraction
+            1. Faster to develop
+            2. It is easier to debug, and prove that it is correct
+            3. It is easier to change
+
+
+        - State (system is unchanging)
+            - description of current conditions
+
+            - actions required to keep the system from changing
+
+        - State Graph
+            - Graphical interconnection between states
+
+        - Controller
+            - software that inputs / outputs / changes the state
+
+            - accesses the state graph
+
+
+
+        - To create, you need DFG

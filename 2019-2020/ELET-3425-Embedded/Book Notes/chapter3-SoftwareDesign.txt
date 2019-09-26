@@ -1,0 +1,38 @@
+3.1 Attitude
+    - The easiest way to debug is to write software without any bugs
+
+
+    - Its better to have some things working then a whole system full of bugs
+
+
+3.2 Quality Programming
+
+3.3 Software Style Guidelines
+    3.3.1 Organization of a code file
+        - these regions should occur in ever code file
+
+            - opening comments
+                - name of the file, copywrite status
+
+
+
+
+
+
+3.6 Threads
+    - software is a list of instructions for the computer to execute
+
+    - A thread is the path of action of the software as it executes
+
+    - Generally the main program is called the "Foregound thread"
+        - it is a loop that never ends
+
+    - Interrupts allow for us to create multiple threads
+        - these threads can either be static, living throughout the life of the
+          software, or dynamic, created and destroyed during the lifetime of the
+          program
+
+        - You can have any number of background threads!
+            - though the processor can only process one thing at once
+
+

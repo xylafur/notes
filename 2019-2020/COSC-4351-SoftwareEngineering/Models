@@ -1,0 +1,37 @@
+MultiTier:
+    - client-server architecture
+
+    - presentation, application processing, data managment are all seperated
+
+    - an application is seperated into tiers
+
+    - developers modify or add a layer, rather than reworking the whole
+      application
+
+Case Diagram:
+    - Use case diagrams specify how the system interacts with actors without
+      worrying about the details of how that functionality is implemented.
+
+Sequence Diagram
+    - Describe interations among classes in terms of the exchange of messages
+
+
+    - Class Roles
+        - describe the way an object will behave in context
+        - UML object symbol (horizontal rectangle)
+
+    - Activation or Execution Occurrance
+        - THe time an execution needs to complete a task
+
+        - when an object is busy, place a thing grey line on its timeline
+
+        - (vertical rectangle)
+
+    - Messages
+        - Arrows that represent communication between objects
+
+        - half arrowed lines to represent async messages
+
+        - 
+    - Lifelines
+        - veritical 

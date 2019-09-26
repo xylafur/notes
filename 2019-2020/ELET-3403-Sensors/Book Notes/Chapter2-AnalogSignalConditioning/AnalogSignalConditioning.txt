@@ -1,0 +1,113 @@
+1 - Introduction
+    - signal conditioning is the operations performed on signals in order to
+      get them into a suitable state for interfacing with other elements
+
+    - We are interested only analog conversions, that is where the output is
+      still analog
+
+2 - Principles of Analog Signal Conditioning
+    - Signal Conditioning is often refered to as a transfer function
+
+    2.1 Signal Level Bias Changes
+        - The most common signal conditioning modifies these features of a
+          voltage representing a process variable
+
+            - Adjusting the level
+                - magnitude
+            - Bias
+                - zero value
+                - change the 'y-intercept' so to speak
+
+        - For instance we may need to transfer values from the range (0.2V,
+          0.6V) to (0V, 5V)
+            - we first change the zero value by adding or subtracting
+            - then we multiply the range to equal the other
+                - this can either be amplification or attenuation (making the
+                  signal smaller value)
+
+    2.2 Linearization
+        - When devices are 'nearly linear' this can cause alot of problems
+
+        - nowadays a signal is made linear using software
+
+    2.3 Conversions
+        - Many sensors exhibit changes of resistance with changes in a dynamic
+          variable
+            - In these cases, a circuit must be built to convert the change in
+              resistance to either voltage or current
+
+            - this is usually done using bridges
+
+        - Signal Transmission
+            - Since we generally use 4-20 mA as standard signal, we have to
+              convert to current at transmistting end and to voltage at the
+              receiving end
+
+            - Current is used because it is independent of load
+
+        - Digital Interface
+            - ADCs often convert from analog to digital
+
+            - sometimes you have to add some gain to the signal before feeding
+              it into a ADC
+                - the ADC may expect a much different range than the actual
+                  value you are trying to measure
+
+
+    2.4 Filtering and Impedance Matching
+        - often interfearance signal of considerable strength are present in
+          industrial enviornments
+
+        - it is necessary to use high-pass, low-pass or notch filters to
+          eliminate unwanted signals
+
+        - there are two filter type
+            - passive
+                - uses resistors, capacitors and inductors
+
+            - active
+                - use gain and feedback
+
+        - Impeadance Matching
+            - important when transducer internal impeadance or line impeadance
+              can cause errors in measurment of dynamic variable
+
+    2.5 Concept of Loading
+        - loading one circuit by another can cause significant problems
+            - introduces uncertainty in the amplitude of the voltage
+
+        - The load can be reduced into a Thevenin equivalent circuit
+            [ Figure 2.1 ]
+            [ Figure 2.2 ]
+
+        
+
+
+3 Passive Circuits
+    - Bridge Circuits
+        - Used for measuring changes in impeadance
+            - especially when the changes are very small
+
+    - Filter
+        - a resistor and capacitor can be used to filter out noise
+
+    - Divider Circuits
+
+    3.1 Divider Circuits
+        - can convert resistance variation into voltage variation
+
+
+            Vd = (R2 * Vs) / (R1 + R2)
+
+        - Issues with voltage dividers
+            1. Vd does not vary linearly even if the resistance does!
+            2. the total output impeadance (R2 || R2) may not be high, so
+               loading effects must be considered
+
+            3. Current will flow through both resistors
+                - Power will be dissipated by both!
+                - You must consider the power rating for both
+
+
+    3.2 Bridge Circuits
+        - Covert impeadance variations into voltage variations

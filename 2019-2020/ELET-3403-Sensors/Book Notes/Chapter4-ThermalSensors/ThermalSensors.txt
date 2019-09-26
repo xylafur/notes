@@ -237,3 +237,209 @@
             - Dissipation Constants are quoted as the power required to raise
               the thermistors temp by 1 degree C
                 - vary from 1-10 mV/degree C
+
+
+5 Thermocouples
+    - With the resistance based methods we have covered previously, external
+      power is required
+
+    - there are Voltage-generating sensors that will produce a Electromotive Force (emf)
+      based on the temperature
+        - the emf is almost linear with temperature and very repeatable
+
+        - devices that measure temp with this produced voltage are called
+          thermocouples (TC)
+
+
+    5.1 Thermo-electric Effects
+        - temperature difference maintained across a given metal causes the
+          vibration of atoms
+            - these effects the motion of electrons so that a potential
+              difference exists
+
+            - the potential difference is because electrons at the hotter end
+              have more energy than electrons at the cooler end
+                - this causes electrons to start to drift
+
+            - if a closed circuit is formed with another conductor, this will
+              cause current to flow in a closed loop
+
+
+        - Seebeck Effect
+            - an emf has been established in a circuit, causing current to flow
+
+            [ Figure 4.2 ]
+
+            emf = ∫(T1 ->T2) (Qa - Qb) dT
+
+                emf = volts produced
+                T1, T2 = junction temperatures in K
+                Qa, Qb = Thermal Transport constants of the two metals
+
+
+            - if the difference between the temperatures of between the two
+              constants is 0, the produced voltage will be 0
+
+            - the constants are nearly independent of temperature, so this
+              approximate linear relationship exists:
+                emf = alpha * (T2 - T1)
+
+                alpha = constant in V/K
+            
+
+
+        - Peltier Effect
+            - The opposite of Seebeck effect
+            - if you apply a voltage to the same setup, one of the sides of the
+              device will be heated while the other is cooled
+
+
+    5.2 Thermocouple Characteristics
+        - a definite relationship needs to be established between the emf and
+          the unknown temperature
+
+        - Devices connected to the thermocouple loop will contribute to the emf
+
+        - the arrangment used to good definite results
+            - you have the two different metals with known constants, A and B
+              which meet together at the point where you measure
+
+            - then you have a point where you apply a known reference
+              temperature
+
+            - then you have a third known metal that connects to both sides
+
+            - you can also extend the wires
+
+
+        [ Figure 4.3 ]
+
+
+        - Both magnitude and sign of the voltage must be noted!
+            - if the temerature of the measure side is lower than the reference
+              then the sign will be flipped!
+
+
+        - You must hold the reference temp at a (reasonably) constant value!
+
+        - Thermocouple Types
+            - Thermocouples are grouped into categories with a 'character type'
+                - like a J type or T type thermocouple
+
+                - Each of these types is suited for a particular range
+
+
+            - Some types are non-linear with respect to particaulr ranges
+
+
+            - J and K types are very sensitive
+
+            - S type has a much larger range
+
+
+        - Thermocouple Polarity
+            - Depending on the type of thermocouple, the expected polarity will
+              be different
+
+        - Thermocouple Tables
+            - gives the expected voltage that results for a particular type
+              thermocouple at a particular temperature
+
+            - To find a temerature for a point that is not indie the table, use
+              two poins close to that value and this equation
+
+                Tm = Tl + [ (Th - Tl) / (Vh - Vl) ] * (Vm - Vl)
+
+            - Use the oposite to obtain the voltage if needed
+                
+                Vm = Vl + [ (Vh - Vl) / (Th - Tl) ] * (Tm - Tl)
+
+
+        - Change in Table Reference
+            - Tables are prepared for thermocouple of a particular type with a
+              particular reference temperature
+
+            - you can adjust to a different reference temperature with a shift
+              of the table scale
+
+            - Correction factor = voltage at new reference temp based on old
+                                  reference
+
+
+    5.3 Thermocouple Sensors
+        - Sensitivity
+            - range of voltages is usually less than 100mV
+            - sensitivity depends on signial conditioning and the TC
+
+            Type J: 0.05 mV / degree C
+            Type S: 0.006 mV / degree C
+
+
+        - Construction
+            - usually just the two pieces welded or twisted together
+            - sometimes has a protective sheath
+
+        - Range
+            - has greatest range of all types considered so far
+
+
+        - Time Response
+            - related to the size of the wire, and any protective material used
+              with the sensor
+                - How long it takes the TC to reach thermal EQ with the env
+
+        - Signal Conditioning
+            - needs considerable amplification because the output signal is so
+              small
+
+            - because of the small signal, very suseptible to noise
+
+            - usually used with a high gain differential amplifier
+
+
+        - Reference Compensation
+            - you have to know the reference temperature to use thermocouples
+
+            - these techniques are used for reference junction compensation
+                1. Controlled Temperature Reference Block
+                    - Many times many thermocouples are used and extended to
+                      all connect into a single room with a known reference
+                      temp
+                2. Reference Compensation Circuits
+                    - specialized ICs that add or subtract the correction
+                      factor directly to TC output
+
+                    - These ICs have their own reference temperatures that they
+                      compare against the global reference temp
+                        - this secondary reference is often called a "Cold
+                          Junction COmpensator" or "Ice Point Compensator"
+
+
+                3. Software Reference Correction
+                    - reference junction temp can be measured with a precision
+                      thermistor or other IC temperature sensor and provided as
+                      input to the computer
+
+                    - Software then takes care of corrections to the
+                      thermocouple's temperature signal
+
+
+        - Noise
+            - THe thermocouple acts as an excelent antena to pick up electrical
+              noise
+
+            - A number of noise reduction techniques are used in the industry
+
+                1. The extention or lead wires from the thermocouple to the
+                   reference junction are twisted and then wrapped in grounded
+                   foil sheath
+
+                2. The measurement junction is grounded at the point of
+                   measurement.  The grounding is typically the inside of a
+                   stainless steel sheath that covers the thermo couple
+
+                3. An instrument amplifier that has excellent common mode
+                   rejection is used for measurement
+
+
+

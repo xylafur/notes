@@ -1,0 +1,36 @@
+- Software Design
+
+
+- Finite State Machine
+    - The Goal
+        - You should have a goal whenever you have a project
+
+    - Moore FSM
+        - only a function of a current state
+
+    - FSMs have Inputs and outputs
+
+
+    - Traffic Light COntroller
+        - In this case, the goals are
+            - to minimize time waiting at a red light
+            - to maximize traffic flow
+            - to avoid accidents
+
+        - Inputs / Outputs
+            - Inputs
+                - sensors for the two roads
+
+            - Outputs
+                - ouputs for each of the lights
+
+
+
+- Homework
+    - Draw FSM for 4 direction traffic light
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+The test is closed book, but we can bring a 1 page cheet sheet with tables
+
+- Threads
+    - A thread is the path of a list of instructions a processor executes
+
+    - Main Program
+        - Foreground threah
+
+    - Interrupt
+        - Backgound thread
+
+
+
+- Debugging
+    - Hardware tools
+        - components hooked up to the microcontroller
+        - Something like an oscilliscope
+
+    - Intrusiveness
+        - the debug is affecting the way the program behaves
+            - Adding a print statments means that the program will take more
+              cycles to execute
+
+           

@@ -530,3 +530,44 @@
 
 
 
+2.5 Phase-Lock-Loop
+    - keeps the output clock in sync with the input
+    - Also Allows the microcontroller to adjust the executino speed of the computer
+
+    - by default, normally a microcontroller's clock speed is determined by the
+      crystal ossilator
+
+    - two ways to activate
+        - library functions
+        - access the clock registers directly
+
+
+2.6 SysTick Timer
+    - counter that can be used to create time delays and generate interrupts
+    - exists on all cortex M microcontrollers!
+
+    - Initializing Sys Tick
+        1. Clear the enable bit, to turn off sys tick
+        2. Set the reload register
+        3. write to NVIC_ST_CURRENT_R to clear the counter
+        4. Write the desired mode to the control register `NVIC_ST_CTRL_R`
+            - set the CLK_SRC bit specifying the core clock
+                - not setting this bit is not defined in this family of
+                  microcontrollers
+
+            - clear the INTEN flag, unless you want to enable interrupts
+
+            - Need to set the enable bit for the counter to run
+
+
+    - WHen the CURRENT value goes from 1 to 0, the COUNT flag is set
+
+    - on the next clock, current is loaded with the value of reload
+
+    - The rate at which the counter decrements depends on the busperiod
+        - the faster the clock is running, the faster it will decrememnt
+
+    - The accuracy of systick depends on the accuracy of the clock
+
+
+

@@ -1,0 +1,147 @@
+###############################################################################
+#   Video 1
+###############################################################################
+
+- Rocks if subjected to high enough temps will melt into magma
+    - magma will eventually cool and crystalize and turn into igneous rock
+
+    - if magma reaches the surface, it is called lava
+
+- Magma has three components
+    - liquid portion
+        - called melt
+
+    - solids
+        - (if any)
+        - mainly silicate minerals that are crystallized from the melt
+
+    - volatiles
+        - solfur dioxie, carbon dioxide, etc
+
+- Rocks that form on the surface are called extrusive
+
+- Rocks that form in the planet are called intrusive
+
+
+- Factors affecting size of crystals
+    - rate of magma cooling
+        - slower: results in larger but fewer crystals
+        - faster: many small crystals
+        - very fast: No crystals, result in volcanic glass
+
+    - Percent silicate content
+        - ions move slower through viscous silica melt
+        - high silica content can form glassy texture
+
+        - if the initial crystal doesn't get any more ions to grow, it will
+          stay tiny
+
+    - Dissolved Gases
+        - escaping gases can leave behind small holes
+
+- Igneous Texture
+    - describes the overal appearance of an igneous rock
+
+    - Intrusive Igneous Rocks
+        - formed at depth within crust
+
+        - slow cooling of magma results in large crystals
+
+        - termed "coarsely crystalline" or "phaneritic"
+
+    - Porphyritic
+        - Slowly cooling Instrusive are erupted to the surface
+
+        - composed of two distrincy differnt crystal sizes
+            - this is the main determining factor of this texture
+
+
+    - Extrusive Igneous Rocks
+        - Crystallize rapidly from lava erupted onto the surface
+
+        - AKA volcanic rocks
+
+        
+    - Glassy
+        - blobs of magma can be thrown into the air and then quickly cool into
+          something called a
+
+        - simply something that does not contain any minerals
+
+        - Pyroclastics
+            - tiny bits of rock thrust into the atmosphere
+
+            - leaves small holes in the rock called "pumice"
+
+
+    - Scoria
+        - riddled with little holes
+
+    - Pyroclastic Volcanic ROcks
+        - form from broken pieces of rock, glass and mineral grains
+
+        - rain down from the sky
+
+        - accumulate on the ground as layers of loose material such as volcanic
+          ash
+
+- Classification of Igneous Rocks
+    - three criteria
+        - texture
+
+        - chemical composition
+            - mainly silica content
+
+        - mineral content
+
+    - The minerals are mostly silicates
+        - two subtypes
+            - felsic minerals
+                - light colored
+
+            - mafic
+                - dark colored
+                - rich in iron and magnesium
+
+
+    - Ignesous Compositions
+        - Felsic
+            - highest silicate content
+            - highest potassium and sodium content
+
+            - most abundant minerals
+            - quartz, potasium rich feldspar
+
+        - intermediate
+            - principle minerals are "plagioclase feldspars"
+
+            - 52 - 65% SiO2
+
+            - composed of
+                - plagioclase feldspar
+                - hornblende
+
+
+        - mafic
+            - pyroxene and calcuum rich feldspar
+
+            - lower silica content (45 - 52% SiO2)
+
+            - dark colored
+
+            - abundant Ca-rich plagioclase felsbar
+
+            - high in iron
+
+
+        - ultramafic
+            - highest melting temperature
+            - most iron, magnesium and calcium
+
+
+            - abundant Olivine and pyroxene
+
+
+            - very dark in color
+
+
