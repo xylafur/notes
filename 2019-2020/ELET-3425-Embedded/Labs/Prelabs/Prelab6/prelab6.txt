@@ -1,0 +1,38 @@
+Read the section 3.9 of the textbook ‘Real-Time Interfacing to ARM Cortex
+Microcontrollers – Embedded Systems by Jonathan W. Valvano’ for performance
+debugging and profiling. Based on your reading answer the following questions
+and upload them through link provided on Blackboard.
+
+1. What are some of the most common Performance Measurement and Debugging tools?
+
+    1. Counting the bus cycles
+        - estimate the speed based on sum of execution time of assembly
+          instructions
+
+    2. Instrumentation Measuring with an independent counter
+        - Since systick is a 24 bit timmer, as long as we think our thing will
+          operate in less than 2^24 bus cycles we can use that to measure the
+          time
+
+    3. Instrumentation Output Port
+        - Attach a scope to one of the GPIO pins on your MCU and then change
+          the logic level of that pin at meaninful places
+
+2. What do you mean by intrusive and non-intrusive techniques of performance evaluation?
+
+    Nonintrusiveness is the characteristic or quality of a debugger that allows
+    the software / hardware system to operate normally as if the debugger did
+    not exist.
+
+    Intrusive techniques will effect the execution of the system, such as a
+    print statement taking a very long time, allowing the hardware to change
+    state while the CPU is stuck handling the print.
+
+
+3. What do you mean by profiling?
+    - Type of performance debugging that collects the time history of program
+      execution.
+
+4. In what cases can the use of print statements for debugging be discouraged?
+
+5. Briefly Explain. How does a systick timer works?

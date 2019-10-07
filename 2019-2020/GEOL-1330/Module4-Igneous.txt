@@ -145,3 +145,102 @@
             - very dark in color
 
 
+###############################################################################
+#   Video 2
+###############################################################################
+- Pyroclastic rocks
+    - solid particles ejected during explosive volcanic eruption
+
+    - classified based on the size of the fragments
+        - Tuff
+            - ash
+            - less than 2mm
+
+        - Volcanic Breccia
+            - particles larger than 2mm
+
+- Origin of Magma
+    - heat plays a big part
+        - rocks in lower crust an upper mantle are near to melting points
+
+    - Geothermal Gradient
+        - how temperature increases with depth in the earth
+        - pressure is considered
+
+
+    - Melthing temperatures of dry peridotite are everywhere higher than
+      geothermal gradient
+        - if volatiles are introduced into the peridotite, this causes rock to
+          melt at lower temps
+            - water is a good example
+
+        - when the preidotite is wet, partial meitng can occur below 60km
+
+
+    - When oceanic lithosphere is subducting continental crust, it is wet
+
+    - roll of pressure
+        - an increase in confinisng temperature with depth increases a rock's
+          melting temperature
+
+        - when mantle material rising to the surface experiences a decrease in
+          pressure
+            - it can cause melting from the depressureizatino
+
+
+        - if you have a bunch of mantle rock really low thats really hot but
+          not able to melt because of the pressure
+            - if can rise up to a point (if the temperature stays high) where
+              it can start melting
+
+
+            - this happens below mid ocean ridges
+
+    - Partial Melting
+        - forms as a liquid when preexisting rock melts
+
+
+        - peridotite is made up of olivine and pyroxene
+            - pyroxene melts at a lower temperature than olivine
+
+            - this will leave behind only the olivine crystals
+
+
+        - Bowens Reaction Series
+            - predicts which minerals will melt at increasing temperature
+
+            - the stability range of different minerals in magma, depends on the
+              temperature
+
+            - melting order (low to high temperature)
+                - quartz
+                - muscovite mica
+                - potassium feldspar
+
+                - biotite mica
+
+                - plagioclase feldspbar
+                    - sodium rich melts first
+                    - calcium rich melts last
+
+                - amphibole
+                - puroxene
+                - olivine
+
+
+        - With partial melting
+            - all of the solid minearls that were unmelted will be of unmafic
+              composition
+
+            - the melt will have felsic composition
+                - because it melts at lower temp
+
+
+    - Formation of Basaltic Magma
+        - Basaltic Magma
+            - the same as mafic magma
+
+        - originate from partial melting of peridotite
+            - this means if forms below midocean ridges because of
+              decompression melting
+

@@ -16,7 +16,7 @@
 
     3. There are 2 reactive (absolute 0 energy is not 0 in the scale) temperature scales
         1. Celsuis
-            T(C) = T(K) = 273.15
+            T(C) = T(K) - 273.15
 
         2. Fahrenheit
             T(F) = T(R) - 459.6
@@ -440,6 +440,5 @@
 
                 3. An instrument amplifier that has excellent common mode
                    rejection is used for measurement
-
 
 
