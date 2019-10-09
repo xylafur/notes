@@ -111,3 +111,249 @@
 
     3.2 Bridge Circuits
         - Covert impeadance variations into voltage variations
+
+        - can be designed so output voltage varies around 0
+
+        - precise static measurement of impedance
+
+
+        - Wheatstone Bridge
+            - most common and simplest bridge circuit
+
+            - used in applications where sensor changes resistance with process
+              variable changes
+
+            [ Figure 2.3 ]
+
+            - We start by assuming that the detector has an infinite input
+              impedance
+                - this means that the potential difference between the two
+                  points that we are measuring (a and b, see the figure) is
+                  just the subtraction of the voltage at the two points
+                    - delta(V) = Va - Vb
+
+                - Va and Vb can both be found using the voltage divider
+                  principles
+
+                    Va = (VR3 / (R1 + R3))
+                    Vb = (VR4 / (R2 + R4))
+
+                - The Bridge "Nulls" when R1 * R4 = R3 * R2
+                    - this null occurs when the voltage difference across the
+                      detector is 0
+
+
+            - Galvanometer Detector
+                - If we use a galvanometer as a null detector this induces some changes
+                    - the galvometer has very low resistance
+                    - we must determine the bridge offset as current offset
+                        - the easiest way to find this, is to find the thevenin
+                          equivalent circuit between points a and b of the
+                          bridge
+
+                        Vth = V { ( R3 * R2 - R1 * R4) } / { (R1 + R3) * (R2 + R4) }
+
+                    - this equation allows us to easily determine the current
+                      through any galvanometer with internal resistance Rg
+                        Ig = (Vth) / (Rth + Rg)
+
+
+            - Bridge Resolution
+                - the resolution of a the bridge circuit is a function of the
+                  resolution of the detector used to determine the bridge
+                  offset
+                    - voltage offset: resolution is resistance
+                        - defined as "resistance change in one arm of the bridge
+                          that causes an offset voltage that is equal to the
+                          resolution of the detector"
+
+                        - depending on the minimum voltage that the detector
+                          can detect, this sets a limit on the minimum
+                          measurable resistance
+
+                        - this resistance change can also be called the
+                          accuracy of the instrument, since it is the minimum
+                          detectable change
+
+                            - concept applies for galvanometer but with current
+
+            - Lead Compensation
+                - often times the sensor is located a considerable distance
+                  from the bridge circuit
+                  
+                - the fixed bridge resistors can be selected to account for
+                  resistance of leads to attach the sensor to the bridge
+                    - we can use this to account for lead resistance
+
+                - there are certain things that aren't easy to account for
+                  though
+                    - things like frequency and chemicals can cause the lead
+                      resistance to change on a transient basis
+
+                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                @ Question: I should probably know this, but what is a bridge
+                @           offset?
+                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+                    - these show up as a bridge offset
+                    - you get around this with "Lead COmpenstation"
+                        - if you induce the changes to both arms of the bridge
+                          you will cancel out the change in bridge offset
+
+
+            - Current Balance Bridge
+                - There used to be circuits where the the offset would be
+                  amplified and driven through a motor that turned a variable
+                  resistor
+                    - this is really slow
+
+                - THere is another, more modern method, which uses current to
+                  null the bridge
+
+                [ Figure 2.4 ]
+
+                - the resistors R4 and R5 are such that most of the current at
+                  the junction flows through R5
+                    - this can be done by making `R4 >> R5`
+
+
+            - Potential Measurements Using Bridges
+                - bridge circuits are useful to measure small potentials at
+                  very high impedance
+
+                    - place the thing to be measured in series with the
+                      detector
+
+                [ figure 2.5 ]
+
+                - Vc is calculated to be
+                    Vc = Vx + Va
+
+                - The voltage appearing across the null detector
+                    delta(V) = Vc - Vb = Vx + va - Vb
+
+                    - the null bridge occurs when this happens
+
+
+           
+            - ac bridges
+                - The same thing that we did with resistance, but we do it with
+                  impedance
+
+            - Bridge Applications
+                - the primary application is to convery variations of
+                  resistance into variations of voltage
+
+                    - after this the voltage is then conditioned even further
+
+                - the variation of bridge offset is nonlinear with respect to
+                  any of the resistors
+                    - so any linearlity is lost when converting resistance or
+                      impedance to voltage
+
+                    - if the change in resistance is small, then the voltage is
+                      basically linear
+
+    3.3 RC Filters
+        - filters are circuits that block certain frequencies or bands of
+          frequencies
+
+            - a simple filter can be constructed with a single resistor and a
+              single capacitor
+
+        - critical frequency
+            - frequency for which the ratio of the output to input voltage is
+              approxamitely 0.707
+
+            - given by
+                fc = 1 / (2 * pi * R * C)
+
+
+        - Low Pass RC Filter
+            - blocks high frequencies and passes low frequencies
+
+            - the cuttoff point isn't exact, its more like a range over which
+              the amplitude of certain frequencies is diminished until it
+              approaches 0
+
+
+        - design methods
+            - typically filter design is started by finding the critical
+              frequency that will satisfy criteria
+
+            - since there are two unknowns, R and C, generally one component is
+              selected and then the other
+
+                1. Select a standard cap value in the uF to pF range
+                2. Clculate the required resistance value
+                    - if it is below 1k ohm of above 1m ohm select a different
+                      capacitor so that the resistor falls within that range
+                3. use the nearest standard value of resistance if possible
+                4. Consider the tolerance of the cap and res
+
+        - High Pass RC Filter
+            - passes high frequencies and blocks low frequencies
+            - can be constructed using a resistor and a capacitor
+                - again the rejection is not sharp but occurs over a range
+                  around the critical frequency
+
+
+        - Practical considerations
+            - problems that arise when designing low and high pass filters
+
+            1. After the critical frequency is determined, R and C are
+               selected.  THings that limit this are
+                a. small resistances are bad
+                    - they lead to high current
+                    - resulting in loading
+                    - try to keep resistance in k ohm and above range
+                  
+                  small caps are also bad
+                    - try to keep cap in uF and below range
+                b. If you actually need exact value for the critical frequency,
+                   then select the cap first and then use a trimmer resistor
+
+            2. The effective I/O impedance of the RC filter may have an effect
+               on the circuit because of loading
+
+            3. You can cascade RC filters in series to get better results
+                - you have to consider the loading of one RC on the other
+                  though
+                - the output impedance of the first stage must be MUCH less
+                  than the input impedance of the next stage to avoid loading
+
+
+        - Band Pass RC filter
+            - blocks frequencies above a high limit and below a low limit
+
+            - passive versions use caps and res
+                - even better versions can use caps and inductors
+
+            - can simply be a low pass filter followed by a high pass filter
+                - make suer that you consider the practical considerations
+                  though
+
+        - Band Reject
+            - difficult to realize with RC combinations
+
+            - notch filter
+                - type of band reject that can be realized with only RC
+                  components
+
+                - blocks a very narrow band of frequencies
+
+                - called a "twin T filter"
+
+                - characteristics are deteremined strongly by the valu of the
+                  grounding resistor and capacitor
+
+                - the critical "notch" frequency occurs at
+                    fn = 0.785 fc
+                    fc = 1 / (2 * pi * R * C)
+
+
+Operational Amplifiers
+    - if impedance transformations, amplification and other operations s
+
+
+

@@ -1,0 +1,60 @@
+Today we are starting Chapter 4 - Hardware Software Synchrnoization
+
+
+- Synchonizing IO
+    - Hardware States
+        - Device can be off
+        - device can be on but idle
+        - device can be currently active
+
+    - Device is active
+        - 
+
+    - Why do we need it?
+        - waiting time
+            - IO is often much slower than the microcontroller
+
+        - IO Bound
+            - the time for the software to read and process data is less than
+                - time for the input device to create the new input
+
+            - CPU faster than input data
+
+        - CPU Bound
+            - when the software read process is greater than the rate at which
+              new input is created
+
+
+            - Input data faster than CPU
+
+
+    - Synchronization
+        - 5 Mechanisms
+            1. Blind Cycle
+                - Read data after fixed wait time
+
+            2. Bust Wait of Gadfly
+                - Keep checking until the cpu is not bust
+
+            3. Interrupt
+
+            4. Periodic Polling
+
+            5. DMA
+
+
+    - Variety of IO ports
+        - microcomputers perform digital IO using ports
+
+        - port pins are programmed via software
+            - parallel IO
+
+
+    - Timing
+        - Equations
+            - algebraic mechanisms to describe time
+
+        - Down Arrow means the time when the signal falls
+        
+        :q
+

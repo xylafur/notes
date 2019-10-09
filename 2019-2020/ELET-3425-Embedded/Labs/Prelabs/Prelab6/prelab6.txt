@@ -3,6 +3,8 @@ Microcontrollers – Embedded Systems by Jonathan W. Valvano’ for performance
 debugging and profiling. Based on your reading answer the following questions
 and upload them through link provided on Blackboard.
 
+
+
 1. What are some of the most common Performance Measurement and Debugging tools?
 
     1. Counting the bus cycles
@@ -10,29 +12,60 @@ and upload them through link provided on Blackboard.
           instructions
 
     2. Instrumentation Measuring with an independent counter
-        - Since systick is a 24 bit timmer, as long as we think our thing will
+        - Since systick is a 24 bit timer, as long as we think our thing will
           operate in less than 2^24 bus cycles we can use that to measure the
           time
 
     3. Instrumentation Output Port
         - Attach a scope to one of the GPIO pins on your MCU and then change
-          the logic level of that pin at meaninful places
+          the logic level of that pin at meaningful places
+
+
 
 2. What do you mean by intrusive and non-intrusive techniques of performance evaluation?
 
-    Nonintrusiveness is the characteristic or quality of a debugger that allows
-    the software / hardware system to operate normally as if the debugger did
-    not exist.
+    - Nonintrusiveness is the characteristic or quality of a debugger that allows
+      the software / hardware system to operate normally as if the debugger did
+      not exist.
 
-    Intrusive techniques will effect the execution of the system, such as a
-    print statement taking a very long time, allowing the hardware to change
-    state while the CPU is stuck handling the print.
+    - Intrusive techniques will effect the execution of the system, such as a
+      print statement taking a very long time, allowing the hardware to change
+      state while the CPU is stuck handling the print.
+
 
 
 3. What do you mean by profiling?
     - Type of performance debugging that collects the time history of program
-      execution.
+      execution.
+
+    - Basically we can record things like location and timing of points in a
+      function
+        - this allows us to build a "profile" of how some function is run
+
+        - this is also much less intrusive than print statements
+            - we save the values in an array, rather then continually printing
+              over UART
+
+
 
 4. In what cases can the use of print statements for debugging be discouraged?
+    - real time systems, really any application where it is time dependent.
+    - print statements can take a very long time, especially relative to other
+      operations
+        - this can mess with timing and cause hardware to be in a different
+          state while the CPU is still processing the print statement
+
+        - especially if you have to print many things this can cause a
+          significant problem
+
+
 
 5. Briefly Explain. How does a systick timer works?
+    - Systick is a 24 bit internal timer in ARM-M microcontrollers
+
+    - You load the Systick with some default value
+        - then when you enable it, it counts down once every bus cycle
+        - after it reaches 0, it sets a bit and can trigger an interrupt
+        - systick then loads the original value again and begins decrementing
+          the counter
+        - this process continues until it is disabled

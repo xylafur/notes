@@ -1,0 +1,64 @@
+- TTL (time to live)
+    - how long do you get the bus for?
+
+
+
+
+
+- DA (data avaliable)
+    - how long with data be valid?
+
+    DA = (falling_edge(G*) + t_to_enable, rising_edge(G*) + t_to_disable)
+
+        - t_to_enable = [0, 38ns]
+        - t_to_disable = [0, 38ns]
+
+    - This is determined by the tristate buffer circuit
+
+
+
+
+
+- DR (Data required)
+    - the interval is determined by the timing of the FF
+
+    - the FF bus must be valid 25ns before rising_edge(CLK)
+        - this is the setup time
+
+    - must remain valid until 5ns after the same rising_edge(CLK)
+        - this is the hold time
+
+
+    DR = (rising_edge(CLK) - setup_time, rising_edge(CLK) + hold_time)
+
+
+- SHOULD ALWAYS:
+    DA > DR
+
+    - this is just to ensure we meet timing
+
+- Always design for the worst case
+
+
+- As soon as G* goes low, the bus is active for our use
+
+- Hardware-Software Synchronization
+    - Programming LCD Screen
+        - HD44780-controlled LCD
+            - We know that most LCD operations take less than 40 micro seconds
+                - this is our blind wait time
+
+            - No status feedback from device
+                - software won't know anything about the status of the device
+
+            - Operates on low power
+
+            
+        - Low Level Software
+            - initializes the LCD controller
+            - outputs to the LCD controller
+
+        - Our Micro Controller
+            - writes ascii characters to the LCD controller
+
+
