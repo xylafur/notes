@@ -1,0 +1,322 @@
+###############################################################################
+#   Video 1
+###############################################################################
+- Notable Volcanic Eruptions
+    - Mount Vesuvius
+        - Italy
+        79 AD
+
+    - Mt Tambora
+        - Indonesia
+
+        - enough stuff was thrown into the atmosphre was thrown into the air
+          above indonesia that sun was not able to get completley though and
+          resulted in crop failures
+
+
+    - Krakatoa
+        - Indonesia
+        - 1883
+
+        - Generated tsunamis
+
+        - so loud that it was heard over 3000 miles away
+
+        - Gerupted in a series of pyroclastic flows
+            - pyroclastic flows: Avalanches of hot volcanic ash and gas
+
+
+    - My Pinatubo
+        - Philippenes
+        - 1991
+
+- The nature of volcanic eruptions
+    - the characteristics of a magma
+        - determine the violence (or explosiveness) of a volcanic eruption
+
+    - Viscosity
+        - measure of a material's resistance to flow
+
+        - factors
+            - Composition
+            - temperature
+            - amount of dissolved gasses
+
+
+        - factors which effect
+            - temperature
+                - higher temperature are less viscous and flow more
+
+            - composition
+                - high silica content means high viscosity
+
+            - volitiles (dissolved gases)
+                - dissolved water increases the fluidity
+
+
+            - Violence of an eruption is related to how easily gases escape from
+              magma
+
+
+        - Basaltic Lava
+            - High Temperature Melts (1000 - 1200 C)
+
+            - Relatively low silica
+
+            - Very Fluid
+
+
+            - hardens into:
+                - olivine, pyroxine, calcium rich paraclase
+                - basalt
+
+
+            - subtypes
+                - pahoehoe lava
+                    - ropey texture
+
+
+                - Aa Lava
+                    - rough, jagged blocky texture
+
+
+            - Dissolved gases are mainly H20 and C02
+
+
+
+        - Rhyolitic Lava
+            - Erupts at lower temperatures
+
+            - contains more silica
+
+            - more viscus than Basalt
+
+            - Crystallizes mostly felsic minerals
+
+            - solidifies into rhyolite
+
+
+            - glasses
+                - usually associated with high silica lava
+
+                - form from lava that is quenched to quickly for crystals to
+                  form
+
+
+                - Obsidian
+                    - dense glass that forms from non gaseous lava
+
+                - Pumice
+                    - riddled with tiny holes (vesicles) and cavities
+
+                    - has texture because of quencing from gaseous lava
+
+
+
+
+        - Andesitic Lava
+            - silica content is in between Basaltic and Rhyolitic
+
+            - crystallizes plagioclase feldspar and amphibole
+
+            - solidifies into andestie
+
+            - comon along plate boundaries
+
+
+
+        - Pyroclastic Deposits
+            - wet gaseous magma erupts explosively
+
+            - lava and surrounding rock is shattered into fragments
+
+
+            - pyroclasts are the loose fragments associated with explosive
+              eruptions
+
+
+- Classification of Pyroclastics
+    - mainly classified on basis of size
+
+    - ash (tephra)
+        < 2mm
+        - minerals and glass and rock fragments
+
+    - lapilli
+        2-64 mm
+
+    - bombs
+        > 64mm
+        - twisted shapes due to solidification
+    - blocks
+        > 64 mm
+        - large chuncks of rock
+
+    - classification of pyroclastic rocks
+        - Agglomerate
+            - composed of volcanic bombs
+
+        - breccia
+            - composed of volcanic blocks
+
+        - lapilli ruff
+            - cemented particles 2-64 mm
+
+        - ash tuff
+            - cemented particles < 2mm
+
+
+    - vesicular Rocks
+
+
+- features of volcanoes
+    - opening at the summit of a volcano
+        - Crater
+            - summit depression < 1km in diameter
+
+        - Caldera
+            - summit depression > 1km in diameter
+            - produced by collapse following a massive eruption
+
+        - Conduit (pipe)
+            - connects crater to underlying magma chamber
+
+
+- Types of Volcanoes
+    - Shield Volcanoes
+        - Constructed from successive flows of basaltic lava
+
+        - lavas are fluid and flow easily over great distances
+
+        - broad gentle slopes
+
+        - fonudn in hawaii
+
+
+    - Cinder Cones
+        - contrsuted from ejected lava
+        - pyroclastic eruptions somtimes associated with lava flows
+
+
+        - very steep slope angles
+        - small size
+        - frequently occur in groups
+
+
+    - composite or Stratovolcanoes
+        - steeper slopes
+
+        - erupt both lava and pyroclastic material
+
+        - common among convergent plate boundaries
+
+        - can be found in washington / oregon (the cascades)
+
+
+###############################################################################
+#   Video 2
+###############################################################################
+
+
+
+- Calderas
+    - after a violent eruption, the magma chamber below might no longer be able
+      to support the roof
+        - this will colapse
+
+
+    - the resulting caldera is many times the size of the original crater
+        - range from a few km to more than 50 diameter
+
+
+    - Crater lake oregon (7000 year ago) is a good example
+
+    - Hawaiian type
+        - formed from gradual subsidence of magma SLOWLY draining from
+          underlying magma chamber
+
+
+    - Yellowstone type
+        - yellowstone park is a classic example
+
+
+- Lava domes
+    - mainly construted of rhyolitic lava
+
+    - range from pancake like flows to steep sided plugs
+
+    - most develop over several years following an explosive eruption
+
+
+    - basically a little cone that forms in the sunken summit
+        - looks like a little volcano in a volcano
+
+
+- Volcanic Necks
+    - relict conduits that stand higher than the surrounding landscape
+
+    - the conduit is more resistant to erosion than the surronding cone (this
+      is why it remains)
+
+    - the resulting conduit is left standing as a neck after erosion has
+      removed the cone
+
+
+    - shiprock new mexico is a good example
+
+
+- Volcanic Pipes
+    - carry magma that original ine the mantle
+        - this is the long short of these things
+
+    - diatremes are volcanic pipes formed by gaseous explosions
+        - magmas rise rapidly to surface
+
+        - erupt gases
+
+
+    - kimberlite pipes of south africa
+
+
+- Plate tectonics and igneous activity
+    - the global distribution of igneous activity is not random
+        - most volcanoes are located within or near ocean basins
+
+        - basaltic rocks occur in both oceanic and continental settings
+
+        - granitic rocks are confined to continents
+
+
+    - at divergent plate boundaries
+        - greatest volume of volcanic rock is produced along oceanic ridge
+          systems
+
+    - convergent plate
+        - magma is generated due to the release of volatiles within the
+          subduction zones
+
+        - common along the ring of fire
+
+
+    - within plates
+        - associated with mantle plumes
+
+        - localized volcanic regions above the plume is called a hot spot
+
+        - produces granitic magma in the contiental crust
+
+        - creates flood basalts on the continent
+
+
+        - fissure eruptions and flood basalts
+            - associated with mantle plumes and hot spots
+
+            - low viscosity basaltic lava erupts through fractures in crust
+              called fissures
+
+            - extensive flows are called flood basalts
+                - the lava flows over great distances
+
+                - successive flows can build up to great thicknesses
+
+
