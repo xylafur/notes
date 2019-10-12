@@ -1,0 +1,398 @@
+###############################################################################
+#   Video 1
+###############################################################################
+
+- What are they
+    - products of mechanical and chemical weathering
+
+    - 5% of earth's upper crust
+
+    - contain evidence of past enviornments
+
+    - important for economic considerations
+        - Coal
+        - petroleum and gas
+        - sources of iron, aluminim and manganese
+
+
+- 3 major groups of seiments
+    - Detrital (Clastic):
+        - composted of particles of pre-existing rocks
+
+
+    - chemical / biochemical rocks
+        - precipitated from water, sometimes with aid of marine organisms
+
+    - organic
+        - primarily remains of plants and animals
+
+
+- formations
+    1. Chemical and Mechanical Weathering of existing rock
+    2. Erioson carries the sediments somewhere else
+    3. The sediments all settle to a particular place
+    4. The sediment is buried, and more sediment is placed on top
+        - Diagenesis
+
+
+- Agents of Transport
+    - mainly wind and water current
+
+    - glaciers are also important in the north
+
+    - currents can mopdify the sediment
+        - compositional evolution
+            - a group of homogenous minerals can be chemically destroyed by
+              currents
+
+            - clays are winnowed away
+                - This is winnowing, clay disappears
+
+            - more resistant minerals are carried farther
+
+
+            - Quartz is the most likely to survive
+                - turns into sand
+                - sand indicates high intensity weathering
+
+            - Amphiboles and Pyroxenes are the most likeley to disappear and
+              turn into clays
+
+        - grain sizes
+            - sediment can be well or poorly sorted
+                - they become more well sorted over time during transport
+
+            - the more uniform the size of the minerals, the more sorted they
+              are
+
+            - factors that affect sorting
+                - parent rock
+                - currents
+                    - less resistant minerals are destroyed
+                    - smaller particles are transported further
+                    - at the end you might end up with only well sorted quartz sand
+
+
+        - grain shapes
+            - can be more ancular or jagged
+                - they become more rounded as they are transported / weathered
+                  more
+
+
+- Sedimentary Environments
+    - geographic setting where sediment accumulates
+    - influences the nature of sediment
+
+    - non marine (continental)
+        - types of deposits
+            - fluvial(stream)
+                - gravel, sand and mud
+                - rounded pebbles
+                 - small scale cros bedding
+
+            - lacustrine (lake)
+            - paludal (swamp)
+            - desert dunes
+                - deposits where wind is the main stranporting agent
+                - mainly quartz
+                    - the rains are frosted
+                    - due to abrasion during transport because of very dry
+                      climate
+
+            - desert lakes
+            - glacial
+                - largely unsorted with wide range of sizes
+                - many differnt source rocks
+                - the glacier just picks up the rock as the ice moves along
+
+
+
+    - transitional enviornment
+        - beach and barrier island enviornments
+            - sediment consisting largely of quartz or carbonate sand
+            - well sorted grains
+
+        - deltaic enviornments
+            - delta plain
+                - sand channels, coal, silt
+            - delta front
+
+
+    - marine environments
+        - deposits along the contiental shelf
+            - thinly layerd shale and sandstone
+
+        - coral reefs
+            - warm marine enviornments
+
+
+    - deep sea (abyssal) enviornments
+        - deep sea fans
+            - deep sea avalanches
+
+            - alternating shale and sandstone layers
+                - like someone took a chainsaw and did a bunch of parallel
+                  slices out of the rock
+
+            - turbidity current
+                - form terbidity deposits
+                    - the tinest particles are at the bottom
+
+
+- Sedimentary Facies
+    - different sediments often accumulate adjacet to one another at the same
+      time
+
+    - each unit has a distinct set of characteristics
+        - each of these were accuumulated from the same thing
+
+
+    - its like a section of sedimentary rocks that form next to eachother
+
+
+###############################################################################
+#   Video 2
+###############################################################################
+
+- sedimenary structures
+    - sediments can take on a variety of structural / depositional features
+        - they are often preserved when changed into sedimentary rock
+
+    - structures can reflect
+        - the type of current that deposited the sediments
+        - processes occurring in the enviornment
+
+
+    - Cross Bedding
+        - formed by deposition of sediment via wind or water currents
+
+        - bedded material are inclined at angles
+
+        - transported grains are deposited on teh steeper down current slopes
+
+        - basically there is a hill and the sediment gets deposited on the far
+          side of the hill
+            - this results in the sediment accumulating on the other side
+
+
+    - graded bedding
+        - grains in a sedimentary layer range in size from coarsest at the
+          bottom to finsest at the top
+
+        - deposition in deep water on conteintntal slope or deep sea fans
+
+        - they are dropped off by turbidity currents
+
+    - current ripple marks
+        - small ridges of sand or silt seperated by wind or water currents
+
+          ////
+         ////
+        ////
+
+
+        - symetrical slopes mean current are coming from both directions
+
+        - assymetrical slopes means the current is coming from only one side
+            - this happens with desert dunes
+
+    - mud cracks
+        - repeated wetting and trying causes mud to dry out and shrink
+
+
+
+- Alluvial cycle
+    - sediment deposited at the end of a stream
+
+    - the farther from the stream the finer the sediment
+
+    - in the stream itself in the middle you have the large pebbly deposits
+
+
+- diagensis
+    - physical and chemical changes occurring in buried sediments during
+      alteration and lithification
+
+    - lithification
+        - conversion to sedimentary rock
+        - pore fluids crystallize mineral cements
+
+- types of sedimentary rock
+    - conglomerate
+        - large rocks in the sediemtary rock
+
+    - sandstone
+        - formed from sand
+
+    - siltstone
+        - from silty mode
+
+    - shale
+        - from clay
+
+- changes in sediment during burial
+    - grains become squeezed and the stuff is comparted
+
+    - fluids in between the grains is evicted
+
+    - some cementing minerals are precipitate in pore spaces
+
+
+
+
+- classification of clastic sedimentaryt rocks
+    - classified based on particle size
+        - large particles
+            - breccia
+                - angular particles
+
+            - comnglomerate
+                - rounded particles
+
+
+        - sandstones (sand)
+            - quartz sandstrone
+                - if > 90% quartz
+
+            - arkose
+                - feldspar rich
+                - granite, potassium feldspar
+
+            - lithic sandstone
+                - rock fragment rich
+
+            - graywacke
+                - clay rich matrix
+
+
+        - shale (mud)
+            - can be broken apart layer by layer
+
+
+###############################################################################
+#   Video 3
+###############################################################################
+
+- chemical sedimentary rocks
+    - chemical and biochemical sediment
+        - certain ions of weathering are transported into large bodies of water
+
+        - dissolved ions eventually precipitated from water by reactions to
+          form chemical / biochemical sediment sediment
+
+    - types
+
+        - carobniate sedimentary rocks
+            - limestone
+                - most abundant chemical rock
+                - mostly made of calcite
+
+
+                - coquina
+                    - poorly cemented rock composted largenly of shells
+
+                - chalk
+                    - soft porous rock made entirely of hard pars of microscopic
+                      marine organisms
+
+                - coral reefs are massive limestone structures that form in warm
+                  shallow water
+
+
+                - inorganic limestone
+                    - calcite forms when water becomes supersaturated
+
+                    - we discovered that bacteria plays a part
+
+                - oolitic sediment
+                    - small grains are rolled around by waves while accumulating
+                      layers of precipitating calcite
+
+            - dolostone
+                - composed of the mineral dolomite
+
+                - ways of forming
+                    - precipitation of dolomite from evaporating seawater
+                    - dolomitizatino of limestone
+                        - magnesium rich brines from restricted lagoon seep
+                          through underlying carbonate sediments
+
+                            - this turns the limestone into dolomite
+
+                        - brime
+                            - body of water saltier than sea water
+
+
+
+        - evaporties
+            - chemical sedimentary rocks precipitate during evaporation of very
+              salty water
+                - rock salt (halite crystals)
+
+
+            - two types of settings
+                1.  evaporite basins occur in areas of restricted circulation of
+                    seawater
+                        - sea water enters a restricted basin
+                            - normal sea water is always going in so nothing
+                              can go out
+
+                        - just the water evaporates so all of the dissolved
+                          ions stay behind in the water
+
+
+                        - just because the brime is so ion rich, when the water
+                          disappears the ions form into a solid substance
+
+                2.  supertidal deposition occurs slightly above high tide
+                    - you have some rock with cracks that salt water washes
+                      over
+
+                    - the water evaporates and then these evaporites are left
+                      behind
+
+        - siliceous (quartz)
+            - formed mostly from microcrystalline quartz
+
+            - bedded chert
+                - accumulates on the seafloor as layers of tiny silica
+                  skeletons of diatoms and radiolarians
+
+                - layers of silica in rock cavities
+
+            - nodular chert
+                - form silica rich fluids in rock cavities or through
+                  alteration of carbonate rock
+
+            - geodes
+                - limestone with a cavity
+                - groundwater goes into a cavity inside of the limestone
+                - this forms the geode overtime
+
+
+        - organics
+            - coal
+                - starts out as a swamp
+                - the swamp becomes buried, forming all this stuff
+
+                PEAT -> LIGNITE -> BITUMINOUS -> ANTHRACITE
+
+                - bitumunous is the kind of coal that we use mostly
+                    - much more abundant than anthracite
+
+    - biochemical sediments
+        - hard parts of organisms and biologically precipitated minerals
+
+        - usually composed of calcuim carbonite
+        - can also be silica
+
+
+        - bioclastic particles
+            - shells or shell fragments
+            - coprolites
+                - excrement fossils
+
+            - eventually these are cemented together to form limestone
+
+
+

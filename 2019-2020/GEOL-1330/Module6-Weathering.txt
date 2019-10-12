@@ -1,0 +1,334 @@
+###############################################################################
+#   Video 1
+###############################################################################
+- Earth's External Processes
+    - weathering
+        - physical breakdown and chemical alteration of rock
+
+    - erosion
+        - physical removal of material by mobile agents such as water, wind,
+          etc
+
+    - mass wasting
+        - transfer of rock and soil downslope under the influence of gravity
+
+
+
+- Weathering
+    - general processes of how rock is broken down
+        - sediments
+        - clays
+        - soils
+        - dissolved substances
+
+    - subtypes
+        - chemical
+            - reactions break down
+
+        - mechanical
+            - rocks are broken down by physical processes such as fracturing,
+              freezing, breakage
+
+
+    - factors affecting
+        - surface area of rock
+            - greater the surface area, the more the exposure to chemical
+              agents
+
+            - mechanical weathering accelerates chemical weathering
+
+        - mineral content
+            - some rocks disolve in weakly acidic materials
+
+            - silicate minerals weather quite a bit
+
+            - minerals on the low end of bohens temperature scale
+                - most resistant to weathering because they are resistance to
+                  chemicals
+
+
+        - climate / temperature / moisture
+            - chemical weathering is faster in warm moist
+            - mechanical weathering is greater in cold dry places
+
+
+    - differential weathering
+        - rocks do not weather uniformly due to regional and local factors
+            - results in many weird rock formations and landforms
+
+
+
+                                weathering rate
+                            slow                                        fast
+
+    Mineral Solubility      Low                 Moderate                High
+                            (quartz)            (pyroxene, feldspar)    (calcite)
+
+    Rock Structure          Massive             Some zones of weakness  Very fractured or thinly bedded
+
+    Rainfal                 Low                 moderate                heavy
+
+    Temperature             Cold                                        hot
+
+    Thickness of soil       None                Thin                    Thick
+
+    Organic acticity        Sparse              Moderate                Abundant
+
+    Length of Exposure      Short               Moderate                Long
+
+
+
+
+
+    - Chemical Weathering
+        - breaks down rock components and interal structures
+
+        - the most important agent is water
+
+        - alteratinos
+            - decomposition of unstable
+            - formation or retention of stable minerals
+            - rounding of corners and edges
+
+
+        - major processes
+            - hydolysis
+                - reaction of any substance with water
+
+                silicates + water = clays +- dissolved substances
+
+                - involves conversion of silicates to clays
+                    feldspar + water = Al rich clay
+                    (Fe, Mg) silicate + water = (Fe, Mg) clay
+
+
+                - Acid Rain Formation
+                    1. Co2 dissolves in raindrops
+                    2. Carbonic acid forms in raindrops
+                    3. Acidic rainwater dissolves K ions and silica feldspar
+                       forming kaolinite
+                    4. Dissolved silica and ions carried away to rivers and
+                       soil
+
+                - very common in soils
+                    - rain water percolates through soil and reacs with
+                      minerals in the soil
+
+
+
+            - dissolution
+                - aided by small amounts of acid in the water
+
+                - slightly acidic water can dissolve soem non-silicates
+
+                - halite dissolves completley in water
+                    - the positive and negative components of water latche to
+                      different chemicals in teh salt
+                        - oxygen (-) latches to Na+
+                        - Hydrogen (+) latches to Cl-
+
+                    - this ripes them appart
+
+
+
+            - oxidation
+                - any reaction when electrons are lost form one elemnt
+
+                - reactions with oxygen
+
+                - iron dissolves in water as cations
+                    4 Fe + 3O2 = 2 Fe2O3
+
+                    - oxygen steals electons from Fe 2+, creating Fe3+
+
+                    - then water reacts with Fe3+ and creates hematite
+
+
+
+    - Mechanical Weathering
+        - Rocks are broken apart by physical processes
+
+        - subtypes
+            - natural zones of weakness
+                - rock is just naturally weak along some lines (fracrutes)
+                - sometimes these small breaks that form allow water in
+
+            - biological
+                - roots and animals that dig and stuff
+
+            - frost wedging
+                - rocks that are fracturesd are invaded by water.
+                - the water then thaws and freezes over and over, wedging it
+                  open
+
+
+            - salt crystal growth
+                - sea spray of groundwater can prnetrate crevices and pore
+                  spaces in rock
+
+                - as the water evaporates, salt crystals form behind
+
+                - growing crystals weaken the rock
+                    - cracks are enlarged
+                    - grains surrounding pore spaces are pushed apart
+
+
+            - Thermal expansion and contraction
+                - heating and cooling of the rock
+
+                - swelling and shrinking of minerals with different expansion
+                  rates exerts stress on the rocks outer shell
+
+                - happens mostly in deserts
+                    - hot days
+                    - cold nights
+
+            - sheeting
+                - deeply buried granitic pluton
+                    - under high confining pressure due to weight of overlying
+                      rocks
+
+                    - squeezed and compressed
+
+                - over time, during uplift and erosion
+                    - the unloading causes outer layer of granite to expand
+
+                - once the granite reaches the surface, the outer layers break
+                  away as sheets
+
+
+                - so rock was buried and under high pressure and then comes up
+                  and begins peeling off in sheets
+
+
+        - soils
+            - combination of minerals and organic matter, water and air
+
+            - rock and mineral fragments (regolith) are produced by weathering
+              of rocks
+
+            - humus (decayed animal and plant remains) is a small but essential
+              component
+
+
+            - formation
+                - starts with physical and chemical weathering
+                    - bedrock is weathered
+                - small orgamisms and plants begin to occupy loose material
+
+                - larger plants with deeper roots follow soil horizons begin to
+                  form from the top down
+
+
+            - regolith
+                - solid material that makes up the soil
+                    - particles of parent rock
+                    - clay minerals
+                    - metal oxides
+                    - organic matter
+
+            - soil profile (layers in the soil)
+                - solum or "true soil"
+                    - top soil
+                        - O horizon
+                            - loose and partly decayed organic matter
+
+                        - A horizon
+                            - minearal matter mixed with humus
+
+                    - E horison
+                        - zone of eluviation and leeching
+
+                    - Subsoil
+                        - B horizon
+                            - accumulation of clay transported from above
+
+                - C horizon
+
+                - unweathered parent rock
+
+
+
+
+            - Factors controlling soil formation
+                - parent material
+                    - type of rock
+                        - weathered to produce soil
+
+                - time
+                    - amount of time for soil formation
+
+                - climate
+                    - very little soil in dry climates (polar and desert)
+
+                - plants and animals
+                    - roots, burrowing animals
+
+                - Topography
+                    - optimal soil formation place is a flat plain
+
+        - Classifying Soils
+            - variations in soil formation over time leads to a great veriety
+              of soils
+
+
+            - soiul taxonomy
+                - emphasis placed on physical and cemical properties of the
+                  soil
+
+                - 6 categories
+                    - Andisols
+                        - young soils in which the parent material is volcanic
+                          ash and cinders
+
+                    - gelisols
+                        - forms over permifrost in artic
+
+                    - Oxisols
+                        - tropics and subtropics
+                        - leached soil because of heavy rainfall
+
+
+                    - aridisols
+                        - soils that develop in dry places
+
+                        - insufficient water to remove soluble minerals
+
+                        - low organic content
+
+                        - alot in deserts
+
+                    - spodosols
+                        - soils found in humid regions on sandy soil
+                    - spodosols
+
+                        - found in northern coniferous forests
+
+                    - vertisols
+                        - large amounts of clays
+                        - a little bit in texas
+
+                    - Mollisols
+                        - dark soft soils
+                        - under frass vegtations
+                        - found in plains
+
+
+
+
+        - Soil erosion
+            - influencers
+                - soil characteristics
+                - climate
+                - slope of what contains the soil
+                - type of vegitation
+                    - it actually holds soil in place
+
+
+                - human factor
+                    - a few centimeter's thickness of prime soil require 500
+                      years to mature
+
+
+            - In many places soil erosion is much greater than the rate of
+              formation

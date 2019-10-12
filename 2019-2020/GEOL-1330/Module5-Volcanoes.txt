@@ -319,4 +319,57 @@
 
                 - successive flows can build up to great thicknesses
 
+    - rising mantle plume
+        - plume head at the top
 
+        - when it hits the crust, leads to rapid depression
+            - produces an ocenaic plateau
+
+        - leaves behind a trail of volcanoes
+
+        - starts with huge eruption of flood basalts
+            - then leaves behind that trail
+
+
+- Natural hazards associated with volcanoes
+    - lahar
+        - volcanid mud and debris flow
+        - formed from volcanic ash saturated with ash
+
+    - pyroclastic flows
+        - huge clouds of hot ash and gas
+
+        - cascade downhill at 200 km / hr
+
+
+        - can be created by
+            - collapse of eruption column
+                - the smoke that is going up turns around and goes back down
+
+            - lava domes
+                - highly viscous lava builds pressure at the top of the dome
+                - lateral eruption pushes shit all out literally
+
+    - Eruption of Mt Vesuvius, Pompeii Itally
+        - pumice rained down on the city for several hours
+        - then pyroclastic flow and basically the destroyed the entire city
+
+
+- Volcanoes and climate
+    - explosive eruptions put out huge ash
+        - this limits solar radiation to the surface because it is reflected
+
+
+        - alot of sulfur dioxide
+
+
+- monitoring volcanic activitty
+    - satelites are used
+        - can be taken with IR or something
+
+    - using GPS devices
+        - moitor changes in elevation of the ground's surface
+
+
+    - composition of gas emmisions
+        - an increase of sulfur dioxide can preceed an eruption
