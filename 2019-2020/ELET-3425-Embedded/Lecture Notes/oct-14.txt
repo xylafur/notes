@@ -1,0 +1,115 @@
+- Today we start interrupts
+
+###############################################################################
+#   From pre chapter quiz
+###############################################################################
+
+- Interrupt Masking
+    - Ignore a particular types of interrupts
+
+    - interrupt mask registers on M3 processor
+        - PRIMASK
+            - no interrupts at all
+        - FAULTMASK
+
+        - BASEPRI
+            - based on priority
+
+- 5 features provided by NVIC
+    - Nested Interrupt Support
+        - support for an interrupt within another interrupt
+        - we can handle another interrupt while we are already handling the
+          first
+
+    - Vectored Interrupt Support
+        - Each interrupt has a uniqe code
+        - each interrupt has a different way of notifying the CPU?
+            - this way we know which interrupt is which
+
+        - We can also have shared interrupts where everyone has the same code
+          and then we have to figure out which interrupt it is after it is
+          triggered
+
+    - Dynamic Priority Changes Support
+        - can change priorities of interrupts on the fly
+
+    - Reduction of Interrupt Latency
+        - Time from going from the main program to handling of the interrupt
+
+    - Interrupt Masking
+        - can ignore certain types of interrupts
+
+        - Reset it a non-maskable interrupt
+            - it cannot be ignored
+
+
+- 5 types of interrupts (exceptions)
+    - reset
+    - nmi
+    - hard fault
+    - bus fault
+    - systick
+    - external interrupts
+
+
+###############################################################################
+#   From lecture component
+###############################################################################
+- multithreading
+    - thread is how the program runs, the pathway
+
+    - interrupt
+        - atomic transfer of software execution in response to a event
+            - the event is asynchrnous with current software execution
+            - the event is called a trigger
+
+    - multithreading
+        - cooperation of threads to perform an overall task
+
+
+        - software controls
+            - arm bit
+                - used by a potential interrupt trigger
+                - used to activate or deactivate devices
+
+            - interrupt enable bit
+                - PRIMASK
+                    - bit 0 would be interrupt mask bit 1
+                        - setting this bit to 1 could disable most interrupts
+                        - 0 would mean that they are enabled
+
+                - BASEPRI
+                    - prevents interrupts with lower priority
+
+                    - BASEPRI = 3
+                        - this means that request with level 0, 1, 2 can
+                          interrupt
+
+                    - there are 8 priorities
+                        0 to 7
+
+                    - BASEPRI = 0
+                        - all are allowed
+
+- 4 conditions for interrupt to be generated
+    - must be armed
+        - giving permission for interrupts used
+
+    - must be enabled
+
+    - must have level request < BASEPRI
+
+    - as external event must occur setting a trigger flag to be ran
+        - set it eitehr as edge or level triggered or whatever
+
+
+
+
+
+
+
+
+
+
+
+

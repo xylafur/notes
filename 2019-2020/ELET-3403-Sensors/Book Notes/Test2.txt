@@ -1,0 +1,31 @@
+- Go through her slides and make sure that you understand everything in them
+
+- Chapter 4
+    - Thermocouple
+        - she made it sound like it will be things other than just type J
+
+
+- Chapter 2
+    - Passive Circuits
+        - Divider Circuits
+        - Bridge Circuits
+            - Wheatstone Bridge
+            - Wheatstone bridge with sensor at some difference
+            - AC Bridges
+
+
+        - RC Filters
+            - Low Pass Filter
+            - High Pass Filter
+            - Band Pass RC Filter
+            - Band Reject RC Filter
+                - Notch Filter (Twin-T Filter)
+                    - this is the only band reject that we can make with
+                      passive components
+
+
+        - Op Amps
+            - Ideal Characteristics
+
+
+

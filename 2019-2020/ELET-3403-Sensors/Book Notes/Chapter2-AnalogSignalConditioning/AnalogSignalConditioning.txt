@@ -357,3 +357,311 @@ Operational Amplifiers
 
 
 
+
+    4.1 Op Amp Characteristics
+        - Transfer Function
+            - The output voltage is the difference between the two input
+              voltages
+
+            - saturation voltage
+                - when one is much greater than the other, the output will
+                  become the saturation voltage
+
+                    - V1 = Non Inverting INput
+                    - V2 = Inverting INput
+
+                    - if V1 >> V2
+                        - Vout = + Vsat
+
+                    - if V2 >> V1
+                        - Vout = - Vsat
+
+
+                - The range of input voltage between the saturation is very
+                  narrow
+                    - thw range is less than a millivolt for many op amps
+                    - saturation voltage is usually > 10 V
+                        - this means the slope for the output voltages is huge!
+
+            - Input Impedances are very high (typically 1 M ohm)
+            - Output Impedance is very low (typically less than 100 ohm)
+
+            - In an ideal op amp
+                - inpedance between the two inputs is infinite
+                - impedance at the output is 0
+
+            - Feedback from output to input is almost always used
+
+        - Ideal Inverting Amplifier
+            [ Figure 2.6 ]
+
+            - R2 is the feedback resistor
+                - feeds back output to inverting input
+
+            - R1 connects the input voltage to the point where we feedback
+                - also on the inverting input
+
+            - summing point
+                - where the feedback portion connects to the input
+
+
+            - Non-Inverting Input is connected to ground
+
+            - Without feedback
+                - Vin > 0 saturates the output negative
+                - Vin < 0 saturates the output positive
+
+            - With Feedback
+                - Voltages are adjusted such that
+                    1. The summing point voltage is equal to the (+) input
+                        - in this case its 0 because (+) is tied to ground
+
+                    2. No current flows through the op amp input terminals
+                       because of assumed infinite input impedance
+
+
+                        - Sum of Currents at Summing Point
+                            I1 + I2 = 0
+
+                            I1 = Current through R1
+                            I2 = Current through R2
+
+
+            - Attenuator
+                - Oposite of an amplifier
+                - reduces the output of something by some factor
+
+            - Because potential at summing point is 0
+                Vin / R1 + Vout / R2 = 0 => Vout = - (R2 / R1) * Vin
+
+                - This OpAmp is thus
+                    - an inverting op amp
+                    - Gain of R2 / R1
+                    - Output is shifted 180 degrees in phase with the input
+                    - The device functions as an attenuator
+                        - R2 < R1
+
+
+            - Design Rules for analyzing Ideal Operation of Op Amp Circuit
+                1. Assume that no current flows through the op amp input
+                   terminals
+
+                2. Assume that there is no voltage difference between the op
+                amp input terminals
+
+        - Open Loop Gain
+            - gain when no feedback is provided to the circuit
+            
+
+        - Nonideal Effects
+             1. Finite Open Loop Gain
+                - when we design with an ideal we assume infinite open loop gain
+                - in reality the open loop gain is finite
+
+            2. Finite Input Impedance
+                - a real op amp has finite imput impedance 
+
+            3. Nonzero Output Impedance
+                - generally the output impedance of a op amp is in the ohm
+                  range
+
+            - We can ignore alot of these non-ideal effects for the most part
+
+
+            [ Figure 2.7 ]
+                - We can see that
+                    I1 + I2 + I3 = 0
+
+                - We can determine the Volrage / resistance or impedance values
+                  for the current
+
+                    (Vin - Vs) / R1 + (Vo - Vs) / R2 - Vs / Zin = 0
+
+                - We can then determine the relationship between output and
+                  input
+                    Vo = A * Vs - Zo * (Vo - Vs) / R2
+
+                    Vo = -(R2 / R1) * Vin * (1 - u)
+
+                - we can find m then
+                    m = (1 + Zo/R2)(1 + (R2/R1) + (R2/Zin)) / (A + (Zo / R2))
+
+                    - "m" will be must less than 1
+
+
+    4.2 Op Amp Specifications
+        - these characteristics are given in the spec sheet for a particular op
+          amp
+
+
+        - Input offset Voltage
+            - the output voltage of the op amp might not be 0 when the voltage
+              across the input is 0
+
+            - the Input Offset Voltage is the voltage that must be applied
+              across the input terminals to get the output to 0
+
+        - Input Offset Current
+            - Same idea as input offset voltage but with current
+
+            - Sometimes we need a current to get the voltage offset to 0
+
+
+        - Input Bias Curent
+            - the average of the two input currents required to drive the
+              output voltage to 0
+
+        - Slew Rate
+            - Rate at which the output changes to the saturation value
+
+            - typically expressed as volts per microsecond
+
+            - When a voltage is applied suddenly to the input of an op amp the
+              output will saturate to maximum
+
+
+        - Unity Gain Frequency Bandwidth
+            - The frequency response of an op am p is typically defined by a
+              bode plot of open loop voltage gain vs frequency
+
+
+
+        - Practical Issues
+            - other issues associated with op amps that don't contribute to the
+              transfer function
+
+            - Op Amps need bipolar power supply
+                - generally in range to 9 - 15 V
+
+            - compensation for input offset voltage
+                - there are often pins on the chip for this
+                - the transfer function willbe incorrect for dc signals if
+                  there is input offset voltage
+
+                - if there aren't special pins then you have to actually supply
+                  the voltage to the input pins
+
+
+            - Source and Sinking Current
+                - IC op amps can generally source or sink no more than 20mA
+
+                - this is why we want to use resistors in the k ohm range
+
+
+
+5 - Op Amp Circuits in Instrumentation
+    5.1 Voltage Follower
+        - The voltage output tracks the input over a range defined by the plus
+          and minus saturation voltage outputs
+
+
+        [ figure 2.8 ]
+ 
+    
+        - essentially an impedance transformer
+            - converts a voltage at high impedance to the same voltage at low
+              impedance
+
+
+    5.2 Inverting Amplifier
+        - Inverts the input signal
+        - May have either attenuation or gain
+            - depends on the ratio of the resistances
+
+        - input impedance is essentially equal to R1
+
+        - Summing Amplifier
+            - Sums two or more applied voltages
+
+                Vout = - [ (R2/R1) * V1 + (R2/R3) * V2 ]
+
+
+                [ figure 2.9 ]
+
+    5.3 Noninverting Amplifier
+        - Just slap another inverting OpAmp after the inverting OpAmp we use to
+          sum and then you get the non-inverting OpAmp circuit
+
+        Vout = [ 1 + (R2/R1) ] * Vin
+
+        - from this we see that you can never achieve attenuation with a
+          noninverting OpAmp!
+
+
+    5.4 Differential Instrumentation Amplifier
+        - An ideal differential Amplieifer
+            - provides output voltage with respect to ground that is
+
+            Vout = A * (Va - Vb)
+
+            - so takes the difference between the input voltages and applies a
+              gain
+
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @ Don't quite understand this  @
+        @ next part.. need to revisit  @
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        - Common Mode Rejection
+            - notice that our output is based on the difference of the two
+              inputs.
+                - so (Va=3, Vb=2) would have the same output as (Va=20, Vb=19)
+
+
+            - Common Mode Input Voltage
+                - the average of voltage applied to the two terminals
+
+                Vcm = (Va + Vb) / 2
+
+
+                - Ideal Diff-OpAmp will not have any output that depeneds on
+                  value of the common-mode voltage
+
+                    - the circuit gain for common-mode voltage, Acm, will = 0
+                        Acm = 0
+
+
+            - Common Mode Rejection Ratio
+                - the ratio of the differential gain to the common-mode gain
+
+                - it is expressed in dB
+
+                CMRR = A / Acm
+
+                CMR = 20 * log_base_10(CMRR)
+
+
+
+
+
+        - Differential Amplifier
+            - Vout = (R2 / R1) * (V2 - V1)
+
+            - If the resistors are not well matched then the CMR will be poor
+
+            - There is a common problem with impedance mismatch between the two
+              inputs of a differential amplifier
+                - for this reason a voltage follower is added to each of the
+                  inputs
+
+                - this gives both of the inputs a high impedance
+
+
+                [ figure 2.10 ]
+
+
+
+        - Instrumentation Amplifier
+            - Differential amplifiers with high input impedance and low output
+              impedance
+
+
+
+
+
+
+
+
+
+
+
