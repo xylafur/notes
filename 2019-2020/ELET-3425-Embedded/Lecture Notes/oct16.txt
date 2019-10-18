@@ -1,0 +1,77 @@
+- Interrupt PINS
+
+- Something we want to do today is:
+    - count the number of rising edges
+
+- Registers
+    - GPIOIEV
+        - Interrupt Event Register
+
+        - set pin to 1 for rising edge
+        - set pin to 0 for falling edge
+
+
+    - GPIOIBE
+        - Interrupt on both edges
+
+        - set to 1 for both edges
+        - set to 0 for not both
+
+
+    - GPIOIS
+        - interrupt sense
+
+        - set to 0 for edge-sensitive
+        - set to 1 for level-sensitive
+
+
+    - GPIOIM
+        - Interruipt mask
+
+        - set to 0 for masked
+        - set to 1 for not masked
+
+
+    - GPIOICR
+        - Interrupt clear
+
+        - setting to 0 interrupt is uneffected
+        - setting to 1 interrupt is cleared
+
+
+    - GPIORIS
+        - Raw Interrupt Status
+
+        - READ ONLY REGISTER
+
+        - status of interrupts prior to masking
+
+    - NVIC PR
+        - Priority register
+
+        - NVIC_PRI{0..11}_R
+            - each port / pin gets 3 bits
+
+
+    - NVIC EN
+        - Enable a particular interrupt in NVIC
+
+        - NVIC_EN{0,1}_R
+
+
+- TYPICAL INTERVIEW QUESTION
+    - what is the difference between a hardware ack and a software ack
+
+- NVIC
+    - controlles interrupts on the cortex M3
+    - to activate
+        - arm
+            - IM
+        - enable
+            - IBE, IS, IEV
+
+        - set priority
+
+        - enable that source in the NVIC
+
+

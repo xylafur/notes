@@ -655,13 +655,147 @@ Operational Amplifiers
             - Differential amplifiers with high input impedance and low output
               impedance
 
+            - to change gain you have to change to resistors
+                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                @ Not 100% sure why, think it has to do   @
+                @ with the CMRR                           @
+                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+        
+            - bias voltage should be provided by a resistance divider and
+              regulated power supply
+
+                - a zener diode can be used to provide stability
+
+
+            - you can construct a instrumentation amplifier that allows the
+              gain to be changed with only a single transistor
+
+                [ figure 2.11 ]
+
+        
+
+
+    5.5 Voltage to Current Converter
+        - this is usefuly because signals for process contrl are often sent as
+          currents
+
+        - there is a circuit we can use to generate current from voltage input
+
+            [ figure 2.12 ]
+
+
+        - The current generated is given by
+
+            I = - (R2 / (R1 * R3)) * Vin
+
+        - The selected resistances must be such that
+
+            R1 * ( R3 + R5 ) = R2 * R4
+
+
+
+        - Maximum load resistance and maximum current are determined by the
+          condition that the amplifier saturates in voltage
+
+            - when the op amp output voltage saturates, maximum load resistance is
+
+                Rml = ( (R4 + R5) * ( (Vsat / Im) - R3) ) / (R3 + R4 + R5)
+
+
+                Rml: Maximum Load Resistance
+                Vsat: Op Amp Saturation on Voltage
+                Im: Maxmimum Current
 
 
 
 
 
+    5.6 Current to Voltage Converter
+        - we might need to go the other way too
+
+        Vout = -I * R
+
+
+        - this is basically just an inverting op amp but with a resistor in
+          between noninverting input and ground
+
+        [ figure 2.13 ]
 
 
 
+        - the resistor on the non inverting input is there to provide
+          temperature stability
+
+    5.7 Integrator
+
+        [ figure 2.14 ]
+        
+        - We have an input resistor and a feedback capacitor
+
+        - we can sum up the currents at the summing point as
+
+            (Vin / R) + C * derivative(Vout, dt) = 0
 
 
+        - we can then solve for Vout by integrating both terms
+
+            Vout = - 1 / (RC) * integral(Vin, dt)
+
+
+        - the output voltage varies as an integral of the input voltage with a
+          scale factor of: -1 / (RC)
+
+
+        - If the voltage is constant then
+
+            Vout = - K / (RC) * t
+
+            - this is a linear ramp with nagative slope of K/RC
+
+
+    5.8 Differentiator 
+        - also realized with a single capacitor and resistor, but in swapped
+          positions from the integrator
+
+
+        C * derivative(Vin, dt) + Vout / R = 0
+
+        Vout = - RC * derivative(Vin, dt)
+
+
+        [ figure 2.15 ]
+
+    
+    5.9 Linearization
+        - linearization is generally achieved by placing a non-linear element
+          in the feedback loop of the op amp
+
+        Vin / R + I(Vout) = 0
+            Vin = input voltage
+            R = input resistance
+            I(Vout) = nonlinear variation of current with voltage
+
+
+        - If we then solve for Vout we get
+            Vout = G(Vin  / R)
+                - where G(Vin  / R) is a nonlinear function of the input
+                  voltage
+                    - usually inverse of I(Vout)
+
+
+        - If we place a diode in the feedback, the function I(Vout) is exponential
+
+            I(Vout) = Io * exp(alpha * Vout)
+                Io = amplitude constant
+                alpha = exponential constant
+
+        [ figure 2.16 ]
+
+
+        - the inverse of this exponential function is a logarithm, thus
+            Vout = 1 / alpha * log_base_c(Vin) - 1 / alpha * log_base_c(Io * R)
+
+
+
+6 - Design Guidelines

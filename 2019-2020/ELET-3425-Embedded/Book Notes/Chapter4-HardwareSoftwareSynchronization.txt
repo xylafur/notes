@@ -1,0 +1,134 @@
+- Speciallized input / output devices are attached to embedded systems
+
+    - interfacing is both the physical connections as well as as well as the
+      software routines that affect information exchanege
+
+
+        - software and hardware need to be synchrnoized
+
+
+4.1 Introduction
+    4.1.1 Performance Measures
+        - Latency
+            - time between when the I/O device indicated service is required and
+              when service is initiated.
+        - real time
+            - worst cast latency is guaranteed
+        - throughput / bandwidth
+            - maximum data flow that can be processed by the system
+        - priority
+            - order of service when two or more requests are made at the same
+              time
+        - soft real time
+            - a system that supports priority
+
+    4.1.2 Synchrnozing the software with the stae of the IO
+        - there are 3 hardware states
+            - idle
+                - device disabled or inactive
+            - busy
+
+            - done
+
+        - The busy and done states are constantly toggline back between
+          eachother
+            - this forms a busy-wait (gadfly) loop
+
+
+        - synchronization
+            - input device
+                - busy to done transition can trigger an interrupt
+
+                - signals to the computer that service is required
+
+                - when hardware is in the done state, the IO transaction is
+                  complete
+
+
+                - often reading data can clear the flag and request new input
+
+            - output device
+                - status flag is set when the output is idle
+                - when software realizes that hardware is idle, it will give it
+                  more data to output
+
+
+        - when input device is busy, it is in the process of creating new input
+            - when it is done new data is avaliable
+            - when this transition from busy to ready happens, it releases
+              software to go forward
+
+        - WHen the output device is bust, it is processing the data
+            - when software writes to the output port, that starts this busy
+              process
+
+            - when the output device is done it goes to done state and tells
+              software to go ahead
+       
+
+        - IO Bound
+            - when time for the input device to create data is greater than the
+              time software needs to read and process the data
+
+
+        - CPU Bound
+            - the opposite of IO bound
+            - input device is faster than the software
+
+
+    
+        - there are 5 methods of synchrnoization
+            1. Blind Cycle
+                - software waits a fixed amount of time
+                - assumes IO is done after that time
+
+            2. Busy Wait / Gadfly
+                - software loop that checks the satatus of IO and waits for
+                  a done
+
+            3. Interrupts
+                - uses hardware to cause special software execution
+                - used when real time respnose is important
+
+            4. Periodic Polling
+                - uses clock interrupt to periodically check the IO status
+                - input device will set a flag when it has new input data
+                - output device will set a flag when it is idle and ready for
+                  data
+
+            5. DMA (Direct Memory Access)
+                - transfer data to / from memory directly
+
+                - for input device
+                    - hardware will request a DMA transfer when the input
+                      device has new data
+
+                    - without the software even knowing, the DMA hardware will
+                      read from the input device and save in memory
+
+                - output device
+                    - hardware will request a DMA transfer when the output
+                      device is idle
+                    - DMA hardware gets data from memory and writes it to the
+                      device
+
+                - used when high bandwidth and latency is needed
+
+
+
+4.2 Timing
+    4.2.1 Timing Equations
+        - We will descibe timing equations
+            - algebraic mechanisms to describe time
+
+        - zero time reference
+            - we need a time 0
+            - a clock edge that signifies the beginning
+
+        - we give start and stop times in parenth
+            (400ns, 520ns)
+
+            - these are both relative to 0 time
+
+        - we don't always know exactly when an event starts and stops, but we
+          can give upper and lower bound
