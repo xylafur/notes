@@ -1,0 +1,222 @@
+1 - Introduction
+    - We need to condition process contrl signals to be an appropriate digital
+      fromat
+
+    - we lose some accuracy when we convert to digital format, but we are much
+      more immune to the various type of noise (and other problems) that can be
+      introduced
+
+
+2 Review of Digital Fundamentals
+
+    2.2 Successive Multiplication
+        # TODO: READ ME
+
+    2.3 Boolean Algebra
+        - We want to develop a system that can operate on many true / false
+          values
+            - it uses those values to determine its operation
+
+
+3 Converters
+    3.1 Comparators
+        - compares to input analog voltage and outputs:
+            1 if Va > Vb
+            0 if Va < Vb
+
+        - Open Collector Comparators
+            [ Figure 3.1 ]
+
+            - There is a transistor internal to the comparitor
+                - the collector of the transistor is connected to the output
+                - the emitter to ground
+                - the base is connected to the input somehow
+
+            - You have a pull up resistor attached to the output (since the
+              collector is attached to output, if the transistor is activated
+              then the current will flow from the pull up to ground through the
+              emitter)
+
+        - Hysteresis Comparitor
+            - If the signal has noise or opproaches the reference too slowly
+                - the comparator output may jiggle between ehigh and low as it
+                  reaches the reference value
+
+                [ Figure 3.2 ]
+
+            - This is solved by providing a "deadband" or "hysteresis" window
+
+                - when the comparitor goes high, the threshold by which is
+                  required to go low again is lowered
+
+                - hysteresis can be provided in many ways
+                    - Feedback resistor Rf, between the output and one of the
+                      inputs of the comparator
+
+                        [ Figure 3.3 ]
+
+                        - the input is seperated from the signal by another
+                          resistor R
+
+                        - If Rf >> R, then  the output is like the graph in
+                          Figure 3.3
+                        
+                        - The output to drive the comparitor high is given by
+                            Vin >= Vref
+
+                        - After the comparitor output goes high, the condition
+                          changes to
+                            Vin <= Vref - (R / Rf) * Vo
+
+                        - The deadband or hysteresis is then given by (R/Rf)*Vo
+
+
+
+    3.2 Digital To Analog Converters
+        - Accepts digital information and transforms it into an analog value
+
+        - The reference voltage determines the max output
+            Vout = Vr * [ 2 ^ w1 + b2 * 2 ^ -2 + b3 * 2 ^ -3 + ... ]
+
+            - the number of elements depends on the number of bits in the
+              binary word
+
+            - the eminimum output is thus 0, and the max depends on Vr and the
+              number of bits
+
+
+        - An equivalent equation is
+            Vout  = (N / 2^n) * Vr
+                - N is th ebase 10 whole numebr equivalent of the DAC input
+
+
+        - Bipolar DAC
+            - some DACs are designed to output a voltage that ranges from +-
+              some max
+
+            - This does not use 2s compliment
+            - Bipolar DACs use an "offset-binary"
+
+                Vout = (N/2^n) * Vr - (1/2) * Vr
+
+            - so if N is 0, then the output is some minimum value
+
+        - Conversion Resolution
+            - function of the reference voltage and the number of bits in the
+              word
+            - the more bits, the smaller the change in analog output
+
+            - if we have more bits the resolution for a 1 bit change will be
+              much greater
+
+            Resolution = Vr * 2 ^ (-n)
+
+
+        - DAC Characteristics
+        - DAC Structure
+            - treat it as a black box
+
+            - Can be implementedusing a series of op amps, but often are
+              implemented using a "resistive ladder"
+
+                - see the resistive ladder in the picture below
+
+              [ Figure 3.4 ]
+            
+
+    3.3 Analog to Digital Converters
+        - most sensors still produce an analog signal
+
+        - an ADC can be expressed in a way similar to an DAC, but the
+          interpretation is reversed
+
+            b1 * 2^-1 + b2 * 2^-2 + ... + bn * n^-n <= Vin / Vr
+
+        - We can find the value read by an ADC using the equation:
+            N  = floor(Vin / Vr * 2^n)
+
+        - Bipolar Operation
+            - Also uses offset-binary
+                - this means that the normal output is simply shifted by half
+                  the scale
+
+                - all 0's means lowest negative value instead of zero
+                - all 1's means highest positive value
+
+
+
+            N = floor( (Vin / Vr + 1/2) * 2^n )
+
+            1000....0 will be equal to 0V
+
+        - ADC Characteristics
+
+        - Parallel-Feedback ADC
+            - feedback system that performs the conversion
+
+            - a comparator compares the input voltage to the output voltage of
+              an internal DAC
+
+            - doesn't count.
+                - Iterate through all bits, starting at MSB working down
+                    - set this bit to 1
+
+                    - if the output from the DAC is > than input
+                        - change this bit to 0
+                    - if this is < than input
+                        - leave it at 1
+
+        - Ramp ADC
+            - Compare the input voltage against a linearly increasing ramp
+              voltage
+
+            - There is a binary counter that counts the ramp steps
+
+            - The ramp is implemented using an op amp integrator circuit
+
+        - Dual Slope Ramp ADC
+            - Most common type of ramp converter
+
+            - Operates as the input signal drives an integrator for a fixed
+              time
+                - This makes the output of the integrator a constant
+
+                    V1 = 1 / RC = R1 * Vx
+
+            - THen the input to the integrator switches from the input signal
+              to the reference voltage
+
+            - This value will be continually subtracted from the original
+              voltage over time
+
+            - the result of the ADC is then determined by the time it took for
+              the differences of the voltages to reach 0
+
+                Vx = tx / T1 * Vr
+
+
+
+
+            - so the counter time is linearly releated to Vr but independent of
+              the specifics of the integrator
+
+            - Has a much longer convertion time than successive approximation
+              type (such as ramp and parallel feedback)
+
+
+        - Conversion Time Consequences
+            - the finite conversion time has serious consequences
+
+            - ADC output will be in error if the magnitude of the input voltage
+              changes by more than one LSB voltage during the time conversion
+                - if the input voltage changes by delta(V) or more during
+                  conversion time TauC, there are problems
+
+
+
+
+
+
+
+
+

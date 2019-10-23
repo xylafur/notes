@@ -1,0 +1,49 @@
+- Interrupt
+    - Simply an automatic transfer of software execution
+        - it can either be triggered by hardware or software
+
+    - the event that starts the interrupt is called
+        - a "trigger"
+
+
+- Multithreading
+    - software control
+
+        - 
+
+- 4 conditions for an interrupt to be enabled
+    - arm
+        IM
+
+    - enable
+        NVIC EN0
+
+    - Must have level request < BASEPRI
+        NVIC_PRI ...
+
+    - enable that source in the NVIC
+        - IBE, IS, IEV
+
+- The registers we use and their function
+    GPIO_PORTC_DIR_R    // make PC4 input
+    GPIO_PORTC_DEN_R    // enable io
+
+    GPIO_PORTC_IS_R     // Make PC4 edge sensitive
+    GPIO_PORTC_IBE_R    // PC4 is not both edges
+    GPIO_PORTC_IEV_R    // PC4 is falling edge
+    GPIO_PORTC_ICR_R    // clear out old interrupts
+    GPIO_PORTC_IM_R     // Arm interrupt
+
+    NVIC_PRI0_R         // Set priority
+    NVIC_EN0_R          // enable in nvic
+
+- Handler Function
+    ```
+        void GPIOPortA_Handler(void){
+            // The first thing that you do is acknowledge
+            GPIO_PORTC_ICR_R = 0x10;
+            ...
+        }
+    ```
+
+
