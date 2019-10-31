@@ -1,0 +1,52 @@
+
+- Inputs inside of the elevator (8)
+    - floor 1
+    - floor 2
+    - floor 3
+    - Open Door button
+    - Close Door button
+    - alarm button
+
+    - call / call button
+
+    - emergeny call on side
+
+
+- Inputs outside of elevator (4)
+    - up button on first floor
+    - up button on second floor
+    - down button on second floor
+    - down button on 3rd floor
+
+
+- outputs outside (4)
+    - up button on first floor
+    - up button on second floor
+    - down button on second floor
+    - down button on 3rd floor
+
+
+- outputs inside (5) (also the lcd screen)
+    - floor 1
+    - floor 2
+    - floor 3
+
+    - fireman hat led
+    - led on the alarm
+
+
+- Possible improvements
+    - fix LCD display inside
+    - add LCD floor indicator outside
+
+
+
+
+interrupt_handler:
+    light up correct switch
+    determine which floor the switch was for
+    check the conditions in the flow chart based current state
+    call goto floor or queue floor function
+
+
+
