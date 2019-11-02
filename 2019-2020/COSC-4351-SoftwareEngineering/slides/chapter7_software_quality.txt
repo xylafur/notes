@@ -1,0 +1,41 @@
+- Software quality
+    - an effective software process applied in a maner that creates a useful product
+        - the value of the product has measurable value
+
+    - high quality if
+        - software follows requirements
+        - has expected results
+        - easy to use
+        - error free
+        - easy to maintain and extend
+
+    - dimensions of quality
+        - performance
+        - feature
+        - reliability
+        - conformance
+        - durability
+
+- Review
+    - a meeting by technical people for technical people
+    - technical assessment of a work product created during the software engineering process
+
+    - they are not
+        - progress reports
+
+    - Defects vs errors
+        - error
+            - quality problem found beffore the software is released to end users
+
+        - defect
+            - quality problem found after the software has been released to end users
+
+- Regression Testing
+    - re-execution of some subset of tests that have already passed
+
+
+- Smoke testing
+    - uncover "show stopper" errors
+    - smoke testing should happen daily
+
+

@@ -10,6 +10,7 @@
     - interrupt mask registers on M3 processor
         - PRIMASK
             - no interrupts at all
+
         - FAULTMASK
 
         - BASEPRI
@@ -101,15 +102,3 @@
 
     - as external event must occur setting a trigger flag to be ran
         - set it eitehr as edge or level triggered or whatever
-
-
-
-
-
-
-
-
-
-
-
-

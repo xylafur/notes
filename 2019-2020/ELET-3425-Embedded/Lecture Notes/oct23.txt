@@ -1,0 +1,105 @@
+- Today we are going to cover
+    - what exactly happens when an interrupt is triggered
+
+
+- When an interrupt occurs
+    - first the current instruction is finished
+
+    - the execution of the currently running program is
+        - suspended
+            - we have to move to the address of the isr that was triggered
+
+    - Push 8 registers onto the stack
+        - the main program and the ISR use the same resgisters, so you have to
+          back all of yours up
+
+        - R0, R1, R2, R3, R12, LR, PC and PSR
+
+
+        - Interrupts do this automatically
+
+        - R0 is on the top of the stack
+
+    - LR is set to the value for the ISR being run
+        - LR is called the Location Register
+
+        - the bottom 4 bits specify the type of interrupt return to perform
+
+
+    - ISPR is set to
+        - the interrupt number being processed
+
+    - The PC is loaded with the address of ISR
+
+
+- Interrupt Service Routine
+    - software module that is executed when the hardware requests an interrupt
+
+
+    - All instructions on ARM cortex M3 are atomic
+
+
+- You can make a group of interrupts atomic by disabling interrupts
+    - Set the primask to 1
+
+    - we use this instead of primask because if we were to disable interrupts
+      with IM we would have to disable them all individually
+
+- Steps to implement atomic operation
+    - save current value of PRIMASK
+    - Disable interrupts
+    - Execute the operation
+    - Restore PRIMASK back to its previous value
+
+
+
+- Interrupt Implementation Methods
+    - Can be generated using
+        - A seperate connection to processor for each devices
+        - A shared negative logic wire
+
+    - Ability for the computer to deteriine the source
+        - Vectored interrupt system
+            - seperate connections
+            - each device has a sepearate interrupt vector address
+
+        - Polled Interrupt System
+            - look for the device that requested the interrupt
+
+    - Acknowledge the intterupt
+        - clears the trigger flag
+            - if you don't clear, the interrupt thinks that it is continually
+              being triggered
+
+            - clearing out the bit avoids false requests
+
+
+        - LM3Sxxx microcontrollers
+            - use software acknowledge
+                - this means that the hardware waits until the software
+                  acknowledges that the interrupt happened
+
+            - Intell systems
+                - use hardware ack
+                - this means its cleared automatically
+
+
+- Interrupts are also called Exceptions
+
+- Examples of Exceptions
+    - resets
+
+    - software interrupts
+        - using any other code, whenever the code has to go jump to some other
+          place thats not part of the main program
+
+        - a function call is a software interrupt
+
+    - hardware interrupt
+        - edge triggered interrupts, like a keyboard
+
+
+- Each exception has an associated 32 bit vector
+    - vectors
+        - point to the memory location where the ISR that handles the exception
+          is located

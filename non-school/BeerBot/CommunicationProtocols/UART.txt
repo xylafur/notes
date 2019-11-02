@@ -1,0 +1,45 @@
+UART: Universal Asynchronous Receiver / Transmitter
+
+- What is it?
+    - a physical circuit, not a communication protocol
+
+- Intro
+    - Two UART's communicate directly with each other.
+    
+    - Data flows from the TX pin of one guy to the RX pin of the other
+
+    - Transmitted asynchronously
+        - There are start and stop bits added to packets to account for this
+
+    - When the recieving UART defects a start bit, it starts to read the
+      incoming bits at a specific frequency (the baud rate)
+        - the baud rate is expressed in terms of bits per second
+
+        - both of the UARTs must use the same BAUD rate!!!
+
+    - both sender and reciever must be configured to accept the same packet
+      types
+
+
+- Overview
+    - Wire's used: 2
+    - Masimum Speed: and speed up to 115200 baud, usually 9600
+
+    - Asynchronous
+    - Serial
+
+    - Only one master and one slave
+
+- How it works
+    - data is transfered to the uart in parallel form.
+    - After getting the data, the UART adds a start bit, a pairity bit and a
+      stop bit
+    - this data packet is then output serially, bit by bit at the TX pin
+
+    - the recieving UART reads the data packet bit by bit at its Rx pin
+
+    - The recieving UART then converts the data back into parallel form and
+      removes the start bit, pairity and stop bit
+
+    - The UART transfers the data packet in parallel to the data bus on the
+      receiving end

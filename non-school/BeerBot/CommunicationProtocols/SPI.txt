@@ -1,0 +1,89 @@
+SPI: Serial Peripheral Interface
+
+- SPI is Commonly used for communication with microcontrollers
+
+- There are no 'packets' in SPI, bits are sent in a continuous stream
+
+- Master / Slave Relationship
+    - Devices using SPI have a master/ slave relationship
+
+    - The slave takes instruction from the master
+
+    - A master can control more than one slave
+
+- Pins needed for SPI
+    - MOSI (Master Output / Slave Input)
+        - Line for the master to send data to the slave
+
+    - MISO (Master Input/ Slave Output)
+        - line by which the slave sends data to the master
+
+    - SCLK (Clock)
+        - Line for the clock signal
+
+    - SS/CS (Slave Select / Chip Select)
+        - Live for the master to select which slave to send data to
+
+- Other general protocol info
+    - 4 Wires
+    - Max Speed of 10 Mbps
+    - Synchronous (clock pin)
+    - serial communication
+    - only one master
+    - theoretical unlimited number of slaves
+
+- How it works
+    - The clock determines data speed.
+        - One bit of data is transfered each clock cycle
+
+    - Clock signal can be modified using clock polarity and clock phase
+        - together define when bits are output and when they are sampled
+        - is set by the master to allow for data to be read on either the falling
+          or rising edge
+
+
+        - clock polarity
+            - set by master to allow bits to be output and sampled on either
+              rising or falling edge
+
+        - clock phase
+            - set for output and sampling to occur on either the first edge or
+              the second edge, regardless of wether it is rising or falling
+
+    - Slave Select
+        - set to high in the non transmitting state
+
+        - master selects which slave to talk to by putting th eline low
+
+        - the master may have multiple slave slects or only one
+            - this determines if they each get their own wire or if they are
+              daisy-chained together
+
+    - MOSI and MISO
+        - data is ususally sent with the most significant bit first
+
+        - data is sent one bit at a time
+
+- Steps for Data Transmission
+    - Master starts outputing the clock signal
+    - master toggles the slave by putting the SS/CS pin low
+
+    - the master sends data along the MOSI line
+    - if a response is needed, te slave returns data one bit at a time to the
+      master along the MISO line
+
+
+- Advantages and Disadvantages of SPI
+    - Advantages
+        - no start and stop bits, data can be streamed without interruption
+        - No complicated slave addressing like I2C
+        - Higher Data transfer rate than I2C (almost twice as fast)
+        - Seperate MOSI and MISO lines
+            - data can be sent and recieved at the same time
+
+    - Disadvantages
+        - Uses 4 wires (I2C and UART only use 2)
+        - No acknowledgement that the data has been successfully recieved
+        - no form of error checking
+        - ONly allows for a single master
+

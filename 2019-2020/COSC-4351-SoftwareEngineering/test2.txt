@@ -1,0 +1,34 @@
+Lecture Slides 6 - 10
+
+Everything is from material
+
+Possible Questions:
+    A design must implement all of the explicit and implicit requirements contained in the
+    requirements model
+        True
+
+    A class should have one and only one reason to change is what design model
+        SRP - Single Responsibility principle     
+
+    A component contains a set of collaborating classes, true or false
+        True
+
+    You can start coding right away and understand requirements as you proceed with implementation
+        False
+
+    A paradigm that represents concepts as objects is known as
+        OOP / OOD
+
+        - Everything is an object.  Objects have attributes and methods
+
+    Reusing an existing and its existing behavior is which OOP principle
+        Inheritance
+
+    Abstraction and generalization are often used together
+        True
+
+    More than one method in a class with the same name but different signature is
+        Overloading
+
+
+Short answers might be related to coding standards

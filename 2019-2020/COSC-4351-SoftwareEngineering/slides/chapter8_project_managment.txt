@@ -1,0 +1,42 @@
+- The four p's
+    - people
+    - product
+    - process
+    - project
+
+
+- stakeholders
+    - managers
+    - customers
+    - end users
+
+- prolem decomposition
+    - partitioning / problem elaboration
+    - decompose the scope into a set of problem classes
+    - decomposition continues until all functions or problem classes have been defined
+
+- process metrics
+    - measure quality
+    - measure productivity
+    - statistical analysis (defects reported)
+    - defect removal efficiency
+    - reusability
+
+- Measures of quality
+    - correctness
+    - maintainabiliy
+    - integreity
+    - usability
+
+- Estimation
+    - has inherent risk
+        - risk leads to uncertainty
+
+    - steps
+        - understand scope
+        - elaboration is necessary (decomposition)
+        - use historical metrics to help
+        - use at least 2 different techniques
+        - uncertainty is inherent in this process
+
+

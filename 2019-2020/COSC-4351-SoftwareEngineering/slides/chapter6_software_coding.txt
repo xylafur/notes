@@ -1,0 +1,70 @@
+- Before You Code
+    - know what you need to do from the design
+    - Estimate time / size based on past data
+    - have defect tracker
+
+- Writing Code
+    - self inspect design
+    - write and self inspect code
+    - test code
+    - Don't ignore issues or warnings
+
+- General Principles
+    - Try to reuse!
+    - Enforce intentions
+        - write code that is to be used in a particular way so that it is used in that way
+        - make private variables private, etc
+
+        - use final, abstract, etc
+            - things that the language gives you to enforce the use case
+
+    - Think globally but write locally
+
+- Exception and Error Handling
+    - handle errors as specified by the requirements
+    - anticipate all possible defects
+    - use consistent parameter checking policy
+    - treat warnings as errors
+
+- OOP / OOD
+    - represents concepts as objects that have attributes and methods
+
+    - Class design Principle
+        - Single Responsibilty Principle (SRP)
+            - a class should have one and only one reason to change
+
+        - Open Closed Principle (OCP)
+            - You should be able to extend a classes behavior without modifying it
+
+        - Liskov Substitution Princple (LSP)
+            - Derived classes must be substitutible for their base classes
+
+        - Dependency Inversion Princple (DIP)
+            - depend on abstractions
+
+        - Interface Segregation Principle (ISP)
+            - make fine grained interfaces that are oriented towards a particular client
+
+            
+- Abstraction and generatlization
+    - Absttraction
+        - qualities and properties rather tan particulars
+
+    - Generalization
+        - broadening of application to encompass a larget domain of objects of the same or
+          different type
+
+- Interfaces
+    - has only method headers, no bodies are specified
+    - used to tie different classes together
+
+- Polymorphism
+    - Overloading
+        - many methods with same name but different signatures
+
+    - Overriding
+        - Method of subclass has same name as super class
+
+    - Dynamic Binding
+        - Like overriding but overridden functions are resolved at runtime
+

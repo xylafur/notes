@@ -1,0 +1,151 @@
+- 32 bit RISC processor, max clock of 160MHz
+    - can only utilize 80% of performance with the RTOS kernel
+
+2.1 Peripherals API
+    - GPIO
+        - header file esp8266/include/driver/gpio.h
+
+        - there is functions for GPIO triggered interrupt, gpio wakeup, making
+          gpio pullup or pulldown, 
+
+    - I2C
+        - header file esp8266/include/drive/i2c.h
+
+
+    - SPI
+        esp8266/include/driver/spi.h
+
+    - PWM
+        esp8266/include/driver/pwm.h
+
+    - UART
+        esp8266/include/driver/uart.h
+
+        - there are functions for setting the word size, how many stop bits,
+          pairity, baudrate, etc
+
+        - there is a function for UART inverse..
+            TODO: Look up what this is
+
+        - You can have UART trigger interrupts on either RX or TX
+
+
+    - Hardware Timer
+        esp8266/include/driver/hw_timer.h
+
+        - set the frequency division of hw timer along with interrupt handler
+
+
+2.2 WIFI API
+    - Station Mode
+        - WiFi Client mode.  ESP connects to an access point
+        - AP Mode. ESP acts as an access point for people to connect to
+        - Both mode
+
+
+    - Examples showing how to connect to access point
+        look in the wifi director
+
+3.1 Build System
+    - everything in the build can be viewed as components
+        - components include the SDK, TCP/IP
+    
+        - The main directory is a special pseudo component
+            - you can change the name of the main directory by changing the
+              value ov 'COMPONENT_DIRS' variable in the makefiles
+
+            - the 'build' directory is where all of the output is created
+
+            - each component has its own 'component makefile' - component.mk
+
+            - each component can contain a Kconfig file that defines comonent
+              configuration options that can be set via `make menuconfig`
+
+
+    - you can use the menuconfig con configure components such as the SDK or
+      things form the tcp ip stack
+
+
+    - Makefile variables
+        - required
+            - PROJECT_NAME
+                - name of the project, binary output files use this name
+
+        - optional
+            - PROJECT_PATH
+                - top level project directory, defaults to the directory
+                  containing the makefile
+
+            - BUILD_DIR_BASE
+                - the build directory where all the objs/ bins go
+
+            - COMPONENT_DIRS
+                - directories to search for components
+                - can either be the directory that contains the component, or a
+                  parent level directory for many components
+
+            - EXTRA_COMPONENT_DIRS
+                - optional list of additional directories to search for
+                  components
+
+            - COMPONENTS
+                - a list of component names to build into tht eproject,
+                  defaults to everything found in COMPONENT_DIRS
+
+            - EXCLUDE_COMPONENTS
+                - optional list of component names to exclude when we build
+
+        - preset variables
+            - these values should not be modified!
+
+            - COMPONENT_PATH
+                - path to this component directory
+
+            - COMPONENT_NAME
+                - name of the component
+
+            - COMPONENT_BUILD_DIR
+                - where this component will be build
+
+            - COMPONENT_LIBRARY
+                - name of the static library file that will be build for this
+                  component
+
+        - project variables that are exported to the component
+            - PROJECT_NAME
+            - PROJECT_PATH
+            - COMPONENTS
+            - CONFIG_*
+                - each value in the project configuration
+
+            - CC,LD,AR,OBJCOPY
+                - cross-toolchain stuff
+
+            - HOSTCC, HOSTLD, HOSTAR
+                - tools for the native toolchain
+
+            - IDF_VER
+                - the version obtained form either $(IDF_PATH)/version.txt if
+                  it is present, else from the git command `git describe`
+
+        - Optional Project-Wide Component Variables
+
+        - paths need to be absolute!
+
+
+    - Minimal COmponent Makefile
+        - If the 'component.mk' file is empty, then the default behavior is
+            - all source files in the same directory as the makefile will be
+              compiled into the component library
+
+            - a subdirectory named 'include' will be added to the global
+              include search path
+
+            - this component library will be linked into the project app
+
+        - the empty file needs to be present for default behavior to be
+          performed!
+            - if component.mk is not present then nothing happens
+
+
+

@@ -1,0 +1,342 @@
+###############################################################################
+#   Video 1
+###############################################################################
+
+
+- Metamorphic rocks have undergone one or more of
+    - changes in mineralogy
+    - texture
+    - chemical composition
+
+- Metamoric rocks are created between temperatures of 200 and 700 C
+
+- Metamorphic Reactions
+    - many metamorphic reactions occur in the precnce of fluids
+
+    - original rocks can be any kind of rock
+
+    - Agents of Metamprish
+        - heat (the most important agent)
+        - pressure (particularly stress)
+        - chemically active fluids
+
+
+    - Heat
+        - Two sources of heat
+            - magma
+            - increase of temperature with depth
+                - this is called the Earth's geothermal gradient
+
+        - Isotherm
+            - line of equal temperature in a diagram
+
+            - rising magma from the earth's crust can increase the geothermal gradient over a
+              particular part of land
+                - this will metamprpize shallow rock
+
+            - within a sedimentary basin
+                - can result in metamorphic conditions at the very bottom of the pile
+
+            - 300 C
+                - subducting sediments are metamorphised due to increased temp and pressure
+
+            - 600 C
+            - 900 C
+            - 1200 C
+
+    - pressure and metamorphissm
+        - two types of pressure
+            - confining pressure
+                - stress is applied equally in all directions
+                - same direction, same magnitude
+
+                - the strata in the rock is very flat
+                    - the rock is made up of equal layers 
+
+            - differential stress
+                - stress is applied unequally
+
+                - stress is usually greatest in a single direction
+
+                - the stratta is all over the place
+
+
+    - Fluids and metamorphism
+        - water is the main fluid
+            - there are other volatile components in the water
+
+        - fluids enhance migration of ions
+            - this aids in the recrystalization of existing minerals
+
+        - can transport mineral matter a considerable distance
+
+
+        - sources of chemically active fluids
+            - local
+                - port spaces of sedimentary rocks
+                - fractures in igneous rocks
+                - hidrated minerals like clays
+
+            - regional
+                - gysers
+
+
+    - parent rock
+        - determins to a large extent how which ever metamorphic agent changes the rock
+        - metamorphic rocks have very similar chemical composition to their parent rocks
+
+
+
+
+- Types of Metamorphism
+    - contact metamrphism
+        - occurs at high termperatures
+        - restricted tothe area right afound a magmatic intrusion
+        - the rock produced depends on the parent
+
+
+        - produces a "zone of alteration" called an aureole
+            - preserved after the magma chamber of a volcano turns into a pluton
+
+    - Hydrothermal metamorpism
+        - occurs along mid-ocean ridges
+            - heated seat water gets through
+
+        - occurs when cold seawater percolates into hot newly formed oceanic crust
+            - the water is heated and then ion rich minerals are absorbed
+
+        - this can also occur on continents
+            - deep seated magma chambers or gysers or hot springs
+
+    - burial metamorphism
+        - sedimentary rocks are just buried to lower and lower depts
+
+        - results in partial alteration of minerals and texture
+            - often original sedimentary structures are preserved though
+
+    - Regional metamorphism
+        - temps and pressures increase beyond range of burial metamorphism
+
+        - results in intense alteration of rock mineralogy and texture
+
+        - closing ocean ocean basin
+            - most likely way in which regoinal metamorphism happens
+
+    - Cataclastic Metamorphism
+        - crushing and shearing of rocks during tectonic movement
+
+        - happens along fault planes
+            - when happen at shallow depths
+                - fault breccia
+
+            - greater depths
+                - mylonites
+                - this is a sheared and highly deformed structure
+
+    - impact metamorphism
+        - when high speed projectiles (meteors) strike earths surface
+
+        - the impact pulverizes, shatters and melts roc
+
+
+- Metamorphic Facies
+    - describe groupings of rocks formed under different temperatures and pressures
+
+    - encompass different regions of the "temperature-pressure space"
+
+    - the facies are named after certain charactericic minerals formed through the metamorphism of
+      basalt
+
+
+    - types
+        - zerolite
+            - low temperature, low pressure
+                - < 4kb, <250 C
+
+            - very low grade metamorphism
+            - associated with burial and hydrothermal matamorphism
+
+            - very bottom of sedimentary basins
+
+        - greenschist
+            - moderate temperature, moderature pressure
+                - 2 - 9 kb, 250 - 250 C
+
+            - Low grade metamprhism
+
+            - greenish minerals are formed
+
+        - amphibolite
+            - higher temp, moderate pressure
+                - 2- 9 kb, 250 - 700 C
+
+            - forms amphibole and hornblende
+
+        - granulite
+            - high temperature, moderate pressure
+                - 4 - 10 kb, > 700 C
+
+                - pyroxene granulites are produces
+                    - has calcium rich plagioclase
+
+        @@@@@@@@@@
+        @ You can imagine all of the prvious being layers of a mountain
+
+
+        - blueschist
+            - low temperature, high pressure
+            - happens within shallower parts subduction zones
+            - bluish color
+
+        - eclogite
+            - extreme pressure, moderate high temp
+            - happens deep in subduction zone
+            - produces garnets and pyroxenes
+
+        @@@@@@@@@@
+        @ The previous 2 both happen within subduction zones
+
+
+        - hornfels
+            - low pressures, wide range of higher temperatures
+
+            - usually contact metamorphism
+                - the most likely place for C.M. to happen is the crustial portion of a volcanic
+                  range
+
+
+
+###############################################################################
+#   Video 2
+###############################################################################
+
+- Metamorphic Textures and Foliation
+    - Texture is the size shape an arrangment of mineral grains
+    - Foliation is any planar arangments of grains or structural features in a rock
+        - shows up as parallel alignments of mineral grains or pebbles
+        - can also see banding (alternating light and dark layers)
+
+
+    - How foliation forms
+        - rotation of platy or elongated minerals
+
+        - recrystalization of minerals in teh direction of preffered orientation
+
+
+        - process
+            - have a bunch of grains that are round and packed kinda right
+            - the grains are deformed by slippage along planes
+            - then the grains are flattened and packed tighter together
+
+        - pregression over depth
+            - at margins of mountain belt (low grade metamorphism)
+                - shale has converted into a rock called slate
+                - the loosely packed grains from shale have been tightly packed
+
+                - parallel alighment of mica and chlorite in slate
+
+                - forms slaty cleavage
+
+            - A bit deeper in ght mountain root (upper low grade metamorphism)
+                - mica flakes in slate are bent and form phylite
+
+                - phyllite is a shiny mineral
+
+                - minerals ave grown largert
+
+            - even deeper (medium grade metamorphism)
+                - the phyllite turns into shist
+
+                - the mica grains have been recrystalized
+
+                - an even greater increase in size of minerals
+
+                - the minerals are not clearly visable to the naked eye
+
+            - even deeper! (high grade metamophism)
+                - shist convverts into gneiss
+
+                - bands of light and dark minerals
+
+                - mafic minerals
+                    - biotite, amphiboles (dark bands)
+                - felsic
+                    - quartz and feldspar (light bands)
+
+            - eeeeeven deeper (regional metamorhism)
+                - temperatures here are > 700C
+                - Gneiss partially melts and forms migmatite
+                    - only the felsic minerals really melt
+
+                - the softened rock i bent and becomes these wavy bands
+
+
+
+- Slaty Cleavage
+    - closely spaced planar surfaces along which rocks split into thin slabs
+    - forms through low grade metamprhpism of shale to slate under differential stress
+    - the resulting alignement of the minerals produces thin layers over which the mineral splits
+
+
+
+- metamorphism of mafic igneous rocks
+    - chlorite, tale, serpentine, amphibole, pyroxene can form from mafic metamorphism
+
+
+    - subducting plate metamorphism
+        - low T, high P
+            - greenshist
+
+        - hight T, high P
+            - Eclogite
+
+    - Amphibolites
+        - Metamorphic rocks formed under medium grade metamorphism of mafic ignesous
+
+        - have long thin amphibolite minerals aligned in a common direction
+
+
+- Non foliated metamorphic rocks
+    - little or no differential stress
+        - contact metamorphism
+        - hydrothermal metamorphism
+
+    - can also happen because of a lack of platy minerals
+
+    - minerals formed
+        - quartzite
+            - metamorphism of quartz sandstone
+
+        - marble
+            - metamorphism of limestone
+
+        - Hornfels
+            - formed by contact metamorphism of mudstones and shales
+
+
+- 7 rocks that we need to learn
+    - Slate
+    - Phylite
+    - Shist
+    - Gneiss
+    - Marble
+    - Quartzite
+    - Hornfels
+
+
+    [ figure8.1 ]
+
+
+- Metamorphic Zones and Index Minerals
+    - index minerals are good indicators of the metamorphic conditions under which they are formed
+
+        - metamorphism of shale produces several usefult index minerals
+
+    - Aluminum-Silicate Minerals are good indicators of pressure and temperature of metamorphism
+
+
+THe following figure is very good to wrap all of this up together!
+[ figure8.2 ]
+
+
+- micas are the most visual aspect of foliated metamorphic rocks

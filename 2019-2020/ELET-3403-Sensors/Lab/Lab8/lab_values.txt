@@ -1,0 +1,13 @@
+V_750_C = 42.281 # mV
+
+
+At room temp we are reading a value of 0.1722
+If we divide this by 200 we get 0.000861
+This is 16 degree C on the J type thermocouple chart
+
+We are seeing the voltage measured at the output of the op amp decrease when we
+couch the thermo couple 
+
+
+at room temperature we see it peak around .2 V
+WHen I grab it with my fingers I see it drop to 1.6 but not consistently
