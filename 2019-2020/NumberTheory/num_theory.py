@@ -1,5 +1,5 @@
 import math
-from primes import primes
+#from primes import primes
 ###############################################################################
 # Chapter 3 - Primes
 ###############################################################################
@@ -111,3 +111,46 @@ def sigma(n, _print=False):
         print(ppp)
 
     return product
+
+###############################################################################
+#   Chapter 8 - Introduction to Cryptography
+###############################################################################
+import string
+mapping = {l:str(i).rjust(2, '0') for i, l in enumerate(string.ascii_uppercase)}
+reverse_mapping = {str(i).rjust(2, '0'):l for i, l in enumerate(string.ascii_uppercase)}
+
+def encode(word):
+    out = []
+    for l in word.upper():
+        out.append(mapping[l] if l != ' ' else ' ')
+    return out
+
+def decode(encoded):
+    out = []
+    for l in encoded:
+        out.append(reverse_mapping[l] if l != ' ' else ' ')
+    return out
+
+def caesar_cipher(encoded, encrypt=True):
+    out = []
+    mod = +3 if encrypt else -3
+
+    for c in encoded:
+        if not c.strip():
+            out.append(' ')
+        else:
+            out.append(str((int(c) + mod) % 26).rjust(2, '0'))
+
+    return out
+
+def affine_cipher(encoded, a, b, encrypt=True):
+    out = []
+
+    for c in encoded:
+        if not c.strip():
+            out.append(' ')
+        else:
+            out.append(str((a * int(c) + b) % 26).rjust(2, '0'))
+
+    return out
+
