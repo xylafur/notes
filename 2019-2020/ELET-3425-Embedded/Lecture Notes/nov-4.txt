@@ -1,0 +1,110 @@
+- We are on the last chapter, talking about timers
+
+- time interfacing
+    - with timers we can do two things
+        1. Capture Input
+        2. Generate Interrupts
+            - we can create periodic interrupts
+            - generate an interrupt every hour or so
+
+    - Input Capture
+        - input edge time mode
+        - we can see the amount of time between an interrupt is triggered, we can use this to time
+          phenomena
+            - we can measure the period or pulse width of digital signals
+
+        - We can also use it to count the number of edges
+
+
+    - Programmable Timers
+        - we have 4 GPTM (general purpose timer module) timers
+            - General purpose means that we can program it any way we want
+
+            - timers 0, 1, 2 and 3
+
+            - each of the GPTM
+                - has 2 16 bit timers
+                    - Timer A
+                    - Timer B
+
+                    (so we have Timer0A, Timer0B, etc...)
+
+            - Configured to operate independently as
+                - timers
+                - event counters
+
+
+- Input Capture (Input Edge Time Mode)
+    - each module consists of
+        - external input pin
+            - CCPO
+
+        - trigger flag
+            - Raw interrupt status
+            - CAERIS
+
+        - two edge control bits, event bits
+            - TAEVENT
+
+            - can be used to pause / restart the timer
+
+        - an arm bit
+            - Interrupt Mask
+            - CAEIM
+
+        - a 16 bit input cpture register
+            - TAR
+
+    - Interfacing
+        - Set the alternate function of whichever pin to turn on the timer
+
+        - Timer0
+            - Timer0A - PB0/CCP0
+            - Timer0B - PF6/CCP1
+        - Timer1
+            - Timer 1A - PB1/CCP2
+            - Timer 1B - PG4/CCP3
+
+    - Timer REsources in Sterllaris
+        - GPTM
+
+        - SysTick
+            - special purpose
+
+        - PWM
+            - special purpose
+
+    - Modes Supported
+        - 32 bit timer mode
+        - 16 bit timer mode
+        - 16 bit input capture mode
+        - 16 bit PWM mode
+
+    - Input Capture (Input Edge Time Mode)
+        - Actions form iput capture event
+            - Rising or Falling Edge of CCP0
+
+
+           ______          ______
+          |      |        |      |
+        __|      |________|      |_
+        FFFF     A123     0FFF
+            
+            half_period = clk_period * (0xA123 - 0x0FFF)
+
+
+    - Pulse width is the time between the rising and falling edge
+
+
+- New instructions
+    TIMER0_CFG_R
+    TIMER0_TAMR_R
+    TIMER0_TBMR_R
+    TIMER0_CTL_R
+    TIMER0_IMR_R
+    TIMER0_RIS_R
+    TIMER0_MIS_R
+    TIMER0_ICR_R
+    TIMER0_TAILR_R
+
+        

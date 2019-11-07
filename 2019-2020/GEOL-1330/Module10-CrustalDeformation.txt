@@ -1,0 +1,201 @@
+###############################################################################
+#   Video 1
+###############################################################################
+- Rock Deformations
+    - Horizontally Layered rocks can be tilted or deformed by tectonic forces
+        - folds
+            - twists and bends in rocks
+
+        - joints
+            - fractures in rocks
+
+        - faults
+            - rocks on one side of dislocation displaced relatve to rocks on the other side
+
+    - Structural Geology
+        - study of the architecture and processes responsible for deformation
+
+    - Deformation
+        - general term that referes to all changes in the original form and or size of a rock body
+
+
+    - Stress
+        - force applied to a given area
+        - 3 types of differential stress
+            - compressional Stress
+                - squeezs and shortens a body
+
+            - Tensional Stress
+                - stretches the body and pulls it apart
+
+            - Shearing Stress
+                - pushes different parts of a body in opposite directions
+        
+        - strain
+            - changes in the shape or size of a rock body caused by stress
+
+            - as a result rocks subjected to stresses will deform by folding or fracturing
+
+
+    - Characteristics of Deformation
+        - elastic deformation
+            - rock returns to nearly its original size and shape when the stress is removed
+
+            - once the elastic limit of a rock is met, the rock either fractures (brittle
+              deformation) or flows (ductile deformation)
+
+
+    - What determines how rocks form
+        - confining pressure
+            - at shallower depths (less pressure) there is more faulting
+
+        - temp
+            - brittle at lower temp
+            - ductile at higher temp
+
+        - Rock Type
+
+        - Time
+            - the longer the stress is applied, the more likely the rock will deform
+
+
+    - Strike and Dip
+        - units of measuring deformation
+
+        - strike
+            - the direction of a line formed by the intersecion of a rock layer with a
+              horizoinal plane
+
+
+            - it is a compass direction
+
+        - dip
+            - measured at right angle with the strike
+
+            - measures the andle at which the rock layer tilts relative to the horizonal plane
+
+            - can also be though of as the direction water would flow down the rock
+
+            - always an accute angle
+
+        - strike and dip are measured using a brunken compass
+
+
+    - Folds
+        - folds result from ductile deformation of rocks in reponse to external forces
+
+        - anticlines
+            - layered rocks that were folded into arches
+            - Oldest strata occurs along the hinge line
+
+        - synclines
+            - layered rocks folded into troughs
+            - youngest strata occurs along the hing line
+
+        
+###############################################################################
+#   Video 2
+###############################################################################
+
+- Domes and Basins
+    - strata exposted at the top form circles around a central point
+
+    - Dome
+        - anticlinal structure
+        - flanking strata encircle a central point and dip away from it in all directions
+
+        - the oldest strata is at the center, at the top
+
+    - Basin
+        - Synclinal structure
+        - bowl shapped depression
+
+        - rock layers dip toward central point
+
+        - youngest formations are in the middle
+
+- Folds
+    - Plunging Folds
+        - occurs when the hinge line is not horizontal and the fold appears to plunge into the
+          ground
+
+    - Symmetrical Fold
+        - Axial Plane is Vertical
+        - Beds dip at about the same angle but in opposite directions
+
+    - Asymmetrical Fold
+        - Axial Plane is Inclined
+        - limbs dip in opposite directions but at different angles
+
+    - Overturned Fold
+        - eventually a fold can overturn or flip onto its side
+
+        - axial plane is steeply inclined
+        - both limbs dip in same direction but at different angles
+
+    - Recumbent Fold
+        - the fold just lays down on the axial plane
+
+###############################################################################
+#   Video 3
+###############################################################################
+- Joints and Faults
+    - rocks that undergo brittle deformation tend to fracture into joints and faults
+
+    - Joints
+        - cracks or splits in a rock where no appreciable movement has occured
+
+    - A fault plane divides a rock into two blocks
+        - Hanging Wall
+            - block of rock that occurs above an inclined fault plane
+
+        - Footwall
+            - block of rock below the inclined fault plane
+
+
+    - Faults
+        - plane of dislocation where rocks on one side have moved relative to rocks on the other
+          side
+
+        - you will see offset layers between two sides of a fault
+
+        - result from brittle deformation in response to any of the three types of stresses
+        - the type of fault produced depends on the type of stress
+
+
+        - types
+            - dip slip faults
+                - movement of blocks is primarilly parallel to the dip of the fault plane
+
+            - normal fault
+                - result of tensional stress
+                - hanging wall slips downward relative to slipwall
+
+                - commonly form in rift valleys
+
+            - reverse fault
+                - caused by compressional stress
+                - hanging wall moves upward with respect to footwall
+
+            - Differences between Reverse and Thrust Faults
+                - for both types the hanging wall moves upward relative to footwall
+
+                - Reverse Faults
+                    - Fault angles greater than 45o
+                    - generally small
+                    - accommodate local displacements
+
+                - Thrust Faults
+                    - fault angles > 45o
+                    - can accommodate large displacements (10s to 100s of km)
+
+            - thrust faults
+
+        - Stripe Slick Faults
+            - fault movement is primarily horizontal
+                - one rock slips horizontally past another rock
+
+            - transform faults
+
+
+

@@ -1,0 +1,227 @@
+###############################################################################
+#   Video 1
+###############################################################################
+
+- The stratiagraphic record
+    - the layering of sedimentary rocks is called sedimentation
+
+    - layered rocks reflect original deposition
+
+    - these are often pushed far away from eachother across continents or something
+
+    - different parts of each could have been eroded awayo
+
+    - correltation
+        - matching rock layers from one exposure with its counterpart at a different location
+
+        - we have two layers of rocks seperated by distance, we can look at the layers on the two
+          different exposures to see if they match up
+
+
+    - Correlation and geology maps
+        - correlation determines original grographic extent
+
+
+- Fossils
+    - evidence of past life
+    - traces or remains of ancient rocks
+
+    - only preserved under favorable conditions
+        - the thing must have had hard parts
+            - there is a bias in the fossil record for organisms with very hard parts
+
+            - not alot of evidence of plants and worms
+
+        - rapid burial
+            - the organism shouldn't decay
+
+        - rarely soft parts can be preserved in oxygen poor enviornments
+
+
+    - Mold
+        - eepresision in rock that assumes shape of original fossil
+
+    - Casts
+        - if a mold is filled with some secondary material this can form into the shape of the mold
+
+    - Permineralizatoin
+        - occurs in woody material
+
+        - groundwater penetrates into wood and dissolves silica in groundwater
+        - the groundwater crystalizes in the pore space
+
+    - carbonization
+        - gas and liquid components of decaying orfanism in sediment is squeezed out by pressure
+        - this leaves behind a carbon film
+
+
+    - Trace fossils
+        - markins or objects left behind by ancient life
+
+        - tracks, burrows, excrement
+
+
+
+    - Fossils and correlation
+        - fossils succeed one another over time
+        - any given period can be recognized by its fossil content
+
+
+    - Fossil Ranges
+        - a range is a time interval over which a particular species or group of species lived
+
+        
+
+###############################################################################
+#   Video 2
+###############################################################################
+
+- Stratiagraphy
+    - sub science of geology that attempts to organize the rock record into a manageable
+      classification scheme
+
+    - formation
+        - basic loacal unit of stratography
+
+        - a particular rock unit is grounped into a formation based on distinctive appearance
+
+
+        - Lithostratigraphy (formations)
+            - distringuished by
+                - mineral composition
+                - texteral properties
+                - color
+                - thickness
+                - organic remains
+                - outcroup character
+
+
+- Unconformities
+    - represent old erosional surfaces or intervals of missing strata within the rock sequence
+
+    - 3 types
+        - angular unconformity
+            - old erosional surface sepearating tiolted or folded sedimentary rocks below from flat
+              lying sedimentary rocks above
+
+        - nonconformity
+            - old erosional surface seperating younger sedimentary rocks above from older igneous
+              and metamorphic rocks below
+
+            - sequence of formation
+                - metamorphic rock over some intrusive igneous rock
+                - the metamorphic rock is eroded away exposing the igneous
+                - sediment eventually builds up on top
+
+        - disconformity
+            - old erosional sufrance rock where layered sedimentary rocks above and below are both
+              parallel
+
+            - how do they form?
+                - deposition of horizontal layers
+                - weathering erodes surface
+                - eroded surface covered by later sediment
+
+- principles of relative dating
+    - to relatively date, we take into consideration different things
+        - law of superposition
+            - in an undeformed sequence of sedimentary rocks, each bed is older than the one above,
+              and younder than the one below
+
+
+        - Principle or ofiginal horisintally
+            - sediments are initially depositied in horizontal layers
+
+            - resulting sedimentary rocks should also be horizaontally layerd
+            - thus any warped or deformation in layer of sedimentary rocks, this has to have
+              happened after original deposition
+
+
+        - principle of lateral continuity
+            - sedimentary rocks originanate as continous layers that extend in all directions
+            - eventually thinning out at the edge of a basin
+
+
+        - principle of cross curring relationships
+            - if a fault cuts rock or a magma intrudes rock
+                - that fault / magma are yonger than the rocks they intruded
+                - faulting and intrusion occured after the sediments were deposited and lithified
+
+
+
+- inclusions
+    - fragments of a rock unit enclosed in another rock unit
+
+    - the rock nit that suplied the inclusions must be older than the rock containing the
+      inclusions
+
+
+###############################################################################
+#   Video 3
+###############################################################################
+
+- Radiometric Dating
+    - gives absolute age of geologig mineral
+    - uses radioactive isotopes of elements
+
+
+    - types of radioactive decay
+        - alpha
+            - loss of 2 protons and 2 neutrons
+                - these 4 together are called an alpha particle
+
+            - the resulting isotope has an atomic number of 2 less
+                - the atomic mass is 4 less
+
+        - beta
+            - a neutron is changed into an electron
+            - atomic number increases by one
+            - no change in atomic mass
+            - the neutron gives off an eletron and that makes it turn into a proton?
+
+        - electron capture
+            - changes a proton into a neutron
+            - atomic # decreases by one
+            - no change in atomic mass
+
+
+    - requirements for radiometric dating
+        - need to know halflife
+        - need to know parent daughter ratio in a sample
+            - this is measured with a mass spectrometer
+            - you liquify then ionize some of the rock and shoot it thgough a magnetic field
+            - this will split up the different elements by different amounts
+
+
+
+    - resettting isotopic ages
+        - metamorphism and increase in demp can cause the daugther elements to escape the mineral
+        - this will reset the rock back to only unstablel elmenet parent element
+
+        - this means you can check either whole rock age, or just mineral ages
+            - mineral ages determine age of last metamorphic event
+
+
+    - Carbon 14 dating
+        - cosmic rays in atmosphere shatter gas atoms
+            - this releases neutrons
+
+        - some of the neutrons are absorbed by nitrogen
+
+        - nitrogen kicks out a proton and converts into Carbon-14
+        - living matter absorbs Ni / Co2
+            - some of this will be Carbon 14
+
+        - has a halflife of 5730 years
+
+        - during life the ratio of carbon-14 in living things is constant since it is always
+          replaced
+
+
+    - Dating in sedimentary rocks doesn't really work, sedimentary rocks are made up or many
+      different rocks.
+        - multiple parent rocks of different ages can create teh sedimentary rocks
+
+
+        - though isotopic dating of sedimentary rocks is possible if it contains authigenic
+          minerals or material (glauconite, K-feldspar or organic matter)

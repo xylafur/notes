@@ -1,0 +1,39 @@
+2. Displacement, Location or Position Sensors
+    2.1 Potentiometric Sensors
+        - Converts linear or angular motion into a changing resistance
+            - A potentiometric displacement sencor is pretty simple.
+                - just a wound resistor and a wiper.  Moving the wiper causes motion against the
+                  resistor, leading to a different output resistance
+
+            [ figure 5.1 ]
+
+    2.2 Capcaitive and Inductive Sensors
+        - displacement causes changes in capacity or inductance
+
+        - Capactitive
+            - using the capitance equation, we can figure out how the sensor works
+                - C = K * Eo * A / d
+
+            - Three cays to change capacity
+                - Distance between plates
+                - Shared Area of Plates
+                - Dielectric Constant
+
+        - Inductance
+            - a core is inserted into an inductor
+                - this produces a new inductance value
+            - as the core moves through the inductor, the inductance value changes
+
+
+
+
+    2.3 Variable-Reluctance Sensors
+        - Moving a core produces a varying magnetic flux coupling between two or more coils
+
+        - applications to measure both translational and angular displacement
+
+        - most common configuration is linear variable differential transformer (LVDT)
+
+        - LVDT
+            - 3 coils of wire wound on a hollow form
+            - core of a permiable material can slide freely through the center of the form

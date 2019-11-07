@@ -154,3 +154,38 @@ def affine_cipher(encoded, a, b, encrypt=True):
 
     return out
 
+
+def RSA(encoded, e, n, N, encrypt=True):
+    out = ""
+    encoded = [char for string in encoded for char in string]
+
+    block = ""
+    for c in encoded:
+        if not c.strip():
+            out+= ' '
+            continue
+
+        elif len(block) == N:
+            out += (str((int(block)**e) % n).rjust(2, '0'))
+            block = ""
+
+        block += c
+
+    if block:
+        out += (str((int(block)**e) % n).rjust(2, '0'))
+
+    _out = []
+    s = ""
+    for c in out:
+        if not c.strip():
+            _out.append(' ')
+            continue
+        if int(s + c) >= 26 or len(s + c) > 2:
+            _out.append(s.rjust(2, '0'))
+            s = ""
+        s += c
+    if s:
+        _out.append(s.rjust(2, '0'))
+
+
+    return _out
