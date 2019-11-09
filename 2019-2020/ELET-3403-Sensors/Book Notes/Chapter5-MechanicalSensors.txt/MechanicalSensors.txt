@@ -32,8 +32,231 @@
 
         - applications to measure both translational and angular displacement
 
-        - most common configuration is linear variable differential transformer (LVDT)
+        - Linear Variable Differential Transformer (LVDT)
 
-        - LVDT
+            [ figure 5.2 ]
+
+            - most common Variable Reluctance Sensors
             - 3 coils of wire wound on a hollow form
+
             - core of a permiable material can slide freely through the center of the form
+                - the inner coil is the primary
+                    - it is excied by some AC source
+                    - flux is formed and linked to two secondary coils
+
+                - an ac voltage is then induced in the two secondary coils
+
+                [ figure 5.3 ]
+
+                - you can determine the direction of motion by the ac in the secondary coils
+                    - voltage amplitude and phase change can determine the direction and extent of
+                      core motion
+
+                [ figure 5.4 ]
+
+    2.4 Level Sensors
+        - There are a variety of techniques
+
+        - Mechanical
+            - a floater allowed to ride up and down with level changes
+
+            [ figure 5.5 ]
+
+        - electrical
+            - You can use the inheret conductivity of a liquid or solid to vary resistance through
+              probles in the material
+
+            - You can also use two cylendars
+                - the cylinders act as capacitors, the dielectric constant changes depending on the
+                  level of liquid / air over different components
+
+                [ figure 5.6 ]
+
+
+        - Untrasonic
+            - you don't have to actually place anything in the material, you use ultrasonic
+              reflection to measure
+
+            [ figure 5.7 ]
+
+        - Pressure
+            - non contact measurement based on density of liquid
+
+            - you can use the desnity of liquid and pressure at bottom of the tank to determine the
+              height
+
+
+3 Strain Sensors
+    - usually used as a secondary step in sensors to measure other process variables, such as:
+        - flow
+        - pressure
+        - weight
+        - acceleration
+
+    3.1 Stress and Stran
+        - Forces
+            - defined in a special way described by the general term stress
+
+        - Strain
+            - resulting deformation in a solid from stress
+            - the result of the application of forces to solid objects
+
+        - Stress
+            - Force per unit of area
+
+            - tensile Stress/Strain
+                - F / A
+
+                [ figure 5.8 ]
+
+                - strain for tensile stress is defined as the fractional change in length
+                    delta(l) / l
+
+                    - unitless
+
+            - compressional Stress/Strain
+                - The only difference between this and tenisile stress/strain is the polarity of
+                  the change in length
+
+            - Shear Stress/Strain
+                - the force is applied as a couple (not along the same line)
+
+                [ figure 5.9 (a) ]
+
+                - strain is thus
+                    - fractional change in dimension of the sheared member
+
+                    [ figure 5.9 (b) ]
+
+
+            - Stress-Strain Curve
+                - relationship between sress and strain is linear over some range of stress
+                    - if the stress is kept within this range, the material is called "elastic"
+
+                - If the elastic limit is exceeded, permenent deformation of the material occurs
+
+                - linearity and slope are a constant of the type of material only
+
+                - the constant of linearity / slope is called the "modulus of elasticity" or
+                  "Young's Modulus"
+                    - the unit is N/m^2
+
+                - For tensile and compressional stress
+                    E = stress / strain = (F/A) / (delta(l) / l)
+
+                - For Shear stress
+                    M = stress / strain = (F/A) / (delta(x) / l)
+
+            - Strain Nits
+                - though strain is unitless, it is common to express strain as the ratio of two
+                  length units (cm/cm or in/in)
+
+                
+
+    3.2 Strain Gauge Principles
+        - Reminder: Resistance of a metal is given by
+            Ro = p * (lo / Ao)
+
+        - Under tensile or compressional stress, the length / area of a metal will change
+            - the volume must remain the same though
+
+                V = lo * Ao = (lo + delta(l) * (Ao - delta(A))
+
+            - Because of thie, the resistance will have changed
+                R = p * (lo + delta(l)) / (Ao - delta(A)) ~= 2 * Ro * delta(l) / lo
+
+            - we see that the ratio of change in length over length can be directly converted into
+              a resistance
+
+            - The change in resistance is very small though, so the measurement methods must be
+              highly sophisticated
+
+        - Measurement Principles
+            - attach a metal wire or foil to the element whose strain is to be measured
+
+
+        - Temperature Effects
+            - change temperature can really fuck shit up, a change of 1 degree C can alter the
+              resistance of the metal we are trying to measure strain for by alot more than the
+              change in length does
+
+    3.3 Metal Strain Guages
+        - important terms for understanding strain guage applications
+
+        - Gague factor
+            - relation between strain and resistance change is only approximately true
+                - impurities in the metal or other lurking factors can muck stuff up
+
+            - an SG giceves relationship through the "gague factor"
+                GF = (delta(R) / R) / strain
+
+                - the higher the GF the better
+                    - larger change in resistance for a given strain
+
+        - Construction
+            - use in two forms: wire and foil
+
+        - Signal Conditioning
+            - two important effects critical for signal conditioning
+                - fractional changes in resistance require special resistance measurement circuits
+                - compensation for temperature change
+
+            - the bridge circuit is the answer to both of these
+                - one arm bridge
+                    - a dummy gague is used to that we know the resistance of the sensor at
+                      the current temperature without any stress applied
+
+                        - the dummy gauge is in one arm of the bridge
+
+
+
+                    [ figure 5.10 ]
+
+                - two arm bridge
+                    - uses active strain gagues in two arms of the bridge
+                    - the resistors in all 4 arms are strain gagues
+                        - two are for temperature compensation only
+
+                    delta(V) = (Vs / 2) * GF * (delta(l) / l)
+
+                    - one of the active gagues experiences compression while the other one is
+                      stretched
+
+                    [ figure 5.11 ]
+
+                    [ figure 5.12 ]
+
+
+    3.4 Semiconductor Strain Gagues
+        - principles
+            - resistivity and physical dimensions changes with strain
+                - because of changes in electron hole mobility
+
+            - results in a much larger gauge factor
+
+        - gague factor
+            GF = (delta(R)/R) / strain
+
+            - often a negative value for semiconductor
+                - resistances decreases with stress
+
+            - These are highly non-linear devices
+
+
+        - signal conditioning
+            - still typicalls a bridge circuit with temperature compensation
+
+    3.5 Load Cells
+        - transducer device which measures deformations
+
+
+
+
+
+
+
+
+
+
+
+

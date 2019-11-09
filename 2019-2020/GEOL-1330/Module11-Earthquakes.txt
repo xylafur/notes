@@ -1,0 +1,27 @@
+###############################################################################
+#   Video 1
+###############################################################################
+- What is an earthquake?
+    - vibration of earth due to rapid release of energy
+
+    - energy is released from the source, the hypocenter
+        - the hypocenter is the area within the fault where the original fault slippage occurs
+
+    - Elastic Rebound Theory
+        - fault plane is initially at rest
+        - as force is applied, the fault is locked and resists movement
+        - eventually the fault slips, releasing energy
+
+
+    - Not the entire fault splits
+        - the earth quake begins at the hypocenter
+
+
+    - Foreshock
+        - minor earthquakes which happen before an earthquake
+        - happen as strain build up along fault plane
+
+    - Aftershock
+        - other small earthquakes that happen after the main one
+        - happen as the fault readjusts
+
