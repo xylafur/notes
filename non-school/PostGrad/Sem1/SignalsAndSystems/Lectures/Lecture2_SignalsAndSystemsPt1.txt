@@ -1,0 +1,125 @@
+Terms:
+    envelope:  Kinda like an asymptote.  The bounds for an expanding or decaying signal
+
+- Continuous time Sinosoidal signal
+    x(t) = A*cos(wo*t + phi)
+        A  : Amplitide
+        wo : frequency
+        phi: Phase
+
+    - Important properties
+        - refered to as periodic: The signal repeats itself after a particular amount of time
+            x(t) = x(t + n*T)
+
+            A*cos[wo * t + phi] = A * cos [wo * t + wo * T + phi]
+
+            - The period then must be: 2 * phi / wo
+
+
+    - Useful properties:
+        - A time shift is the same as a phase change
+
+            A * cos [wo * (t + to)] = A * cos [wo * t + wo * to]
+
+        - Even:
+            - a signal is symetric across the origin
+            - a sinosoidal cosine signal with no phase is an example
+
+            x(t) = x(-t)
+
+        - Odd:
+            - When you flip the signal across the origin, you also multiply it by a negative sign
+
+
+    - Discrete time sinusoidal signal
+        x[n] = A * cos( omega * n + phi )
+            - omega is the frequency
+
+        - Relationship between a time shift and a phase change
+            - For discrete time if you do a time shift that results in a phase change
+            - But if you do a phase change, its not always equivalent to some time shift
+
+            - In the time shift -> phase change direction it is the same as continuous
+                even: x[n] = x[-n]
+                odd : x[n] = -x[-n]
+
+            - phase change -> time shift
+                - This doesn't always work because the relationship between time shift and phase
+                  change must be an integer
+
+                x[n] = A * cos( omega * n  +  omega * n_o)
+
+                omega * n_o = phi.  So if phi / omega is not an integer, then this will not work!
+                    - this is because we are in discrete time
+
+
+
+    - Another distinction between continuous and discrete time
+        - Continuous time signals are always periodic but discrete time signals aren't always
+
+        - In continuous time:
+            - all sinusoidal signals are periodic
+
+            - remember that a signal is periodic if N * omega = 2 * pi * m
+
+            A * cos(w_o * n  + phi) is always periodic!
+
+        - For discrete time
+            - N has to be some integer multiple of 2 * pi / omega!!
+            
+            - so `31 = 2 * pi / omega` would be okay as would `2 * pi / omegag = 31 / 4`
+
+            A * cos(omega * n + phi) is periodic only if omega = 2 * pi * m / N
+
+
+
+- Real and Complex Exponentials
+    - For exponential
+        - a time shift results in a scale change
+
+    - Real Continous Time Exponential
+        x(t) = C * e ^ (at)
+
+            - C and a are real numbers
+
+    - Real Discrete Time Exponential
+        x[n] = C * e ^ (beta * n) = C * alpha ^ n
+
+            - alpha = e^beta, this is often how these are expressed
+
+        - if alpha is positive
+            - The graph will be either completley positive or completley negative
+
+        - if alpha is negative
+            - the graph will alternate between positive and negative while decaying or expanding
+
+        
+    - Continuos Time Complex exponential
+        x(t) = C * e ^ (at)
+
+            - C and a are complex numbers
+            - we write C in polar form
+            - we write a in rectangular form
+
+            x(t) = |C| * e ^ (j*theta) * e ^ ( (r + j * w_o) * t)
+
+                 = |C| * e ^ (r * t) * e ^ (j * (w_o * t + theta))
+
+
+
+    - Discrete Time Complex Exponentials
+        - x[n] =  C * alpha ^ n
+            - C and alpha are compelx numbers
+
+        - the signal will alternate between positive and negative
+
+        - if |a| > 1 then the overall function is increasing
+        - if |a| < 1 then the function is decreasing
+
+        - in both cases they are bounded by an envelope
+
+
+- Remember that when you use Euler's method to expand a complex number you end up with the cosine
+  and sine functions where the sin has a jhat in front of it
+
+

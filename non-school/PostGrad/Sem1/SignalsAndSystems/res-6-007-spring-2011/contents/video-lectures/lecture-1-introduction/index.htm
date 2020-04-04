@@ -1,0 +1,1018 @@
+<!DOCTYPE html><html lang="en">
+      
+      
+        
+    
+    
+    
+    
+
+      
+      
+      <head>
+        <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no">  
+        
+        <title>Lecture 1: Introduction | Video Lectures | Signals and Systems | MIT OpenCourseWare</title>
+    <!-- Begin Automatic Metadata Insertion -->
+    <meta content="res-6-007-signals-and-systems-spring-2011" name="WT.cg_n">
+    <meta content="Lecture 1: Introduction" name="WT.cg_s">
+    <meta content="" name="Description">
+    <meta content="Oppenheim, Alan V." name="Author">
+    <meta content="RES.6-007,RES.6,signal processing,digital signals,digital systems,analog signal processing,analog systems,fourier transform,discrete-time equations,continuous-time equations,sampling,Signal Processing,Digital Systems,Computational Modeling and Simulation" name="keywords">
+    <meta content="RES.6-007 Signals and Systems | Lecture 1: Introduction" name="Search_Display">
+    <meta content="Signal Processing" itemprop="about">
+    <meta content="Digital Systems" itemprop="about">
+    <meta content="Computational Modeling and Simulation" itemprop="about">
+    <!-- End Automatic Metadata Insertion -->
+
+	<link title="default" rel="stylesheet" type="text/css" href="../../../common/styles/grid.css">
+<link title="default" rel="stylesheet" type="text/css" href="../../../common/styles/base.css">
+<link title="default" rel="stylesheet" type="text/css" href="../../../common/styles/menu.css">
+<link title="default" rel="stylesheet" type="text/css" href="../../../common/styles/jquery.bubblepopup.css">
+<link title="default" rel="stylesheet" type="text/css" href="https://ocw-origin.odl.mit.edu/styles/search.css">
+<link title="default" rel="stylesheet" type="text/css" href="../../../common/styles/courses.css">
+<link title="default" rel="stylesheet" type="text/css" href="../../../common/styles/courses_new.css">
+<link title="default" rel="stylesheet" type="text/css" href="../../../common/styles/jquery.jscrollpane.css">
+<link title="default" rel="stylesheet" type="text/css" href="../../../common/styles/media_tabs.css">
+	<link href="https://ocw-origin.odl.mit.edu/xml/ocwcc.rdf" type="application/rdf+xml" rel="metadata">
+	<link rel="canonical" href="https://ocw.mit.edu/resources/res-6-007-signals-and-systems-spring-2011/video-lectures/lecture-1-introduction/">
+	<link rel="apple-touch-icon" href="../../../common/images/apple-touch-icon.png">
+	
+	
+      
+	
+	<script type="text/javascript" src="../../../common/scripts/jquery.js"></script>
+	<script type="text/javascript" src="../../../common/scripts/ocw-media-utils-offline.js"></script>
+	<script type="text/javascript" src="../../../common/scripts/ocw-offline.js"></script>
+	<script type="text/javascript" src="../../../common/scripts/jquery.bubblepopup.min.js"></script>
+	<script type="text/javascript" src="../../../common/scripts/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../../../common/scripts/jquery.jscrollpane.min.js"></script>
+	<script type="text/javascript" src="../../../common/scripts/expandy.js"></script>
+	<script type="text/javascript" src="../../../common/scripts/bubble-popup-offline.js"></script>
+	
+	
+	
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("#tabs").tabs();
+        IpadScroller();
+      });
+    </script>
+    
+    
+    
+    
+    
+    
+      
+       
+		 
+
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </head>
+    <body itemscope itemtype="http://schema.org/WebPage">
+        
+	
+
+        <header id="top">
+			<div id="grid">
+				
+				
+					
+<div id="portletwrapper-6f63772e746f70706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d686561646572" class="portletWrapper kssattr-portlethash-6f63772e746f70706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d686561646572">
+<div class="portletStaticText portlet-static-site-header">
+<!--googleoff: index-->
+<div class="grid_6 alpha" id="banner"><a href="https://ocw-origin.odl.mit.edu/"><img src="../../../common/images/ocw_mast.png" class="logo" alt="MIT OpenCourseWare, Massachusetts Institute of Technology"></a></div>
+<div class="grid_6 omega" id="subscribe">
+<aside class="module" aria-label="Connect with OCW">
+<table class="social">
+    <tbody>
+        <tr>
+            <td class="socialbutton"><a aria-label="Subscribe to the OCW Newsletter" href="https://ocw-origin.odl.mit.edu/subscribe/index.htm?utm_source=header"><img src="../../../common/images/trans.gif" alt="An icon depicting an envelope.">Subscribe to the OCW Newsletter</a></td>
+            <td>
+<a aria-label="Facebook" href="https://facebook.com/mitocw"><img src="../../../common/images/icon_fb.png" alt="Click to visit our Facebook page."></a>  <a aria-label="Instagram" href="https://www.instagram.com/mitocw/"><img src="https://ocw-origin.odl.mit.edu/images/icon_ig.png" alt="Click to visit our Instagram page."></a> <a aria-label="Twitter" href="https://twitter.com/mitocw"><img src="https://ocw-origin.odl.mit.edu/images/icon_twitter.png" alt="Click to visit our Twitter feed."></a><a aria-label="YouTube" href="https://www.youtube.com/mitocw" style="font-size: 12.208px;"><img src="https://ocw-origin.odl.mit.edu/images/icon_yt.png" alt="Click to visit our YouTube page."></a><span style="font-size: 12.208px;">   </span><a aria-label="Open Matters blog on WordPress" href="https://mitopencourseware.wordpress.com/" style="font-size: 12.208px;"><img src="https://ocw-origin.odl.mit.edu/images/icon_wp.png" alt="Click to visit our blog on WordPress."></a>
+</td>
+        </tr>
+    </tbody>
+</table>
+</aside><nav aria-label="Help Links" class="helplinks">     <a aria-label="OCW Site Help" href="https://ocw-origin.odl.mit.edu/help">Help</a><span aria-hidden="true">|</span>     <a href="../../../common/about/contactus.htm">Contact Us</a>   </nav>
+</div>
+<div class="clear"> </div>
+<!--googleon: index-->
+</div>
+
+</div>
+
+<div id="portletwrapper-6f63772e746f70706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a6d6567612d6d656e75" class="portletWrapper kssattr-portlethash-6f63772e746f70706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a6d6567612d6d656e75">
+<div class="portletStaticText portlet-static-mega-menu"><div><nav id="mega" class="grid_8 alpha" aria-label="Site">
+<ul id="menu" role="presentation">
+    <li id="menu_home">
+<a href="https://ocw-origin.odl.mit.edu/" aria-label="Homepage"><img src="../../../common/images/top-nav_home.png" class="home_icon" alt="Click for site home page."></a><!-- Begin Home Item -->
+</li>
+    <!-- End Home Item -->
+    <li id="drop_1" aria-label="Find Courses">
+<a href="#" aria-hidden="true">FIND COURSES</a><!-- Begin 5 columns Item -->
+    <div class="dropdown_5columns-a mega-courses">
+    <div class="col_1a">
+    <div class="row_1a">
+<nav aria-labelledby="mm-find-courses-by">     <span id="mm-find-courses-by" class="nav" aria-hidden="true">Find courses by:</span>
+    <ul class="find_by" role="presentation">
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/find-by-topic/">Topic</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/find-by-number/">MIT Course Number</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/find-by-department/">Department</a></li>
+    </ul>
+    </nav>     <nav aria-labelledby="mm-collections">     <span id="mm-collections" class="nav" aria-hidden="true">Collections</span>
+    <ul role="presentation">
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/new-courses/">New Courses</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/most-visited-courses/">Most Visited Courses</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/ocw-scholar/">OCW Scholar Courses</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/audio-video-courses/">Audio/Video Lectures</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/online-textbooks/">Online Textbooks</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/resources/">Supplemental Resources</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/high-school/">OCW Highlights for High School</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/mitx-related-courseware/">MITx &amp; Related OCW Courses</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/mit-open-learning-library/">MIT Open Learning Library</a></li>
+    </ul>
+    </nav>     <nav class="col_1b" aria-labelledby="mm-translated-courses">     <span id="mm-translated-courses" class="nav" aria-hidden="true" style="line-height: 1.3;">Cross-Disciplinary Topic Lists</span>
+    <ul role="presentation">
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/energy-courses">Energy</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/entrepreneurship">Entrepreneurship</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/environment-courses">Environment</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/intro-programming">Introductory Programming</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/life-sciences">Life Sciences</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/transportation-courses">Transportation</a></li>
+    </ul>
+    </nav>
+</div>
+    <div class="row_1b"><nav aria-labelledby="mm-cross-disciplinary-topic-lists">     <span id="mm-cross-disciplinary-topic-lists" class="nav" aria-hidden="true">Translated Courses</span>
+    <ul role="presentation">
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/translated-courses/traditional-chinese" aria-label="Traditional Chinese">繁體字 / Traditional Chinese</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/translated-courses/turkish" aria-label="Turkish">Türkçe / Turkish</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/translated-courses/korean" aria-label="Korean">(비디오)한국 / Korean</a></li>
+    </ul>
+    </nav></div>
+    </div>
+    </div>
+    </li>
+    <li id="drop_2">
+<a href="#" aria-label="For Educators">For Educators</a>
+    <div class="dropdown_1column-a" style="width: 270px;"><nav aria-labelledby="mm-find-courses-by">
+    <ul role="presentation">
+        <li><a href="https://ocw-origin.odl.mit.edu/educator/chalk-radio-podcast">Chalk Radio Podcast</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/educator/">OCW Educator Portal</a></li>
+    </ul>
+    <ul role="presentation">
+        <li><a href="https://ocw-origin.odl.mit.edu/courses/instructor-insights/">Instructor Insights by Department</a></li>
+        <li><a href="https://openlearning.mit.edu/campus/digital-innovations/">Residential Digital Innovations </a></li>
+    </ul>
+    <ul role="presentation">
+        <li><a href="https://ocw-origin.odl.mit.edu/high-school/">OCW Highlights for High School</a></li>
+    </ul>
+    <ul role="presentation">
+        <li><a href="https://ocw-origin.odl.mit.edu/educator/additional-resources/">Additional Resources</a></li>
+    </ul>
+    </nav></div>
+    </li>
+    <li id="drop_3">
+<a href="#" aria-hidden="true">Give Now</a>
+    <div class="dropdown_1column-a"><nav class="col_1" aria-label="Donate">
+    <ul role="presentation">
+        <li><a href="https://ocw-origin.odl.mit.edu/give/">Make a Donation</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/give/why-give/">Why Give?</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/give/our-supporters/">Our Supporters</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/give/other-ways-to-contribute/">Other Ways to Contribute</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/support/">Become a Corporate Sponsor</a></li>
+    </ul>
+    </nav></div>
+    </li>
+    <li id="drop_4">
+<a href="#" aria-hidden="true">About</a>
+    <div class="dropdown_1column-a"><nav class="col_1" aria-label="About">
+    <ul role="presentation">
+        <li><a href="https://ocw-origin.odl.mit.edu/about/">About MIT OpenCourseWare</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/about/site-statistics/">Site Statistics</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/about/ocw-stories/">OCW Stories</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/about/newsletter/">News</a></li>
+        <li><a href="https://ocw-origin.odl.mit.edu/educator/chalk-radio-podcast/">Chalk Radio Podcast</a></li>
+    </ul>
+    </nav></div>
+    </li>
+</ul>
+</nav></div></div>
+
+</div>
+
+
+
+
+
+<!--googleoff: index-->
+<script>
+  (function() {
+	var cx = '012626166551961672889:owjdpuboktq';
+	var gcse = document.createElement('script');
+	gcse.type = 'text/javascript';
+	gcse.async = true;
+	gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(gcse, s);
+  })();
+  window.onload = function(){
+	document.getElementById('gsc-i-id1').placeholder = 'Search';	
+  };
+
+$(document).ready(function(){
+
+$('.advanceSearch a').keydown(function(event){showSearchTips($(this),event);})
+$('#searchTipsModal').keydown(function(event){showSearchTips($(this),event);})
+
+function showSearchTips(obj,evt) {
+// if pressed enter key
+	if ( evt.which == 13 || evt.which == 32) {
+		showModal();
+		ga('send', 'pageview', "AdvanceSearch");
+		$(".advanceSearch a").attr('aria-expanded', 'true');
+		$('.searchTipsModal').focus();
+		evt.preventDefault();
+		}
+	if ( evt.which == 27 ) {
+		hideModal();
+		$(".advanceSearch a").attr('aria-expanded', 'false');
+		var modal = document.getElementById('searchTipsModal');
+		modal.style.display = "none";
+		$(".advanceSearch a").focus();
+		evt.preventDefault();
+		}
+}
+
+});
+function showModal(){
+	var modal = document.getElementById('searchTipsModal');
+	modal.style.display = "block";
+	ga('send', 'pageview', "AdvanceSearch");
+	document.getElementById("searchTipsBtn").setAttribute("aria-expanded", true);
+	window.setTimeout(function () {
+    document.getElementById('searchTipsModal').focus(); }, 0);
+}
+
+function hideModal(){
+	var modal = document.getElementById('searchTipsModal');
+	modal.style.display = "none";
+	document.getElementById("searchTipsBtn").setAttribute("aria-expanded", false);
+}
+</script>
+<div id="search" role="search" class="grid_4 omega">
+    	<table class="search">
+				<tbody>
+					<tr>
+						<td><div class="searchboxheader"><searchbox-only resultsurl="/search/ocwsearch.htm"></searchbox-only></div></td>
+						<td>
+							<div class="advanceSearch">
+								<a id="searchTipsBtn" onclick="showModal();" href="#" role="button" aria-label="search tips" aria-expanded="false" aria-describedby="searchtips">Search Tips</a>
+
+								<!-- The Modal -->
+								<div id="searchTipsModal" class="modal" tabindex="-1">
+								  <!-- Modal content -->
+									<div class="modal-content">
+										<div class="modal-body">
+											<button class="close" onclick="hideModal();" aria-label="close">X</button>
+											<span>
+												<b>Exclude words from your search</b>
+												<br>Put - in front of a word you want to leave out. For example, jaguar speed -car
+												<br><br>
+												<b>Search for an exact match</b>
+												<br>Put a word or phrase inside quotes. For example, "tallest building".
+												<br><br>
+												<b>Search for wildcards or unknown words</b>
+												<br>Put a * in your word or phrase where you want to leave a placeholder. For example, "largest * in the world".
+												<br><br>
+												<b>Search within a range of numbers</b>
+												<br>Put .. between two numbers. For example, camera $50..$100.
+												<br><br>
+												<b>Combine searches</b>
+												<br>Put "OR" between each search query. For example,  marathon OR race.
+												<br><br>
+											</span>
+										</div>
+								  </div>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+		</table>
+</div>
+<div class="clear"></div>
+<!--googleon: index-->
+<!-- *end header* -->
+
+				
+				
+			</div>
+<!-- top grid end -->
+		</header><!-- top end -->
+			
+		<div id="center_media">
+      	<div id="grid">
+      		<div id="left">
+        		<nav id="breadcrumb_media" aria-label="Breadcrumb">
+                	<p>
+
+    <a href="https://ocw-origin.odl.mit.edu/">Home</a>
+    
+        »
+        
+    
+    
+        
+            <a href="https://ocw-origin.odl.mit.edu/resources">Supplemental Resources</a>
+            
+                »
+                
+            
+            
+         
+    
+    
+        
+            <a href="../../../contents/index.htm">Signals and Systems</a>
+            
+                »
+                
+            
+            
+         
+    
+    
+        
+            <a href="../../../contents/video-lectures/index.htm">Video Lectures</a>
+            
+                »
+                
+            
+            
+         
+    
+    
+        
+            
+            
+            Lecture 1: Introduction
+         
+    
+</p>
+
+            	</nav>
+            	<div class="clear"></div>
+        		<div id="media_title">
+        		<h1 class="title" itemprop="name" property="dct:title">
+        <span class="" id="parent-fieldname-title">
+            Lecture 1: Introduction
+        </span>
+    </h1>
+        		</div>
+           		<div class="clear"></div>
+           		<div id="course_wrapper_media">
+           			<nav id="course_nav" aria-label="Course">
+           				<script language="javascript" type="text/javascript">
+function toggleMenu(objID) {
+  if (!document.getElementById) return;
+  var ob = document.getElementById(objID);
+  ob.className = (ob.className == 'selected')?'': 'selected';
+}
+function toggleClass(id)
+{
+  var divtoggleClass= document.getElementById(id);
+  divtoggleClass.className = (divtoggleClass.className == 'mO')?'mC': 'mO';
+  return false;
+}
+function changeAlt(id)
+{
+  id.alt = (id.alt == 'Expand Menu')?'Collapse Menu' : 'Expand Menu';
+  id.title = (id.title == 'Expand Menu')?'Collapse Menu' : 'Expand Menu';
+}
+</script>
+<!--Left Nav Starts -->
+
+
+	<ul>			  
+	
+	    	
+	    	    <li class="">
+			   			<a href="../../../contents/index.htm">
+		                  Resource Home  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    <li class="">
+			   			<a href="../../../contents/introduction/index.htm">
+		                  Introduction  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    <li class="">
+			   			<a href="../../../contents/readings/index.htm">
+		                  Readings  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    <li class="selected">
+			   			<a href="../../../contents/video-lectures/index.htm">
+		                  Video Lectures  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    <li class="">
+			   			<a href="../../../contents/lecture-notes/index.htm">
+		                  Lecture Notes  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    <li class="">
+			   			<a href="../../../contents/assignments/index.htm">
+		                  Assignments  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    
+		    
+         	
+	<!--second tal block close-->  
+	
+</ul>
+
+
+<!--Left Nav Ends -->
+
+
+
+
+
+           			</nav>
+           			<main id="course_inner_media" aria-labelledby="media_title">
+      					 
+        <div class="" id="parent-fieldname-text">
+            
+            
+        </div>
+    
+      					     
+    
+    
+
+
+
+<script type="text/javascript">var caption_embed_1 ={'English - US': '/resources/res-6-007-signals-and-systems-spring-2011/video-lectures/lecture-1-introduction/KJnAy6hzetw.srt'}</script>     
+     <div id="media-embed">
+         <div class="attention_message" id="embed_1">
+<p>Flash and JavaScript are required for this feature.</p>
+<p>Download the video from <a href="http://itunes.apple.com/us/itunes-u/lecture-1-introduction/id458320213?i=113398881">iTunes U</a> or the <a href="http://archive.org/download/MITRES.6.007S11/MITRES_6-007S11lec01_300k.mp4">Internet Archive</a>.</p>
+</div>
+     </div>
+    
+     <script type="text/javascript">ocw_embed_chapter_media('embed_1', 'https://www.youtube.com/v/KJnAy6hzetw', 'youtube', '/resources/res-6-007-signals-and-systems-spring-2011/video-lectures/lecture-1-introduction', 'https://img.youtube.com/vi/KJnAy6hzetw/0.jpg',0,0, 'https://ocw.mit.edu/resources/res-6-007-signals-and-systems-spring-2011/video-lectures/lecture-1-introduction/KJnAy6hzetw.srt')</script>
+	 
+	 
+	 		
+	 		<div id="transcript1"></div>
+				 <script type="text/javascript">createThreePlayParams(2, 89478, "embed_1", 0, 0)</script>
+			 
+	
+
+     <div id="media_resource_next_prev_nav" style="margin-top: 1em;">
+        <p>
+        
+     	
+        
+            <a href="../../../contents/video-lectures/lecture-2-signals-and-systems-part-i/index.htm"> 
+                <img src="../../../common/images/btn_next_resource.png" alt="Next track" title="Next track"></a>
+       
+       </p>
+     </div>
+ 
+
+
+<script type="text/javascript">
+		window.onload=function(){
+		init();
+		
+		}
+		var tabLinks = new Array();
+		var contentDivs = new Array();
+		function init() {
+		  // Grab the tab links and content divs from the page
+		  var tabListItems = document.getElementById('tabs').childNodes;
+		  for ( var i = 0; i < tabListItems.length; i++ ) {
+			if ( tabListItems[i].nodeName == "LI" ) {
+			  var tabLink = getFirstChildWithTagName( tabListItems[i], 'A' );
+			  var id = getHash( tabLink.getAttribute('href') );
+			  tabLinks[id] = tabLink;
+			  contentDivs[id] = document.getElementById( id );
+			}
+		  }
+		  // Assign onclick events to the tab links, and
+		  // highlight the first tab
+		  var i = 0;
+		  for ( var id in tabLinks ) {
+			tabLinks[id].onclick = showTab;
+			tabLinks[id].onfocus = function() { this.blur() };
+			if ( i == 0 ) tabLinks[id].className = 'selected';
+			i++;
+		  }
+		  // Hide all content divs except the first
+		  var i = 0;
+		  for ( var id in contentDivs ) {
+			if ( i != 0 ) contentDivs[id].className = 'tabContent hide';
+			i++;
+		  }
+		}
+		function showTab() {
+		  var selectedId = getHash( this.getAttribute('href') );
+		  // Highlight the selected tab, and dim all others.
+		  // Also show the selected content div, and hide all others.
+		  for ( var id in contentDivs ) {
+			if ( id == selectedId ) {
+			  tabLinks[id].className = 'selected';
+			  contentDivs[id].className = 'tabContent';
+			} else {
+			  tabLinks[id].className = '';
+			  contentDivs[id].className = 'tabContent hide';
+			}
+		  }
+		  // Stop the browser following the link
+		  return false;
+		}
+		function getFirstChildWithTagName( element, tagName ) {
+		  for ( var i = 0; i < element.childNodes.length; i++ ) {
+			if ( element.childNodes[i].nodeName == tagName ) return element.childNodes[i];
+		  }
+		}
+		function getHash( url ) {
+		  var hashPos = url.lastIndexOf ( '#' );
+		  return url.substring( hashPos + 1 );
+		}
+ </script>	
+ 
+
+  <div id="media_tabs">
+     
+        <ul id="tabs">
+            <li class="first">
+                <a href="#vid_about" class="selected">About this Video</a>
+            </li>
+            <li class="">
+                <a href="#vid_index" class="">Playlist</a>
+            </li>
+            <li class="">
+                <a href="#vid_playlist" class="">Related Resources</a>
+            </li>
+            <li class="">
+                <a href="#vid_related" class="">Transcript</a>
+            </li>
+            <li class="">
+                <a href="#vid_transcript" class="">Download this Video</a>
+            </li>
+        </ul>
+   
+        <div id="vid_about" itemprop="description" class="tabContent">
+<p><strong>Topics covered:</strong> Course format and overview; Demonstration of a feedback system used to stabilize an inverted pendulum; Demonstration of digital signal processing used to remove distortions and background noise from a musical recording. Mathematical representation of signals and systems.</p>
+<p><strong>Instructor:</strong> Prof. Alan V. Oppenheim</p>
+</div>
+        <div id="vid_index" itemprop="description" class="tabContent hide">
+<div class="related-media-thumbnail-nolink">
+<div class="now-playing-resource">Now Playing</div>
+<img src="https://img.youtube.com/vi/KJnAy6hzetw/default.jpg" title="Lecture 1: Introduction" alt="Lecture 1: Introduction">
+<p>Lecture 1: Introduction</p>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-2-signals-and-systems-part-i/index.htm">
+<img src="https://img.youtube.com/vi/6xaaeop7gJ8/default.jpg" title="Lecture 2: Signals and Systems: Part I" alt="Lecture 2: Signals and Systems: Part I">
+<p>Lecture 2: Signals and Syst...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-3-signals-and-systems-part-ii/index.htm">
+<img src="https://img.youtube.com/vi/jGk3w1b7UXQ/default.jpg" title="Lecture 3: Signals and Systems: Part II" alt="Lecture 3: Signals and Systems: Part II">
+<p>Lecture 3: Signals and Syst...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-4-convolution/index.htm">
+<img src="https://img.youtube.com/vi/_vyke3vF4Nk/default.jpg" title="Lecture 4: Convolution" alt="Lecture 4: Convolution">
+<p>Lecture 4: Convolution</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-5-properties-of-linear-time-invariant-systems/index.htm">
+<img src="https://img.youtube.com/vi/mC3TiBJiCsY/default.jpg" title="Lecture 5: Properties of Linear, Time-Invariant Systems" alt="Lecture 5: Properties of Linear, Time-Invariant Systems">
+<p>Lecture 5: Properties of Li...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-6-systems-represented-by-differential-equations/index.htm">
+<img src="https://img.youtube.com/vi/c6jKux_RkqI/default.jpg" title="Lecture 6: Systems Represented by Differential Equations" alt="Lecture 6: Systems Represented by Differential Equations">
+<p>Lecture 6: Systems Represen...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-7-continuous-time-fourier-series/index.htm">
+<img src="https://img.youtube.com/vi/nuzA75DpSuw/default.jpg" title="Lecture 7: Continuous-Time Fourier Series" alt="Lecture 7: Continuous-Time Fourier Series">
+<p>Lecture 7: Continuous-Time ...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-8-continuous-time-fourier-transform/index.htm">
+<img src="https://img.youtube.com/vi/3UkGd3LK2NY/default.jpg" title="Lecture 8: Continuous-Time Fourier Transform" alt="Lecture 8: Continuous-Time Fourier Transform">
+<p>Lecture 8: Continuous-Time ...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-9-fourier-transform-properties/index.htm">
+<img src="https://img.youtube.com/vi/D1WF9YKqf3o/default.jpg" title="Lecture 9: Fourier Transform Properties" alt="Lecture 9: Fourier Transform Properties">
+<p>Lecture 9: Fourier Transfor...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-10-discrete-time-fourier-series/index.htm">
+<img src="https://img.youtube.com/vi/TkMsVwzd1C0/default.jpg" title="Lecture 10: Discrete-Time Fourier Series" alt="Lecture 10: Discrete-Time Fourier Series">
+<p>Lecture 10: Discrete-Time F...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-11-discrete-time-fourier-transform/index.htm">
+<img src="https://img.youtube.com/vi/HKMY-8BqWWw/default.jpg" title="Lecture 11: Discrete-Time Fourier Transform" alt="Lecture 11: Discrete-Time Fourier Transform">
+<p>Lecture 11: Discrete-Time F...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-12-filtering/index.htm">
+<img src="https://img.youtube.com/vi/P5Ce9tbK86M/default.jpg" title="Lecture 12: Filtering" alt="Lecture 12: Filtering">
+<p>Lecture 12: Filtering</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-13-continuous-time-modulation/index.htm">
+<img src="https://img.youtube.com/vi/UIgA0czNj5g/default.jpg" title="Lecture 13: Continuous-Time Modulation" alt="Lecture 13: Continuous-Time Modulation">
+<p>Lecture 13: Continuous-Time...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-14-demonstration-of-amplitude-modulation/index.htm">
+<img src="https://img.youtube.com/vi/KT3yNuY_FPM/default.jpg" title="Lecture 14: Demonstration of Amplitude Modulation" alt="Lecture 14: Demonstration of Amplitude Modulation">
+<p>Lecture 14: Demonstration o...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-15-discrete-time-modulation/index.htm">
+<img src="https://img.youtube.com/vi/GrnYlDAsmuA/default.jpg" title="Lecture 15: Discrete-Time Modulation" alt="Lecture 15: Discrete-Time Modulation">
+<p>Lecture 15: Discrete-Time M...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-16-sampling/index.htm">
+<img src="https://img.youtube.com/vi/P3eLer1edx8/default.jpg" title="Lecture 16: Sampling" alt="Lecture 16: Sampling">
+<p>Lecture 16: Sampling</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-17-interpolation/index.htm">
+<img src="https://img.youtube.com/vi/_WV4JlBOQro/default.jpg" title="Lecture 17: Interpolation" alt="Lecture 17: Interpolation">
+<p>Lecture 17: Interpolation</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-18-discrete-time-processing-of-continuous-time-signals/index.htm">
+<img src="https://img.youtube.com/vi/Q7aZNgY18b4/default.jpg" title="Lecture 18: Discrete-Time Processing of Continuous-Time Signals" alt="Lecture 18: Discrete-Time Processing of Continuous-Time Signals">
+<p>Lecture 18: Discrete-Time P...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-19-discrete-time-sampling/index.htm">
+<img src="https://img.youtube.com/vi/mmkOAMOw73U/default.jpg" title="Lecture 19: Discrete-Time Sampling" alt="Lecture 19: Discrete-Time Sampling">
+<p>Lecture 19: Discrete-Time S...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-20-the-laplace-transform/index.htm">
+<img src="https://img.youtube.com/vi/pSN7t79RxC4/default.jpg" title="Lecture 20: The Laplace Transform" alt="Lecture 20: The Laplace Transform">
+<p>Lecture 20: The Laplace Tra...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-21-continuous-time-second-order-systems/index.htm">
+<img src="https://img.youtube.com/vi/8g4UudyOetE/default.jpg" title="Lecture 21: Continuous-Time Second-Order Systems" alt="Lecture 21: Continuous-Time Second-Order Systems">
+<p>Lecture 21: Continuous-Time...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-22-the-z-transform/index.htm">
+<img src="https://img.youtube.com/vi/0Gat_aSzi5Y/default.jpg" title="Lecture 22: The z-Transform" alt="Lecture 22: The z-Transform">
+<p>Lecture 22: The z-Transform</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-23-mapping-continuous-time-filters-to-discrete-time-filters/index.htm">
+<img src="https://img.youtube.com/vi/z8sXXQxcmN4/default.jpg" title="Lecture 23: Mapping Continuous-Time Filters to Discrete-Time Filters" alt="Lecture 23: Mapping Continuous-Time Filters to Discrete-Time Filters">
+<p>Lecture 23: Mapping Continu...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-24-butterworth-filters/index.htm">
+<img src="https://img.youtube.com/vi/4Q1fWMxVDZY/default.jpg" title="Lecture 24: Butterworth Filters" alt="Lecture 24: Butterworth Filters">
+<p>Lecture 24: Butterworth Fil...</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-25-feedback/index.htm">
+<img src="https://img.youtube.com/vi/S7MG1hgn0dY/default.jpg" title="Lecture 25: Feedback" alt="Lecture 25: Feedback">
+<p>Lecture 25: Feedback</p></a>
+</div>
+<div class="related-media-thumbnail">
+<a href="../../../contents/video-lectures/lecture-26-feedback-example-the-inverted-pendulum/index.htm">
+<img src="https://img.youtube.com/vi/D3bblng-Kcc/default.jpg" title="Lecture 26: Feedback Example: The Inverted Pendulum" alt="Lecture 26: Feedback Example: The Inverted Pendulum">
+<p>Lecture 26: Feedback Exampl...</p></a>
+</div>
+</div>
+        <div id="vid_playlist" itemprop="description" class="tabContent hide">
+<h2 class="subhead">Related Resources</h2>
+<p>Introduction (<a href="../../../contents/lecture-notes/MITRES_6_007S11_lec01.pdf" target="_blank">PDF</a>)</p>
+</div>
+        <div id="vid_related" itemprop="description" class="tabContent hide">
+<ul><li><a class="transcript-link" title="Open in a new window." alt="Open in a new window." style="text-decoration: none; font-size: 1.0em;" target="_blank" text-decoration: none font-size: href="../../../contents/video-lectures/lecture-1-introduction/KJnAy6hzetw.pdf"> Download English-US transcript (PDF)</a></li></ul>
+<p><span m="0">[MUSIC PLAYING]</span> </p>
+<p><span m="42327">PROFESSOR:</span> <span m="42780">I'm</span> <span m="42900">Al</span> <span m="43120">Oppenheim,</span> <span m="43830">and</span> <span m="44260">I'd</span> <span m="44370">like</span> <span m="44640">to</span> <span m="44910">welcome</span> <span m="45280">you</span> <span m="45430">to</span> <span m="45850">this</span> <span m="46120">videotape</span> <span m="46720">course</span> <span m="47130">on</span> <span m="47260">signals</span> <span m="47670">and</span> <span m="47760">systems.</span> <span m="50260">Signals,</span> <span m="51220">at</span> <span m="51480">least</span> <span m="51960">as</span> <span m="52280">an</span> <span m="52380">informal</span> <span m="53190">definition,</span> <span m="53930">are</span> <span m="54810">functions</span> <span m="55520">of</span> <span m="55960">one</span> <span m="56270">or</span> <span m="56320">more</span> <span m="56570">independent</span> <span m="57090">variables</span> <span m="58360">that</span> <span m="58820">typically</span> <span m="59430">carry</span> <span m="60060">some</span> <span m="60300">type</span> <span m="60570">of</span> <span m="60700">information.</span> <span m="62460">Systems,</span> <span m="63220">in</span> <span m="63670">our</span> <span m="63870">setting,</span> <span m="64870">would</span> <span m="65280">typically</span> <span m="65810">be</span> <span m="65950">used</span> <span m="66350">to</span> <span m="66420">process</span> <span m="66930">signals.</span> </p>
+<p><span m="68860">One</span> <span m="69210">very</span> <span m="69480">common</span> <span m="69790">example</span> <span m="70230">of</span> <span m="70320">a</span> <span m="70360">signal</span> <span m="71070">might</span> <span m="71520">be,</span> <span m="71760">let's</span> <span m="72050">say,</span> <span m="72660">a</span> <span m="72740">speech</span> <span m="73120">signal.</span> <span m="74130">And</span> <span m="74360">you</span> <span m="74470">might</span> <span m="74790">think</span> <span m="75170">of</span> <span m="75840">the</span> <span m="76080">air</span> <span m="76320">pressure</span> <span m="76930">as</span> <span m="77080">a</span> <span m="77130">function</span> <span m="77550">of</span> <span m="77670">time,</span> <span m="78270">or</span> <span m="78490">perhaps</span> <span m="78970">the</span> <span m="79080">electrical</span> <span m="79550">signal</span> <span m="80530">after</span> <span m="80840">it</span> <span m="80920">goes</span> <span m="81210">through</span> <span m="81380">the</span> <span m="81470">microphone</span> <span m="82220">transducer</span> <span m="82615">as</span> <span m="83010">a</span> <span m="83060">function</span> <span m="83480">of</span> <span m="83580">time,</span> <span m="84510">as</span> <span m="85070">representing</span> <span m="85700">the</span> <span m="85770">speech</span> <span m="86130">signal.</span> <span m="87150">And</span> <span m="87420">we</span> <span m="87560">might</span> <span m="88060">see</span> <span m="88570">a</span> <span m="88760">typical</span> <span m="89150">speech</span> <span m="89470">signal</span> <span m="90820">looking</span> <span m="91120">something</span> <span m="91850">like</span> <span m="92170">I've</span> <span m="92300">indicated</span> <span m="92870">here.</span> </p>
+<p><span m="93990">It's</span> <span m="94890">a</span> <span m="94970">function</span> <span m="95690">of</span> <span m="95870">time,</span> <span m="96550">in</span> <span m="96670">this</span> <span m="96840">particular</span> <span m="97370">case.</span> <span m="98310">And</span> <span m="98940">the</span> <span m="99050">independent</span> <span m="99610">variable,</span> <span m="100720">being</span> <span m="101020">time,</span> <span m="101660">is,</span> <span m="102100">in</span> <span m="102230">fact,</span> <span m="102970">continuous.</span> <span m="104290">And</span> <span m="104550">so</span> <span m="104730">a</span> <span m="104780">signal</span> <span m="105170">like</span> <span m="105400">this,</span> <span m="105860">we</span> <span m="106050">will</span> <span m="106230">typically</span> <span m="106700">be</span> <span m="106890">referring</span> <span m="107340">to</span> <span m="107780">as</span> <span m="108300">a</span> <span m="108510">continuous</span> <span m="109130">time</span> <span m="109390">signal.</span> </p>
+<p><span m="111570">Now,</span> <span m="112020">it</span> <span m="112190">also,</span> <span m="113150">for</span> <span m="113240">this</span> <span m="113590">particular</span> <span m="114150">example,</span> <span m="114940">is</span> <span m="115130">a</span> <span m="115180">function</span> <span m="115830">of</span> <span m="116360">one</span> <span m="116620">independent</span> <span m="117220">variable.</span> <span m="118470">And</span> <span m="119390">that</span> <span m="119880">will</span> <span m="120440">be</span> <span m="120580">referred</span> <span m="121050">to</span> <span m="121490">as</span> <span m="122170">a</span> <span m="123710">one-dimensional</span> <span m="125630">signal</span> <span m="126660">corresponding</span> <span m="127450">to</span> <span m="127570">the</span> <span m="127660">fact</span> <span m="128270">that</span> <span m="128620">there's</span> <span m="128900">only</span> <span m="129660">one</span> <span m="129919">independent</span> <span m="130470">variable</span> <span m="131260">instead</span> <span m="131590">of</span> <span m="131660">several</span> <span m="132070">independent</span> <span m="132570">variables.</span> <span m="133890">So</span> <span m="134650">the</span> <span m="134730">speech</span> <span m="135070">signal</span> <span m="135650">is</span> <span m="135830">an</span> <span m="135920">example</span> <span m="136960">of</span> <span m="137150">a</span> <span m="137940">continuous</span> <span m="138600">time, one-dimensional signal.</span> </p>
+<p><span m="141520">Now,</span> <span m="142350">signals</span> <span m="143050">can,</span> <span m="143190">of</span> <span m="143290">course,</span> <span m="144180">be</span> <span m="144600">multi-dimensional.</span> <span m="145990">And</span> <span m="146220">they</span> <span m="146310">may</span> <span m="146890">not</span> <span m="147180">have,</span> <span m="147400">as</span> <span m="147500">their</span> <span m="147660">independent</span> <span m="148130">variables,</span> <span m="148740">time</span> <span m="149050">variables.</span> <span m="150130">One</span> <span m="150340">very</span> <span m="150590">common</span> <span m="151160">example</span> <span m="152260">are</span> <span m="153330">the</span> <span m="153500">examples</span> <span m="154000">represented</span> <span m="154570">by</span> <span m="154750">images.</span> </p>
+<p><span m="156080">Images,</span> <span m="157320">as</span> <span m="157490">signals,</span> <span m="158280">we</span> <span m="158720">might</span> <span m="159030">think</span> <span m="159280">of</span> <span m="160020">as</span> <span m="160730">representing</span> <span m="161340">brightness,</span> <span m="162760">as</span> <span m="163030">it</span> <span m="163170">varies</span> <span m="164390">in</span> <span m="164860">a</span> <span m="165060">horizontal</span> <span m="166020">and</span> <span m="166610">vertical</span> <span m="167450">direction.</span> <span m="168500">And</span> <span m="168640">so</span> <span m="168840">the</span> <span m="168930">brightness</span> <span m="169590">as</span> <span m="169790">a</span> <span m="169850">function</span> <span m="170510">of</span> <span m="170810">these</span> <span m="171050">two</span> <span m="171230">spatial</span> <span m="171720">variables</span> <span m="172910">is</span> <span m="173160">then</span> <span m="173770">a</span> <span m="174590">two-dimensional</span> <span m="175670">signal.</span> <span m="180270">And</span> <span m="182840">the</span> <span m="183150">independent</span> <span m="183690">variables</span> <span m="184670">would</span> <span m="185060">typically</span> <span m="185800">be</span> <span m="186190">continuous,</span> <span m="187460">but</span> <span m="187650">of</span> <span m="187750">course</span> <span m="188100">they're</span> <span m="188270">not</span> <span m="188690">time</span> <span m="188970">variables.</span> <span m="189730">And</span> <span m="191310">incidentally,</span> <span m="192110">it's</span> <span m="192360">worth</span> <span m="192860">just</span> <span m="193110">commenting</span> <span m="193870">that</span> <span m="194410">very</span> <span m="194690">often,</span> <span m="195350">simply</span> <span m="195770">for</span> <span m="195970">convenience,</span> <span m="197340">we'll</span> <span m="197490">have</span> <span m="197650">a</span> <span m="197720">tendency</span> <span m="198390">to</span> <span m="198540">refer</span> <span m="198950">to</span> <span m="199090">the</span> <span m="199200">independent</span> <span m="199720">variables</span> <span m="200310">when</span> <span m="200430">we</span> <span m="200540">talk</span> <span m="200820">about</span> <span m="201130">signals</span> <span m="202020">as</span> <span m="202230">time</span> <span m="202540">variables,</span> <span m="203290">whether</span> <span m="203610">or</span> <span m="203640">not</span> <span m="203970">they</span> <span m="204180">really</span> <span m="204470">do</span> <span m="204660">represent</span> <span m="205210">time.</span> </p>
+<p><span m="207170">Well,</span> <span m="207620">let</span> <span m="207820">me</span> <span m="208250">illustrate</span> <span m="209160">one</span> <span m="209360">example</span> <span m="210230">of</span> <span m="210720">an</span> <span m="210880">image.</span> <span m="211690">And</span> <span m="212330">this</span> <span m="212790">is</span> <span m="213060">a</span> <span m="213120">picture</span> <span m="213820">of</span> <span m="213870">J.</span> <span m="214290">B.</span> <span m="214710">J.</span> <span m="215130">Fourier,</span> <span m="216450">who,</span> <span m="216790">perhaps,</span> <span m="217480">more</span> <span m="217790">than</span> <span m="218240">anyone</span> <span m="218660">else,</span> <span m="219180">is</span> <span m="219540">responsible</span> <span m="220430">for</span> <span m="221500">the</span> <span m="221720">elegance</span> <span m="222240">and</span> <span m="222340">beauty</span> <span m="222600">of</span> <span m="222860">a</span> <span m="223050">lot</span> <span m="223270">of</span> <span m="223340">the</span> <span m="223440">concepts</span> <span m="224220">that</span> <span m="224570">we'll</span> <span m="224780">be</span> <span m="224910">talking</span> <span m="225260">about</span> <span m="226040">throughout</span> <span m="226390">this</span> <span m="226610">course.</span> <span m="227780">And</span> <span m="228290">when</span> <span m="228450">you</span> <span m="228560">look</span> <span m="228770">at</span> <span m="228890">this,</span> <span m="229210">in</span> <span m="229330">addition</span> <span m="229820">to</span> <span m="230620">seeing</span> <span m="230840">Fourier</span> <span m="231470">himself,</span> <span m="232450">you</span> <span m="232580">should</span> <span m="232860">recognize</span> <span m="233470">that</span> <span m="233560">what</span> <span m="233740">you're</span> <span m="233840">looking</span> <span m="234210">at</span> <span m="234480">is</span> <span m="234720">basically</span> <span m="235240">a</span> <span m="235290">signal</span> <span m="236240">which</span> <span m="236610">is</span> <span m="236840">brightness</span> <span m="237480">as</span> <span m="237630">a</span> <span m="237690">function</span> <span m="238320">of</span> <span m="238530">the</span> <span m="238770">horizontal</span> <span m="239670">and</span> <span m="240190">vertical</span> <span m="240680">spatial</span> <span m="241120">variables.</span> </p>
+<p><span m="243400">As</span> <span m="243540">another</span> <span m="244260">example</span> <span m="245150">of</span> <span m="245620">an</span> <span m="245810">image</span> <span m="246390">as</span> <span m="246590">a</span> <span m="246640">signal,</span> <span m="247780">let's</span> <span m="248150">look</span> <span m="248470">at an</span> <span m="248960">aerial</span> <span m="249270">photograph.</span> <span m="250610">This</span> <span m="250970">is</span> <span m="251380">an</span> <span m="251480">aerial</span> <span m="251750">photograph</span> <span m="252520">taken</span> <span m="253620">over</span> <span m="254280">a</span> <span m="254730">set</span> <span m="255030">of</span> <span m="255330">roads,</span> <span m="256040">which you</span> <span m="256459">can</span> <span m="256800">more</span> <span m="257000">or</span> <span m="257029">less</span> <span m="257250">recognize</span> <span m="257860">in</span> <span m="257920">the</span> <span m="258010">picture.</span> <span m="259019">And</span> <span m="259579">one</span> <span m="259769">of</span> <span m="259850">the</span> <span m="259940">difficulties</span> <span m="260769">with</span> <span m="260920">this</span> <span m="261120">signal</span> <span m="261630">is</span> <span m="261910">that</span> <span m="263220">the</span> <span m="263600">road</span> <span m="263920">system</span> <span m="264440">is</span> <span m="264590">somewhat</span> <span m="264910">obscured</span> <span m="265500">by</span> <span m="265650">cloud</span> <span m="266060">cover.</span> <span m="267430">And</span> <span m="268000">what</span> <span m="268180">I'll</span> <span m="268510">want</span> <span m="268680">to</span> <span m="268730">show</span> <span m="269020">later</span> <span m="269560">as</span> <span m="270800">an</span> <span m="270890">example</span> <span m="271590">of</span> <span m="271780">what</span> <span m="271940">a</span> <span m="271990">system</span> <span m="272690">might</span> <span m="273020">do</span> <span m="273180">to</span> <span m="273280">such</span> <span m="273550">a</span> <span m="273600">signal,</span> <span m="274230">in</span> <span m="274330">terms</span> <span m="274620">of</span> <span m="274710">processing</span> <span m="275340">it,</span> <span m="275980">is</span> <span m="276600">an</span> <span m="276710">attempt</span> <span m="277360">to</span> <span m="278240">at</span> <span m="278360">least</span> <span m="278600">compensate</span> <span m="279420">somewhat</span> <span m="280220">for</span> <span m="281070">the</span> <span m="281540">cloud</span> <span m="281890">cover</span> <span m="282240">that's</span> <span m="282800">represented</span> <span m="283380">in</span> <span m="283460">the</span> <span m="283530">photograph.</span> </p>
+<p><span m="284900">Although</span> <span m="285230">in</span> <span m="285390">terms</span> <span m="285750">of</span> <span m="285990">the</span> <span m="286280">detailed</span> <span m="286770">analysis</span> <span m="287430">that</span> <span m="287730">we</span> <span m="287920">go</span> <span m="288140">through</span> <span m="288770">during</span> <span m="289020">the</span> <span m="289110">course,</span> <span m="289530">our</span> <span m="289870">focus</span> <span m="290210">of</span> <span m="290320">attention</span> <span m="291000">is</span> <span m="292350">pretty</span> <span m="292550">much</span> <span m="292770">restricted</span> <span m="293390">to</span> <span m="293630">one-dimensional</span> <span m="294290">signals.</span> <span m="294810">In</span> <span m="294920">fact,</span> <span m="295720">we</span> <span m="295860">will</span> <span m="296040">be</span> <span m="296190">using</span> <span m="297280">two-dimensional</span> <span m="297890">signals,</span> <span m="298600">more</span> <span m="298940">specifically</span> <span m="299570">images,</span> <span m="300490">very</span> <span m="300770">often</span> <span m="301370">to</span> <span m="301700">illustrate</span> <span m="302250">a</span> <span m="302290">variety</span> <span m="303390">of</span> <span m="303530">concepts.</span> </p>
+<p><span m="306090">Now,</span> <span m="306850">speech</span> <span m="307150">and</span> <span m="307450">images</span> <span m="308130">are</span> <span m="308660">examples</span> <span m="309570">of</span> <span m="310060">what</span> <span m="310260">we've</span> <span m="310400">referred</span> <span m="310800">to</span> <span m="311240">as</span> <span m="311980">continuous-time</span> <span m="312820">signals</span> <span m="313600">in</span> <span m="313890">that</span> <span m="314740">they</span> <span m="315080">are</span> <span m="315250">functions</span> <span m="316130">of</span> <span m="316680">continuous</span> <span m="317280">variables.</span> <span m="318990">An</span> <span m="319130">equally</span> <span m="319740">important</span> <span m="320290">class</span> <span m="320630">of</span> <span m="320720">signals</span> <span m="321370">that</span> <span m="321680">we</span> <span m="322100">will</span> <span m="322260">be</span> <span m="322380">concentrating</span> <span m="323160">on</span> <span m="323690">in</span> <span m="323800">the</span> <span m="323910">course</span> <span m="324790">are</span> <span m="324900">signals</span> <span m="325790">that</span> <span m="326090">are</span> <span m="327170">discrete-time</span> <span m="328300">signals,</span> <span m="330220">where</span> <span m="330860">by</span> <span m="331400">discrete-time,</span> <span m="332880">what</span> <span m="333070">we</span> <span m="333210">mean</span> <span m="333750">is</span> <span m="334070">that</span> <span m="334700">the</span> <span m="334790">signal</span> <span m="335950">is</span> <span m="336810">a</span> <span m="336910">function</span> <span m="337740">of</span> <span m="338130">an</span> <span m="338390">integer</span> <span m="338770">variable,</span> <span m="340100">and</span> <span m="340610">so</span> <span m="340860">specifically</span> <span m="341870">only</span> <span m="342210">takes</span> <span m="342580">on</span> <span m="342810">values</span> <span m="343910">at</span> <span m="344570">integer</span> <span m="345480">values</span> <span m="346350">of</span> <span m="346490">the</span> <span m="346630">argument.</span> <span m="348150">So</span> <span m="348470">here</span> <span m="348930">is</span> <span m="349930">a</span> <span m="350150">graphical</span> <span m="350740">illustration</span> <span m="351580">of</span> <span m="352230">a</span> <span m="352820">discrete-time</span> <span m="353510">signal.</span> </p>
+<p><span m="354540">And</span> <span m="355490">discrete-time</span> <span m="355710">signals</span> <span m="356290">arise</span> <span m="356990">in</span> <span m="357160">a</span> <span m="357210">variety</span> <span m="357790">of</span> <span m="357900">ways.</span> <span m="358290">One</span> <span m="359050">very</span> <span m="359510">common</span> <span m="359880">example</span> <span m="360740">that</span> <span m="361500">is</span> <span m="361700">seen</span> <span m="361950">fairly</span> <span m="362450">often</span> <span m="363460">is</span> <span m="364040">discrete-time</span> <span m="364680">signals</span> <span m="365360">in</span> <span m="365500">the</span> <span m="365590">context</span> <span m="366440">of</span> <span m="367260">economic</span> <span m="368130">time</span> <span m="368440">series,</span> <span m="370210">for</span> <span m="370470">example,</span> <span m="371170">stock</span> <span m="371550">market</span> <span m="371860">analysis.</span> <span m="373250">So</span> <span m="373870">what</span> <span m="374050">I</span> <span m="374270">show</span> <span m="374630">here</span> <span m="375100">is</span> <span m="375600">one</span> <span m="376550">very</span> <span m="376790">commonly</span> <span m="377260">occurring</span> <span m="377810">example</span> <span m="378780">of</span> <span m="378880">a</span> <span m="379270">discrete-time</span> <span m="379950">signal.</span> <span m="381220">It</span> <span m="381370">represents</span> <span m="382170">the</span> <span m="382840">weekly</span> <span m="383520">stock</span> <span m="384000">market</span> <span m="384360">index.</span> </p>
+<p><span m="385330">The</span> <span m="385440">independent</span> <span m="385930">variable</span> <span m="386710">in</span> <span m="386850">this</span> <span m="387100">case</span> <span m="387570">is</span> <span m="388450">the</span> <span m="388770">week</span> <span m="389320">number.</span> <span m="390390">And</span> <span m="391150">we</span> <span m="391360">see</span> <span m="391720">what</span> <span m="392060">the</span> <span m="392520">stock</span> <span m="392930">market</span> <span m="393750">is</span> <span m="394030">doing</span> <span m="394340">over</span> <span m="394560">this</span> <span m="394780">particular</span> <span m="395230">period</span> <span m="396160">as</span> <span m="396370">a</span> <span m="396420">function</span> <span m="397150">of</span> <span m="397720">the</span> <span m="397830">number</span> <span m="398220">of</span> <span m="398300">the</span> <span m="398390">week.</span> <span m="398830">And,</span> <span m="399330">of</span> <span m="399460">course,</span> <span m="400210">along</span> <span m="400450">the</span> <span m="400520">vertical</span> <span m="400990">axis</span> <span m="401550">is</span> <span m="402130">the</span> <span m="403040">weekly</span> <span m="403490">index.</span> </p>
+<p><span m="404800">Incidentally,</span> <span m="406030">this</span> <span m="406240">particular</span> <span m="406740">period</span> <span m="407440">was</span> <span m="407660">not</span> <span m="408370">chosen</span> <span m="409180">at</span> <span m="409580">random.</span> <span m="409925">It</span> <span m="410270">In</span> <span m="410540">fact</span> <span m="411120">captures</span> <span m="411820">a</span> <span m="411890">very</span> <span m="412170">interesting</span> <span m="412770">aspect</span> <span m="413730">of</span> <span m="413890">stock</span> <span m="414260">market</span> <span m="414550">history,</span> <span m="415670">namely</span> <span m="416510">the</span> <span m="417280">stock</span> <span m="417700">market</span> <span m="418340">crash</span> <span m="419190">in</span> <span m="419480">1929,</span> <span m="420640">which,</span> <span m="420940">in</span> <span m="421040">fact,</span> <span m="421900">is</span> <span m="422050">represented</span> <span m="422890">by</span> <span m="423240">the</span> <span m="423370">behavior</span> <span m="424240">of</span> <span m="424950">this</span> <span m="425180">discrete-time</span> <span m="425860">signal,</span> <span m="426720">or</span> <span m="426940">sequence,</span> <span m="428570">in</span> <span m="428720">this</span> <span m="428900">particular</span> <span m="429460">area.</span> <span m="429810">So</span> <span m="430170">this</span> <span m="430710">dramatic</span> <span m="431200">dip,</span> <span m="431420">in</span> <span m="431550">fact,</span> <span m="432330">is</span> <span m="432530">the</span> <span m="432590">stock</span> <span m="432960">market</span> <span m="433560">crash</span> <span m="434010">of</span> <span m="434100">1929.</span> </p>
+<p><span m="436610">Well,</span> <span m="437470">the</span> <span m="437560">Dow</span> <span m="437780">Jones</span> <span m="438520">weekly</span> <span m="438910">average</span> <span m="439480">is</span> <span m="439690">an</span> <span m="439770">example</span> <span m="440540">of</span> <span m="441090">a</span> <span m="441340">one-dimensional</span> <span m="442510">discrete-time</span> <span m="443250">signal.</span> <span m="444520">And</span> <span m="445520">just</span> <span m="445890">as</span> <span m="446380">with</span> <span m="446590">continuous</span> <span m="447180">time,</span> <span m="447760">we</span> <span m="447920">had</span> <span m="448670">not</span> <span m="448940">just</span> <span m="449150">one-dimensional</span> <span m="449610">but</span> <span m="449910">multi-dimensional</span> <span m="450710">signals,</span> <span m="451810">likewise</span> <span m="452900">we</span> <span m="453040">have</span> <span m="453580">multi-dimensional</span> <span m="454340">signals</span> <span m="455130">in</span> <span m="455950">the</span> <span m="456330">discrete-time</span> <span m="457120">case</span> <span m="458080">where,</span> <span m="459430">in</span> <span m="459570">that</span> <span m="459800">case,</span> <span m="460220">then,</span> <span m="461030">the</span> <span m="461870">discrete-time</span> <span m="462470">signal</span> <span m="462850">that</span> <span m="462970">we're</span> <span m="463110">talking</span> <span m="463510">about,</span> <span m="463820">or</span> <span m="463900">sequence,</span> <span m="464840">is</span> <span m="465030">a</span> <span m="465090">function</span> <span m="465710">of</span> <span m="466360">two</span> <span m="466630">integer</span> <span m="466960">variables.</span> <span m="468160">And</span> <span m="468420">as</span> <span m="468550">one</span> <span m="468720">example,</span> <span m="469560">this</span> <span m="469790">might,</span> <span m="470100">let's</span> <span m="470380">say,</span> <span m="471100">represent</span> <span m="471930">a</span> <span m="472230">spatial</span> <span m="472980">antenna</span> <span m="473530">array</span> <span m="474550">where</span> <span m="475490">this</span> <span m="475830">is</span> <span m="476350">array</span> <span m="476760">number</span> <span m="477310">in,</span> <span m="478020">let's</span> <span m="478330">say,</span> <span m="478560">the</span> <span m="478650">horizontal</span> <span m="479640">direction,</span> <span m="480340">and</span> <span m="480500">this</span> <span m="480700">is</span> <span m="480970">array</span> <span m="481310">number</span> <span m="481670">in</span> <span m="481730">the</span> <span m="481790">vertical</span> <span m="482210">direction.</span> </p>
+<p><span m="483550">Both</span> <span m="483820">classes</span> <span m="484260">of</span> <span m="484330">signals,</span> <span m="484910">continuous-time</span> <span m="486000">and</span> <span m="486070">discrete-time,</span> <span m="487280">as</span> <span m="487480">I've</span> <span m="487710">indicated,</span> <span m="488430">are</span> <span m="488540">very</span> <span m="488840">important.</span> <span m="490100">And</span> <span m="490570">it</span> <span m="490680">should</span> <span m="490820">be</span> <span m="490950">emphasized</span> <span m="492020">that</span> <span m="492710">the</span> <span m="492840">importance</span> <span m="493680">of</span> <span m="494300">discrete-time</span> <span m="495040">signals</span> <span m="495305">and</span> <span m="495570">associated</span> <span m="496340">processing</span> <span m="497680">continues</span> <span m="498370">to</span> <span m="498490">grow</span> <span m="499540">in</span> <span m="499680">large</span> <span m="500080">part</span> <span m="500690">because</span> <span m="501450">of</span> <span m="501840">the</span> <span m="502060">current</span> <span m="502490">and</span> <span m="502590">emerging</span> <span m="503000">technologies</span> <span m="504470">that</span> <span m="505060">permit,</span> <span m="505620">basically,</span> <span m="507250">the</span> <span m="507400">processing</span> <span m="509000">of</span> <span m="509350">continuous-time</span> <span m="510280">signals</span> <span m="511410">by</span> <span m="511860">first</span> <span m="512309">converting</span> <span m="512900">them</span> <span m="513220">to</span> <span m="513340">discrete-time</span> <span m="514010">signals</span> <span m="514940">and</span> <span m="515110">processing</span> <span m="515740">them</span> <span m="516100">with</span> <span m="516309">discrete-time</span> <span m="516970">systems.</span> <span m="517990">And</span> <span m="518159">that,</span> <span m="518450">in</span> <span m="518600">fact,</span> <span m="519049">is</span> <span m="519490">a</span> <span m="519600">topic</span> <span m="520150">that</span> <span m="520570">we</span> <span m="520880">will</span> <span m="521460">discuss</span> <span m="522030">in</span> <span m="522140">a</span> <span m="522179">fair</span> <span m="522429">amount</span> <span m="522690">of</span> <span m="522780">detail</span> <span m="523770">later</span> <span m="524100">on</span> <span m="524250">in</span> <span m="524320">the</span> <span m="524410">course.</span> </p>
+<p><span m="527550">Let's</span> <span m="528110">now</span> <span m="528510">our</span> <span m="528910">attention</span> <span m="530000">to</span> <span m="530400">systems.</span> <span m="531620">And</span> <span m="532210">as</span> <span m="532380">I</span> <span m="532470">indicated,</span> <span m="533640">a</span> <span m="533740">system</span> <span m="534700">basically</span> <span m="535760">processes</span> <span m="536870">signals.</span> <span m="538190">And</span> <span m="538750">they</span> <span m="538920">have,</span> <span m="539430">of</span> <span m="539570">course,</span> <span m="540120">inputs</span> <span m="541310">and</span> <span m="541600">outputs.</span> <span m="542830">And</span> <span m="543490">depending</span> <span m="543980">on</span> <span m="544340">whether</span> <span m="544630">we're</span> <span m="544780">talking</span> <span m="545190">about</span> <span m="545520">continuous</span> <span m="546160">time</span> <span m="546670">or</span> <span m="546870">discrete</span> <span m="547360">time,</span> <span m="548490">the</span> <span m="548750">system</span> <span m="549600">may</span> <span m="549780">be</span> <span m="550220">a</span> <span m="550440">continuous-time</span> <span m="551340">system</span> <span m="552350">or</span> <span m="552850">a</span> <span m="552940">discrete-time</span> <span m="553630">system.</span> </p>
+<p><span m="554130">So</span> <span m="555110">in</span> <span m="555380">the</span> <span m="555470">continuous-time</span> <span m="556290">case,</span> <span m="556810">I</span> <span m="556980">indicate</span> <span m="557480">here</span> <span m="557600">an</span> <span m="557670">input</span> <span m="558030">x(t)</span> <span m="559370">and</span> <span m="559550">an</span> <span m="559640">output</span> <span m="560060">y(t)</span> <span m="561360">If</span> <span m="561550">we</span> <span m="561670">were</span> <span m="561800">talking</span> <span m="562450">about</span> <span m="562950">a</span> <span m="563050">discrete-time</span> <span m="563750">system,</span> <span m="564710">I</span> <span m="564840">would</span> <span m="564970">represent</span> <span m="566080">the</span> <span m="566440">input</span> <span m="566990">in</span> <span m="567180">terms</span> <span m="567790">of</span> <span m="568680">a</span> <span m="568840">discrete-time</span> <span m="569570">variable,</span> <span m="570340">and,</span> <span m="570470">of</span> <span m="570570">course,</span> <span m="571300">the</span> <span m="571450">output</span> <span m="572030">in</span> <span m="572170">terms</span> <span m="572540">of</span> <span m="572820">a</span> <span m="572920">discrete-time</span> <span m="573550">variable</span> <span m="574010">also.</span> <span m="576050">Now,</span> <span m="577200">in</span> <span m="577360">very</span> <span m="577610">general</span> <span m="578130">terms,</span> <span m="578930">systems</span> <span m="579550">are</span> <span m="579630">hard</span> <span m="579920">to</span> <span m="580010">deal</span> <span m="580340">with</span> <span m="580700">because</span> <span m="582090">they</span> <span m="582620">are</span> <span m="582800">defined</span> <span m="583370">very</span> <span m="583630">broadly and</span> <span m="584130">very</span> <span m="584410">generally.</span> <span m="585530">And</span> <span m="585850">in</span> <span m="586170">dealing</span> <span m="586570">with</span> <span m="586700">systems</span> <span m="587280">and</span> <span m="587360">analyzing</span> <span m="588090">them,</span> <span m="589100">what</span> <span m="589610">we</span> <span m="589770">will</span> <span m="590000">do</span> <span m="590510">is</span> <span m="591390">attempt</span> <span m="591850">to</span> <span m="592040">exploit</span> <span m="592970">some</span> <span m="593270">very</span> <span m="593770">specific,</span> <span m="594580">and</span> <span m="594840">as</span> <span m="595060">we'll</span> <span m="595180">see,</span> <span m="596110">very</span> <span m="596370">useful</span> <span m="597070">system</span> <span m="597490">properties.</span> </p>
+<p><span m="599410">To</span> <span m="599620">indicate</span> <span m="600620">what</span> <span m="600810">I</span> <span m="600890">mean</span> <span m="601350">and</span> <span m="601460">how</span> <span m="602030">things</span> <span m="602410">might</span> <span m="602760">be</span> <span m="602980">split</span> <span m="603370">up,</span> <span m="604160">we</span> <span m="604350">could</span> <span m="604530">talk</span> <span m="604840">about</span> <span m="605330">systems,</span> <span m="606050">and</span> <span m="606150">will</span> <span m="606360">talk</span> <span m="606620">about</span> <span m="606910">systems,</span> <span m="607660">that</span> <span m="608100">are</span> <span m="608320">linear.</span> <span m="610300">And</span> <span m="610760">we</span> <span m="610920">could</span> <span m="611430">divide</span> <span m="611860">systems,</span> <span m="612440">basically,</span> <span m="613050">into</span> <span m="613260">systems</span> <span m="613810">that</span> <span m="614090">are</span> <span m="614350">either</span> <span m="614620">linear</span> <span m="615690">or</span> <span m="615880">nonlinear,</span> <span m="617630">and</span> <span m="617800">we</span> <span m="617940">will,</span> <span m="620210">and</span> <span m="620510">also</span> <span m="621280">divide</span> <span m="621660">systems</span> <span m="622280">into</span> <span m="622510">systems</span> <span m="623190">that</span> <span m="623600">are</span> <span m="624190">what</span> <span m="624400">we'll</span> <span m="624590">refer</span> <span m="624980">to</span> <span m="625360">as</span> <span m="625890">time-invariant</span> <span m="627340">or</span> <span m="627580">time-varying</span> <span m="628400">systems.</span> <span m="629420">And</span> <span m="629630">these</span> <span m="629840">aren't</span> <span m="630140">terms</span> <span m="630670">that</span> <span m="631830">we've</span> <span m="632090">defined</span> <span m="632550">yet,</span> <span m="632770">of</span> <span m="632890">course,</span> <span m="633320">but</span> <span m="633640">we</span> <span m="633830">will</span> <span m="634130">be</span> <span m="634480">defining</span> <span m="635190">in</span> <span m="635300">the</span> <span m="635390">course</span> <span m="635830">very</span> <span m="636030">shortly.</span> </p>
+<p><span m="637160">And</span> <span m="637600">while,</span> <span m="638210">in</span> <span m="638330">some</span> <span m="638570">sense,</span> <span m="639180">this</span> <span m="639470">division</span> <span m="639890">represents</span> <span m="640450">all</span> <span m="640640">systems,</span> <span m="641340">and</span> <span m="641490">this</span> <span m="641710">does,</span> <span m="642020">too,</span> <span m="643240">the</span> <span m="643440">focus</span> <span m="643910">of</span> <span m="644010">the</span> <span m="644130">course</span> <span m="645060">is</span> <span m="645260">really</span> <span m="646110">going</span> <span m="646360">to</span> <span m="646490">be</span> <span m="646700">principally</span> <span m="647480">on</span> <span m="648070">linear,</span> <span m="649040">time-invariant</span> <span m="649960">systems.</span> <span m="650860">So</span> <span m="651460">it's</span> <span m="652360">basically</span> <span m="653100">these</span> <span m="653340">systems</span> <span m="654600">that</span> <span m="655000">we</span> <span m="655230">will</span> <span m="655420">be</span> <span m="655560">focusing</span> <span m="656200">on.</span> <span m="657120">And</span> <span m="657750">we'll</span> <span m="657950">be</span> <span m="658100">referring</span> <span m="658590">to</span> <span m="658720">those</span> <span m="658980">systems</span> <span m="659700">as</span> <span m="660470">linear, time-invariant</span> <span m="662250">systems.</span> </p>
+<p><span m="664880">Well,</span> <span m="665190">as</span> <span m="665430">a</span> <span m="666020">brief</span> <span m="666250">glimpse</span> <span m="666620">at</span> <span m="666960">some</span> <span m="667190">of</span> <span m="667260">the</span> <span m="667350">kinds</span> <span m="667700">of</span> <span m="667810">things</span> <span m="668100">that</span> <span m="668270">systems</span> <span m="668810">can</span> <span m="668970">do,</span> <span m="669840">let</span> <span m="670010">me</span> <span m="670370">illustrate,</span> <span m="671920">first</span> <span m="672890">in</span> <span m="673990">a</span> <span m="674140">one-dimensional</span> <span m="675420">continuous-time</span> <span m="676590">context,</span> <span m="677390">and</span> <span m="677570">then</span> <span m="678220">later</span> <span m="678880">with</span> <span m="679240">a</span> <span m="679350">discrete-time</span> <span m="679990">example,</span> <span m="681650">one</span> <span m="681840">example</span> <span m="682600">of</span> <span m="683730">some</span> <span m="684130">processing</span> <span m="685080">of</span> <span m="685720">signals</span> <span m="686620">with</span> <span m="687020">an</span> <span m="687100">appropriate</span> <span m="687640">system.</span> <span m="688540">The</span> <span m="688650">particular</span> <span m="689250">example</span> <span m="689740">that</span> <span m="689850">I</span> <span m="689900">want</span> <span m="690110">to</span> <span m="690150">illustrate</span> <span m="691810">relates</span> <span m="692370">to</span> <span m="692630">the</span> <span m="692750">restoration</span> <span m="693740">of</span> <span m="694210">old</span> <span m="694500">recordings.</span> <span m="695740">And</span> <span m="696020">this</span> <span m="696180">is</span> <span m="696560">some</span> <span m="696780">work</span> <span m="697070">that was</span> <span m="697340">done</span> <span m="697720">by</span> <span m="698080">Professor</span> <span m="698580">Thomas</span> <span m="698960">Stockham,</span> <span m="699550">who</span> <span m="699930">is</span> <span m="700870">at</span> <span m="701120">the</span> <span m="701190">University</span> <span m="701750">of</span> <span m="701830">Utah,</span> <span m="702460">and</span> <span m="702960">work</span> <span m="703190">that</span> <span m="703270">he</span> <span m="703390">had</span> <span m="703510">done</span> <span m="703680">a</span> <span m="703740">number</span> <span m="704030">of</span> <span m="704080">years</span> <span m="704380">ago</span> <span m="705320">relating</span> <span m="705820">to</span> <span m="705940">the</span> <span m="706040">fact</span> <span m="706800">that</span> <span m="707410">in</span> <span m="708110">old</span> <span m="708340">recordings,</span> <span m="709550">for</span> <span m="709730">example</span> <span m="710940">in</span> <span m="711630">Caruso</span> <span m="712090">recordings,</span> <span m="713380">the</span> <span m="713480">recording</span> <span m="714110">was</span> <span m="714380">done</span> <span m="714760">through</span> <span m="714960">a</span> <span m="715010">mechanical</span> <span m="715680">horn,</span> <span m="717020">and</span> <span m="717300">the</span> <span m="717380">characteristics</span> <span m="718360">of</span> <span m="718520">the</span> <span m="718610">horn</span> <span m="719550">tended</span> <span m="719870">to</span> <span m="719990">vary</span> <span m="720430">from</span> <span m="720620">day</span> <span m="720830">to</span> <span m="720960">day.</span> <span m="721860">And</span> <span m="722510">because</span> <span m="722970">of</span> <span m="723070">the</span> <span m="723170">characteristics</span> <span m="723950">of</span> <span m="724030">the</span> <span m="724130">horn,</span> <span m="724900">the</span> <span m="724990">recording</span> <span m="725680">tended</span> <span m="726090">to</span> <span m="726170">have</span> <span m="726730">a</span> <span m="726900">muffled</span> <span m="727260">quality,</span> <span m="727750">something</span> <span m="728190">like</span> <span m="728860">this,</span> <span m="730070">sort of the</span> <span m="730170">sense</span> <span m="730510">that</span> <span m="730640">you</span> <span m="730770">would</span> <span m="730930">get</span> <span m="731800">if</span> <span m="732160">you</span> <span m="732270">were</span> <span m="732360">speaking</span> <span m="732830">through</span> <span m="733000">a</span> <span m="733080">megaphone.</span> </p>
+<p><span m="735120">What</span> <span m="735700">Professor</span> <span m="736140">Stockham</span> <span m="736720">did</span> <span m="736930">was</span> <span m="737330">develop</span> <span m="737730">a</span> <span m="737780">system</span> <span m="738850">to</span> <span m="740360">process these</span> <span m="740590">old</span> <span m="740800">recordings</span> <span m="742110">in</span> <span m="742230">such</span> <span m="742550">a</span> <span m="742600">way</span> <span m="743330">that</span> <span m="744270">a</span> <span m="744370">lot</span> <span m="744830">of</span> <span m="745260">the</span> <span m="745910">characteristics</span> <span m="746860">and</span> <span m="746970">distortion</span> <span m="747950">due</span> <span m="748320">to</span> <span m="748450">that</span> <span m="748650">recording</span> <span m="749080">system</span> <span m="749540">was</span> <span m="749700">removed.</span> <span m="750710">So</span> <span m="751070">I'd</span> <span m="751240">like</span> <span m="751540">to</span> <span m="751980">illustrate</span> <span m="752550">that</span> <span m="752990">as</span> <span m="753310">one</span> <span m="753480">example</span> <span m="754190">of</span> <span m="754330">some</span> <span m="754490">signal</span> <span m="754870">processing</span> <span m="755530">with</span> <span m="755700">an</span> <span m="755780">appropriate</span> <span m="756770">continuous-time</span> <span m="757630">system.</span> <span m="758790">And</span> <span m="759230">what</span> <span m="759450">you'll</span> <span m="759620">hear</span> <span m="760220">is</span> <span m="760790">a</span> <span m="761070">two-track</span> <span m="761850">recording.</span> <span m="763400">On</span> <span m="763510">the</span> <span m="763580">first</span> <span m="763920">track</span> <span m="764430">is</span> <span m="765210">the</span> <span m="765370">original,</span> <span m="766320">unrestored</span> <span m="767440">Caruso</span> <span m="767830">recording,</span> <span m="769000">and</span> <span m="769830">on</span> <span m="770130">the</span> <span m="770210">second</span> <span m="770620">track</span> <span m="771170">is</span> <span m="771480">the</span> <span m="771570">result</span> <span m="771970">of</span> <span m="772040">the</span> <span m="772130">restoration.</span> <span m="773280">And</span> <span m="773450">so</span> <span m="773720">as</span> <span m="773890">I</span> <span m="773960">switch</span> <span m="774320">back</span> <span m="774570">and</span> <span m="774690">forth</span> <span m="775210">from</span> <span m="775880">channel</span> <span m="776300">one</span> <span m="776770">to</span> <span m="776910">channel</span> <span m="777300">two,</span> <span m="778160">we'll</span> <span m="778300">be</span> <span m="778420">switching</span> <span m="778970">from</span> <span m="779600">the</span> <span m="779740">original</span> <span m="780770">to</span> <span m="780890">the</span> <span m="780980">restored.</span> </p>
+<p><span m="782280">We'll</span> <span m="782430">begin</span> <span m="782770">the</span> <span m="782880">tape</span> <span m="783540">by</span> <span m="783790">playing</span> <span m="784810">the</span> <span m="785230">original.</span> <span m="786330">And</span> <span m="787020">then,</span> <span m="787550">as</span> <span m="787810">it</span> <span m="787930">proceeds,</span> <span m="788460">we'll</span> <span m="788600">switch.</span> <span m="790170">So</span> <span m="790380">we'll</span> <span m="790530">begin</span> <span m="791380">on</span> <span m="791510">channel</span> <span m="791890">one.</span> </p>
+<p></p>
+<p><span m="799090">[MUSIC PLAYING, MUFFLED]</span> </p>
+<p><span m="799300">That's the</span> <span m="799400">original</span> <span m="799725">recording.</span> <span m="801640">And</span> <span m="801925">switch</span> <span m="802210">now to the processed.</span> </p>
+<p><span m="802600">[MUSIC PLAYING, CLEARER]</span> </p>
+<p><span m="811970">Now</span> <span m="812330">let's</span> <span m="812690">switch</span> <span m="813060">back,</span> <span m="816842">back to</span> <span m="817340">the</span> <span m="817440">original.</span> <span m="826770">Back</span> <span m="827060">to</span> <span m="827150">the</span> <span m="827250">restoration.</span> <span m="834670">And</span> <span m="835750">once</span> <span m="836000">again,</span> <span m="837160">back</span> <span m="837380">to</span> <span m="837490">the</span> <span m="837620">original.</span> </p>
+<p><span m="844880">And</span> <span m="845520">presumably</span> <span m="846390">and</span> <span m="846530">hopefully,</span> <span m="846940">what</span> <span m="847120">you</span> <span m="847240">heard</span> <span m="847870">was</span> <span m="848560">that</span> <span m="849250">in</span> <span m="849410">the</span> <span m="849500">restoration,</span> <span m="850430">in</span> <span m="850560">fact,</span> <span m="850890">a</span> <span m="850940">lot</span> <span m="851160">of</span> <span m="851250">the</span> <span m="851340">muffled</span> <span m="851940">characteristics</span> <span m="853210">of</span> <span m="853830">the</span> <span m="854120">original</span> <span m="854620">recording</span> <span m="855710">were</span> <span m="855830">compensated</span> <span m="856500">for</span> <span m="857190">or</span> <span m="857390">removed.</span> <span m="859470">Now</span> <span m="859930">one</span> <span m="860120">of</span> <span m="860220">the</span> <span m="860330">interesting</span> <span m="860800">things</span> <span m="861410">that</span> <span m="861570">happened,</span> <span m="862010">in</span> <span m="862100">fact,</span> <span m="862480">in</span> <span m="862550">the</span> <span m="862620">work</span> <span m="862960">that</span> <span m="863670">Professor</span> <span m="864200">Stockham</span> <span m="865060">did</span> <span m="865870">is</span> <span m="866140">that</span> <span m="866420">in</span> <span m="866550">the</span> <span m="866620">process</span> <span m="867140">of</span> <span m="867220">the</span> <span m="867310">restoration--</span> <span m="868060">and</span> <span m="868330">perhaps</span> <span m="868710">you</span> <span m="868860">heard</span> <span m="869140">this--</span> <span m="870160">in</span> <span m="870240">the</span> <span m="870310">process</span> <span m="870800">of</span> <span m="870880">the</span> <span m="870960">restoration,</span> <span m="872100">in</span> <span m="872240">fact,</span> <span m="872680">some</span> <span m="872960">of</span> <span m="873020">the</span> <span m="873110">background</span> <span m="873670">noise</span> <span m="874190">on</span> <span m="874330">the</span> <span m="874400">recording</span> <span m="875600">was</span> <span m="876230">emphasized.</span> <span m="877580">And</span> <span m="878390">so</span> <span m="878690">he</span> <span m="878810">processed</span> <span m="880280">the</span> <span m="880560">signal</span> <span m="880940">further</span> <span m="881600">in</span> <span m="881720">an</span> <span m="881860">attempt</span> <span m="882780">to</span> <span m="883310">remove</span> <span m="883720">that</span> <span m="883930">background</span> <span m="884490">noise.</span> </p>
+<p><span m="885350">And</span> <span m="885680">with</span> <span m="885800">that</span> <span m="886010">particular</span> <span m="886510">processing,</span> <span m="887120">the</span> <span m="887200">processing</span> <span m="887990">was</span> <span m="888250">very</span> <span m="888470">highly</span> <span m="889130">nonlinear.</span> <span m="891060">A</span> <span m="891120">very</span> <span m="891430">interesting</span> <span m="891850">thing</span> <span m="892090">happened,</span> <span m="892930">which</span> <span m="893280">was</span> <span m="894220">that</span> <span m="894690">not</span> <span m="894980">only</span> <span m="895680">in</span> <span m="895840">that</span> <span m="896050">processing</span> <span m="896990">was</span> <span m="897220">the</span> <span m="897310">background</span> <span m="897840">noise</span> <span m="898130">removed,</span> <span m="899060">but</span> <span m="899570">somewhat</span> <span m="900030">surprisingly,</span> <span m="901260">also</span> <span m="902030">the</span> <span m="902180">orchestra</span> <span m="902750">was</span> <span m="903050">removed.</span> <span m="903630">And</span> <span m="903970">let</span> <span m="904120">me</span> <span m="904230">just</span> <span m="904560">play</span> <span m="904790">that</span> <span m="905270">now</span> <span m="905780">as</span> <span m="906130">an</span> <span m="906210">example</span> <span m="907140">of</span> <span m="907530">some</span> <span m="907940">very</span> <span m="908240">sophisticated</span> <span m="909100">processing</span> <span m="909990">with</span> <span m="910160">a</span> <span m="910210">nonlinear</span> <span m="910770">system.</span> </p>
+<p><span m="911930">What</span> <span m="912120">you'll</span> <span m="912280">hear</span> <span m="912820">on</span> <span m="913060">channel</span> <span m="913430">one</span> <span m="914800">is</span> <span m="915310">the</span> <span m="915540">restoration</span> <span m="916630">as</span> <span m="917210">we</span> <span m="917515">had</span> <span m="917820">just</span> <span m="918080">played</span> <span m="918340">it.</span> <span m="919320">When I</span> <span m="919810">switch to</span> <span m="920300">channel two,</span> <span m="920790">it</span> <span m="921280">will</span> <span m="922260">be</span> <span m="922750">after</span> <span m="923180">the</span> <span m="923610">processing</span> <span m="924720">with an</span> <span m="925090">attempt</span> <span m="925590">to remove</span> <span m="926002">the</span> <span m="926414">orchestra</span> <span m="927650">and the</span> <span m="927986">background</span> <span m="928322">noise.</span> <span m="930060">Channel</span> <span m="930450">one</span> <span m="930670">now.</span> <span m="938696">And</span> <span m="939050">now</span> <span m="939470">the</span> <span m="939865">noise</span> <span m="940260">and</span> <span m="940737">orchestra</span> <span m="941214">removed.</span> <span m="944390">Back</span> <span m="944850">to</span> <span m="945331">channel</span> <span m="945812">one.</span> <span m="958460">And</span> <span m="959500">finally,</span> <span m="960380">once</span> <span m="960630">again,</span> <span m="961250">with</span> <span m="961300">the</span> <span m="961470">orchestra</span> <span m="961830">removed.</span> </p>
+<p><span m="972220">So</span> <span m="972730">that's</span> <span m="973010">an</span> <span m="973070">example</span> <span m="973930">of</span> <span m="974710">processing</span> <span m="975440">of</span> <span m="975670">a</span> <span m="975950">continuous-time</span> <span m="977010">signal</span> <span m="977520">with</span> <span m="977810">a</span> <span m="978580">corresponding</span> <span m="979280">continuous-time</span> <span m="980040">system.</span> <span m="981160">Now</span> <span m="981380">I'd</span> <span m="981560">like</span> <span m="981880">to</span> <span m="982480">illustrate</span> <span m="983100">an</span> <span m="983190">example</span> <span m="983962">of</span> <span m="984690">some</span> <span m="984900">processing</span> <span m="985630">on</span> <span m="985800">a</span> <span m="985870">discrete-time</span> <span m="986580">signal.</span> <span m="987600">And</span> <span m="987960">I'd</span> <span m="988040">like</span> <span m="988220">to</span> <span m="988320">do</span> <span m="988470">that</span> <span m="988720">in</span> <span m="988820">the</span> <span m="988900">context</span> <span m="989530">of</span> <span m="989640">the</span> <span m="989780">example</span> <span m="990195">that</span> <span m="990610">I</span> <span m="990730">showed</span> <span m="991040">before</span> <span m="991720">of</span> <span m="991860">a</span> <span m="991910">discrete-time</span> <span m="992550">signal,</span> <span m="993040">which</span> <span m="993260">was</span> <span m="994120">the</span> <span m="994320">Dow</span> <span m="994570">Jones</span> <span m="995130">Industrial</span> <span m="996280">weekly</span> <span m="996820">stock</span> <span m="997170">market</span> <span m="997470">index.</span> </p>
+<p><span m="998660">I</span> <span m="998800">had</span> <span m="999170">shown it</span> <span m="999580">before,</span> <span m="1000990">as</span> <span m="1001390">I've</span> <span m="1002300">shown</span> <span m="1002640">it</span> <span m="1002710">here</span> <span m="1003210">again,</span> <span m="1004480">over</span> <span m="1004810">a</span> <span m="1004880">period</span> <span m="1005550">of</span> <span m="1005770">slightly</span> <span m="1006200">more</span> <span m="1006480">than</span> <span m="1006650">a</span> <span m="1006700">year,</span> <span m="1007390">where</span> <span m="1008400">this</span> <span m="1008810">is</span> <span m="1009150">the</span> <span m="1009240">number</span> <span m="1009550">of</span> <span m="1009640">weeks</span> <span m="1010240">and</span> <span m="1010960">this</span> <span m="1011270">is</span> <span m="1011630">the</span> <span m="1012050">weekly</span> <span m="1012440">index.</span> <span m="1013630">And</span> <span m="1014460">to</span> <span m="1014990">illustrate</span> <span m="1016570">some</span> <span m="1016880">of</span> <span m="1017020">the</span> <span m="1017280">processing,</span> <span m="1018040">what</span> <span m="1018180">I'd</span> <span m="1018310">like</span> <span m="1018520">to</span> <span m="1018640">do</span> <span m="1019080">is</span> <span m="1019880">show</span> <span m="1020540">the</span> <span m="1020800">stock</span> <span m="1021180">market</span> <span m="1021460">index,</span> <span m="1022120">the</span> <span m="1022210">weekly</span> <span m="1022480">index,</span> <span m="1022810">over</span> <span m="1023020">a</span> <span m="1023060">much</span> <span m="1023310">longer</span> <span m="1024069">time</span> <span m="1024349">period,</span> <span m="1025319">in</span> <span m="1025470">particular,</span> <span m="1026450">the</span> <span m="1026760">weekly</span> <span m="1027180">index</span> <span m="1027750">over</span> <span m="1028390">a</span> <span m="1028510">10</span> <span m="1028760">year</span> <span m="1029069">period.</span> <span m="1030119">And</span> <span m="1031079">that's</span> <span m="1031339">what</span> <span m="1031470">I</span> <span m="1031530">show</span> <span m="1031859">here.</span> </p>
+<p><span m="1032290">So</span> <span m="1033339">what</span> <span m="1033500">this</span> <span m="1033710">covers</span> <span m="1034319">is</span> <span m="1034650">roughly</span> <span m="1035099">1927</span> <span m="1037290">to</span> <span m="1037500">1937.</span> <span m="1039329">And</span> <span m="1039920">in</span> <span m="1040069">this</span> <span m="1040300">case,</span> <span m="1040829">although</span> <span m="1041579">this</span> <span m="1041780">is</span> <span m="1041880">still</span> <span m="1042160">a</span> <span m="1042210">discrete-time</span> <span m="1042950">signal,</span> <span m="1043950">just</span> <span m="1044170">simply</span> <span m="1044490">for</span> <span m="1044619">the</span> <span m="1044720">purposes</span> <span m="1045460">of</span> <span m="1045609">display,</span> <span m="1046140">what</span> <span m="1046319">we've</span> <span m="1046510">done</span> <span m="1046980">is</span> <span m="1047440">to</span> <span m="1047670">essentially</span> <span m="1048180">connect</span> <span m="1048550">the</span> <span m="1048630">dots</span> <span m="1049660">and</span> <span m="1050480">draw</span> <span m="1050960">a</span> <span m="1051010">continuous</span> <span m="1051640">curve</span> <span m="1052020">through</span> <span m="1052200">the</span> <span m="1052300">points</span> <span m="1053230">so</span> <span m="1053520">that</span> <span m="1053840">this</span> <span m="1054170">picture</span> <span m="1054550">isn't</span> <span m="1054780">filled</span> <span m="1055070">up</span> <span m="1055230">with</span> <span m="1055330">a</span> <span m="1055380">lot</span> <span m="1055600">of</span> <span m="1055690">vertical</span> <span m="1056100">lines.</span> <span m="1057110">So</span> <span m="1057640">this</span> <span m="1057880">is</span> <span m="1058250">the</span> <span m="1058500">discrete-time</span> <span m="1059580">sequence</span> <span m="1060660">that</span> <span m="1060780">represents</span> <span m="1061640">the</span> <span m="1062050">weekly</span> <span m="1064070">Dow</span> <span m="1064230">Jones</span> <span m="1064600">Index</span> <span m="1065120">over</span> <span m="1065370">a</span> <span m="1065430">10</span> <span m="1065660">year</span> <span m="1065850">period.</span> </p>
+<p><span m="1066970">And</span> <span m="1067760">here,</span> <span m="1068110">by</span> <span m="1068330">the</span> <span m="1068440">way,</span> <span m="1068690">again,</span> <span m="1069240">is</span> <span m="1069920">the</span> <span m="1070690">crash</span> <span m="1071200">of</span> <span m="1071270">1929.</span> <span m="1073250">It's</span> <span m="1073430">interesting</span> <span m="1073910">to</span> <span m="1074050">note,</span> <span m="1074330">by</span> <span m="1074490">the</span> <span m="1074600">way,</span> <span m="1075550">that</span> <span m="1076310">actually</span> <span m="1076870">the</span> <span m="1076990">disaster</span> <span m="1077610">in</span> <span m="1077670">the</span> <span m="1077760">stock</span> <span m="1078160">market</span> <span m="1079040">wasn't</span> <span m="1079610">so</span> <span m="1079830">much</span> <span m="1080120">the</span> <span m="1080220">1929</span> <span m="1081090">crash</span> <span m="1082050">but</span> <span m="1082290">the</span> <span m="1082370">long</span> <span m="1082960">downward</span> <span m="1083650">trend</span> <span m="1084000">that</span> <span m="1084130">followed</span> <span m="1084490">that.</span> <span m="1084780">And</span> <span m="1084870">you</span> <span m="1085000">can</span> <span m="1085120">see</span> <span m="1085400">that</span> <span m="1085660">here</span> <span m="1086070">by</span> <span m="1087520">filtering</span> <span m="1088430">through,</span> <span m="1089310">by</span> <span m="1089550">eye,</span> <span m="1090290">the</span> <span m="1090430">rapid</span> <span m="1090880">variations</span> <span m="1092340">in</span> <span m="1092500">the</span> <span m="1092640">index.</span> <span m="1093220">And</span> <span m="1093360">what</span> <span m="1093540">you</span> <span m="1093640">see</span> <span m="1094160">is</span> <span m="1094440">this</span> <span m="1095040">smooth</span> <span m="1095560">downward</span> <span m="1096140">trend</span> <span m="1097160">followed,</span> <span m="1097860">eventually,</span> <span m="1098940">by</span> <span m="1100280">an</span> <span m="1100400">upward</span> <span m="1100820">trend.</span> </p>
+<p><span m="1103000">Now,</span> <span m="1103460">this</span> <span m="1103660">issue</span> <span m="1104190">of</span> <span m="1104760">looking</span> <span m="1105280">at</span> <span m="1105450">something</span> <span m="1106960">like</span> <span m="1107260">this,</span> <span m="1107490">looking</span> <span m="1107800">at</span> <span m="1107870">a</span> <span m="1107910">sequence,</span> <span m="1109070">and</span> <span m="1110040">following</span> <span m="1110940">the</span> <span m="1112090">smoother</span> <span m="1112570">parts</span> <span m="1112950">of</span> <span m="1113050">it,</span> <span m="1113180">namely</span> <span m="1113810">the</span> <span m="1113910">long</span> <span m="1114200">term</span> <span m="1114500">trends,</span> <span m="1115690">is,</span> <span m="1115950">in</span> <span m="1116090">fact,</span> <span m="1116890">something</span> <span m="1117550">that</span> <span m="1117790">is</span> <span m="1117950">done</span> <span m="1118150">quite</span> <span m="1118430">typically</span> <span m="1119320">with</span> <span m="1119700">economic</span> <span m="1120470">time</span> <span m="1120750">series</span> <span m="1121230">like</span> <span m="1121490">this.</span> <span m="1122325">And</span> <span m="1122740">in</span> <span m="1122880">particular,</span> <span m="1123690">what's</span> <span m="1123960">done</span> <span m="1124350">is</span> <span m="1124650">to</span> <span m="1124780">smooth</span> <span m="1125250">it,</span> <span m="1125640">or</span> <span m="1126790">average</span> <span m="1127560">over</span> <span m="1127910">some</span> <span m="1128160">time</span> <span m="1128460">period,</span> <span m="1129410">to</span> <span m="1129770">emphasize</span> <span m="1131200">the</span> <span m="1132290">slow</span> <span m="1132900">variations</span> <span m="1133820">and</span> <span m="1134010">de-emphasize</span> <span m="1134780">the</span> <span m="1134860">rapid</span> <span m="1135230">variations.</span> <span m="1136750">And</span> <span m="1136920">that,</span> <span m="1137180">in</span> <span m="1137310">fact,</span> <span m="1137810">is</span> <span m="1138010">processing</span> <span m="1139310">that</span> <span m="1139770">is</span> <span m="1140050">done</span> <span m="1140620">with</span> <span m="1140980">a</span> <span m="1141070">discrete-time</span> <span m="1141730">system.</span> </p>
+<p><span m="1142560">So</span> <span m="1143400">when</span> <span m="1143730">you</span> <span m="1143880">hear</span> <span m="1144070">referred</span> <span m="1144460">to,</span> <span m="1144590">let's</span> <span m="1144860">say,</span> <span m="1145370">in</span> <span m="1145980">stock</span> <span m="1146380">market</span> <span m="1146660">reports,</span> <span m="1147540">a</span> <span m="1148050">51-day</span> <span m="1148750">moving</span> <span m="1149120">average,</span> <span m="1150090">that,</span> <span m="1150320">in</span> <span m="1150430">fact,</span> <span m="1150840">is</span> <span m="1151070">processing</span> <span m="1152370">the</span> <span m="1152530">stock</span> <span m="1152900">market</span> <span m="1153230">index</span> <span m="1154360">with</span> <span m="1154870">a</span> <span m="1154990">particular</span> <span m="1155630">discrete-time</span> <span m="1156290">system.</span> <span m="1157460">The</span> <span m="1157570">result</span> <span m="1158130">of</span> <span m="1158300">doing</span> <span m="1158580">that</span> <span m="1159630">on</span> <span m="1160130">this</span> <span m="1160340">particular</span> <span m="1160850">example</span> <span m="1161960">generates</span> <span m="1162890">a</span> <span m="1163210">smooth</span> <span m="1163670">version</span> <span m="1164340">of</span> <span m="1164500">the</span> <span m="1164610">curve,</span> <span m="1165090">which</span> <span m="1165320">I</span> <span m="1165460">overlay</span> <span m="1166010">here.</span> <span m="1167040">And</span> <span m="1167800">the</span> <span m="1169050">overlay,</span> <span m="1170060">then,</span> <span m="1170570">is</span> <span m="1170900">really</span> <span m="1171470">attempting</span> <span m="1172090">to</span> <span m="1172210">track</span> <span m="1173180">the</span> <span m="1174330">smoother</span> <span m="1174880">variations</span> <span m="1175586">and</span> <span m="1175940">de-emphasize</span> <span m="1176980">the</span> <span m="1177050">more</span> <span m="1177240">rapid</span> <span m="1177600">variations.</span> </p>
+<p><span m="1179370">Let</span> <span m="1179570">me</span> <span m="1179700">just</span> <span m="1180280">slightly</span> <span m="1180730">offset</span> <span m="1181200">that</span> <span m="1181530">so</span> <span m="1181700">that</span> <span m="1182400">the</span> <span m="1182490">difference</span> <span m="1182930">stands</span> <span m="1183300">out</span> <span m="1183460">a</span> <span m="1183500">little</span> <span m="1183710">more.</span> <span m="1184680">And</span> <span m="1184960">so</span> <span m="1185140">here</span> <span m="1185720">you</span> <span m="1185910">see</span> <span m="1187140">what</span> <span m="1187500">is</span> <span m="1188090">the</span> <span m="1188210">original</span> <span m="1189570">weekly</span> <span m="1189990">index.</span> <span m="1191230">And</span> <span m="1191910">this</span> <span m="1192270">is</span> <span m="1192540">the</span> <span m="1192630">result</span> <span m="1193390">of</span> <span m="1193630">processing</span> <span m="1194350">that</span> <span m="1194590">sequence</span> <span m="1195810">with</span> <span m="1196280">an</span> <span m="1196380">appropriate</span> <span m="1197590">system</span> <span m="1199040">to</span> <span m="1199730">apply</span> <span m="1200150">smoothing.</span> <span m="1200990">And</span> <span m="1201410">in</span> <span m="1201520">fact,</span> <span m="1202020">what</span> <span m="1202200">it</span> <span m="1202310">is</span> <span m="1202660">is</span> <span m="1202830">a</span> <span m="1202900">moving</span> <span m="1203230">average.</span> <span m="1204110">And</span> <span m="1204270">so</span> <span m="1204410">here</span> <span m="1204670">again,</span> <span m="1205230">you</span> <span m="1205390">can</span> <span m="1205520">see,</span> <span m="1207070">in</span> <span m="1207220">the</span> <span m="1207310">smoother</span> <span m="1207770">curve,</span> <span m="1208330">this</span> <span m="1209310">general</span> <span m="1210400">downward</span> <span m="1210920">trend</span> <span m="1211420">up</span> <span m="1211590">until</span> <span m="1211870">this</span> <span m="1212070">time</span> <span m="1212330">period,</span> <span m="1212800">followed</span> <span m="1213490">by,</span> <span m="1214260">eventually,</span> <span m="1215100">a</span> <span m="1215170">recovery.</span> </p>
+<p><span m="1217620">Well,</span> <span m="1218040">we've</span> <span m="1218200">seen</span> <span m="1219440">an</span> <span m="1219540">example</span> <span m="1220530">with</span> <span m="1221940">a</span> <span m="1222300">continuous-time</span> <span m="1223110">signal,</span> <span m="1223560">the</span> <span m="1223730">Caruso</span> <span m="1224220">recording,</span> <span m="1224710">an</span> <span m="1224800">example</span> <span m="1225270">of</span> <span m="1225330">the</span> <span m="1225420">discrete-time</span> <span m="1226070">signal,</span> <span m="1227070">this</span> <span m="1227320">stock</span> <span m="1227610">market</span> <span m="1227930">index.</span> <span m="1228900">And</span> <span m="1229420">what</span> <span m="1229570">I'd</span> <span m="1229720">also</span> <span m="1230000">like</span> <span m="1230200">to</span> <span m="1230290">show</span> <span m="1230860">is</span> <span m="1232040">a</span> <span m="1232130">third</span> <span m="1232390">example,</span> <span m="1232900">which</span> <span m="1233180">is</span> <span m="1233810">the</span> <span m="1234110">result</span> <span m="1234520">of</span> <span m="1234960">some</span> <span m="1235180">processing</span> <span m="1235990">on</span> <span m="1236180">an</span> <span m="1236270">image,</span> <span m="1236630">in</span> <span m="1236710">particular</span> <span m="1237990">the</span> <span m="1238320">image</span> <span m="1238660">that</span> <span m="1238790">we</span> <span m="1238910">talked</span> <span m="1239220">about</span> <span m="1239480">before,</span> <span m="1239900">which</span> <span m="1240090">was</span> <span m="1240250">the</span> <span m="1240420">aerial</span> <span m="1240720">photograph</span> <span m="1241880">that</span> <span m="1242040">had</span> <span m="1242250">the</span> <span m="1242330">problem</span> <span m="1243040">of</span> <span m="1243420">some</span> <span m="1243650">cloud</span> <span m="1243990">cover.</span> </p>
+<p><span m="1245000">So</span> <span m="1245180">once</span> <span m="1245430">again,</span> <span m="1246880">what</span> <span m="1247020">we</span> <span m="1247140">see</span> <span m="1247550">here</span> <span m="1248050">is</span> <span m="1249480">the</span> <span m="1249550">original</span> <span m="1250250">aerial</span> <span m="1250570">photograph</span> <span m="1251910">with</span> <span m="1252200">the</span> <span m="1252290">cloud</span> <span m="1252670">cover.</span> <span m="1253770">And</span> <span m="1255150">some</span> <span m="1255370">processing</span> <span m="1256030">was</span> <span m="1256170">applied</span> <span m="1256610">to</span> <span m="1256730">this</span> <span m="1257100">using</span> <span m="1257460">a</span> <span m="1257520">system</span> <span m="1258260">which,</span> <span m="1259160">in</span> <span m="1259320">fact,</span> <span m="1259810">was</span> <span m="1260120">both</span> <span m="1260690">nonlinear</span> <span m="1261370">and</span> <span m="1262200">quote</span> <span m="1262520">"time-varying,"</span> <span m="1263350">or,</span> <span m="1263990">in</span> <span m="1264410">the</span> <span m="1264500">case</span> <span m="1265190">of</span> <span m="1265640">these</span> <span m="1265850">independent</span> <span m="1266280">variables,</span> <span m="1267360">we</span> <span m="1267740">would</span> <span m="1267960">refer</span> <span m="1268290">to</span> <span m="1268510">it</span> <span m="1268670">as</span> <span m="1268840">spatially-varying.</span> <span m="1270520">And</span> <span m="1271440">the</span> <span m="1271530">result</span> <span m="1272050">of</span> <span m="1272180">applying</span> <span m="1272680">that</span> <span m="1272910">processing</span> <span m="1274150">is</span> <span m="1274690">shown</span> <span m="1275330">in</span> <span m="1276100">the</span> <span m="1276500">adjoining</span> <span m="1277450">picture.</span> <span m="1278590">And</span> <span m="1278940">what</span> <span m="1279100">we</span> <span m="1279220">see</span> <span m="1279520">there</span> <span m="1280300">is</span> <span m="1281000">hopefully</span> <span m="1282570">a</span> <span m="1282860">reasonable</span> <span m="1283490">attempt</span> <span m="1284350">to</span> <span m="1284480">compensate</span> <span m="1285210">for</span> <span m="1285310">the</span> <span m="1285420">cloud</span> <span m="1285750">cover.</span> </p>
+<p><span m="1286890">And</span> <span m="1287400">this,</span> <span m="1287650">by</span> <span m="1287800">the</span> <span m="1287900">way,</span> <span m="1288130">was</span> <span m="1288850">some</span> <span m="1289130">work</span> <span m="1289700">that</span> <span m="1290090">was</span> <span m="1290490">done</span> <span m="1290820">by</span> <span m="1291080">Professor</span> <span m="1292090">Lim</span> <span m="1292520">at</span> <span m="1292640">MIT,</span> <span m="1293900">and</span> <span m="1294750">has</span> <span m="1295150">been</span> <span m="1295540">very</span> <span m="1295970">successful</span> <span m="1296800">type</span> <span m="1297050">of</span> <span m="1297150">processing</span> <span m="1298300">for</span> <span m="1298720">aerial</span> <span m="1299000">photographs.</span> <span m="1300160">I</span> <span m="1300250">should</span> <span m="1300460">say,</span> <span m="1300890">also,</span> <span m="1301890">that</span> <span m="1302650">this</span> <span m="1302880">particular</span> <span m="1303410">example</span> <span m="1303960">is</span> <span m="1304070">one</span> <span m="1304480">where,</span> <span m="1304930">although</span> <span m="1305230">the</span> <span m="1305360">original</span> <span m="1305750">signal</span> <span m="1306870">was</span> <span m="1307060">a</span> <span m="1307120">signal</span> <span m="1308020">that</span> <span m="1308430">is</span> <span m="1309670">continuous-time,</span> <span m="1310660">that</span> <span m="1310840">is,</span> <span m="1311230">the</span> <span m="1311370">independent</span> <span m="1311850">variables</span> <span m="1312620">are</span> <span m="1312790">continuous,</span> <span m="1313450">as</span> <span m="1313590">they</span> <span m="1313730">are</span> <span m="1313930">in</span> <span m="1313990">a</span> <span m="1314040">spatial,</span> <span m="1315360">aerial</span> <span m="1315680">photograph,</span> <span m="1316910">in</span> <span m="1317080">fact,</span> <span m="1317810">for</span> <span m="1317900">the</span> <span m="1317980">processing,</span> <span m="1319240">that</span> <span m="1319440">picture</span> <span m="1319800">was</span> <span m="1320000">first</span> <span m="1320520">converted</span> <span m="1321050">to</span> <span m="1321180">a</span> <span m="1321240">sequence</span> <span m="1322820">through</span> <span m="1322960">a</span> <span m="1323040">process</span> <span m="1323960">called</span> <span m="1324230">sampling,</span> <span m="1324740">which</span> <span m="1324920">we'll</span> <span m="1325050">be</span> <span m="1325170">talking</span> <span m="1325530">about</span> <span m="1325800">later.</span> <span m="1326620">And</span> <span m="1326800">then</span> <span m="1327260">the</span> <span m="1327360">processing,</span> <span m="1328220">in</span> <span m="1328340">fact,</span> <span m="1328800">was</span> <span m="1328980">done</span> <span m="1329180">on</span> <span m="1329310">a</span> <span m="1329380">digital</span> <span m="1329760">computer.</span> </p>
+<p><span m="1332890">Well,</span> <span m="1333860">these</span> <span m="1334150">then</span> <span m="1334520">are</span> <span m="1334960">some</span> <span m="1335190">examples</span> <span m="1336150">of</span> <span m="1337500">the</span> <span m="1337600">use</span> <span m="1338050">of</span> <span m="1338610">some</span> <span m="1339340">systems</span> <span m="1341190">to</span> <span m="1341780">process</span> <span m="1342550">some</span> <span m="1342790">signals,</span> <span m="1343910">both</span> <span m="1344750">in</span> <span m="1344930">continuous</span> <span m="1345490">time</span> <span m="1346080">and</span> <span m="1346210">discrete</span> <span m="1346690">time,</span> <span m="1347800">for</span> <span m="1348230">one-dimensional</span> <span m="1348940">signals</span> <span m="1350000">and</span> <span m="1350290">for</span> <span m="1350390">multi-dimensional</span> <span m="1351560">signals.</span> <span m="1354190">And</span> <span m="1355230">as</span> <span m="1355540">I've</span> <span m="1356060">referred</span> <span m="1356410">to</span> <span m="1356560">systems,</span> <span m="1357290">we've</span> <span m="1357880">thought</span> <span m="1358230">of</span> <span m="1358340">them</span> <span m="1358580">as</span> <span m="1359010">one</span> <span m="1359250">big</span> <span m="1359470">block</span> <span m="1360060">with</span> <span m="1360690">an</span> <span m="1360770">appropriate,</span> <span m="1361610">or</span> <span m="1361770">associated,</span> <span m="1362310">input</span> <span m="1362670">and</span> <span m="1362780">output.</span> <span m="1363990">And</span> <span m="1364710">as</span> <span m="1364950">we'll</span> <span m="1365070">be</span> <span m="1365190">getting</span> <span m="1365490">into</span> <span m="1366200">in</span> <span m="1366420">the</span> <span m="1366860">first</span> <span m="1367120">part</span> <span m="1367370">of</span> <span m="1367430">the</span> <span m="1367530">course,</span> <span m="1368670">very</span> <span m="1369000">often,</span> <span m="1369710">systems</span> <span m="1370460">are</span> <span m="1370880">interconnected</span> <span m="1371600">together</span> <span m="1372320">for</span> <span m="1372550">a</span> <span m="1372570">variety</span> <span m="1373120">of</span> <span m="1373220">reasons.</span> </p>
+<p><span m="1374100">Some</span> <span m="1374340">of</span> <span m="1374380">the</span> <span m="1374460">kinds</span> <span m="1374790">of</span> <span m="1375050">interconnections</span> <span m="1375700">that</span> <span m="1375830">we'll</span> <span m="1376010">talk</span> <span m="1376310">about</span> <span m="1377980">are</span> <span m="1379600">connecting</span> <span m="1380450">systems</span> <span m="1381290">in</span> <span m="1381780">what</span> <span m="1381910">are</span> <span m="1381990">called</span> <span m="1382300">series,</span> <span m="1382790">or</span> <span m="1382870">cascade</span> <span m="1383460">interconnections,</span> <span m="1385350">parallel</span> <span m="1386080">interconnections,</span> <span m="1388090">feedback</span> <span m="1389090">interconnections.</span> <span m="1389930">And</span> <span m="1390900">feedback</span> <span m="1391590">interconnections,</span> <span m="1392500">in</span> <span m="1392620">fact,</span> <span m="1393290">are</span> <span m="1393530">very</span> <span m="1393830">interesting,</span> <span m="1394590">very</span> <span m="1394920">important,</span> <span m="1395600">and</span> <span m="1395750">very</span> <span m="1395970">useful,</span> <span m="1396960">and</span> <span m="1397100">will</span> <span m="1397260">be</span> <span m="1397690">a</span> <span m="1397790">major</span> <span m="1398160">topic</span> <span m="1398900">toward</span> <span m="1399130">the</span> <span m="1399250">end</span> <span m="1399410">of</span> <span m="1399450">the</span> <span m="1399540">course.</span> </p>
+<p><span m="1401340">Feedback,</span> <span m="1402030">as</span> <span m="1403200">you</span> <span m="1403880">may</span> <span m="1404070">or</span> <span m="1404140">may</span> <span m="1404280">not</span> <span m="1404560">know,</span> <span m="1405430">comes</span> <span m="1405950">into</span> <span m="1406200">play</span> <span m="1406780">in</span> <span m="1407200">a</span> <span m="1407280">variety</span> <span m="1407630">of</span> <span m="1407980">situations,</span> <span m="1409390">for</span> <span m="1409570">example,</span> <span m="1410050">in</span> <span m="1410130">amplifier</span> <span m="1410740">design,</span> <span m="1411250">as</span> <span m="1411370">we'll</span> <span m="1411560">talk</span> <span m="1411850">about,</span> <span m="1413240">feedback</span> <span m="1414420">plays</span> <span m="1414740">an</span> <span m="1414810">important</span> <span m="1415270">role.</span> <span m="1416770">In</span> <span m="1418230">a</span> <span m="1418310">situation</span> <span m="1419150">where</span> <span m="1419350">you</span> <span m="1419500">have</span> <span m="1420210">a</span> <span m="1420470">basically</span> <span m="1420990">unstable</span> <span m="1421570">system,</span> <span m="1422310">feedback</span> <span m="1422840">is</span> <span m="1422980">often</span> <span m="1423290">used</span> <span m="1423820">to</span> <span m="1423930">stabilize</span> <span m="1424600">the</span> <span m="1424680">system.</span> <span m="1425320">And</span> <span m="1426340">feedback</span> <span m="1427500">interconnections</span> <span m="1427980">of</span> <span m="1428060">systems</span> <span m="1428530">in</span> <span m="1428600">that</span> <span m="1428840">sense</span> <span m="1429300">are</span> <span m="1429520">very</span> <span m="1429860">often</span> <span m="1430180">used</span> <span m="1430720">in</span> <span m="1431040">high</span> <span m="1431230">performance</span> <span m="1431820">aircraft,</span> <span m="1432800">which</span> <span m="1433020">are</span> <span m="1433150">inherently</span> <span m="1433670">unstable,</span> <span m="1434500">and</span> <span m="1434900">are</span> <span m="1435470">stabilized</span> <span m="1436250">through</span> <span m="1436440">this</span> <span m="1436830">kind</span> <span m="1437070">of</span> <span m="1437140">interconnection.</span> </p>
+<p><span m="1439770">Just</span> <span m="1440080">to</span> <span m="1440460">give</span> <span m="1440640">you</span> <span m="1440800">a</span> <span m="1440930">little</span> <span m="1441620">sense</span> <span m="1442090">of</span> <span m="1442250">this</span> <span m="1442850">without</span> <span m="1443450">going</span> <span m="1443760">into</span> <span m="1444240">any</span> <span m="1444470">of</span> <span m="1444530">the</span> <span m="1444610">details,</span> <span m="1445930">what</span> <span m="1446170">I'd</span> <span m="1446630">like</span> <span m="1447010">to</span> <span m="1447300">show</span> <span m="1447610">you</span> <span m="1448100">is</span> <span m="1448680">an</span> <span m="1448970">excerpt</span> <span m="1450390">from</span> <span m="1452120">a</span> <span m="1452610">lecture</span> <span m="1453280">that</span> <span m="1454160">we'll</span> <span m="1454360">be</span> <span m="1454490">seeing</span> <span m="1454960">toward</span> <span m="1455200">the</span> <span m="1455330">end</span> <span m="1455490">of</span> <span m="1455580">the</span> <span m="1455700">course</span> <span m="1456330">relating</span> <span m="1457090">to</span> <span m="1458210">the</span> <span m="1458590">analysis</span> <span m="1459120">of</span> <span m="1459210">feedback</span> <span m="1459690">systems</span> <span m="1460340">and</span> <span m="1460480">the</span> <span m="1460550">uses</span> <span m="1460930">of</span> <span m="1461010">feedback.</span> <span m="1462100">And</span> <span m="1462380">this</span> <span m="1462550">is</span> <span m="1462670">in</span> <span m="1462740">the</span> <span m="1462830">context</span> <span m="1463640">of</span> <span m="1464130">what's</span> <span m="1464430">referred</span> <span m="1464860">to</span> <span m="1465280">as</span> <span m="1465770">the</span> <span m="1465880">inverted</span> <span m="1466280">pendulum,</span> <span m="1467440">which</span> <span m="1467720">is</span> <span m="1468310">a</span> <span m="1468370">system</span> <span m="1468890">that's</span> <span m="1469130">basically</span> <span m="1469670">unstable,</span> <span m="1470150">and</span> <span m="1470630">feedback</span> <span m="1471730">interconnections</span> <span m="1472350">are</span> <span m="1472420">used</span> <span m="1472700">to</span> <span m="1472790">stabilize</span> <span m="1473470">it.</span> <span m="1474340">The</span> <span m="1474500">idea,</span> <span m="1475500">as</span> <span m="1475680">you'll</span> <span m="1475810">see</span> <span m="1476100">in</span> <span m="1476230">this</span> <span m="1477170">brief</span> <span m="1477580">clip,</span> <span m="1478450">is</span> <span m="1478870">that</span> <span m="1479310">there</span> <span m="1479720">is</span> <span m="1479900">a</span> <span m="1479990">cart</span> <span m="1480580">that's</span> <span m="1480800">moving</span> <span m="1481150">on</span> <span m="1481270">a</span> <span m="1481350">track</span> <span m="1482590">with</span> <span m="1483130">a</span> <span m="1483230">rod</span> <span m="1484040">that's</span> <span m="1484220">pivoted</span> <span m="1484680">at</span> <span m="1484780">the</span> <span m="1484860">base.</span> </p>
+<p><span m="1485880">And</span> <span m="1486120">so</span> <span m="1486290">that</span> <span m="1486550">system,</span> <span m="1487220">in</span> <span m="1487360">the</span> <span m="1487480">absence</span> <span m="1488200">of</span> <span m="1488620">anything,</span> <span m="1489330">is</span> <span m="1489500">unstable</span> <span m="1490360">in</span> <span m="1490500">that</span> <span m="1490640">the</span> <span m="1490720">rod</span> <span m="1491010">would</span> <span m="1491130">tend</span> <span m="1491350">to</span> <span m="1491615">fall.</span> <span m="1492390">And</span> <span m="1493330">as</span> <span m="1493620">we</span> <span m="1493720">go</span> <span m="1493910">into</span> <span m="1494160">in</span> <span m="1494250">detail</span> <span m="1494810">in</span> <span m="1494910">the</span> <span m="1494990">lecture</span> <span m="1495770">later,</span> <span m="1497030">we</span> <span m="1497160">use</span> <span m="1497510">feedback</span> <span m="1498620">to</span> <span m="1499270">position</span> <span m="1500010">the</span> <span m="1500120">cart</span> <span m="1500640">under</span> <span m="1500910">the</span> <span m="1501000">pendulum</span> <span m="1502080">to</span> <span m="1502210">balance</span> <span m="1502740">it.</span> <span m="1503680">And</span> <span m="1503880">in</span> <span m="1503960">fact,</span> <span m="1504450">that</span> <span m="1504630">balancing</span> <span m="1505400">can</span> <span m="1505530">be</span> <span m="1505650">done</span> <span m="1506150">even</span> <span m="1506730">when</span> <span m="1507580">we</span> <span m="1507730">modify</span> <span m="1508660">the</span> <span m="1508750">system</span> <span m="1509300">in</span> <span m="1509400">a</span> <span m="1509440">variety</span> <span m="1509930">of</span> <span m="1510040">ways,</span> <span m="1510560">as</span> <span m="1510690">you'll</span> <span m="1510820">see</span> <span m="1511040">in</span> <span m="1511160">this</span> <span m="1511360">clip.</span> <span m="1511970">So</span> <span m="1512460">let's</span> <span m="1512740">take</span> <span m="1512920">a</span> <span m="1512970">look</span> <span m="1513170">at</span> <span m="1513250">that,</span> <span m="1513760">remembering</span> <span m="1514580">that</span> <span m="1515160">this</span> <span m="1515370">is</span> <span m="1515550">just</span> <span m="1515850">a</span> <span m="1515900">brief</span> <span m="1516190">excerpt</span> <span m="1517170">from</span> <span m="1517650">a</span> <span m="1517730">longer</span> <span m="1518050">discussion.</span> </p>
+<p><span m="1519340">[VIDEO PLAYBACK]</span> </p>
+<p><span m="1519700">I</span> <span m="1519870">can</span> <span m="1520130">change</span> <span m="1520650">the</span> <span m="1521600">overall</span> <span m="1522060">system</span> <span m="1522810">even</span> <span m="1523100">further</span> <span m="1524500">by,</span> <span m="1525220">let's</span> <span m="1525460">say,</span> <span m="1525610">for</span> <span m="1525780">example,</span> <span m="1526850">pouring</span> <span m="1527210">a</span> <span m="1527280">liquid</span> <span m="1527650">in.</span> <span m="1528810">And</span> <span m="1529560">now,</span> <span m="1530340">let</span> <span m="1530530">me</span> <span m="1530650">also</span> <span m="1530940">comment</span> <span m="1531720">that I've</span> <span m="1531900">changed</span> <span m="1532350">the</span> <span m="1532470">physics</span> <span m="1532870">of</span> <span m="1533010">it a</span> <span m="1533120">little</span> <span m="1533330">bit</span> <span m="1533530">because</span> <span m="1535180">the</span> <span m="1535290">liquid</span> <span m="1535710">can</span> <span m="1536040">slosh</span> <span m="1536490">around</span> <span m="1536770">a</span> <span m="1536800">little</span> <span m="1537000">bit.</span> <span m="1537160">It</span> <span m="1537320">becomes</span> <span m="1537570">a</span> <span m="1537610">little</span> <span m="1537800">more</span> <span m="1538120">complicated</span> <span m="1538840">a</span> <span m="1538890">system,</span> <span m="1539880">but</span> <span m="1540070">as</span> <span m="1540170">you</span> <span m="1540290">can</span> <span m="1540430">see,</span> <span m="1541370">it</span> <span m="1541510">still</span> <span m="1542310">remains</span> <span m="1542770">balanced.</span> </p>
+<p><span m="1543080">[END VIDEO PLAYBACK]</span> </p>
+<p><span m="1545560">As</span> <span m="1545720">you'll</span> <span m="1545910">see</span> <span m="1546230">when</span> <span m="1546430">we</span> <span m="1546510">get</span> <span m="1546720">to</span> <span m="1546850">it,</span> <span m="1546980">by</span> <span m="1547140">the</span> <span m="1547240">way,</span> <span m="1547470">that</span> <span m="1548090">demonstration</span> <span m="1548730">was</span> <span m="1548870">a</span> <span m="1548920">lot</span> <span m="1549090">of</span> <span m="1549160">fun</span> <span m="1549400">to</span> <span m="1549480">do.</span> <span m="1551290">Now,</span> <span m="1551750">in</span> <span m="1552580">talking</span> <span m="1553080">about</span> <span m="1554030">signals</span> <span m="1554500">and</span> <span m="1554620">systems</span> <span m="1555250">as</span> <span m="1555380">we</span> <span m="1555490">go</span> <span m="1555820">through</span> <span m="1556090">the</span> <span m="1556200">course,</span> <span m="1557350">there</span> <span m="1557880">are</span> <span m="1558560">several</span> <span m="1559160">domains,</span> <span m="1559790">two</span> <span m="1560000">in</span> <span m="1560090">particular,</span> <span m="1561360">that</span> <span m="1561830">we</span> <span m="1562050">will</span> <span m="1562250">find</span> <span m="1562890">convenient</span> <span m="1563700">for</span> <span m="1564500">the</span> <span m="1564900">analysis</span> <span m="1565730">and</span> <span m="1565850">representation</span> <span m="1567240">of</span> <span m="1567400">signals</span> <span m="1568010">and</span> <span m="1568110">systems.</span> <span m="1570070">One</span> <span m="1570530">is</span> <span m="1571590">the</span> <span m="1572140">time</span> <span m="1572490">domain,</span> <span m="1573240">which</span> <span m="1573700">is</span> <span m="1574200">what</span> <span m="1575000">we</span> <span m="1575970">tend</span> <span m="1576310">to</span> <span m="1576440">think</span> <span m="1576750">of,</span> <span m="1577100">and</span> <span m="1577540">which</span> <span m="1577870">we</span> <span m="1578050">have kind of</span> <span m="1578700">been</span> <span m="1579100">focusing</span> <span m="1579700">on</span> <span m="1580150">in</span> <span m="1580890">the</span> <span m="1580970">discussion</span> <span m="1581910">so</span> <span m="1582190">far</span> <span m="1582480">in</span> <span m="1582540">this</span> <span m="1582760">lecture.</span> <span m="1583950">But</span> <span m="1584340">equally</span> <span m="1584790">important</span> <span m="1585430">is</span> <span m="1585880">what's</span> <span m="1586180">referred</span> <span m="1586640">to</span> <span m="1587530">as</span> <span m="1588210">the</span> <span m="1588890">frequency</span> <span m="1589450">domain</span> <span m="1590940">as</span> <span m="1591440">a</span> <span m="1591540">representation</span> <span m="1593120">for</span> <span m="1593410">signals,</span> <span m="1594220">and</span> <span m="1594830">as</span> <span m="1595090">a</span> <span m="1595150">means</span> <span m="1595440">for</span> <span m="1595560">analysis</span> <span m="1595935">for</span> <span m="1596310">systems.</span> <span m="1597630">And</span> <span m="1598140">in</span> <span m="1598260">the</span> <span m="1598340">context</span> <span m="1599160">of</span> <span m="1599610">the</span> <span m="1599720">frequency</span> <span m="1600210">domain</span> <span m="1600600">representation,</span> <span m="1602010">some</span> <span m="1602370">of</span> <span m="1602670">the</span> <span m="1602910">kinds</span> <span m="1603290">of</span> <span m="1603490">ideas</span> <span m="1604000">and</span> <span m="1604110">topics</span> <span m="1604640">that</span> <span m="1604750">we'll</span> <span m="1604910">be</span> <span m="1605080">exploring</span> <span m="1606240">are</span> <span m="1606600">the</span> <span m="1606740">Fourier</span> <span m="1607250">Transform,</span> <span m="1609000">and</span> <span m="1609800">the</span> <span m="1610270">Laplace</span> <span m="1610820">Transform,</span> <span m="1612430">and</span> <span m="1613510">a</span> <span m="1614330">discrete-time</span> <span m="1615050">counterpart</span> <span m="1615800">of</span> <span m="1615930">the</span> <span m="1616060">Laplace</span> <span m="1616420">Transform,</span> <span m="1617080">which</span> <span m="1617290">is</span> <span m="1617440">the</span> <span m="1617520">z-Transform.</span> </p>
+<p><span m="1619140">The</span> <span m="1619330">Fourier</span> <span m="1619720">Transform</span> <span m="1620290">discussion</span> <span m="1621390">we'll</span> <span m="1621570">get</span> <span m="1621750">into</span> <span m="1622080">fairly</span> <span m="1622530">early</span> <span m="1622830">in</span> <span m="1622920">the</span> <span m="1623030">course.</span> <span m="1623990">And</span> <span m="1624670">the</span> <span m="1624960">Laplace</span> <span m="1625430">Transform</span> <span m="1626070">and</span> <span m="1626160">z-Transform</span> <span m="1627490">represent</span> <span m="1628110">extensions</span> <span m="1628990">of</span> <span m="1629120">the</span> <span m="1629210">Fourier</span> <span m="1629640">transform,</span> <span m="1630520">and</span> <span m="1630920">we'll</span> <span m="1631080">be</span> <span m="1631200">getting</span> <span m="1631530">into</span> <span m="1632150">that</span> <span m="1632620">later</span> <span m="1632930">in</span> <span m="1633010">the</span> <span m="1633090">course.</span> </p>
+<p><span m="1634520">Just</span> <span m="1635190">initially</span> <span m="1635940">to</span> <span m="1636070">think</span> <span m="1636330">about</span> <span m="1636920">the</span> <span m="1637050">time</span> <span m="1637320">domain</span> <span m="1637910">and</span> <span m="1638050">frequency</span> <span m="1638550">domain,</span> <span m="1640010">you</span> <span m="1640150">might</span> <span m="1640400">think,</span> <span m="1640610">for</span> <span m="1640740">example,</span> <span m="1641470">of</span> <span m="1641610">a</span> <span m="1641670">note</span> <span m="1642130">being</span> <span m="1642410">played.</span> <span m="1643490">And</span> <span m="1644150">the</span> <span m="1644740">time-domain</span> <span m="1645290">representation</span> <span m="1646150">would</span> <span m="1646370">be</span> <span m="1647090">how</span> <span m="1648800">the</span> <span m="1650880">sound</span> <span m="1651280">pressure,</span> <span m="1651720">as</span> <span m="1651820">a</span> <span m="1651880">function</span> <span m="1652250">of</span> <span m="1652350">time,</span> <span m="1653070">would</span> <span m="1653270">change.</span> <span m="1654330">And</span> <span m="1654670">the</span> <span m="1654740">frequency-domain</span> <span m="1655610">representation</span> <span m="1656770">would</span> <span m="1657560">correspond</span> <span m="1658620">to</span> <span m="1658780">a</span> <span m="1658830">representation</span> <span m="1659920">of</span> <span m="1660220">the</span> <span m="1660440">frequency</span> <span m="1660960">content</span> <span m="1661890">of</span> <span m="1662050">the</span> <span m="1662140">note.</span> </p>
+<p><span m="1663440">And,</span> <span m="1663830">in</span> <span m="1663940">fact,</span> <span m="1664260">what</span> <span m="1664380">I'd</span> <span m="1664490">like</span> <span m="1664670">to</span> <span m="1664770">do</span> <span m="1665000">is</span> <span m="1665480">illustrate</span> <span m="1666050">that</span> <span m="1666540">and</span> <span m="1666720">those</span> <span m="1666950">two</span> <span m="1667110">domains</span> <span m="1667550">simultaneously</span> <span m="1669550">by</span> <span m="1670300">playing</span> <span m="1671010">a</span> <span m="1671720">glockenspiel</span> <span m="1672750">note.</span> <span m="1673370">What</span> <span m="1673650">you'll</span> <span m="1673800">hear</span> <span m="1674360">is</span> <span m="1675210">the</span> <span m="1675330">note</span> <span m="1675890">repeated</span> <span m="1676520">several</span> <span m="1676920">times</span> <span m="1677300">over.</span> <span m="1678220">And</span> <span m="1678640">at</span> <span m="1678730">the</span> <span m="1678810">same</span> <span m="1679170">time,</span> <span m="1679820">you'll</span> <span m="1679970">see</span> <span m="1680660">two</span> <span m="1680830">displays,</span> <span m="1682060">one</span> <span m="1682280">on</span> <span m="1682390">the</span> <span m="1682490">left</span> <span m="1682940">representing</span> <span m="1683860">the</span> <span m="1684120">time</span> <span m="1684420">domain</span> <span m="1685440">display</span> <span m="1685870">a</span> <span m="1685950">representation</span> <span m="1686760">of</span> <span m="1686840">the</span> <span m="1686920">signal,</span> <span m="1687810">and</span> <span m="1687950">the</span> <span m="1688020">one</span> <span m="1688220">on</span> <span m="1688320">the</span> <span m="1688400">right</span> <span m="1688820">representing</span> <span m="1689690">the</span> <span m="1689780">frequency</span> <span m="1690280">domain.</span> </p>
+<p><span m="1691650">So</span> <span m="1692110">let's</span> <span m="1692590">look</span> <span m="1692850">at</span> <span m="1692960">that.</span> <span m="1693350">And</span> <span m="1693920">you'll</span> <span m="1694090">hear</span> <span m="1694390">the</span> <span m="1694520">note</span> <span m="1694910">and</span> <span m="1695230">simultaneously</span> <span m="1696130">see</span> <span m="1696360">these</span> <span m="1696570">two</span> <span m="1696750">displays.</span> <span m="1701080">So</span> <span m="1701150">there's</span> <span m="1701380">the</span> <span m="1701480">note</span> <span m="1701980">on</span> <span m="1702060">the</span> <span m="1702140">left,</span> <span m="1703710">the</span> <span m="1703920">time</span> <span m="1704520">waveform.</span> <span m="1705850">And</span> <span m="1706010">on</span> <span m="1706140">the</span> <span m="1706220">right,</span> <span m="1707400">what</span> <span m="1707620">we</span> <span m="1707780">see</span> <span m="1708410">is</span> <span m="1708880">the</span> <span m="1709070">frequency</span> <span m="1709590">content,</span> <span m="1710230">in particular,</span> <span m="1712060">indicating</span> <span m="1712650">the</span> <span m="1712740">fact</span> <span m="1713035">that</span> <span m="1713330">there</span> <span m="1714200">are</span> <span m="1714350">several</span> <span m="1714900">harmonic</span> <span m="1715440">lines</span> <span m="1715860">in</span> <span m="1715960">the</span> <span m="1716060">tone.</span> </p>
+<p><span m="1734540">Well,</span> <span m="1736210">what</span> <span m="1736380">I've</span> <span m="1736540">gone</span> <span m="1736820">through</span> <span m="1738160">in</span> <span m="1738710">this</span> <span m="1738940">lecture</span> <span m="1739330">represents</span> <span m="1740200">a</span> <span m="1740410">brief</span> <span m="1740770">overview</span> <span m="1741870">of</span> <span m="1742170">signals</span> <span m="1742650">and</span> <span m="1742750">systems.</span> <span m="1744450">And</span> <span m="1744940">beginning</span> <span m="1745330">with</span> <span m="1745490">the</span> <span m="1745560">next</span> <span m="1745840">lecture,</span> <span m="1746420">we</span> <span m="1746790">will</span> <span m="1747030">be</span> <span m="1747440">much</span> <span m="1747790">more</span> <span m="1748340">specific</span> <span m="1749200">and</span> <span m="1749390">precise,</span> <span m="1750920">first</span> <span m="1751530">discussing</span> <span m="1752180">some</span> <span m="1752360">basic</span> <span m="1752790">signals,</span> <span m="1753950">and</span> <span m="1754150">then</span> <span m="1754550">talking</span> <span m="1754970">about</span> <span m="1755360">systems,</span> <span m="1756130">and</span> <span m="1756510">system</span> <span m="1756880">properties,</span> <span m="1757660">and</span> <span m="1757790">how</span> <span m="1757940">to</span> <span m="1758080">exploit</span> <span m="1758550">them.</span> <span m="1760860">As</span> <span m="1761030">one</span> <span m="1761590">final</span> <span m="1761940">comment</span> <span m="1762480">that</span> <span m="1762640">I'd</span> <span m="1763050">like</span> <span m="1763440">to</span> <span m="1764020">make</span> <span m="1764280">in</span> <span m="1764380">this</span> <span m="1764610">lecture,</span> <span m="1766890">I'd</span> <span m="1767020">like</span> <span m="1767330">to</span> <span m="1767710">emphasize</span> <span m="1769470">at</span> <span m="1769730">the</span> <span m="1770030">outset</span> <span m="1771130">that</span> <span m="1772120">the</span> <span m="1772560">taped</span> <span m="1773280">lectures</span> <span m="1774640">represent</span> <span m="1775230">only</span> <span m="1775740">one</span> <span m="1775990">component</span> <span m="1776830">of</span> <span m="1776990">the</span> <span m="1777110">course.</span> <span m="1778180">And</span> <span m="1778780">equally</span> <span m="1779230">important</span> <span m="1780040">will</span> <span m="1780260">be</span> <span m="1781050">both</span> <span m="1781550">the</span> <span m="1781650">textbook</span> <span m="1782440">and</span> <span m="1782620">the</span> <span m="1782690">video</span> <span m="1783020">course</span> <span m="1783360">manual.</span> </p>
+<p><span m="1784670">In</span> <span m="1784810">particular,</span> <span m="1786170">it's</span> <span m="1786370">important</span> <span m="1787050">not</span> <span m="1787260">only</span> <span m="1787940">to</span> <span m="1788490">be</span> <span m="1788650">viewing</span> <span m="1789020">the</span> <span m="1789140">tapes,</span> <span m="1789970">but</span> <span m="1790470">simultaneously,</span> <span m="1791760">or</span> <span m="1793640">in</span> <span m="1793780">conjunction</span> <span m="1794370">with</span> <span m="1794570">that,</span> <span m="1795470">doing</span> <span m="1795710">the</span> <span m="1795810">appropriate</span> <span m="1796330">reading</span> <span m="1796880">in</span> <span m="1797020">the</span> <span m="1797120">textbook</span> <span m="1797880">and</span> <span m="1798710">also</span> <span m="1799510">working</span> <span m="1799920">through</span> <span m="1800100">the</span> <span m="1800180">problems</span> <span m="1801400">carefully</span> <span m="1802310">in</span> <span m="1802430">the</span> <span m="1802500">video</span> <span m="1802830">course</span> <span m="1803160">manual.</span> <span m="1804940">In</span> <span m="1805060">a</span> <span m="1805130">course</span> <span m="1805450">like</span> <span m="1805690">this,</span> <span m="1806150">you</span> <span m="1807030">basically</span> <span m="1807560">only</span> <span m="1807800">get</span> <span m="1807980">out</span> <span m="1808170">of</span> <span m="1808260">it</span> <span m="1808830">as</span> <span m="1808990">much</span> <span m="1809230">as</span> <span m="1809320">you</span> <span m="1809440">put</span> <span m="1809650">into</span> <span m="1810020">it.</span> <span m="1810630">The</span> <span m="1810760">hope</span> <span m="1811040">is</span> <span m="1811620">that</span> <span m="1812220">if</span> <span m="1812490">you</span> <span m="1812620">put</span> <span m="1813330">the</span> <span m="1813940">right</span> <span m="1814180">amount</span> <span m="1814430">of</span> <span m="1814520">time</span> <span m="1814830">and</span> <span m="1814900">effort</span> <span m="1815180">into</span> <span m="1815580">it,</span> <span m="1816220">you'll</span> <span m="1816390">find</span> <span m="1816840">the</span> <span m="1816940">course</span> <span m="1817400">to</span> <span m="1817500">be</span> <span m="1818030">educational</span> <span m="1818910">and</span> <span m="1819030">interesting.</span> <span m="1819720">And</span> <span m="1819870">I</span> <span m="1819930">certainly</span> <span m="1820320">hope</span> <span m="1820560">that</span> <span m="1821060">that</span> <span m="1821240">will</span> <span m="1821330">be</span> <span m="1821470">the</span> <span m="1821580">case.</span> <span m="1822250">Thank</span> <span m="1822480">you.</span> </p>
+</div>
+        <div id="vid_transcript" itemprop="description" class="tabContent hide">
+<h2 class="subhead">Free Downloads</h2>
+<h3 class="subsubhead">Video</h3>
+<ul>
+<li>iTunes U (<a href="http://itunes.apple.com/us/itunes-u/lecture-1-introduction/id458320213?i=113398881">MP4 - 66MB</a>)</li>
+<li>Internet Archive (<a href="http://archive.org/download/MITRES.6.007S11/MITRES_6-007S11lec01_300k.mp4">MP4 - 66MB</a>)</li>
+</ul>
+<br>
+<h3 class="subsubhead">Caption</h3>
+<ul>
+<li>English-US (<a href="../../../contents/video-lectures/lecture-1-introduction/KJnAy6hzetw.srt">SRT</a>)</li>
+</ul>
+</div>
+    
+   </div>  
+
+
+
+      					 
+        <div class="" id="parent-fieldname-bottom_html_area">
+            
+            
+        </div>
+    
+               </main><!--Course_inner_media tag close -->
+           		</div>
+<!--Course_wrapper tag close -->
+            </div>
+<!--left tag close -->
+            <aside id="right">
+                <!--Begin Right Portion -->
+                    <div>
+    
+
+
+
+</div>
+
+                	<div>
+    
+
+
+
+</div>
+
+
+        <div class="" id="parent-fieldname-rsi_top_html_area">
+            
+            
+        </div>
+    
+
+<!-- RSI google ad space-->
+
+
+
+<div id="google_ads">    
+    <script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+    <script type="text/javascript">var googletag = googletag || {}; googletag.cmd = googletag.cmd || [];</script>
+    <script type="text/javascript">
+googletag.cmd.push(function() {googletag.defineSlot('/1064917/VIDEO_INDIVIDUAL_SLOT_A_DL', [[300, 250], [300, 300], [180, 200], [180, 150], [160, 600]], 'VIDEO_INDIVIDUAL_SLOT_A_DL').addService(googletag.pubads());googletag.defineSlot('/1064917/VIDEO_INDIVIDUAL_SLOT_B_DL', [[300, 250], [300, 300], [180, 200], [180, 150], [160, 600]], 'VIDEO_INDIVIDUAL_SLOT_B_DL').addService(googletag.pubads());googletag.defineSlot('/1064917/VIDEO_INDIVIDUAL_SLOT_C_DL', [[300, 250], [300, 300], [180, 200], [180, 150], [160, 600]], 'VIDEO_INDIVIDUAL_SLOT_C_DL').addService(googletag.pubads());
+googletag.pubads().enableSingleRequest();
+ googletag.enableServices();
+});</script>
+    <script language="javascript" type="text/javascript">
+googletag.cmd.push(function() {googletag.pubads().set("TYPE","HOUSE");googletag.pubads().set("DEPARTMENT","RES");googletag.pubads().set("CRS_BEG2","6-");googletag.pubads().set("CRS_END","007");googletag.pubads().set("SESSION","S");googletag.pubads().set("YEAR","11");})
+</script>
+    
+    <div id="VIDEO_INDIVIDUAL_SLOT_A_DL">
+    	<script>googletag.cmd.push(function() { googletag.display('VIDEO_INDIVIDUAL_SLOT_A_DL'); });</script>
+    </div>
+    <div id="VIDEO_INDIVIDUAL_SLOT_B_DL">
+    	<script>googletag.cmd.push(function() { googletag.display('VIDEO_INDIVIDUAL_SLOT_B_DL'); });</script>
+    </div>
+    <div id="VIDEO_INDIVIDUAL_SLOT_C_DL">
+    	<script>googletag.cmd.push(function() { googletag.display('VIDEO_INDIVIDUAL_SLOT_C_DL'); });</script>
+    </div>
+</div>
+
+<!-- End RSI ads--> 
+
+
+<div>
+    
+
+
+
+</div>
+
+            </aside><!--Right div close -->
+            <div class="clear"></div>
+        </div>
+<!--grid tag close -->
+      </div>
+		
+		<footer id="bottom">
+			<div id="grid">
+				
+<div id="portletwrapper-6f63772e626f74746f6d706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d666f6f746572" class="portletWrapper kssattr-portlethash-6f63772e626f74746f6d706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d666f6f746572">
+<div class="portletStaticText portlet-static-site-footer"><div id="footer">
+<nav aria-label="Footer">     <nav id="foot-c1" class="grid_2 alpha" aria-labelledby="f-find-courses">       <span class="footer" id="f-find-courses" aria-hidden="true">Find Courses</span>
+<ul class="foot-bullet" role="presentation">
+    <li><a href="https://ocw-origin.odl.mit.edu/courses/find-by-topic/">Find by Topic</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/courses/find-by-number/">Find by Course Number</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/courses/find-by-department/">Find by Department</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/courses/new-courses/">New Courses</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/courses/most-visited-courses/">Most Visited Courses</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/courses/ocw-scholar/">OCW Scholar Courses</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/courses/audio-video-courses/">Audio/Video Courses</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/courses/online-textbooks/">Online Textbooks</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/courses/instructor-insights/">Instructor Insights</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/resources/">Supplemental Resources</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/courses/mitx-related-courseware/">MITx &amp; Related OCW Courses</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/courses/mit-open-learning-library/">MIT Open Learning Library</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/courses/translated-courses/">Translated Courses</a></li>
+</ul>
+</nav>
+<div id="foot-c2" class="grid_2"><nav aria-labelledby="f-for-educators">         <span id="f-for-educators" class="footer" aria-hidden="true">For Educators</span>
+<ul class="foot-bullet" role="presentation">
+    <li><a href="https://ocw-origin.odl.mit.edu/educator/chalk-radio-podcast/">Chalk Radio Podcast</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/educator/">OCW Educator Portal </a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/courses/instructor-insights/">Instructor Insights by Department</a></li>
+    <li><a href="https://openlearning.mit.edu/campus/digital-innovations/" aria-label="External Link: Residential Digital Innovations">Residential Digital Innovations </a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/high-school/">OCW Highlights for High School</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/educator/additional-resources/">Additional Resources</a></li>
+</ul>
+</nav></div>
+<nav class="grid_2" id="foot-c3" aria-labelledby="f-donate">       <span id="f-donate" class="footer" aria-hidden="true">Give Now</span>
+<ul class="foot-bullet" role="presentation">
+    <li><a href="https://ocw-origin.odl.mit.edu/give/">Make a Donation</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/give/why-give/">Why Give?</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/give/our-supporters/">Our Supporters</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/give/other-ways-to-contribute/">Other Ways to Contribute</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/support/">Become a Corporate Sponsor</a></li>
+</ul>
+</nav>
+<div class="grid_2" id="foot-c4">
+<nav aria-labelledby="f-about">         <span id="f-about" class="footer" aria-hidden="true">About</span>
+<ul class="foot-bullet" role="presentation">
+    <li><a href="https://ocw-origin.odl.mit.edu/about/">About OpenCourseWare</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/about/site-statistics/">Site Statistics</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/about/ocw-stories/">OCW Stories</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/about/newsletter/">News</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/about/press-releases/">Press Releases</a></li>
+</ul>
+</nav><!--about-->       <nav aria-labelledby="f-tools">         <span id="f-tools" class="footer" aria-hidden="true">Tools</span>
+<ul class="foot-bullet" role="presentation">
+    <li><a href="https://ocw-origin.odl.mit.edu/help/">Help &amp; FAQs</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/about/contactus">Contact Us</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/help/site-map/">Site Map</a></li>
+    <li><a href="../../../common/terms/index.htm">Privacy &amp; Terms of Use</a></li>
+    <li><a href="https://ocw-origin.odl.mit.edu/help/rss/">RSS Feeds</a></li>
+</ul>
+</nav><!--tools-->
+</div>
+</nav> <aside style="min-height: 289px;" aria-labelledby="f-our-corporate-supporters" class="grid_4 omega" id="foot-c5">           <span aria-hidden="true" class="footer" id="f-our-corporate-supporters">Our Corporate Supporters</span>           <!-- HOME_CORP_LOGO_1 -->
+<div id="div-gpt-ad-1388181177156-0" class="sponsors_google_ads_even"><script type="text/javascript">
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-0'); });
+            </script></div>
+<!-- HOME_CORP_LOGO_2 -->
+<div id="div-gpt-ad-1388181177156-1" class="sponsors_google_ads_odd"><script type="text/javascript">
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-1'); });
+            </script></div>
+<!-- HOME_CORP_LOGO_3 -->
+<div id="div-gpt-ad-1388181177156-2" class="sponsors_google_ads_even"><script type="text/javascript">
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-2'); });
+            </script></div>
+<!-- HOME_CORP_LOGO_4 -->
+<div id="div-gpt-ad-1388181177156-3" class="sponsors_google_ads_odd"><script type="text/javascript">
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-3'); });
+            </script></div>
+<!-- HOME_CORP_LOGO_5 -->
+<div id="div-gpt-ad-1388181177156-4" class="sponsors_google_ads_even"><script type="text/javascript">
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-4'); });
+              </script></div>
+<!-- HOME_CORP_LOGO_6 -->
+<div id="div-gpt-ad-1388181177156-5" class="sponsors_google_ads_odd"><script type="text/javascript">
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-5'); });
+              </script></div>
+</aside>
+<div class="grid_12 alpha omega" itemprop="publisher" itemscope="" itemtype="http://schema.org/CollegeOrUniversity">
+<h4 class="footer" style="border-top: thin solid #d5c9ba; padding-top: 10px; margin-bottom: 10px;">About <span itemprop="name">MIT OpenCourseWare</span>
+</h4>
+<p style="color: #999; font-size: 1em; line-height: 1.5em; margin-top: 10px;" itemprop="description">MIT OpenCourseWare makes the materials used in the teaching of almost all of MIT's subjects available on the Web, free of charge. With more than 2,400 courses available, OCW is delivering on the promise of open sharing of knowledge. <a href="http://ocw.mit.edu/about/">Learn more »</a></p>
+</div>
+<div id="foot-copy" class="grid_12 alpha omega" style="border-top: none;">
+<a href="http://web.mit.edu"><img src="../../../common/images/logo_mit.png" alt="Massachusetts Institute of Technology logo and name." style="width: 195; height: 44;"></a><a href="http://odl.mit.edu"><img src="https://ocw-origin.odl.mit.edu/images/logo_odl.png" alt="MIT Office of Digital Learning logo and name." style="width: 289; height: 54; vertical-align: top;"></a><a href="http://www.oeconsortium.org/"><img src="https://ocw-origin.odl.mit.edu/images/logo_oec.png" alt="Open Education Consortium logo." style="width: 219px; height: 59px; vertical-align: top;"></a><a rel="license" itemprop="useRightsUrl" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="../../../common/images/cc_by-nc-sa.png" alt="Creative Commons logo with terms BY-NC-SA." style="width: 126px; height: 44px; margin-right: 0; margin-left: 13px;"></a>
+<p class="copyright">© 2001–2018<br>
+Massachusetts Institute of Technology</p>
+<p style="font-size: 0.9em; margin-bottom: 15px;">Your use of the MIT OpenCourseWare site and materials is subject to our <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">Creative Commons License</a> and other <a href="../../../common/terms/index.htm" rel="cc:morePermissions">terms of use</a>.</p>
+</div>
+</div></div>
+
+</div>
+
+
+
+
+
+                
+			</div> <!-- bottom grid end -->
+		</footer><!-- footer bottom end -->
+
+
+   </body>
+ </html>

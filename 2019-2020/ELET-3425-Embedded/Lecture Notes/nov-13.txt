@@ -1,0 +1,45 @@
+###############################################################################
+#   Chapter 6
+###############################################################################
+
+- Time interfacing Continued
+
+- Output (Periodic Timer)
+    - We can configure the timer as 16 bit or 24 bits with a prescaler
+
+    - we load the timer with a constant value
+    - when the timer reachest the value we loaded into it
+        - a trigger flag is set
+        - the output pin for the timer is inverted
+
+
+Example: Design a system that generates a 50% duty cycle square wave with a frequency of 533KHz
+
+    - we load the system with a start value
+        - in this case we load the start value register with 0xFFFF
+
+    - we load the timer with a "constant" compare value
+        - in this case we load that register with the value 0xFFF7
+
+    - we enable the counter
+
+    - the counter continues to count down by one each clock cycle
+
+    - when the value of the counter reaches the constant value we loaded
+        - it will change the value of the output (from 1 to 0 or 0 to 1), and then reload the
+          initial value
+
+
+Example: Timer with frequency of 100KHz
+    - Relationship between clock speed and desired speed:
+        (8*10**6)/(100*10**3) = 80.0
+    - The  frequency of our produced output is 80 times less than the clock
+    - figure out how many counts before we switch the value (should b e half)
+        0xffff - 40 = 65495 = 0xffd7
+
+    - This is the value of our count constant then
+
+
+- The prescale register (value we compare the current value of the timer against) is called the
+  MATCH register
+    TIMER0_TAMATCH_R

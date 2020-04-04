@@ -1,0 +1,131 @@
+Note on complex Numbers
+    e^(j * :theta:) = cos(:theta:) + j * sin(:theta:)
+
+    cos(:theta:) = 1/2 * (e^(j * :theta:) + e^(-j * :theta:))
+    sin(:theta:) = 1/2 * (e^(j * :theta:) - e^(-j * :theta:))
+
+Chapter 1, p. 1
+Section 2.0, Introduction, p. 7
+Section 2.1, Signals, pp. 7-12
+
+#######################################
+# Chapter 1
+#######################################
+1.0 Introduction
+
+1.1 Continuous and Discrete Time Signals
+    1.1.1 Examples and Mathematical Representation
+        - Signals are represented mathematically as functions of one or more independent variables
+
+        - For continuous time signals
+            - we use the independent variable t
+            - we use circular parenthesis
+
+        - For discrete time signals
+            - we use independent variable n
+            - we use square brackets
+
+
+        - Computers process discrete time signals
+            - so we must sample continuous time signals before giving them to a computer
+
+    1.1.2 Signal Energy and Power
+        - Power is qual to vi, so
+            p(t) = v(t)*i(t) = (1/R) v(t)^2
+
+        - Then the total energy expended over a time interval would be the integral with respsect to
+          time
+            integral(p(t), t1, t2) = integral((1/R) v(t)^2, t1, t2)
+
+        - We can take the average of this as well
+            1/(t2-t1) * integral(p(t), t1, t2) = 1/(t2-t1) * integral((1/R) v(t)^2, t1, t2)
+
+        - We use the same notion of power for both continous and discrete signals
+            - but sometimes we deal with complex number so we take the magnitude
+
+            - Continuous
+                integral(|x(t)|^2, t1, t2)
+
+            - Discrete
+                sum(|x[n]|^2, n=n1, n2)
+
+        - If we analyze energy functions over all of time, from -inf to +inf, we can describe 3 classes
+          of signals    
+            1. Finite total Energy
+                E -> infinity < infinity
+
+                - the signal must have zero average power
+
+            2. Finite Average Power
+                - infinite energy, because integrating a constant over an infinite period of time is
+                  inf
+
+                P -> inf > 0
+
+            3. Neither Power or Energy as they approach inf are finite
+                - `x(t) = t` is an example
+
+1.6 Basic System Properties
+    1.6.5 Time Invariance
+        - a system is time invariant if the behavior and characteristics of the system are fixed
+          over time
+
+        - A system is time invariant if a time shift in the input signal results in an identical
+          time shift in the output signal
+
+            - if `y(t) = x(t)` then `y(t - to) = x(t - to)`
+
+    1.6.6 Linearity
+        - a system that possesses superposition
+            - if an input consists of the weighted sum of several signals, then the output is the
+              superposition
+
+        - A system is linear if for y1(t) = x1(t), y2(t) = x2(t)
+            
+            1. x1(t) + x2(t) = y1(t) + y2(t)
+                - this is the additive property
+            2. a * x1(t) = a * y1(t)
+                - this is the scaling (homogeneity) property
+                - here a is any complex constant
+
+
+        - Superposition Property
+            x[n] = sum(a_k * x_k[n]) = a1 * x1[n] + a2 * x2[n] + ...
+            y[n] = sum(a_k * y_k[n]) = a1 * y1[n] + a2 * y2[n] + ...
+
+
+
+
+
+#######################################
+# Chapter 2
+#######################################
+2.0 Introduction
+    - Linear Time Invariant Systems
+        - many physical processes can be modelted as LTI systems
+
+        - if the signal be represented as the superposition of many other signals, we are ina good
+          place
+
+
+    - Very general systems can be represented as a linear combinations of delayed impulses
+
+2.1 Discrete time LTI systems: The Convolution Sum
+    2.1.1 The representation of discrete time sinals in terms of impuleses
+        - think of a discrete time signal as a sequence of individual impulses
+
+        - We can break some discrete signal up into each of the different integer input output
+          pairs
+            - I think this is what an impulse is.
+            - So we have a seperate graph for x[0], x[1], x[2] etc..
+            - all of the other points are just 0
+
+        - We can write the discrete equation as the sum of all the impulses
+
+        - we have an equation :delta:[n] that is equal to 1 if the input is 0.
+            - we pass in the shifted n value as the input to this equation
+
+    2.1.2 The discrete time unit impulse reponse and the convlution sum representaion of LTI
+          systems
+        - 
+

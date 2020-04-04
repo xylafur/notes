@@ -1,3 +1,9 @@
+
+
+###############################################################################
+#   Chapter 6
+###############################################################################
+
 - Time Interfacing
     - design example
         - design a measurement system for a robot
@@ -40,8 +46,12 @@
             TIMER0_CFG_R = 0x07;
 
             / GPTMTAMR
-            // TAAMS, bit 3, if 0 capture mode, else 1 PWM mode
-            // TACMR, bit 2, capture mode, if 0 edge count mode, else 1 edge time mode
+            // TAAMS, bit 3
+            //  0x0 capture mode
+            //  0x1 PWM mode
+            // TACMR, bit 2, capture mode
+            //  0x0 edge count mode
+            //  0x1 edge time mode
             /* TAMR, bit 1 - 0
              *  0x0 - Reserved
              *  0x1 - One Shot Timer

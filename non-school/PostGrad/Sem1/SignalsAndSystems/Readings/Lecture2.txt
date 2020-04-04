@@ -1,0 +1,7 @@
+Section 2.2, Transformations of the independent variable, pp. 12-6
+
+Section 2.3.1, Continuous-time complex exponential and sinusoidal signals, pp. 17-22
+
+Section 2.4.2, Discrete-time complex exponential and sinusoidal signals, pp. 27-31
+
+Section 2.4.3, Periodicity properties of discrete-time complex exponentials, pp. 31-5

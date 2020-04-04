@@ -1,0 +1,138 @@
+- Why interrupts
+    - they are good for real time systems
+        - mechanism to guarantee an upper bound on the software response time
+
+    - Can do things periodicaly
+    - can handle things that don't happen often
+
+5.1 Multithreading
+    - Interrupt
+        - automatic transfer of software execution in response to a hardware event
+        - this is asynchrnous to the current software execution
+
+    - Trigger
+        - the hardware event which causes an interrupt
+
+    - Thread
+        - path of action of software as it executes
+        - the execution of the ISR is called a background thread
+
+        - registers between different interrupts and the main program are different (they don't
+          hold the same values)
+
+
+    - Multithreading
+        - threads are cooperating to perform an overall task
+
+    - Process
+        - the action of software as it executres
+
+    NOTE:
+        - Threads share access to IO devices, system resources and global variables
+        - Processes have seperate system resources and global variables
+
+    - arm (disarm) a device
+        - enable or shut off the source of interrupts
+
+    - enable (disable)
+        - allow or don't allow interrupts at this time
+            - when we disable we postpone it until a later time
+
+        - to disable we set the correct bits to 1 in PRIMASK register
+
+    - Ways in which software can dynamically control interrupts
+        1. Software arms the devices which it knows it will want interrupts from
+            - each device has its own seperate arm bit
+
+        2. Interrupts are enabled
+            - this is done using the special PRIMASK register.
+            - if the bit is set to 1 for a device, interrupts are ignored (masked)
+
+        3. Interrupts are filtered based on their priority
+            - you can ignore interrpts of a lower priority using BASEPRI
+            - 0 is the highest priority
+            - filters all requests equal to or greater than the value of BASEPRI
+
+
+    - Conditions for an interrupt to be generated
+        1. Device must be armed
+        2. Interrupts must be enabled
+        3. Level of interrupt must be less than BASEPRI
+        4. An external event must occur setting a trigger flag
+
+    - Context Switch (Sequence of events caused by an interrupt)
+        1. Current instruction is finished
+        2. Execution of currently running program is suspended
+            - 8 registers are pushed onto the stack
+                - R0, R1, R2, R3, R12, LR, PC and PSR
+                - R0 is on top
+        3. LR is set to a specific value
+            - this value signifies that an interrupt service routine is being ran
+
+        4. ISPR is set to the interrupt number being processed
+        5. PC is loaded with the address of the ISR
+
+    - Pending Interrupts
+        - when an interrupt is of two low prioriity
+        - it is held pending until the system is ready for it
+
+    - Acknowledgement
+        - clearing the trigger flag for an interrupt
+
+    - Interrupt Service Routine
+        - software that is executed when the hardware requests an interrupt
+
+        - Can have polled or vectored interrupts
+            - polled
+                - one large ISR that handles all interrupts
+            - vectored
+                - Small ISR for each individual interrupt
+
+        - Cortex-M has both polled and vectored interrupts
+
+        - After the ISR is finished it must
+            - acknowledge the trigger flag
+            - execute BX LR
+                - LR contains a special value that pops the 8 registers we saved back into their
+                  correct locations
+
+            - The stack pointer (MSP) must be returned to the value it was prior to the interrupt
+
+
+        - ISRs should be as quick as possible
+            - tirggered, do their thing, then exit
+
+        - Interface Latency
+            - time between when new input is avaliable and the time when the software reads the
+              input data
+
+        - Device Latency
+            - response time of the external IO device
+
+        - Real time system
+            - can guarantee worst case interface latency
+
+    - Atomic Operation
+        - sequence that once started willa lways finish
+
+        - all instructions except for STM LDM are atomic
+        - to make a section of instructions atomic, you run with I=1
+        - to do this
+            1. Save current value of PRIMASK
+            2. Disable Interrupts
+            3. Execute the operation
+            4. Restore the PRIMASK back to the previous value
+
+    - Features of all Interrupting Systems
+        - ability for the hardware to request action from the computer
+
+        - ability for the computer to determine the source of interrupt
+            - either vectored or polled
+            - with polled you have to check each device to find out which one set the interrupt
+
+        - ability for the computer to asknowledge the interrupt
+            - clear out the trigger flag for a given interrupt
+
+            - in LM3S/TM4C microcontrollers, sofware acknowledges interrupts
+
+5.2 Interthread Communication and Synchronization

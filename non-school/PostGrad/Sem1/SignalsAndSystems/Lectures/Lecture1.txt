@@ -1,0 +1,81 @@
+- Signals are functions of one or more variables that carry information
+    - a speech signal is a good exaple
+        - such as the air pressure as a function of time
+
+- Systems are typically used to process signals
+
+
+- Types of Signals
+    - One dimensional Signal
+        - only one independent variable
+
+    - Two dimensional Signal
+
+
+    - Signals have dimensionality and then can be continuous or not on top of that
+
+
+    - Continuous Time Signals
+        - A signal where the independent variable is continuous
+
+
+    - Discrete Time Signals (can also be one dimensional or multidimensional)
+        - The signal is a function of some integer variable
+        - so it only takes on values at integer values of the independent variable
+        - economic time series / stock market analysis is a good example
+
+        - written using rectangluar brackets x[n, m]
+
+        - discrete time signals are important because we have modern tech where we convert
+          continuous signals into discrete signals that we operate on
+
+
+    - the independent variable is generally refered to as a time variable (even if its not actually
+      a time variable)
+
+
+- Images
+    - images as signals have brightness as a function of horizontal and veritical independent
+      variables
+
+
+
+- Systems
+    - has input and outputs
+    - depending on if the input is continuous or discrete, the system is either continuous or
+      discrete
+        - the output matches whatever the input is
+
+
+    - types of systems
+        - linear
+        - non linear
+
+        - time inveriant
+        - time varying
+
+        - Our focus for the course will be "Linear Time Inveriant Systems"
+
+
+- Interconnection of Systems
+    - Series (Cascade) connections
+    - Parallel
+    - Feedback connections
+        - covered in depth towards the end of the course
+        - can be used to stabalize an unstable system
+
+
+- Domains for Analysis and Representation
+    - Time Domain
+        - If you consider a note, the time domain is the sound pressure of the note
+          would change as a function of time
+
+    - Frequency Domain
+        - Representation for signals as a means for anaylsis by systems
+
+        - Fourier Transform, Laplace Transform and Z-Transform
+
+        - IF you consider a note, this is the frequency break down of the note
+
+
+

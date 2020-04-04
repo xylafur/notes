@@ -1,0 +1,30 @@
+###############################################################################
+#   Chapter 6
+###############################################################################
+
+- Time interfacing Continued
+
+- input capture (Input Edge Time Mode)
+    - period measurement
+        - Resolution
+            - smallest change in period that can be detected
+
+        - Precision
+            - number of seperate and distinguishable measurements
+
+        - Range
+            - Minimum and Maximum values that can be measured
+
+    - Example: Period Measuremenet
+        - design a ssytem that measures the rotational speed of a motor shaft
+
+        - We will be using our LM3S1968
+            - using pin CCP0 / PB0
+                - we want to measure the period of a square wave
+
+            - we will be using our 8MHz bus clock
+
+            - We want each rising edge to trigger an interrupt on Timer0A
+                - we are using timer 0A because thats what (CCP0/PB0) is
+
+

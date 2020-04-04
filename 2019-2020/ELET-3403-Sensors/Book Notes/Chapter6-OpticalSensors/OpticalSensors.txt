@@ -1,0 +1,29 @@
+
+1. Introduction
+    - non local / nocontact measurement systems
+        - no physical contact is made with enviornment of the variable
+        - measurements of this type can be made from a distance
+
+2. Fundamentals of EM Radiation
+    - most sensors are in teh infared, visable and ultraviolet range
+
+    2.1 Nature of EM Radiation
+        - energy that is always in motion
+            - propogates through space
+
+        - an object that emits radiation loses energy
+        - an object that absorbs radiation gains energy
+
+
+        - Speed of Propogation
+            - c = lambda * frequency
+
+            - propogation velocity is reduced when EM waves travel through a medium
+            - the new velocity is indicated by the index of refraction
+
+
+    2.2 Characteristics of Light
+        - Photon
+            - EM radiation can only propgate only in discrete quantities
+
+

@@ -1,0 +1,35 @@
+- LTI systems are much better for analysis
+
+- If we know the Impulse Response h(t) ) for a linear system
+    - we can determine the output based on the input
+
+    - this is done through convolution
+
+    y(t) = x9t) * h(t)
+                ^
+                |
+                This asterick is a special operator called convolution
+
+    - We only have to know this above function and the input to get the output
+
+
+  
+- Transfer function H(s)
+    - Another way to characterize the system
+
+    - this is used in conjunction with the Laplace Transform
+
+    - Laplace transforms allow for easier convolution
+
+    Y(s) = X(s)H(s)
+
+- Frequency response H(j omega)
+
+    - the omega shows that we are in the frequency domain
+
+    - We use a Fourier Transform
+
+    Y(j omega) = X(j omega)H(j omega)
+    
+
+- Knowing the convolution is essential to doing these though!

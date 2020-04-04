@@ -1,0 +1,578 @@
+2. Displacement, Location or Position Sensors
+    2.1 Potentiometric Sensors
+        - Converts linear or angular motion into a changing resistance
+            - A potentiometric displacement sencor is pretty simple.
+                - just a wound resistor and a wiper.  Moving the wiper causes motion against the
+                  resistor, leading to a different output resistance
+
+            [ figure 5.1 ]
+
+    2.2 Capcaitive and Inductive Sensors
+        - displacement causes changes in capacity or inductance
+
+        - Capactitive
+            - using the capitance equation, we can figure out how the sensor works
+                - C = K * Eo * A / d
+
+            - Three cays to change capacity
+                - Distance between plates
+                - Shared Area of Plates
+                - Dielectric Constant
+
+        - Inductance
+            - a core is inserted into an inductor
+                - this produces a new inductance value
+            - as the core moves through the inductor, the inductance value changes
+
+
+
+
+    2.3 Variable-Reluctance Sensors
+        - Moving a core produces a varying magnetic flux coupling between two or more coils
+
+        - applications to measure both translational and angular displacement
+
+        - Linear Variable Differential Transformer (LVDT)
+
+            [ figure 5.2 ]
+
+            - most common Variable Reluctance Sensors
+            - 3 coils of wire wound on a hollow form
+
+            - core of a permiable material can slide freely through the center of the form
+                - the inner coil is the primary
+                    - it is excied by some AC source
+                    - flux is formed and linked to two secondary coils
+
+                - an ac voltage is then induced in the two secondary coils
+
+                [ figure 5.3 ]
+
+                - you can determine the direction of motion by the ac in the secondary coils
+                    - voltage amplitude and phase change can determine the direction and extent of
+                      core motion
+
+                [ figure 5.4 ]
+
+    2.4 Level Sensors
+        - There are a variety of techniques
+
+        - Mechanical
+            - a floater allowed to ride up and down with level changes
+
+            [ figure 5.5 ]
+
+        - electrical
+            - You can use the inheret conductivity of a liquid or solid to vary resistance through
+              probles in the material
+
+            - You can also use two cylendars
+                - the cylinders act as capacitors, the dielectric constant changes depending on the
+                  level of liquid / air over different components
+
+                [ figure 5.6 ]
+
+
+        - Untrasonic
+            - you don't have to actually place anything in the material, you use ultrasonic
+              reflection to measure
+
+            [ figure 5.7 ]
+
+        - Pressure
+            - non contact measurement based on density of liquid
+
+            - you can use the desnity of liquid and pressure at bottom of the tank to determine the
+              height
+
+
+3 Strain Sensors
+    - usually used as a secondary step in sensors to measure other process variables, such as:
+        - flow
+        - pressure
+        - weight
+        - acceleration
+
+    3.1 Stress and Stran
+        - Forces
+            - defined in a special way described by the general term stress
+
+        - Strain
+            - resulting deformation in a solid from stress
+            - the result of the application of forces to solid objects
+
+        - Stress
+            - Force per unit of area
+
+            - tensile Stress/Strain
+                - F / A
+
+                [ figure 5.8 ]
+
+                - strain for tensile stress is defined as the fractional change in length
+                    delta(l) / l
+
+                    - unitless
+
+            - compressional Stress/Strain
+                - The only difference between this and tenisile stress/strain is the polarity of
+                  the change in length
+
+            - Shear Stress/Strain
+                - the force is applied as a couple (not along the same line)
+
+                [ figure 5.9 (a) ]
+
+                - strain is thus
+                    - fractional change in dimension of the sheared member
+
+                    [ figure 5.9 (b) ]
+
+
+            - Stress-Strain Curve
+                - relationship between sress and strain is linear over some range of stress
+                    - if the stress is kept within this range, the material is called "elastic"
+
+                - If the elastic limit is exceeded, permenent deformation of the material occurs
+
+                - linearity and slope are a constant of the type of material only
+
+                - the constant of linearity / slope is called the "modulus of elasticity" or
+                  "Young's Modulus"
+                    - the unit is N/m^2
+
+                - For tensile and compressional stress
+                    E = stress / strain = (F/A) / (delta(l) / l)
+
+                - For Shear stress
+                    M = stress / strain = (F/A) / (delta(x) / l)
+
+            - Strain Nits
+                - though strain is unitless, it is common to express strain as the ratio of two
+                  length units (cm/cm or in/in)
+
+                
+
+    3.2 Strain Gauge Principles
+        - Reminder: Resistance of a metal is given by
+            Ro = p * (lo / Ao)
+
+        - Under tensile or compressional stress, the length / area of a metal will change
+            - the volume must remain the same though
+
+                V = lo * Ao = (lo + delta(l) * (Ao - delta(A))
+
+            - Because of thie, the resistance will have changed
+                R = p * (lo + delta(l)) / (Ao - delta(A)) ~= 2 * Ro * delta(l) / lo
+
+            - we see that the ratio of change in length over length can be directly converted into
+              a resistance
+
+            - The change in resistance is very small though, so the measurement methods must be
+              highly sophisticated
+
+        - Measurement Principles
+            - attach a metal wire or foil to the element whose strain is to be measured
+
+
+        - Temperature Effects
+            - change temperature can really fuck shit up, a change of 1 degree C can alter the
+              resistance of the metal we are trying to measure strain for by alot more than the
+              change in length does
+
+    3.3 Metal Strain Guages
+        - important terms for understanding strain guage applications
+
+        - Gague factor
+            - relation between strain and resistance change is only approximately true
+                - impurities in the metal or other lurking factors can muck stuff up
+
+            - an SG giceves relationship through the "gague factor"
+                GF = (delta(R) / R) / strain
+
+                - the higher the GF the better
+                    - larger change in resistance for a given strain
+
+        - Construction
+            - use in two forms: wire and foil
+
+        - Signal Conditioning
+            - two important effects critical for signal conditioning
+                - fractional changes in resistance require special resistance measurement circuits
+                - compensation for temperature change
+
+            - the bridge circuit is the answer to both of these
+                - one arm bridge
+                    - a dummy gague is used to that we know the resistance of the sensor at
+                      the current temperature without any stress applied
+
+                        - the dummy gauge is in one arm of the bridge
+
+
+
+                    [ figure 5.10 ]
+
+                - two arm bridge
+                    - uses active strain gagues in two arms of the bridge
+                    - the resistors in all 4 arms are strain gagues
+                        - two are for temperature compensation only
+
+                    delta(V) = (Vs / 2) * GF * (delta(l) / l)
+
+                    - one of the active gagues experiences compression while the other one is
+                      stretched
+
+                    [ figure 5.11 ]
+
+                    [ figure 5.12 ]
+
+
+    3.4 Semiconductor Strain Gagues
+        - principles
+            - resistivity and physical dimensions changes with strain
+                - because of changes in electron hole mobility
+
+            - results in a much larger gauge factor
+
+        - gague factor
+            GF = (delta(R)/R) / strain
+
+            - often a negative value for semiconductor
+                - resistances decreases with stress
+
+            - These are highly non-linear devices
+
+
+        - signal conditioning
+            - still typicalls a bridge circuit with temperature compensation
+
+    3.5 Load Cells
+        - transducer device which measures deformations
+
+
+
+4 Motion Sensors
+    - measure the rate of change of position, location or displacement of an object
+
+    - an accelerometer can be used to obtain velocity and position as well
+        - through integration
+
+
+
+    4.1 Types of Motion
+        - a device is often tailored to the type of motion
+
+        - Rectilinear
+            - motion characterized by velocity and acceleration
+            - maximum accelerations are less than a few gs
+            - not suited for curved motion, specific for straight line motion
+
+            - if you need more than one direction you need more than one of these sensors
+
+        - Angular
+            - measure only rotations on some axis
+            - can't be used for displacement, only rotation along some axis
+
+        - Vibration
+            - Object placed in periodic motion which experiences large peak acceleration
+            - position is given by
+                x(t) = xp * sin(wt)
+
+                - xp is the peak displacement
+
+            - get the velocity through the direvative of the position, acceleration from dir of
+              that, etc
+
+        - Shock
+            - occurs when an object in uniform motion suddenly stops
+            - deacceleration that occurs within a very short time
+
+    4.2 Accelerometer Principles
+        - Spring Mass System
+            - Hook's Law
+                F = k * delta(x)
+
+            - Test Mass / Seismic Mass
+                - mass that converts acceleration to spring displacement
+
+        - Natural Frequency and Damping
+            - a spring mass system always exhibits some natural frequency
+
+                fn = (1 / (2*pi)) * sqrt(k/m)
+
+            - friction is the only thing which brings the system back to rest
+                - the friction is defined by a damping coefficient (alpha)
+                - oscillation is called transient response
+
+                X(t) = Xo * e^(- alpha * t) * sin(2 * pi * fn * t)
+
+        - Vibration Effects
+            - if the spring mass system is exposed to a vibration, the resultant acceleration is
+              given by
+
+                a(t) = - w^2 * xo * sin(wt)
+
+            - the displacement is given by
+                delta(x) = - (m*xo) / k * w^2 * sin(wt)
+
+    4.3 Types of Accelerometers
+        - we use different accelerometers dependent on the applications
+            - range, natural frequency and damping determine the accelerometer
+
+
+        - potentiometric
+            - simplest accelerometer type measures motion by attachin spring mass to the wiper arm
+              of a potentiometer
+
+        - LVDT
+            - core through a coil
+
+            - displacements of the core are converted into a linearly propotional AC voltage
+
+        - Variable Reluctance
+            - same category of LVDT, inductive principle is employed
+            - mass is usually a permanent magnet
+
+        - Piezoelectric
+            - with come crystals, a voltage is generated across the crystal when the crystal is
+              stressed
+
+            - crystal is attached to a mass attached to spring
+                - a force on the whole thing will squeeze the crystal more or less and produce a
+                  different voltage
+
+                [ figure 5.13 ]
+
+    4.4 Applications
+        - Steady State Acceleration
+            - measuring acceleration that varies but is non periodic
+                - an automobile motion is an example
+
+            - we need to select a sensor such that
+                1. Adequate range to cover magnitudes
+                2. Natural frequency of the sensor must have a period shorter than the time span
+                   over which the acceleration is measured
+
+            - Electronic integrators can be used to aquire both velocity and position
+
+        - Vibration
+            - aplied frequency of the vibration must be less than the frequency of the accelerometr
+            - the range of the acceleration must never exceed the specification of the device
+
+        - Shock
+            - device mmust have a natural frequency greater than 1kHz and rage > 500g
+        - Shock
+
+
+
+5. Pressure Sensors
+    - Pressure is often converted into some immediate form, such as displacement, thdn a sensor
+      uses that to measure the pressure
+
+    5.1 Pressure Principles
+        - Pressure if force per unit area that a fluid exerts on its surroundings
+
+        - for a gas the pressure is uniform all along the vessel, but for a liquid it is greatest
+          at the bottom of the container
+
+        - Static Pressure
+            - pressure where no motion is occuring
+
+        - Dynamic Pressure
+            - if the fluid is motion, then the pressure exerted depends on the motion
+
+            - pressure can depend on flow, compressibility of fluid, external forces and other
+              factors
+
+        - Units
+            - SI units is Newtons per square meter with is called a "Pascal"
+
+            - pound per square inch (psi) is the customary scale
+            
+
+        - Gauge Pressure
+            - pressure that subtracts the atmosperic pressure
+
+                p_g = p_abs - p_at
+
+        - Head Pressure
+            - used to describe the pressure of a liquid in a tank or pipe
+            - static pressure produced by the weight of the liquid above the point at which the
+              pressure is being described
+
+            - the pressure depends only on the height of the liquid
+
+                p = (density) * g * h
+
+
+    5.2 Pressure Sensors (p>1 atmosphere)
+        - Diaphram
+            - a think flexible piece of metal
+            - can tell you the difference between pressure on the two sides based on the way the
+              piece of metal in between bends and by how much
+
+
+            [ figure 5.14]
+
+            F = (p2 - p1) * A
+
+        - Bellows
+            - similar to Diaphram but the displacement is much more straight line
+
+            - you have a pressure activated lever sort of thing that pushes the core of a LVDT
+                - an LVDT is used because the conversion from pressure to displacement is nearly
+                  linear
+
+            [ figure 5.15 ]
+
+        - Bourdon Tube
+            - most common pressure sensor
+
+            - have a metal tube thats flattened slightly with one end closed
+                - the tube is then also curved or even spiraled
+
+                - the tube will straighten out if the inside pressure is higher than the outside
+                  pressure
+                - the tube will curve more if the pressure is lower outside than inside
+
+
+        - Electronic Conversions
+            - techniquest for converting displacements from prvious examples into electronic
+              signals
+
+                - simplest is to just have a metal linkage connected to a potentiometer
+
+                - in some cases the strain is just directly converted into a diaprham or something
+
+                - there is a feedback mechanism to limit the actual deflection of the diaphram
+
+                [ figure 5.16 ]
+
+        - Solid State Pressure Sensors
+            - Small units with only 3 connections that come in a small IC package
+            - generally uited for 0 to 100 kPa
+
+
+            [ figure 5.17 ]
+
+
+    5.3 Pressure Sensors (p < 1 atmosphere)
+        - made using purely electronic methods
+
+        - For use less than 1 atm down to 10^(-3) atm
+            - These operate by measuring heat loss over a given distance
+                - this will tell you the number of gas molecles per unit volume
+
+
+            - Pirani Gague
+                - determines filament temp through a measure of filament resistance
+                - filament exitation and resistance measurement are both done using bridge circuit
+                - highly non-linear
+
+            - Thermocouple
+                - measures filament temperature using a thermocouple connected directly to heating
+                  filament
+                - highly non linear
+
+
+            - for both of these the calibration of the sensor needs to be done relative to the
+              paritcular gas
+
+        - Ionization Gague
+            - useful for very low pressures, (10^-3) atm to 10^(-13) atm
+
+            - uses electrons from the heated filament to ionize the gas whose pressure is to be
+              monitored
+
+                - then the current flowing between two electrons in the ionized enviornment is
+                  measured
+
+            [ figure 5.18 ]
+
+
+6. Flow Sensors
+    - measurement and control of flow are very important for process industries
+        - flow of raw materials, or waste flow are all considered
+
+
+    - in this chapter we wlil cover the flow of materials in all 3 states of  matter and common
+      principles used for measuring this flow
+
+
+    6.1 Solid Flow Measurement
+        - usually for small particles such as powder
+
+        - if the powerder is mixed with a liquid host, the thing is called a slurry
+            - slurry is considered in the liquid flow section
+
+        - Conveyor Flow Concepts
+            - for solid objects flow is usually described by mass / weight per unit time
+
+            - you need to measure the weight / mass of material over some fixed length of the
+              conveyer system
+
+            [ figure 5.19 ]
+
+            Q = (WR) / L
+
+            - weight is measured with a load cell, something like an LVDT
+
+    6.2 Liquid Flow
+        - only the basics of liquid flow are covered in this chapter 
+
+        - Flow Units
+            1. Volume Flow Rate
+                - expressed as a volume delivered per unit time
+
+            2. Flow Velocity
+                - distance the liquid travels in the varrier per unit of time
+                - usually given as something like m/min or ft/min
+
+                V = (Q/A)
+                    - V = Flow Velocity
+                    - Q = Volume Flow Rate
+                    - A = Cross sectional Area of flow carrier
+
+            3. Mass or Weight Flow Rate
+                - Mass or weight per unit of time
+
+                F = pQ
+                    - F = mass / weight flow rate
+                    - p = mass / weight density
+                    - Q = Volume Flow rate
+
+
+
+        - Pipe Flow Principles
+            - flow rate through a pipe is determined primarilly by pressure forcing the liquid
+              through the pipe
+
+        - Restriction Flow Sensors
+            - flow rate can be determined by pressure drop through a restricted pipe
+            - when you force moving liquid through a narrow pipe, the pressure difference across
+              the pipe will tell you the volume flow rate
+
+            Q = K * sqrt(delta(p))
+
+            [ figure  5.20 ]
+
+
+            - there are three common types of restrictions
+
+                [ figure 5.21 ]
+
+            - The pressure difference between the two points is often measure using a sensor called
+              a DP cell
+
+                [ figure 5.22 ]
+
+        - Pitot Tube
+            - common way to measure flow rate at a particular point in a flowing fluid
+            - have a tube with an opening such that the fluid is flowing into the tube
+
+            - the fluid will be brought to rest by the tube
+
+            [ figure 5.23 ]
+
+        - Obstruction Flow Sensor
+            - operates by the effect of flow on an obstruction placed in the flow stream

@@ -52,7 +52,7 @@
             - Interrupt Mask
             - CAEIM
 
-        - a 16 bit input cpture register
+        - a 16 bit input capture register
             - TAR
 
     - Interfacing

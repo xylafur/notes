@@ -1,0 +1,12 @@
+Sensors             Mon, Dec 2          2:30 - 4 p.m.
+Geol                Wed, Dec 4          6-7 p.m.
+Number Theory       Mon, Dec 9          2-5 p.m.
+Embedded            Mon, Dec 9          5-8 p.m.
+
+Sensors Final:
+    LVDT
+    Bourdon Tub, Pyrometer
+    Accelerometer
+    Strain Gague
+    SS Pressure Sensor
+    CdS, PV Cell

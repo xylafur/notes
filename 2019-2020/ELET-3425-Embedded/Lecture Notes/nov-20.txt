@@ -1,0 +1,134 @@
+###############################################################################
+#   Review
+###############################################################################
+
+- Register Summary
+    - File on blackboard that has all of the reister names, interrupt locations and such
+
+    - should have everything that we need for the final test
+
+- This test is 3 hours long
+
+Chapter 4 (Hardware-Software Synchronization)
+    - performance metrics
+        - latency
+            - response time (request to service time)
+
+        - throughput
+            - total work done per unit of time
+
+    - Synchronization
+        - There are 5 mechanisms to synchronize IO
+            1. Blind Cycle
+                - One way, no response from the other end
+                - wait fixed time
+
+            2. Busy Wait
+                - The device tells you when its done and while its busy
+
+            3. Interrupt
+            4. Periodic Polling
+            5. DMA
+
+    - timing equations
+        - rising_edge(A)
+            - represented as an up arrow
+            - whenever the signal goes high
+
+        - falling_edge(A)
+            - represented as a down arrow
+            - whenever the signal goes low
+
+        - Interval of time (parenthesis () )
+            - means it is exactly this time
+            - if there are parenthesis we knwo that the signal is bounded exactly by that time
+
+            - if the question just asks for a time, then we will use these
+
+        - Uncertain time interval (brackets [] )
+            - same as in mathematics, does not include that time
+
+            - when asked for intervals, you use these
+
+
+        - Make sure you know how to do the example with the 74HC374
+
+
+        - Needs DA to not overlap DR
+            - DA: Data Avaliable
+            - DR: Data Required
+
+    - LCD Interface
+        - Why is the LCD using blind cycle?
+            - we know exactly how long it takes
+
+            - Use blind cycle if you know the exact time that something will take
+
+        - Advantages
+            - simple
+            - predictable
+
+        - Disadvantages
+            - inapprotriate when IO rate is variable
+
+
+        - Know how to write the blind cycle program
+
+Chapter 5 Interrupts
+    - Multithreading
+
+    - Conditions for an interrupt to be generated
+        1. Must be armed
+        2. Must be enabled
+        3. Must have level request < BASEPRI
+        4. An external event must occur, which causes the trigger flag to be set
+            - know all the ways that an interrupt can be triggere by GPIO
+                - rising edge
+                - falling edge
+                - either edge
+                - particular level
+
+
+    - When an interrupt occurs
+        - The Interrupt Service Routine (ISR) is called
+
+
+    - Vectored Interrupt
+        - Each interrupt has its own id number or an address
+
+        - this is the opposite of a polled interrupt system
+            - in a polled interrupt system you have to figure out which device it was that
+              triggered the interrupt
+
+
+    - Nested Interrupt
+        - You can have an interrupt within an interrupt
+        - an interrupt can interrupt
+
+
+
+    - Software Acknowledgement
+        - Software is the one that clears the interrupt
+        - THere is code that clears it
+
+        - For a hardware interrupt, the clearing / acknowledgement is automatic
+            - hardware automatcially takes care of it
+
+
+Chapter 6 - Time Interfacing
+    - Alot of numbers!
+        - Given frequency find out number of counts
+        - figure out duty percent
+        - figure out value we should change level at
+        - etc
+
+    - Modes
+        - difference between timer vs capture
+            - Timer
+                - Always counting
+                - Uses whatever clock you give it
+                - when an interrupt is triggered for a timer, you will have time
+
+            - Capture
+                - counts whenever it is triggered
+
