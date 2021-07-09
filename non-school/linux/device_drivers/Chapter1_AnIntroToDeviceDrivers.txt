@@ -1,0 +1,73 @@
+- Device drivers in the linux kernel are "black boxes" that take a piece of hardware and
+  hiding what it is doing
+
+- The hardware is wrapped in a set of standardized cards that are independent of the driver
+
+- The interface is built in such a way that drivers can be build seperatley from the
+  kernel and plugged in
+
+
+- The role of the device driver
+    - Unix Idea of Mechanism vs Policy
+        Mechanism: What capabilities are to be provided
+        Policy: How can those capabilities be used
+
+        - If Mechanism and policy are implemented by 2 different parse of the program,
+          the software package is much easier to develop and adapt
+
+
+    - Policy free drivers have a number of typical characteristics
+        - support for synchronous and async operation
+        - the ability to be opened multiple times
+        - the ability to exploit the full capabilities of the hardware
+        - lack of software layers to simplify things
+
+
+- Splitting the Kernel
+    - The kernel's role can be split into the following parts
+        - Process management
+            - creating and destroying processes, handling their IO
+            - Scheduler controls how processes share the CPU
+
+        - Memory Management
+            - kernel builds up a virtual addressing space for all processes
+            - different parts of the kernel interact with the memory-management subsystem
+
+        - Filesystems
+            - The kernel builds the structured filesystem on top of unstructured hardware
+
+        - Device Control
+            - All hardwrae ;other than the processor, memory and a few other things has
+              specific code for the device being addressed
+            - The kernel needs a device driver for every peripherial on the system
+
+        - Networking
+            - Sending packets between the interfaces and the processes that want them
+            - all routing and address resolution are implemented in the kernel
+
+- Loadable Modules
+    - The functionality of the kernel can be extended at runtime with modules
+    - device drivers are a class of modules
+
+    - Classes of Devices and Modules
+        - each module can usually be classified as a char module, block module or network
+          module
+
+        - Character Devices
+            - one that can be accessed as a stream of bytes (like a file)
+                - the char driver implements this behavior
+
+            - usually implements at least: open, close, read and write
+
+            - Character devices are accessed by filesystem nodes (like /dev/tty1)
+
+            - character devices are data channels, generally you can't seek in
+              them: you can only read out characters
+
+        - Block Devices
+            - accessed as filesystem nodes in /dev
+            - In Linux, block devices can be accessed by bytes instead of just by blocks
+                - on other operating systems you can only access them in sectors (blocks)
+
+            - Its pretty transparent to the user, but block devices and character devices
+              are 

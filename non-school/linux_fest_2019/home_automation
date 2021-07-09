@@ -1,9 +1,0 @@
-ironicBadger/home-assistant
-
-- Home assistant
-    - FOSS
-
-    - made to be run on a rasp pi or nuc
-        - can be ran as a container, avaliable on docker hub
-
-- MQTT is the glue that holds all the open source automatino together

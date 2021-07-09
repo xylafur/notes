@@ -1,0 +1,176 @@
+https://www.youtube.com/watch?v=c3mPdZA-Fmc&list=PL5PH2jkkXmh9whD2N-llDojSv8urEgIK
+
+There are reasons to think on an
+our end algorithm run more efficiently?
+    - sometimes the hardware has more functionality but it is hidden by the sw/hw interface
+      layer
+        - we can only do what the driver provides us with, but perhaps an algorithm with
+          knowledge of the hardware can take advantage of it
+
+    - throughout time hardware has increased in effiiency so fast that software didn't have to
+      care about this
+        - since hardware isn't accelerating like it once was, a more cohesive - across the
+          level view of algorithms is needed
+
+
+Definition: Computer Architecture is the science and art of designing computing platforms
+(hardware, interface, system SW and programming model)
+    - want to achieve some design goals
+        - for example highest performance on certain workloads (or all workloads if you are
+          really ambitious)
+        - longest battery life at some form factor
+        - or best average performance across all workloads at some performance cost ratio
+
+
+    - Different platforms have different goals
+        - drones (battery, thermal) vs smart phone (battery, small form factor) vs self driving car (safe, real time)
+
+Why to study computer architecture?
+    - enable better systems: make computers faster, smaller, cheaper, more reliable
+        - design goals are dictated by the problem they are trying to solve
+
+    - enable new applications
+    - enbale better solutions
+
+
+    - Right now the industry has a large paradigm switch to novel architectures
+        - Many difficult problems motivating and caused by this shift
+            - data intensive applications, power/energy/thermal constraints, scale, memory
+              bottleneck, ....
+
+        - These problems affect all parts of the computing stack
+
+        - The user is an important part of the computing stack
+            - the user interacts with many parts of the system
+                - maybe they are programmers?
+                - just traditional user
+
+                - The user chagnes very fast, user in 1960s is much different from the users in
+                  the 2010s, 2020s, etc
+
+        - At the top of the layer we have new demands, at the bottom new issues
+
+Richard Feynman Lecture from 1959: There's plenty of Room at the Bottom
+    - he argued that there is a huge room at the bottom (devices and physics layer to enable
+      better devices)
+
+- How can we expose more info from the software layer to the hardware layer for optimization
+  purposes?
+    - for example information about location of certain memory structures
+
+
+- Virtual memoery is a good example of a general purpose concept that cut across the stack and
+  takes advantage of many different things
+
+    - the way that virtual memory is broken into pages becomes unscalable, is there a better
+      way we can do it?
+
+- Intersting things happening today in computer architecture
+    - Energy Efficiency
+        - Intel optane persistent memory
+            - maybe you don't have to do a filesystem system call since you can just use the byte
+              accessable persistent memory
+
+            - existing computing is built apon the the memory heirarchy and non-persistent main
+              memory
+
+            - There are trade offs though, this uses more power
+
+        - Cerebras's Wafer Scale Engine
+            - large ass full wafer that is a ML accelerator
+            - like 80x as many transistors as the largest gpu
+            - has a shit ton of on board SRAM to avoid going off the chip
+
+        - Processing in DRAM
+            - put a processor in the dram chip so that the processor is right next to the data
+                - processor for each dram bank, has high bandwidth low latency access to dram
+
+            - modern cpus work well as long as you don't have to go off chip to memory
+
+            - hope that you can do most computing in dram without having to co to CPU
+
+        - With all of these specialized chips you have to also figure out the programming model and
+          usage from a software perspective
+            - how do you write code for this guy?
+            - How do you get the code for this guy?
+            - How do you amke the code most efficient for this hardware?
+
+        - Tesla's self driving car
+            - they design the whole chip, so they can figure out the full stack
+            - what should the hardware do and how can the software work with it optimally?
+
+
+
+        - Hardware designed for a specific purpose can end up being used forr another purpose
+            - a good example is a GPU, was originally designed for graphics but obs AI uses it
+
+        - Machine learning really took off recently because in 2012 someone showed that you could
+          use GPUs to really accelerate the models and still have a very high accuracy
+
+    - Security
+        - DRAM RowHammer Vulnerability
+            - predictably induce bit flips in commidity dram chips
+
+            - can do this just with software, no need for a hardware hax
+
+            - first example of how a simple hardare failure mechanism can create a widespread
+              system secutiy vulnerability
+
+            - repeatidly reading a row over and over will induce disturbance errors in adjacent
+              rows
+                - this exists on most modern dram chips you can buy today
+
+    - You don't always have to have an application in mind when you design an architecture.
+        - You design architectures to solve a problem
+
+        - often a use case will pop up later
+
+- DRAM rd / wr is the highest user of energy in modern cpus
+    - so we lose alot of energy to off chip memory accesses
+
+    - memory consumes 1000x the energy of computation
+
+    - this is one reason why the **computational memory is really appealing
+        - do the processing in dram instead of moving the data to the cpu
+
+
+    - memory is dominated by interconnect, which has not advanced compared to other things
+
+    - in von neouman's day it was the opposite
+        - the floating point ops used much more power than the memory manipulation
+
+        - so that raises the question that maybe the way we used to design computers is not the
+          way we should design them today
+
+- you have to consider the top when you design the bottom!
+    - you might make a new fancy architecture but then no one uses it because it breaks all of
+      the old software that used to run on it
+
+    - architects are always in the middle, between the top and the bottom
+
+
+- Starting with some fundamentals
+    - Two overriding principles found in nature that are appropriate for building:
+        - optimal use of material
+        - the capacity of organisms to change shape, grow and move
+
+    - architecture should be based upon principle and not upon precedent
+        - goals from this course are to understand the principles and the precedents
+
+     - Role of the computer architect
+        - look backwards
+            - understand what has been done, both right and wrong
+            - understand the tradeoffs and designs, upsides downsides
+            - analyze and evaluate the past
+
+        - look forward (to the future)
+            - listen to the dreamers
+            - push the state of the art
+
+        - look up (towards problems in the computing stack)
+            - understand the important problems and their nature
+            - develop architectures and ideas to solve important problems
+
+        - look down (towards device / circuit tech)
+            - understand the capabilities of understanding technology
+            - predict and adapt to the future of tech (design for N years ahead)

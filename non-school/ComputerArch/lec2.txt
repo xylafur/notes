@@ -1,0 +1,223 @@
+https://www.youtube.com/watch?v=VJzZbwgBfy8
+
+Lecture 2a: Memory Performance Attacks
+    - we will go into some cross layer things
+
+- Layer approahc makes it so that the higher levels don't need to know implementatino details
+  of lower layers
+    - though this can cause problems if something goes wrong, especially on the lower level
+
+    - What if your problem is not on your layer?
+        - it is often because of some interaction between your layer and one below it
+        - for example thrashing cache
+
+    - if you want to make a specialized system, cross layer design is really needed
+        - like the tesla computer + software combo
+
+- Two goals of the course
+    - understand how a processor works underneath the software layer
+        - how decisions made in hardware affect the software / programmer
+
+    - enable you to be comfortable in making design and optimization decisions
+        - decisions that cross the boudaries of different layers and system components
+
+- There is an issue nowadays where the interface is viewed as being un-crossable by both sides
+    - memory doesn't care about the cpu
+    - the cpu doesn't care about memory
+
+    - this obviously has advantages, it makes it more simple to program, but you are
+      sacrificing optimization / performance
+
+    - teams should work together to co optimize.
+        - "what cost does productivity come with?"
+
+
+- The interfaces are generally difficult to make open source because they are analog
+    - for example the dram interface is analog, talking to the dram component is analog
+
+    - it is also difficult because it is running at extremely high frequencies
+        - the interconnects have very long wires, and running them at high frequencies.. go
+          figure (interference and stuff)
+
+
+Each core generally has an L2 Cache which is connected to the cpu
+    - all of the cpus connect to a single dram memory controller
+
+    - the dram memory controller connects to the dram interface
+        - the interface is called the PHI
+
+    see [figure 2.1]
+
+- Many cores on a chip
+    - multi core was proposed as the replacement for one single core
+        - didn't live up to the hype, multi core systems don't replace everything
+        - we still have specialized systems (gpu, etc)
+
+    - if you can divide your program across the cores you do get more bang for your buck though
+        - assuming you can parallelize things perfectly
+
+
+    - another really good use case for multi core is different applications can run on
+      different cores
+        - so one really fat process can hog one core and not slow down everything significantly
+
+- OS has no control over cores after scheduling things to the cores
+    - this is from his experiment running GCC and matlab and changing priority
+
+    - there are "memory performance hogs"
+    - From his experiment they crafted 3 questions
+        1. can you figure out why the applications slow down if you don't know how the
+          underlying system works?
+
+        2. Can you figure out why there is disparity in slowdowns?
+            - why does one slow down more than the other?
+            - if you're the gcc programmer can you figure out only knowing gcc
+
+        3. Can you fix the problem without knowing what happening underneath
+
+
+    - why is this important?
+        - we want to execute programs in parallel on a multi core system for efficiency
+
+    - why the disparity slowdowns?
+        - have to look down a few layers..
+
+        [figure 2.2]
+
+        - we have to look at the things that are shared..
+            - the entire dram ememory system and the interconnect
+
+            - matlab uses alot of memory, has alot of cache misses
+
+            - there is unfairness in the memory controller
+
+            - since l2 cache is private per core, tells you that that probably isn't the
+              problem
+
+
+        - why is the memory controller behaving this way?
+
+            - first question is: how does a dram bank operate?
+                - 2d array of columns and rows, each intersection is a cell
+
+                - the bank has many cells (transistors and caps) and structures that allow
+                  access to cells
+
+            - a bank has a "row buffer", you have to bring the entire row of the cell you want
+              to access into the "row buffer"
+                - inifitally it is empty, the memory controller will figure out teh row for the
+                  cell you want and then move that row into the row buffer
+
+                - this is called an **activate**
+
+                - after the entire row is in the row buffer, you need to extract the colum
+                    - this is down with the "column mux"
+
+                    [figure 2.3]
+
+                - if we then request a different collumn from the same row its very fast, since
+                  the row is already in the row buffer
+
+                    - this is because of **row buffer locality** (the row buffer is already
+                      populated with the row we want)
+
+                - All memory types has buffering, somewhat like this
+                    - phase change memory has this same sort of row buffering
+
+                - when there is a request for a new row
+                    - the memory controller has a table, and is able to determine that row 0 is
+                      open and we are wanting another row (row 1)
+                    - this means there is a row buffer conflict
+                    - the row buffer has to close the open row
+                        - you have to pre charge the array to prepare for another activate
+
+                    - then row 1 gets activated, its moved to the row buffer, then you have to
+                      grab the column with the multiplexer
+                        - this all takes time
+
+                    - so grabbing a new row takes a lot longer
+                        - 2 to 3 x longer
+
+                - Because of this, modern controllers has a special scheduling algorithm
+                    - FR-FCFS (first ready, first come first serve)
+                        - prioritization order for the memory requests
+
+                        - you usually end up with a backlog in the memory request buffer
+
+                        - algorithm
+                            1. Row hits first (ops with good locality are handled first)
+                            2. oldest first (when there are no more row hits)
+
+                        - he argues that both of these (1 and 2) are unfair, but there is a
+                          reason for them
+                            - the algorithm tries to optimize throughput
+
+                    - this might be a good algorithm when you only have a single application
+                        - but even then, some requests may be more imporant than other
+                          operations, which is a problem
+            - problem
+                - algorithm prioritizes throughput, but is unfair to some applications
+                    - threads that keep accessing the same row are prioritized
+                    - memory intensive applications request memory alot
+                        - by probability their requests will be in the same row
+
+
+
+
+- Now that we know we need to know whats going on underneath..
+    - how do you solve the problem?
+    - Where is the right place to solve the problem?
+        - is it the programmer?
+            - probably conceptually wrong to ask the programmer to solve it
+            - you could say "oh programmers shouldn't write code that does this"
+                - he says this is a bad idea, we want those kind of programs to be written
+                - we want programs with high row buffer hit rate, and programs need memory
+
+        - System software?
+            - Maybe detect in the OS and then don't let programms that will interact poorly be
+              scheulded together
+            - the question is how would you detect the problem at this level?
+
+            - Today the OS has no control after it has scheduled to the cores
+                - there should be a way for the OS to check the progress of programs, new
+                  functionality exposed to the OS from the layer below
+
+        - Compiler?
+            - Not in the current way we think about compilers, because compilers only know
+              about a single application
+                - he says you could imagine multiple programs being compiled together at
+                  runtime
+
+        - Hardware (memory controller) ?
+            - he says this is his idea for the best place to solve the problem
+            - the problem is encountered because of an unfairness that exists at this layer
+
+            - also add some configurability so that the OS can control things a little more
+
+        - Hardware (DRAM itself) ?
+            - "why not have many row buffers" ?
+                - if you have lots of row buffers, it is more expensive
+                - the cost of a row buffer is 200x the size of a dram cell
+
+            - he says this doesn't solve other problems with memory scheduling
+                - doesn't solve the issues with the oldest first policy
+
+        - Circuits?
+            - design the circuit so that it doesn't have row buffers
+            - maybe solves part of the problem, but not everythnig
+
+    - SO he says the two ideal places (in his mind) are the micro architecture (memory
+      controller) as well as the OS / MM
+
+- Two other goals of this course
+    - Enable you to think critically through problems like this
+        - he says that observing the problem is part of the whole thing
+        - if you are the first to observe it, you are already a step ahead
+
+    - Enable you to think broadly
+        - this is why he went through all of the layers, even if he didn't think the solution
+          belonged in the programmer level or circuit level
+- Takeaway:
+    - Breaking the abstraction layers (between components and transformation hierarchy levels)
+      and knowing what is underneath
+        - enables you to understand and solve problems
