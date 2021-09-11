@@ -1,0 +1,13 @@
+extern string_equals
+extern string_length
+extern print_string
+extern print_string_newline
+extern print_char
+extern print_newline
+extern print_uint
+extern print_int
+extern read_char
+extern read_word
+extern string_copy
+extern parse_uint
+extern parse_int
