@@ -1,0 +1,83 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+FTP_BMP	main.c	/^    FTP_BMP,$/;"	e	enum:file_type	file:
+FTP_MAX	main.c	/^    FTP_MAX,$/;"	e	enum:file_type	file:
+OP_INVALID_OP	main.c	/^    OP_INVALID_OP,$/;"	e	enum:operation_status	file:
+OP_MAX	main.c	/^    OP_MAX,$/;"	e	enum:operation	file:
+OP_NOOP	main.c	/^    OP_NOOP,$/;"	e	enum:operation	file:
+OP_ROTATE	main.c	/^    OP_ROTATE,$/;"	e	enum:operation	file:
+OP_STATUS_MAX	main.c	/^    OP_STATUS_MAX,$/;"	e	enum:operation_status	file:
+OP_STATUS_OK	main.c	/^    OP_STATUS_OK = 0,$/;"	e	enum:operation_status	file:
+OP_STATUS_READ_FAILED	main.c	/^    OP_STATUS_READ_FAILED,$/;"	e	enum:operation_status	file:
+OP_STATUS_WRITE_FAILED	main.c	/^    OP_STATUS_WRITE_FAILED,$/;"	e	enum:operation_status	file:
+READ_MAX	main.c	/^    READ_MAX,$/;"	e	enum:read_status	file:
+READ_STATUS	main.c	30;"	d	file:
+READ_STATUS	main.c	45;"	d	file:
+READ_STATUS	main.c	46;"	d	file:
+READ_STATUSES	main.c	/^    READ_STATUSES(),$/;"	e	enum:read_status	file:
+READ_STATUSES	main.c	31;"	d	file:
+WRITE_MAX	main.c	/^    WRITE_MAX,$/;"	e	enum:write_status	file:
+WRITE_STATUS_ERROR	main.c	/^    WRITE_STATUS_ERROR,$/;"	e	enum:write_status	file:
+WRITE_STATUS_FCLOSE	main.c	/^    WRITE_STATUS_FCLOSE,$/;"	e	enum:write_status	file:
+WRITE_STATUS_FOPEN	main.c	/^    WRITE_STATUS_FOPEN,$/;"	e	enum:write_status	file:
+WRITE_STATUS_INVALID_FILETYPE	main.c	/^    WRITE_STATUS_INVALID_FILETYPE,$/;"	e	enum:write_status	file:
+WRITE_STATUS_OK	main.c	/^    WRITE_STATUS_OK = 0,$/;"	e	enum:write_status	file:
+b	main.c	/^            unsigned char b;$/;"	m	struct:pixel::__anon1::__anon2	file:
+bOffBits	main.c	/^    uint32_t bOffBits;$/;"	m	struct:bmp_file_header	file:
+bfReserved	main.c	/^    uint32_t bfReserved;$/;"	m	struct:bmp_file_header	file:
+bfType	main.c	/^    uint16_t bfType;$/;"	m	struct:bmp_file_header	file:
+bfileSize	main.c	/^    uint32_t bfileSize;$/;"	m	struct:bmp_file_header	file:
+biBitCount	main.c	/^    uint16_t biBitCount;$/;"	m	struct:bmp_image_header	file:
+biClrImportant	main.c	/^    uint32_t biClrImportant;$/;"	m	struct:bmp_image_header	file:
+biClrUsed	main.c	/^    uint32_t biClrUsed;$/;"	m	struct:bmp_image_header	file:
+biCompression	main.c	/^    uint32_t biCompression;$/;"	m	struct:bmp_image_header	file:
+biHeight	main.c	/^    uint32_t biHeight;$/;"	m	struct:bmp_image_header	file:
+biPlanes	main.c	/^    uint16_t biPlanes;$/;"	m	struct:bmp_image_header	file:
+biSize	main.c	/^    uint32_t biSize; \/* Header size *\/$/;"	m	struct:bmp_image_header	file:
+biSizeImage	main.c	/^    uint32_t biSizeImage;$/;"	m	struct:bmp_image_header	file:
+biWidth	main.c	/^    uint32_t biWidth;$/;"	m	struct:bmp_image_header	file:
+biXPelsPerMeter	main.c	/^    uint32_t biXPelsPerMeter;$/;"	m	struct:bmp_image_header	file:
+biYPelsPerMeter	main.c	/^    uint32_t biYPelsPerMeter;$/;"	m	struct:bmp_image_header	file:
+bmp_dump_header	main.c	/^void bmp_dump_header(struct bmp_header *header)$/;"	f
+bmp_file_header	main.c	/^struct __attribute__((packed)) bmp_file_header {$/;"	s	file:
+bmp_get_image_size	main.c	/^uint32_t bmp_get_image_size(struct bmp_header *header)$/;"	f
+bmp_header	main.c	/^struct __attribute__((packed)) bmp_header {$/;"	s	file:
+bmp_header_valid	main.c	/^bool bmp_header_valid(struct bmp_header *header)$/;"	f
+bmp_image_header	main.c	/^struct __attribute__((packed)) bmp_image_header {$/;"	s	file:
+bmp_write_header	main.c	/^enum write_status bmp_write_header(FILE* out, struct image const* img)$/;"	f
+bmp_write_image	main.c	/^enum write_status bmp_write_image(FILE* out, struct image const* img)$/;"	f
+data	main.c	/^    struct pixel** data;$/;"	m	struct:image	typeref:struct:image::pixel	file:
+dump_image	main.c	/^static void dump_image(struct image *read)$/;"	f	file:
+file_header	main.c	/^    struct bmp_file_header file_header;$/;"	m	struct:bmp_header	typeref:struct:bmp_header::bmp_file_header	file:
+file_type	main.c	/^enum file_type {$/;"	g	file:
+from_bmp	main.c	/^enum read_status from_bmp(FILE* in, struct image** read)$/;"	f
+g	main.c	/^            unsigned char g;$/;"	m	struct:pixel::__anon1::__anon2	file:
+height	main.c	/^    uint64_t width, height;$/;"	m	struct:image	file:
+image	main.c	/^struct image {$/;"	s	file:
+image_header	main.c	/^    struct bmp_image_header image_header;$/;"	m	struct:bmp_header	typeref:struct:bmp_header::bmp_image_header	file:
+image_prog	main.c	/^void image_prog(const char * in_file, const char * out_file, enum operation op,$/;"	f
+load_image	main.c	/^enum read_status load_image(const char * in_file, enum file_type ftp, struct image **input_img)$/;"	f
+log_op_error	main.c	/^void log_op_error(enum operation_status ost)$/;"	f
+log_read_error	main.c	/^void log_read_error(enum read_status rst)$/;"	f
+log_success	main.c	/^void log_success()$/;"	f
+log_write_error	main.c	/^void log_write_error(enum write_status wst)$/;"	f
+main	main.c	/^int main()$/;"	f
+operation	main.c	/^enum operation {$/;"	g	file:
+operation_status	main.c	/^enum operation_status {$/;"	g	file:
+perform_operation	main.c	/^enum operation_status perform_operation(struct image *input_img, struct image **output_img,$/;"	f
+pixel	main.c	/^struct pixel {$/;"	s	file:
+r	main.c	/^            unsigned char r;$/;"	m	struct:pixel::__anon1::__anon2	file:
+raw	main.c	/^        uint32_t raw;$/;"	m	union:pixel::__anon1	file:
+read_header	main.c	/^enum read_status read_header(FILE* in, struct bmp_header *header)$/;"	f
+read_image	main.c	/^enum read_status read_image(FILE* in, uint32_t bit_cnt, uint32_t width, uint32_t height, struct image** read)$/;"	f
+read_status	main.c	/^enum read_status {$/;"	g	file:
+read_status_str	main.c	/^const char * read_status_str [] = {$/;"	v
+rotate	main.c	/^enum operation_status rotate(struct image const *source, struct image** dest)$/;"	f
+save_image	main.c	/^enum write_status save_image(const char * out_file, enum file_type ftp, struct image *img)$/;"	f
+to_bmp	main.c	/^enum write_status to_bmp(FILE* out, struct image const* img)$/;"	f
+width	main.c	/^    uint64_t width, height;$/;"	m	struct:image	file:
+write_status	main.c	/^enum write_status {$/;"	g	file:

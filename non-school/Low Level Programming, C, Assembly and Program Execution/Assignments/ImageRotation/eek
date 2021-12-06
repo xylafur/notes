@@ -1,0 +1,50 @@
+FREAD(3)                                      Linux Programmer's Manual                                     FREAD(3)
+
+[1mNAME[0m
+       fread, fwrite - binary stream input/output
+
+[1mSYNOPSIS[0m
+       [1m#include <stdio.h>[0m
+
+       [1msize_t fread(void *[4m[22mptr[24m[1m, size_t [4m[22msize[24m[1m, size_t [4m[22mnmemb[24m[1m, FILE *[4m[22mstream[24m[1m);[0m
+
+       [1msize_t fwrite(const void *[4m[22mptr[24m[1m, size_t [4m[22msize[24m[1m, size_t [4m[22mnmemb[24m[1m,[0m
+                     [1mFILE *[4m[22mstream[24m[1m);[0m
+
+[1mDESCRIPTION[0m
+       The  function  [1mfread[22m() reads [4mnmemb[24m items of data, each [4msize[24m bytes long, from the stream pointed to by [4mstream[24m,
+       storing them at the location given by [4mptr[24m.
+
+       The function [1mfwrite[22m() writes [4mnmemb[24m items of data, each [4msize[24m bytes long, to the stream pointed to  by  [4mstream[24m,
+       obtaining them from the location given by [4mptr[24m.
+
+       For nonlocking counterparts, see [1munlocked_stdio[22m(3).
+
+[1mRETURN VALUE[0m
+       On  success,  [1mfread[22m() and [1mfwrite[22m() return the number of items read or written.  This number equals the number
+       of bytes transferred only when [4msize[24m is 1.  If an error occurs, or the end of the file is reached, the  return
+       value is a short item count (or zero).
+
+       [1mfread[22m() does not distinguish between end-of-file and error, and callers must use [1mfeof[22m(3) and [1mferror[22m(3) to de‐
+       termine which occurred.
+
+[1mATTRIBUTES[0m
+       For an explanation of the terms used in this section, see [1mattributes[22m(7).
+
+       ┌──────────────────┬───────────────┬─────────┐
+       │[1mInterface         [22m│ [1mAttribute     [22m│ [1mValue   [22m│
+       ├──────────────────┼───────────────┼─────────┤
+       │[1mfread[22m(), [1mfwrite[22m() │ Thread safety │ MT-Safe │
+       └──────────────────┴───────────────┴─────────┘
+[1mCONFORMING TO[0m
+       POSIX.1-2001, POSIX.1-2008, C89.
+
+[1mSEE ALSO[0m
+       [1mread[22m(2), [1mwrite[22m(2), [1mfeof[22m(3), [1mferror[22m(3), [1munlocked_stdio[22m(3)
+
+[1mCOLOPHON[0m
+       This page is part of release 5.07 of the Linux [4mman-pages[24m project.  A description of the project,  information
+       about    reporting    bugs,    and    the    latest    version    of    this    page,   can   be   found   at
+       https://www.kernel.org/doc/man-pages/.
+
+GNU                                                  2015-07-23                                             FREAD(3)

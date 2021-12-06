@@ -1,4 +1,22 @@
+section .data
+newline: db 10
+
 section .text
+
+
+global string_equals
+global string_length
+global print_string
+global print_string_newline
+global print_char
+global print_newline
+global print_uint
+global print_int
+global read_char
+global read_word
+global string_copy
+global parse_uint
+global parse_int
 
 string_length:
     mov rax, 0
@@ -23,6 +41,14 @@ print_string:
     syscall
 
     ret
+
+print_string_newline:
+	call print_string
+
+	mov rdi, newline
+	call print_string
+
+	ret
 
 print_char:
     push rdi
