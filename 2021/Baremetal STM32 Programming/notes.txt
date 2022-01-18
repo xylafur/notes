@@ -1,0 +1,227 @@
+https://vivonomicon.com/2018/04/02/bare-metal-stm32-programming-part-1-hello-arm/
+
+###############################################################################
+# Part 1: Hello ARM
+###############################################################################
+He is using a STM32F031, which is familiar to the MCU I am familiar with
+
+In this part he will be explaining all that is needed to get a baremetal
+programming running from scratch with just GCC (and something to programm the
+MCU)
+
+- The Linker Script
+ We have to tell the compliler's linker how much ROM is avaliable for storage
+ and how much RAM is avaliable for use.  We need to know how big we can make our
+ image, and how many variables we can use and so forth
+
+ We obviously have to tell the linker where these memories start too:
+
+ ```
+  _estack = 0x20001000;
+
+  MEMORY
+  {
+      FLASH ( rx )          : ORIGIN = 0x8000000, LENGTH = 32K
+      RAM ( rxw )           : ORIGIN = 0x2000000, LENGTH = 4K
+  }
+ ```
+
+ _estack is the 'end' of the program's stack, we set the end to be just after
+ the end of the RAM, 0x20001000 is just past the boundary we can access
+
+ The MEMORY block just tells the linker how much memory we have.
+
+
+- The Vector Table
+ The vector table in this case will contain the memory locations that the chip
+ should jump to when particular hardware interrupts are triggered.
+
+ We will write the "reset" handler, which defines what the microcontroller does
+ when it is reset or is powered on.  We will define this table in an assembly
+ file `core.S`
+
+ ```
+ // Define attributes of our chip and which assumbly variant we will be using
+ .syntax unified
+ .cpu cortex-m0
+ .fpu softvfp
+ .thumb
+
+ // Global memory locations
+ .global vtable
+ .global reset_handler
+
+ /*
+  * This is our actual vector table.
+  * We just include the size of RAM and the 'reset' handler (for simplicity)
+  */
+  .type vtable, %object
+  vtable:
+      .word _estack
+      .word reset_handler
+ .size vtable, .-vtable
+ ```
+
+ This MCU has no FPU, so the `.fpu softvfp` tells the compiler to generate
+ software commands for floating point calculations.  'Thumb' is just the name
+ of the instruction set we will be using.
+
+ The `.global` lines ensure that these labels are available to other files
+
+ We define the vector table using the arbitrary label `vtable`.  We mark the
+ end of the stack and the reset handler address.  The `.word` command places a
+ 4 byte value into the program, the compiler will replace our labels with the
+ addresses in memory that they corespond to
+
+- The Hello world program
+ We can write our minimal program in either C or the 'thumb' assembly language.
+ We just have to define the main `reset handler` method that we pointed to from
+ the vector table.
+
+ We can put our code right after the vector table in `core.S`
+
+ We will load 0xDEADBEEF info r7 and then count up from 0 on r0 forever
+
+ ```
+ .type reset_handler, %function
+ reset_handler:
+     // set the stack pointer to the end of the stack
+     LDR r0, =_estack
+     MOV sp, r0
+
+     LDR r7, =0xDEADBEEF
+     MOVS r0, #0
+     main_loop:
+         ADDS r0, r0, #1
+         B main_loop
+     .size reset_handler, .-reset_handler
+ ```
+
+- Compiling the Code
+ We will use the ARM gcc toolchain (arm-none-eabi-gcc)
+
+ `arm-none-eabi-gcc -x assembler-with-cpp -c -O0 -mpu=cortex-m0 -mthumb \
+      -Wall core.S -o core.o`
+
+ This creates our object file `core.o` which we use to produce a final program.
+
+ `arm-none-eabi-gcc core.o -mcpu=coretex-m0 -mthumb -Wall --specs=nosys.specs \
+     -nostdlib -lgcc -T./STM32F0301K6T6.ld -o main.elf `
+
+ We can get a rough outline of the program with
+  `arm-none-eabi-nm main.elf`
+
+- Uploading, Running and Debugging
+ He uses texane's stlink program.  He starts up stlink, then starts up gdb and
+ connects it stlink using port 4242, then he programs the chip through gdb
+
+
+###############################################################################
+# Part 2: Making it to Main
+###############################################################################
+- We are going to write the minimum code that gets us to running C code in a
+  main function
+
+- Agenda:
+ 1. Write a more complete 'linker script' that will map out our c program's
+    sections of memory on the chip
+ 2. Put our vector table in a file and point each hardware interrupt to a
+    default handler
+ 3. write 'Boot code' that will copy info we need into ram and then jump to
+    main
+ 4. Write our main.c
+ 5. Tie everything up in a makefile
+
+- Linker Script Sections
+ Most c compilers automatically split programs into a handful of common memory
+ sections (groups of data and similar properties)
+
+ Part2/linker.ld
+
+ The .dynamic_allocations section at the end of the RAM is there to make sure
+ we have at least enough bytes left over in RAM after our data and bss
+ sections.  This is where our _Min_Leftover_RAM comes into play
+
+- The Complete Vector Table
+ There are a crap ton of interrupts.  They are all disabled by default.
+
+ ST provides 'startup' assembly files for each chip in their 'Cube' HAL
+ packages.
+
+ He just grabbed the vector table assembly file from the CMSIS package provided
+ by stm32
+
+
+- Boot Logic
+ The very basics of the boot logic is:
+  1. Copy the pre-initialized data into the .data RAM section
+  2. Set the .bss RAM section to all 0s
+  3. Jump to the 'main' method
+
+ We can (and will in this example) put the logic right inside the
+ 'reset_handler' in the core.S file
+
+  I updated core.S
+
+- Main.c
+    With the linker script defined, the vector table setup and the boot process
+    written in our reset handler, we can now write the main funciton in C
+
+
+
+- He now writes a makefile
+
+###############################################################################
+# Part 3: LEDs and Buttons
+###############################################################################
+- He uses the header files in the CMSIS package.
+ These header files contain the memory mapped locations for all of the
+ peripherials on the board, standard stuff
+
+- GPIO
+ By default power is not supplied to most of the boards peripherials, this is
+ to save power.  So generally the first step is to turn the peripherial on.  In
+ this case ew enable GPIOB (since that is where our LED / switch is connected)
+
+ We enable a peripherial on this chip by setting the correct bit in the RCC
+ clock enable registers
+
+ We just set a bit in a memory mapped register
+
+ ```
+ CC->AHBENR |= RCC_AHBENR_GPIOBEN;
+ ```
+
+
+ We set our GPIO pin to be a pull up input.  Pull up means that it is pulled up
+ to one, aka it defaults to 1, it will only read 0 if it is connected to ground
+ externally.  This is why in our circuit, we connect our switch to ground.
+
+
+ We set the LED to a push-pull output without any pull-up or pulldown
+ resistors.  Open drain outputs are useful when you have multiple devices
+ set to output on the same wire, which is not the case for us here.
+
+ ```
+ // Initialize the GPIOB pins.
+ // B1 should be set to 'input' mode with pull-up.
+ GPIOB->MODER  &= ~(0x3 << (BUTTON_PIN*2));
+ GPIOB->PUPDR  &= ~(0x3 << (BUTTON_PIN*2));
+ GPIOB->PUPDR  |=  (0x1 << (BUTTON_PIN*2));
+ // B3 is connected to an LED on the 'Nucleo' board.
+ //    It should be set to push-pull low-speed
+ output.
+ GPIOB->MODER  &= ~(0x3 << (LED_PIN*2));
+ GPIOB->MODER  |=  (0x1 << (LED_PIN*2));
+ GPIOB->OTYPER &= ~(1 << LED_PIN);
+ ```
+
+ We can access the pins through the memory mapped Input Data Register and
+ Ouptut Data Register
+
+ ```
+ GPIOB->IDR;
+ GPIOB->ODR;
+ ```
+
+

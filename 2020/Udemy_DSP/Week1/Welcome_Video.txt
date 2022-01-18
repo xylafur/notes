@@ -1,0 +1,12 @@
+Signal:
+    Measurement of a physical phenomena that evolves over time.
+
+    This could be pressure, voltage, light intensity or something else.
+
+
+Digital signal:
+    Just a sequence of measurements of a signal.  If you take mesaurements
+    often enough, the result has all the relevant info.
+
+Mathematical Framework
+    Linear Algebra is the tool.  Digital signals are vectors in a vector space
