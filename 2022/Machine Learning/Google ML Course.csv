@@ -1,0 +1,106 @@
+Question	Answer	Question Number	Chapter	Book	Subject	Image
+What is a label?	"The thing we are predicting: Spam or not spam, for example.
+An annotation to our data that we want to predict on unseen examples."	1	Framing	Google Machine Learning Crash Course	CS	
+What is a feature?	The input variable; how we represent data.	2	Framing	Google Machine Learning Crash Course	CS	
+What is an example?	One piece of data, either labeled or unlabeled.  A vector, made up of the features.	3	Framing	Google Machine Learning Crash Course	CS	
+What is a model?	"The thing that does the prediction – created through processing data.
+Defines the relationship between features and labels."	4	Framing	Google Machine Learning Crash Course	CS	
+What is the purpose of training?	Teaching the model how to relate features to labels.	5	Framing	Google Machine Learning Crash Course	CS	
+What are the two types of models?	Regression and Classification	6	Framing	Google Machine Learning Crash Course	CS	
+What does a regression model do?	Predicts continuous values.	7	Framing	Google Machine Learning Crash Course	CS	
+What is “Loss”?	How good our model is at predicting any example from the data set.	8	Descending into ML	Google Machine Learning Crash Course	CS	loss-function.png
+What are the three main loss functions?	L1, L2 (Squared error), L3	9	Descending into ML	Google Machine Learning Crash Course	CS	
+How do we modify the weights of a model?	Using the gradient, taking the derivative of the loss function.	10	Reducing Loss	Google Machine Learning Crash Course	CS	
+What is the learning rate?	A hyper parameter that determines how big of a step to take in the direction of the negative gradient.	11	Reducing Loss	Google Machine Learning Crash Course	CS	
+Why does initial conditions of a model matter?	Because there may me many local minimums, but only a single global minimum.	12	Reducing Loss	Google Machine Learning Crash Course	CS	
+What is Stochastic Gradient Descent?	Running the gradient descent algorithm on one example at a time, reducing computational burden.	13	Reducing Loss	Google Machine Learning Crash Course	CS	
+What are hyperparameters?	Knobs that programmers can tweak in machine learning algorithms.	14	Reducing Loss	Google Machine Learning Crash Course	CS	
+What is the dot product?	AKA the scalar product. Tells you how similar two vectors are	15	Linear Algebra Review	Google Machine Learning Crash Course	CS	Dot-product.png
+What is the cross product?	AKA the vector product.  Produces a new vector that is perpendicular to the other two.	16	Linear Algebra Review	Google Machine Learning Crash Course	CS	cross-product.png
+What is a synthetic feature?	a feature not present among input features, but can be created from one or more of them.	17	Intro to Tensor Flow	Google Machine Learning Crash Course	CS	
+What is a correlation matrix?	A matrix that we can produce that tells us which raw values relate to which other raw values – the higher the correlation the higher the predictive power	18	Intro to Tensor Flow	Google Machine Learning Crash Course	CS	
+What do we mean by generalization in reference to ML?	A model that is able to make accurate predictions to never before seen data – it hasn’t over fitted to the training data.	19	Generalization	Google Machine Learning Crash Course	CS	
+What is the best way to avoid over fitting?	Keeping the model simple	20		Google Machine Learning Crash Course	CS	
+What advantages does a big training set give us?  What about a big test set?	The bigger the training set, the better our model.  The bigger our test set, the more confidence we have in the trained model. 	21	Training and Test Sets	Google Machine Learning Crash Course	CS	
+What is the validation set?	A third partition of the randomized input data (aside from training and test sets).  We training on the test data, then validate the results against the validation set – if all is good, then we check against the test set.	22	Validation	Google Machine Learning Crash Course	CS	
+What is one-hot encoding?	A vector that contains a set of possible values, but only one of them is active – like an enum.	23	Representation	Google Machine Learning Crash Course	CS	
+What is “vocabulary” in reference to one and multi hot encoding?	The input set of possible values.	24	Representation	Google Machine Learning Crash Course	CS	
+What is the OOV (out of vocabulary) bucket?	We only consider the most common words in our vocabulary (for one hot / multi hot encoding), all of the other words are placed in the other bucket.	25	Representation	Google Machine Learning Crash Course	CS	
+What is a sparse representation and what is its purpose?	When we have a vector that is mostly zero values, we only write down the values that are non-zero.  This saves space.	26	Representation	Google Machine Learning Crash Course	CS	
+What is the purpose of synthetic features (feature crosses)?	They allow us to learn a non-linearity in a linear model through what is called the feature cross product, or just crosses.	27	Feature Crosses	Google Machine Learning Crash Course	CS	non-linear.png
+What is a logical conjunction?	When we cross two multi hot encoded features together, we end up with a new vector that contains all of the possible combinations of the two input vectors.	28	Feature Crosses	Google Machine Learning Crash Course	CS	
+What is the purpose of regularization?	Helps the model be more generic so it can generalize to new examples – don’t trust the input examples too much.	29	Regularization for Simplicity	Google Machine Learning Crash Course	CS	
+What is the purpose of “Structural risk minimization”	To reduce both the loss of the model as well as the model complexity.	30	Regularization for Simplicity	Google Machine Learning Crash Course	CS	
+What is the output of a logistic regression?	A probability value between 0 and 1.	31	Logistic Regression	Google Machine Learning Crash Course	CS	
+What function do we use to bound our linear model between 0 and 1?	The sigmoid	32	Logistic Regression	Google Machine Learning Crash Course	CS	sigmoid.png
+What loss function do we use for logistic regressnion?	The log loss function	33	Logistic Regression	Google Machine Learning Crash Course	CS	log-loss.png
+What affects do the asymptotes of the sigmoid an log loss functions have on our model?	The model will continually grow as it tries to reach the value the asymptote is approaching.  This makes regularization much more important.	34	Logistic Regression	Google Machine Learning Crash Course	CS	
+What is accuracy?	What percentage of inputs that were correct	35	Classification	Google Machine Learning Crash Course	CS	accuracy.png
+How can we describe accuracy in terms of True Positive, False Positive, True Negative, False Negative? 		36	Classification	Google Machine Learning Crash Course	CS	accuracy_tpfptnfn.png
+What is a “Class Imbalance”?	"When you have a dataset where one of the two conditions happens very infrequently compared to the rest of the data.
+For example, we are trying to idenfity dogs from images, but only 1/1000 images are of dogs"	37	Classification	Google Machine Learning Crash Course	CS	
+What is the deficiency of accuracy in regards to class imbalance?	If we have a class imbalance, and the predicted value only shows up 1/1000 entries, then always choosing true would result in a 99.9% accuracy	38	Classification	Google Machine Learning Crash Course	CS	
+What is precision?	How often was the model correct? What percentage of the predicted positives were correct?	39	Classification	Google Machine Learning Crash Course	CS	precision.png
+What is recall?	Out of all of the actual positives, how many of those did we identify correctly?	40	Classification	Google Machine Learning Crash Course	CS	recall.png
+What is the relationship between precision and recall?	Precision and Recall are generally in Tug of War with each other, and you must examine both of them in order to correctly evaluate a model.  Increasing the threshold will generally increase precision (the ratio of true positives on the right of the threshold will increase) while the recall will generally decrease (as more positives will become false negatives on the right side of the curve).	41	Classification	Google Machine Learning Crash Course	CS	recall_precision_tug_of_war.png
+What is the ROC Curve?	Receiver Operating Characteristic Curve.  A graph that helps us analyze the True Positive and False Positive rate over a set of different threshold values.	42	Classification	Google Machine Learning Crash Course	CS	roc_curve.png
+What is the area under the ROC curve?	The probability that the model ranks a random positive example more highly than a random negative example – basically it tells us how grouped together all of our True Positives are.	43	Classification	Google Machine Learning Crash Course	CS	recall_precision_tug_of_war.png
+What are two desirable characteristics about AUC of the ROC?	"It is scale-invariant, meaning the actual position doesn’t matter, just the order.
+The measure is classification-threshold-invariant, meaning it gives us a general idea of the data, rather than the performance for a particular threshold."	44	Classification	Google Machine Learning Crash Course	CS	recall_precision_tug_of_war.png
+What is prediction bias?	"The difference in the sum of the predictions and the sum of the observations
+Ideally the average values of the predictions of a logistic regression match the average values of the observation – this would mean a bias of 0."	45	Classification	Google Machine Learning Crash Course	CS	
+Does low prediction bias tell us our model is good?	No.  A prediction bias of 0 does not mean the model is good.  However, a non-zero prediction bias can be used as a canary to tell us something is wrong.	46	Classification	Google Machine Learning Crash Course	CS	
+What is a sparse matrix/sparse vector/sparse array?	A matrix/vector/array in which most of the values are 0.	47	Regularization: Sparsity	Google Machine Learning Crash Course	CS	
+What is L0 regularization, and why do we use it?  What are the limitations?	"Sum of the Norm of the weights: L0: (||w1|| + ||w2|| + …)
+We use it to cause some of the features to go to zero.
+It is a NP-hard non-convex, computationally difficult problem."	48	Regularization: Sparsity	Google Machine Learning Crash Course	CS	
+What is L1 regularization, why do we use it?	"L1 Serves as a approximation of L0.    It penalizes the sum of the abs(weights).
+L1: (|w1| + |w2| + …)  "	49	Regularization: Sparsity	Google Machine Learning Crash Course	CS	
+What is L2 regularization?  What is its limitation?	"Sum of the square weights: L2: (w12 + w22 + …)
+It does not cause weights to actually be driven to zero, only towards zero, meaning they are still in the model."	50	Regularization: Sparsity	Google Machine Learning Crash Course	CS	
+Why does L1 regularization drive weights to 0, but L2 doesn’t? 	"It has to do with the derivatives.  
+The derivative of the L2 regularization function is a value proportional to the weight, which basically means zeno’s paradox (driven towards but not to 0).
+The derivative of L1 regularization is a constant value, and once we jump lower than zero somehow goes to zero (according to the course)."	51	Regularization: Sparsity	Google Machine Learning Crash Course	CS	
+What should you be wary of when using L1 regularization?	Be careful that your lambda (regularization rate) is not too high – that could cause useful features to be driven to 0.	52	Regularization: Sparsity	Google Machine Learning Crash Course	CS	
+What is the promise of deep neural nets?	The ability to learn non-linearities automatically, without having to construct complicated feature crosses.	53	Neural Nets	Google Machine Learning Crash Course	CS	deep-net.png
+Does adding more layers to a deep neural net add the ability to handle non-linear data? Why or why not?	No.  The linear combination of linear outputs is still linear.  We have to add a non-linearity in between some of the hidden layers.	54	Neural Nets	Google Machine Learning Crash Course	CS	deep-net.png
+Why are activation functions like ReLu, Sigmoid, Tanx useful?	They add in non-linearities to the layers of a model, meaning that the model can now predict non-linearities.	55	Neural Nets	Google Machine Learning Crash Course	CS	
+What is a homeomorphism?	A transformation which does not affect topology.  Basically a transformation where you can stretch and squish, but not poke holes or tear	56	Neural Nets	Google Machine Learning Crash Course	CS	Mug_and_Torus_morph.gif
+What do the hidden layers of a neural net accomplish?	Handle non-linearities by transforming the input data in some way such that it can then be linearly seperable.	57	Neural Nets	Google Machine Learning Crash Course	CS	linearly_seperable1.png
+What are all of the nodes in the same layer essentially?  What does adding another node to the layer accomplish for us?	They are essentially a dimension.  So adding another unit can allow us to change our perspective by introducing a new dimension.  Something that is not seperable in two dimensions (given homeomorphic transformations)  is likely seperable in three dimensions with the proper transformation.    	58	Neural Nets	Google Machine Learning Crash Course	CS	additional_dimension.png
+What makes non-convex optimization hard?	"1. There are potentially many local minima.
+2. Saddle Points
+3. Very flat regions in the space
+4. Widely varying curvature"	59	Neural Nets	Google Machine Learning Crash Course	CS	
+What is a non convex problem?	Anything that’s not convex	60	Neural Nets	Google Machine Learning Crash Course	CS	non-convex.png
+What is backpopogation? How does it work?	"An algorithm for training “feedforward” neural networks.
+It operates by computing the gradient of the loss function with respect to the weights for a single input-output example.  One layer is done at a time, iterating backwards from the last layer."	61	Neural Nets	Google Machine Learning Crash Course	CS	
+What are the 2 common pitfalls of Neural Networks?	"1. Having too many nodes in the graph, making it computationally expensive to train, and removes any human intuition as to what the model isdoing
+2. Having no regularization, as the model can quickly over fit to the point of circling individual examples."	62	Neural Nets	Google Machine Learning Crash Course	CS	
+What is a Multi Class Neural Network?  How is it accomplished?	"A network in which a single, or possible multiple classes, are identified from the input example.  For example, a network that chooses if an image is a dog, a cat, or an other
+This is accomplished by having each node in the output layer predict one of the classes"	63	Multi Class Neural networks	Google Machine Learning Crash Course	CS	multi-class-network.png
+What is SoftMax?  When is it used?	"An algorithm which is used for multi-class networks where a single output class is chosen.
+It causes the sum of the probabilities of the output nodes to equal 1."	64	Multi Class Neural networks	Google Machine Learning Crash Course	CS	soft-max.png
+What is “Candidate Sampling?”	"A particular method of Soft Max in which only candidate nodes from the output layer are ran through SoftMax.
+Say we have a model that can compute between one of 1000 things, but for some reason, we know that only 50 of those output nodes can be valid.  We would only run softmax on those 50 candidates as a computational optimization"	65	Multi Class Neural networks	Google Machine Learning Crash Course	CS	
+What is an embedding?	"A relatively low dimensional space which is translated into high dimensional vectors.
+Large sparse vectors are translated into a space that preserves semantics.
+For example, having a set of movies that all users have watched, and taking that set of 1 million movies and converting it into a 500 dimensional space, where all of the dimensions are the characteristics of movies.  This allows us to group them, and represent them more efficiently."	66	Embeddings	Google Machine Learning Crash Course	CS	
+What is a latent dimension?	A feature that is not explicit in the data, but is inferred from it.	67	Embeddings	Google Machine Learning Crash Course	CS	
+What is an additional hyper parameter that embeddings create?	How many dimensions to have in your embedding layer.  The rule of thumb is the fourth root of the possible values.	68	Embeddings	Google Machine Learning Crash Course	CS	embedding-rule-of-thumb.png
+What is a static model with offline training?	A model that you train once on a big repository of data and then deploy it.  While it is deployed, you don’t update the model	69	Production ML Systems	Google Machine Learning Crash Course	CS	
+What is a dynamic model with online training?	A model that is continuously updating based on new examples.  You have deployed it, and new input data comes in, and you update the model based on new examples?	70	Production ML Systems	Google Machine Learning Crash Course	CS	
+What are the benefits of a static offline trained model?	It is easy to build and test.	71	Production ML Systems	Google Machine Learning Crash Course	CS	
+What are the disadvantages of a static offline trained model?	You have to continually monitor the inputs – the data you used to train it can quickly grow stale and the model can become useless	72	Production ML Systems	Google Machine Learning Crash Course	CS	
+What sort of application is well fit for a static offline trained model?	Image recognition, because images don’t change much (an apple always looks like an apple)	73	Production ML Systems	Google Machine Learning Crash Course	CS	
+What are the benefits of a dynamic online trained model?	It adapts over time to new data.  You can progressively validate your model over time, rather than training and testing in a huge batch.	74	Production ML Systems	Google Machine Learning Crash Course	CS	
+What are the disadvantages of a dynamic online trained model?	You need to constantly monitor the model.  You need to make sure you take snapshots so you can roll back the model.  Need to be able to quarantine certain data.	75	Production ML Systems	Google Machine Learning Crash Course	CS	
+What is offline inference?	You make all of the possible predictions in a batch and store the results in a table.  Then when you go to make a prediction, you look up the input in the table and return that.	76	Production ML Systems	Google Machine Learning Crash Course	CS	
+What are the benefits of offline inference?	You can verify all of the predictions on data before you push out the model.  You don’t have to worry about cost too much (don’t need a high powered server to compute data on the fly).	77	Production ML Systems	Google Machine Learning Crash Course	CS	
+What are the disadvantages of offline inference?	You have to have all of the predictions in hand.  Updating the model can potentially take hours or days	78	Production ML Systems	Google Machine Learning Crash Course	CS	
+What is online inference?	You make predictions on demand using a server.	79	Production ML Systems	Google Machine Learning Crash Course	CS	
+What are the benefits of online inference?	You can make predictions with any new crazy input example: you can preform predictions on any and all items.	80	Production ML Systems	Google Machine Learning Crash Course	CS	
+What are the disadvantages of online inference?	Very computationally intensive, potentially high latency for predictions  You need more monitoring to make sure things aren’t going haywire – things might change suddenly due to upstream issues.	81	Production ML Systems	Google Machine Learning Crash Course	CS	
+What is a confusion matrix?	A table layout that allows for visualization of the performance of an algorithm.	82	Bias and Fairness	Google Machine Learning Crash Course	CS	confusion_matrix.png
+What is Facets?	A tool that you can use to visualize data for ML purposes	83	Bias and Fairness	Google Machine Learning Crash Course	CS	facets.png
+What is leakage?	When some of the training labels leak back into the features and allow the model to cheat.  For example, imagine a model for predicting if you have covid, one of the features is the result of a test, and another feature is if a doctor ordered you to take the test.  If a doctor ordered you to do it, it might be because you went to them and they thought you had covid.  But then imagine after you deploy the model, all of the input data is from complete at home users	84	Bias and Fairness	Google Machine Learning Crash Course	CS	
